@@ -1,0 +1,6 @@
+{
+  "name": "Chapelhill Luxury Real Estate",
+  "description": "Find your dream luxury home with Chapelhill. Curated architectural estates, premium locations, and bespoke property advisory.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
