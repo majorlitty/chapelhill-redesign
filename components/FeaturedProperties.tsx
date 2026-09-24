@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { 
   Building2, 
   MapPin, 
@@ -268,7 +269,11 @@ export default function FeaturedProperties({
             >
               {/* Card Media Header */}
               <div>
-                <div className="relative w-full h-64 sm:h-72 overflow-hidden bg-stone-100">
+                <Link 
+                  href={`/properties/${property.id}`}
+                  className="block relative w-full h-64 sm:h-72 overflow-hidden bg-stone-100 cursor-pointer"
+                  aria-label={`View ${property.name}`}
+                >
                   <Image
                     src={property.image}
                     alt={property.name}
@@ -318,7 +323,7 @@ export default function FeaturedProperties({
                       {property.name}
                     </h3>
                   </div>
-                </div>
+                </Link>
 
                 {/* Card Body Details */}
                 <div className="p-6">
@@ -362,7 +367,7 @@ export default function FeaturedProperties({
                   </div>
 
                   {/* Unit Breakdown Container */}
-                  <div className="p-4 rounded-2xl bg-[#FEFCFD] border border-stone-200/80 mb-6">
+                  <div className="p-4 rounded-2xl bg-[#FEFCFD] border border-stone-200/80 mb-2">
                     <div className="flex items-center justify-between mb-3">
                       <div className="flex items-center gap-2">
                         <Layers className="w-4 h-4 text-[#461313]" />
@@ -400,41 +405,19 @@ export default function FeaturedProperties({
                       ))}
                     </div>
                   </div>
-
-                  {/* Key Highlights */}
-                  <div className="space-y-2 mb-2">
-                    <p className="text-[11px] font-bold tracking-wider uppercase text-[#162521]/60">
-                      Development Features
-                    </p>
-                    {property.specifications.slice(0, 3).map((spec, sIdx) => (
-                      <div key={sIdx} className="flex items-start gap-2 text-xs text-[#162521]/80">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#D64933] shrink-0 mt-0.5" />
-                        <span className="leading-tight">{spec}</span>
-                      </div>
-                    ))}
-                  </div>
                 </div>
               </div>
 
               {/* Card Actions Footer */}
-              <div className="p-6 pt-0 space-y-2.5">
-                <button
-                  onClick={() => onInquireProperty(property.name)}
-                  id={`btn-inquire-${property.id}`}
+              <div className="p-6 pt-0">
+                <Link
+                  href={`/properties/${property.id}`}
+                  id={`btn-view-${property.id}`}
                   className="w-full bg-[#461313] hover:bg-[#D64933] text-white py-3 px-4 rounded-full font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer"
                 >
-                  <span>Inquire & Book Viewing</span>
+                  <span>View Property</span>
                   <ArrowRight className="w-4 h-4" />
-                </button>
-
-                <button
-                  onClick={() => setSelectedPropertyDetail(property)}
-                  id={`btn-details-${property.id}`}
-                  className="w-full bg-stone-50 hover:bg-stone-100 text-[#162521] border border-stone-200/80 py-2.5 px-4 rounded-full font-medium text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
-                >
-                  <Info className="w-3.5 h-3.5 text-[#162521]/60" />
-                  <span>View Comprehensive Specifications</span>
-                </button>
+                </Link>
               </div>
             </article>
           );

@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { ArrowRight, ArrowUpRight, Home, Menu, X } from 'lucide-react';
 
 interface NavbarProps {
@@ -24,8 +25,8 @@ export default function Navbar({
     <header className="w-full max-w-7xl mx-auto pt-6 sm:pt-8 px-6 sm:px-10 lg:px-12 relative z-30">
       <nav className="flex items-center justify-between" aria-label="Main Navigation">
         {/* Brand Logo matching reference */}
-        <a
-          href="#"
+        <Link
+          href="/"
           className="flex items-center gap-2.5 text-[#162521] group transition-opacity hover:opacity-90"
           id="chapelhill-logo"
         >
@@ -57,7 +58,7 @@ export default function Navbar({
           <span className="text-2xl font-extrabold tracking-tight text-[#162521] group-hover:text-[#461313] transition-colors">
             Chapelhill
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Navigation Links */}
         <div className="hidden md:flex items-center gap-8 lg:gap-10">

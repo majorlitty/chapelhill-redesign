@@ -28,7 +28,7 @@ const LUXURY_PROPERTIES: Property[] = [
     sqft: '8x 1-Bed • 2x 2-Bed • 3x 3-Bed',
     tag: 'Completed • Immediate Handover',
     imageUrl: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80',
-    description: 'Turnkey residential enclave comprising 8 units of 1-bedroom apartments, 2 units of 2-bedroom apartments, and 3 units of 3-bedroom apartments with full utilities and private security.',
+    description: 'Residential enclave comprising 8 units of 1-bedroom apartments, 2 units of 2-bedroom apartments, and 3 units of 3-bedroom apartments with full utilities and private security.',
   },
   {
     id: 'ogudu-gra-project',
