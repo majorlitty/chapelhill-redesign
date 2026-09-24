@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { ArrowRight, Building2, Hammer, ShieldCheck, CheckCircle2, ChevronRight, Sparkles, Compass } from 'lucide-react';
+import { ArrowRight, Building2, Hammer, ShieldCheck, CheckCircle2, ChevronRight, Compass } from 'lucide-react';
 
 interface AboutSectionProps {
   onLearnMoreServices?: () => void;
@@ -100,8 +100,7 @@ export default function AboutSection({ onLearnMoreServices, onContactClick }: Ab
 
       {/* Header Eyebrow & Brand Quote Statement */}
       <div className="max-w-4xl mx-auto text-center mb-12 sm:mb-16">
-        <div className="inline-flex items-center gap-2 bg-white/70 hover:bg-white/90 backdrop-blur-md border border-white/80 shadow-[0_2px_10px_rgba(22,37,33,0.05)] rounded-full px-4 py-1.5 mb-5 transition-all">
-          <Sparkles className="w-3.5 h-3.5 text-[#D64933]" />
+        <div className="inline-flex items-center bg-white/70 hover:bg-white/90 backdrop-blur-md border border-white/80 shadow-[0_2px_10px_rgba(22,37,33,0.05)] rounded-full px-4 py-1.5 mb-5 transition-all">
           <span className="text-xs font-semibold tracking-wider uppercase text-[#162521]">
             About Chapelhill
           </span>
@@ -215,10 +214,10 @@ export default function AboutSection({ onLearnMoreServices, onContactClick }: Ab
             <button
               onClick={onContactClick}
               id="about-cta-inquire"
-              className="group bg-[#461313] hover:bg-[#D64933] text-white pl-6 pr-3 py-3.5 rounded-xl font-semibold text-xs sm:text-sm inline-flex items-center gap-3 transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer"
+              className="group bg-[#461313] hover:bg-[#D64933] text-white pl-6 pr-3 py-3 rounded-full font-semibold text-xs sm:text-sm inline-flex items-center gap-3 transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer"
             >
               <span>Consult Our Senior Advisory</span>
-              <span className="w-7 h-7 rounded-lg bg-white text-[#461313] group-hover:text-[#D64933] flex items-center justify-center group-hover:translate-x-0.5 transition-all duration-200">
+              <span className="w-7 h-7 rounded-full bg-white text-[#461313] group-hover:text-[#D64933] flex items-center justify-center group-hover:translate-x-0.5 transition-all duration-200">
                 <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
               </span>
             </button>
@@ -227,7 +226,7 @@ export default function AboutSection({ onLearnMoreServices, onContactClick }: Ab
               <button
                 onClick={onLearnMoreServices}
                 id="about-cta-view-services"
-                className="bg-white/70 hover:bg-white text-[#162521] hover:text-[#461313] border border-white/90 hover:border-[#D64933]/40 px-5 py-3.5 rounded-xl font-semibold text-xs sm:text-sm backdrop-blur-sm transition-all duration-200 cursor-pointer"
+                className="bg-white/70 hover:bg-white text-[#162521] hover:text-[#461313] border border-white/90 hover:border-[#D64933]/40 px-5 py-3 rounded-full font-semibold text-xs sm:text-sm backdrop-blur-sm transition-all duration-200 cursor-pointer"
               >
                 Detailed Specifications
               </button>

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { MessageCircle, X, ArrowUpRight, Sparkles } from 'lucide-react';
+import { MessageCircle, X, ArrowUpRight } from 'lucide-react';
 
 interface WhatsAppFABProps {
   phoneNumber?: string;
@@ -90,7 +90,7 @@ export default function WhatsAppFAB({
             target="_blank"
             rel="noopener noreferrer"
             id="whatsapp-notification-action-link"
-            className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-semibold py-2 px-3 rounded-xl flex items-center justify-center gap-2 shadow-sm transition-colors cursor-pointer"
+            className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-semibold py-2 px-3 rounded-full flex items-center justify-center gap-2 shadow-sm transition-colors cursor-pointer"
           >
             <MessageCircle className="w-3.5 h-3.5 fill-white text-[#25D366]" />
             <span>Open Direct Chat Window</span>
@@ -103,10 +103,9 @@ export default function WhatsAppFAB({
         {/* Hover Pill Label on Desktop */}
         {showTooltip && (
           <div 
-            className="hidden sm:flex items-center gap-1.5 bg-[#162521] text-white text-xs font-medium px-3.5 py-2 rounded-xl shadow-lg border border-white/10 whitespace-nowrap animate-in fade-in zoom-in-95 duration-150"
+            className="hidden sm:flex items-center bg-[#162521] text-white text-xs font-medium px-3.5 py-2 rounded-full shadow-lg border border-white/10 whitespace-nowrap animate-in fade-in zoom-in-95 duration-150"
             role="tooltip"
           >
-            <Sparkles className="w-3.5 h-3.5 text-[#C0E8F9]" />
             <span>Chat about Chapelhill Estates</span>
           </div>
         )}

@@ -9,7 +9,6 @@ import {
   HardHat, 
   Building2, 
   ArrowRight, 
-  Sparkles, 
   MessageCircle,
   CheckCircle2
 } from 'lucide-react';
@@ -165,11 +164,11 @@ export default function FAQSection({ onContactClick }: FAQSectionProps) {
         </p>
 
         {/* Filter Categories */}
-        <div className="flex items-center justify-center flex-wrap gap-1.5 p-1.5 bg-white border border-stone-200/90 rounded-2xl shadow-xs mt-6 max-w-full">
+        <div className="flex items-center justify-center flex-wrap gap-1.5 p-1.5 bg-white border border-stone-200/90 rounded-full shadow-xs mt-6 max-w-full">
           <button
             onClick={() => setSelectedFilter('all')}
             id="faq-filter-all"
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
+            className={`px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
               selectedFilter === 'all'
                 ? 'bg-[#461313] text-white shadow-xs'
                 : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50'
@@ -180,7 +179,7 @@ export default function FAQSection({ onContactClick }: FAQSectionProps) {
           <button
             onClick={() => setSelectedFilter('diaspora')}
             id="faq-filter-diaspora"
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 ${
+            className={`px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 ${
               selectedFilter === 'diaspora'
                 ? 'bg-[#461313] text-white shadow-xs'
                 : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50'
@@ -192,7 +191,7 @@ export default function FAQSection({ onContactClick }: FAQSectionProps) {
           <button
             onClick={() => setSelectedFilter('legal')}
             id="faq-filter-legal"
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 ${
+            className={`px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 ${
               selectedFilter === 'legal'
                 ? 'bg-[#461313] text-white shadow-xs'
                 : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50'
@@ -204,7 +203,7 @@ export default function FAQSection({ onContactClick }: FAQSectionProps) {
           <button
             onClick={() => setSelectedFilter('construction')}
             id="faq-filter-construction"
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 ${
+            className={`px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 ${
               selectedFilter === 'construction'
                 ? 'bg-[#461313] text-white shadow-xs'
                 : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50'
@@ -216,7 +215,7 @@ export default function FAQSection({ onContactClick }: FAQSectionProps) {
           <button
             onClick={() => setSelectedFilter('general')}
             id="faq-filter-general"
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 ${
+            className={`px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 ${
               selectedFilter === 'general'
                 ? 'bg-[#461313] text-white shadow-xs'
                 : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50'

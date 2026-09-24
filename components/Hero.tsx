@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { ArrowRight, Sparkles, MapPin, CheckCircle2, Eye, Compass, Maximize2, ShieldCheck } from 'lucide-react';
+import { ArrowRight, MapPin, CheckCircle2, Eye, Compass, Maximize2, ShieldCheck } from 'lucide-react';
 
 interface HeroProps {
   onExploreHomes: () => void;
@@ -64,47 +64,6 @@ export default function Hero({ onExploreHomes, onBookVisit }: HeroProps) {
       {/* Main Content Container */}
       <div className="max-w-6xl mx-auto px-6 sm:px-8 text-center relative z-20">
         
-        {/* Social Proof Pill Badge - Matching Reference */}
-        <div className="inline-flex items-center justify-center mb-6 sm:mb-8">
-          <div className="inline-flex items-center gap-2.5 bg-white/60 hover:bg-white/80 backdrop-blur-md border border-white/80 shadow-[0_2px_12px_rgba(22,37,33,0.06)] rounded-full px-3.5 py-1.5 transition-all duration-200">
-            {/* 3 Overlapping Avatar Images */}
-            <div className="flex items-center -space-x-2">
-              <div className="relative w-6 h-6 sm:w-7 sm:h-7 rounded-full overflow-hidden border-2 border-white shadow-xs">
-                <Image
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&h=120&q=80"
-                  alt="Client portrait"
-                  fill
-                  className="object-cover"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div className="relative w-6 h-6 sm:w-7 sm:h-7 rounded-full overflow-hidden border-2 border-white shadow-xs">
-                <Image
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&h=120&q=80"
-                  alt="Client portrait"
-                  fill
-                  className="object-cover"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div className="relative w-6 h-6 sm:w-7 sm:h-7 rounded-full overflow-hidden border-2 border-white shadow-xs">
-                <Image
-                  src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&h=120&q=80"
-                  alt="Client portrait"
-                  fill
-                  className="object-cover"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-            </div>
-
-            {/* Metric Text */}
-            <span className="text-xs sm:text-[13px] font-semibold text-[#162521] tracking-normal pr-1">
-              3,500+ Pro Users
-            </span>
-          </div>
-        </div>
-
         {/* Hero Title - Centered & Bold over imagery */}
         <h1 
           id="hero-title"
@@ -125,10 +84,10 @@ export default function Hero({ onExploreHomes, onBookVisit }: HeroProps) {
           <button
             onClick={onExploreHomes}
             id="hero-cta-explore"
-            className="group bg-[#461313] hover:bg-[#D64933] text-white pl-6 pr-3 py-3.5 rounded-xl font-semibold text-sm sm:text-base inline-flex items-center gap-3 transition-all duration-200 shadow-[0_4px_18px_rgba(70,19,19,0.25)] hover:shadow-[0_6px_24px_rgba(214,73,51,0.35)] hover:-translate-y-0.5 cursor-pointer"
+            className="group bg-[#461313] hover:bg-[#D64933] text-white pl-6 pr-3 py-3 rounded-full font-semibold text-sm sm:text-base inline-flex items-center gap-3 transition-all duration-200 shadow-[0_4px_18px_rgba(70,19,19,0.25)] hover:shadow-[0_6px_24px_rgba(214,73,51,0.35)] hover:-translate-y-0.5 cursor-pointer"
           >
             <span>Explore Homes</span>
-            <span className="w-8 h-8 rounded-lg bg-white text-[#461313] group-hover:text-[#D64933] flex items-center justify-center group-hover:translate-x-0.5 transition-all duration-200">
+            <span className="w-8 h-8 rounded-full bg-white text-[#461313] group-hover:text-[#D64933] flex items-center justify-center group-hover:translate-x-0.5 transition-all duration-200">
               <ArrowRight className="w-4 h-4 stroke-[2.5]" />
             </span>
           </button>
@@ -137,7 +96,7 @@ export default function Hero({ onExploreHomes, onBookVisit }: HeroProps) {
           <button
             onClick={onBookVisit}
             id="hero-cta-book-visit"
-            className="bg-white/80 hover:bg-white text-[#162521] border border-white/90 hover:border-[#D64933]/50 px-7 py-3.5 rounded-xl font-semibold text-sm sm:text-base backdrop-blur-sm transition-all duration-200 shadow-[0_2px_10px_rgba(22,37,33,0.05)] hover:-translate-y-0.5 cursor-pointer"
+            className="bg-white/80 hover:bg-white text-[#162521] border border-white/90 hover:border-[#D64933]/50 px-7 py-3 rounded-full font-semibold text-sm sm:text-base backdrop-blur-sm transition-all duration-200 shadow-[0_2px_10px_rgba(22,37,33,0.05)] hover:-translate-y-0.5 cursor-pointer"
           >
             Book a Visit
           </button>

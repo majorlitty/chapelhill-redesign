@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { ArrowRight, CircleDot, Sparkles, MessageCircle } from 'lucide-react';
+import { ArrowRight, CircleDot, MessageCircle } from 'lucide-react';
 
 interface ClosingAdvisoryBannerProps {
   onContactClick: () => void;
@@ -101,8 +101,7 @@ export default function ClosingAdvisoryBanner({ onContactClick }: ClosingAdvisor
         />
 
         {/* Discreet Corner Badge */}
-        <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 z-10 flex items-center gap-2 bg-[#0e1715]/80 backdrop-blur-md border border-white/20 text-white px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-medium shadow-lg">
-          <Sparkles className="w-3.5 h-3.5 text-[#E5C583]" />
+        <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 z-10 flex items-center bg-[#0e1715]/80 backdrop-blur-md border border-white/20 text-white px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-medium shadow-lg">
           <span>Chapelhill Architectural Masterpieces</span>
         </div>
       </div>

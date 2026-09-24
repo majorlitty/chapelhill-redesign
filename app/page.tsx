@@ -12,7 +12,7 @@ import WhatsAppFAB from '@/components/WhatsAppFAB';
 import FAQSection from '@/components/FAQSection';
 import ClosingAdvisoryBanner from '@/components/ClosingAdvisoryBanner';
 import Footer from '@/components/Footer';
-import { Search, SlidersHorizontal, ArrowUpRight, Sparkles, MapPin, Building, DollarSign } from 'lucide-react';
+import { Search, SlidersHorizontal, ArrowUpRight, MapPin, Building, DollarSign } from 'lucide-react';
 
 export default function HomePage() {
   const [propertyModalOpen, setPropertyModalOpen] = useState(false);
@@ -153,7 +153,7 @@ export default function HomePage() {
               <button
                 onClick={scrollToFeatured}
                 id="search-estates-button"
-                className="bg-[#461313] hover:bg-[#D64933] text-white p-3 rounded-xl flex items-center justify-center transition-all hover:scale-105 shadow-md cursor-pointer shrink-0"
+                className="bg-[#461313] hover:bg-[#D64933] text-white p-3 rounded-full flex items-center justify-center transition-all hover:scale-105 shadow-md cursor-pointer shrink-0"
                 aria-label="View Available Properties"
               >
                 <Search className="w-4 h-4" />

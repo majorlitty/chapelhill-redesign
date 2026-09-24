@@ -10,7 +10,6 @@ import {
   Layers, 
   ArrowRight, 
   ShieldCheck, 
-  Sparkles,
   Maximize,
   FileText,
   CalendarCheck,
@@ -205,8 +204,7 @@ export default function FeaturedProperties({
       {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
         <div className="max-w-2xl">
-          <div className="inline-flex items-center gap-2 bg-white/90 border border-stone-200/90 shadow-xs rounded-full px-4 py-1.5 mb-3.5">
-            <Sparkles className="w-3.5 h-3.5 text-[#D64933]" />
+          <div className="inline-flex items-center bg-white/90 border border-stone-200/90 shadow-xs rounded-full px-4 py-1.5 mb-3.5">
             <span className="text-xs font-bold tracking-wider uppercase text-[#461313]">
               Properties Available for Sale
             </span>
@@ -220,11 +218,11 @@ export default function FeaturedProperties({
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex items-center gap-1.5 p-1.5 bg-white border border-stone-200/90 rounded-2xl shadow-xs self-start md:self-auto shrink-0">
+        <div className="flex items-center gap-1.5 p-1.5 bg-white border border-stone-200/90 rounded-full shadow-xs self-start md:self-auto shrink-0">
           <button
             onClick={() => setFilter('all')}
             id="filter-all-properties"
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+            className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
               filter === 'all'
                 ? 'bg-[#461313] text-white shadow-xs'
                 : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50'
@@ -235,7 +233,7 @@ export default function FeaturedProperties({
           <button
             onClick={() => setFilter('completed')}
             id="filter-completed-properties"
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+            className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
               filter === 'completed'
                 ? 'bg-[#461313] text-white shadow-xs'
                 : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50'
@@ -246,7 +244,7 @@ export default function FeaturedProperties({
           <button
             onClick={() => setFilter('ongoing')}
             id="filter-ongoing-properties"
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+            className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
               filter === 'ongoing'
                 ? 'bg-[#461313] text-white shadow-xs'
                 : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50'
@@ -357,7 +355,7 @@ export default function FeaturedProperties({
 
                     {property.paymentPlan && (
                       <div className="mt-2.5 pt-2 border-t border-stone-200/60 flex items-center gap-1.5 text-[11px] text-[#162521]/75 font-medium">
-                        <Sparkles className="w-3 h-3 text-[#D64933] shrink-0" />
+                        <Banknote className="w-3 h-3 text-[#D64933] shrink-0" />
                         <span className="truncate">{property.paymentPlan}</span>
                       </div>
                     )}
@@ -423,7 +421,7 @@ export default function FeaturedProperties({
                 <button
                   onClick={() => onInquireProperty(property.name)}
                   id={`btn-inquire-${property.id}`}
-                  className="w-full bg-[#461313] hover:bg-[#D64933] text-white py-3 px-4 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer"
+                  className="w-full bg-[#461313] hover:bg-[#D64933] text-white py-3 px-4 rounded-full font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer"
                 >
                   <span>Inquire & Book Viewing</span>
                   <ArrowRight className="w-4 h-4" />
@@ -432,7 +430,7 @@ export default function FeaturedProperties({
                 <button
                   onClick={() => setSelectedPropertyDetail(property)}
                   id={`btn-details-${property.id}`}
-                  className="w-full bg-stone-50 hover:bg-stone-100 text-[#162521] border border-stone-200/80 py-2.5 px-4 rounded-xl font-medium text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                  className="w-full bg-stone-50 hover:bg-stone-100 text-[#162521] border border-stone-200/80 py-2.5 px-4 rounded-full font-medium text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
                 >
                   <Info className="w-3.5 h-3.5 text-[#162521]/60" />
                   <span>View Comprehensive Specifications</span>
@@ -462,23 +460,23 @@ export default function FeaturedProperties({
         <button
           onClick={onOpenConsultation}
           id="btn-featured-consult-advisory"
-          className="bg-[#461313] hover:bg-[#D64933] text-white px-6 py-3.5 rounded-xl font-semibold text-xs sm:text-sm flex items-center gap-2.5 transition-all shadow-md shrink-0 cursor-pointer"
+          className="bg-[#461313] hover:bg-[#D64933] text-white px-6 py-3.5 rounded-full font-semibold text-xs sm:text-sm flex items-center gap-2.5 transition-all shadow-md shrink-0 cursor-pointer"
         >
           <span>Speak with Project Directors</span>
           <ArrowRight className="w-4 h-4" />
         </button>
       </div>
 
-      {/* Full Architectural Detail Modal */}
+      {/* Full Architectural Detail Modal - Fitted to Screen Viewport */}
       {selectedPropertyDetail && (
         <div 
-          className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 md:p-6 animate-in fade-in duration-200"
           role="dialog"
           aria-modal="true"
         >
-          <div className="bg-white rounded-3xl border border-stone-200 w-full max-w-3xl overflow-hidden shadow-2xl relative my-auto animate-in zoom-in-95 duration-200">
-            {/* Modal Image Header */}
-            <div className="relative h-64 sm:h-80 w-full">
+          <div className="bg-white rounded-3xl border border-stone-200 w-full max-w-3xl max-h-[calc(100dvh-2rem)] flex flex-col overflow-hidden shadow-2xl relative my-auto animate-in zoom-in-95 duration-200">
+            {/* Modal Image Header (Compact height so entire modal comfortably fits on all displays) */}
+            <div className="relative h-40 sm:h-48 w-full shrink-0">
               <Image
                 src={selectedPropertyDetail.image}
                 alt={selectedPropertyDetail.name}
@@ -491,39 +489,39 @@ export default function FeaturedProperties({
               <button
                 onClick={() => setSelectedPropertyDetail(null)}
                 id="btn-close-property-detail"
-                className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center transition-colors cursor-pointer"
+                className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center transition-colors cursor-pointer text-sm"
                 aria-label="Close details"
               >
                 ✕
               </button>
 
-              <div className="absolute bottom-6 left-6 right-6 text-white">
-                <span className="inline-block bg-[#461313] text-[#C0E8F9] text-xs font-bold px-3 py-1 rounded-full mb-2">
+              <div className="absolute bottom-4 left-4 right-4 text-white">
+                <span className="inline-block bg-[#461313] text-[#C0E8F9] text-[11px] font-bold px-2.5 py-0.5 rounded-full mb-1">
                   {selectedPropertyDetail.statusLabel}
                 </span>
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
+                <h3 className="text-xl sm:text-2xl font-extrabold text-white">
                   {selectedPropertyDetail.name}
                 </h3>
-                <p className="text-xs sm:text-sm text-stone-200 flex items-center gap-1.5 mt-1">
+                <p className="text-xs text-stone-200 flex items-center gap-1.5 mt-0.5">
                   <MapPin className="w-3.5 h-3.5 text-[#D64933]" />
                   {selectedPropertyDetail.location}
                 </p>
               </div>
             </div>
 
-            {/* Modal Body */}
-            <div className="p-6 sm:p-8 space-y-6 max-h-[60vh] overflow-y-auto">
+            {/* Modal Body with internal scrolling */}
+            <div className="p-5 sm:p-6 space-y-5 overflow-y-auto flex-1 overscroll-contain">
               <div>
-                <h4 className="text-sm font-bold uppercase tracking-wider text-[#461313] mb-2">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-[#461313] mb-1.5">
                   Overview & Philosophy
                 </h4>
-                <p className="text-sm text-[#162521]/80 leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#162521]/80 leading-relaxed">
                   {selectedPropertyDetail.description}
                 </p>
               </div>
 
               {/* Financial Expectations & Investment Structure */}
-              <div className="p-5 rounded-2xl bg-[#FEFCFD] border border-stone-200 shadow-2xs">
+              <div className="p-4 rounded-2xl bg-[#FEFCFD] border border-stone-200 shadow-2xs">
                 <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
                   <div className="flex items-center gap-2">
                     <Banknote className="w-4 h-4 text-[#461313]" />
@@ -537,21 +535,21 @@ export default function FeaturedProperties({
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-1">
-                  <div className="p-3.5 bg-white rounded-xl border border-stone-200/80">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#162521]/60 block mb-1">
+                  <div className="p-3 bg-white rounded-xl border border-stone-200/80">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#162521]/60 block mb-0.5">
                       Entry Price / Starting From
                     </span>
-                    <span className="text-lg sm:text-xl font-black text-[#461313]">
+                    <span className="text-base sm:text-lg font-black text-[#461313]">
                       {selectedPropertyDetail.startingPrice}
                     </span>
                   </div>
 
-                  <div className="p-3.5 bg-white rounded-xl border border-stone-200/80">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#162521]/60 block mb-1">
+                  <div className="p-3 bg-white rounded-xl border border-stone-200/80">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#162521]/60 block mb-0.5">
                       Payment Terms & Plan
                     </span>
                     <span className="text-xs font-semibold text-[#162521] flex items-center gap-1.5 mt-0.5">
-                      <Sparkles className="w-3.5 h-3.5 text-[#D64933] shrink-0" />
+                      <Banknote className="w-3.5 h-3.5 text-[#D64933] shrink-0" />
                       {selectedPropertyDetail.paymentPlan || 'Milestone-based disbursement available'}
                     </span>
                   </div>
@@ -559,29 +557,29 @@ export default function FeaturedProperties({
               </div>
 
               {/* Unit Breakdown Detailed */}
-              <div className="p-5 rounded-2xl bg-[#FEFCFD] border border-stone-200">
-                <h4 className="text-sm font-bold text-[#162521] uppercase tracking-wider mb-4 flex items-center justify-between">
+              <div className="p-4 rounded-2xl bg-[#FEFCFD] border border-stone-200">
+                <h4 className="text-xs font-bold text-[#162521] uppercase tracking-wider mb-3 flex items-center justify-between">
                   <span>Unit Inventory Breakdown</span>
                   {selectedPropertyDetail.totalUnits && (
-                    <span className="text-xs font-bold text-[#461313] bg-[#C0E8F9]/50 px-3 py-1 rounded-full">
+                    <span className="text-[11px] font-bold text-[#461313] bg-[#C0E8F9]/50 px-2.5 py-0.5 rounded-full">
                       {selectedPropertyDetail.totalUnits}
                     </span>
                   )}
                 </h4>
 
-                <div className="space-y-4">
+                <div className="space-y-3">
                   {selectedPropertyDetail.unitBreakdown.map((unit, uIdx) => (
-                    <div key={uIdx} className="p-3.5 rounded-xl bg-white border border-stone-100 shadow-2xs">
+                    <div key={uIdx} className="p-3 rounded-xl bg-white border border-stone-100 shadow-2xs">
                       <div className="flex items-center justify-between gap-2 mb-1">
                         <div>
-                          <h5 className="text-sm font-bold text-[#162521]">{unit.title}</h5>
+                          <h5 className="text-xs sm:text-sm font-bold text-[#162521]">{unit.title}</h5>
                           {unit.price && (
                             <span className="text-xs font-semibold text-[#D64933]">
                               {unit.price}
                             </span>
                           )}
                         </div>
-                        <span className="text-xs font-bold text-white bg-[#461313] px-2.5 py-0.5 rounded-md self-start">
+                        <span className="text-xs font-bold text-white bg-[#461313] px-2 py-0.5 rounded-md self-start">
                           {unit.count}
                         </span>
                       </div>
@@ -596,12 +594,12 @@ export default function FeaturedProperties({
               </div>
 
               {/* Specifications & Highlights */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#162521]/70 mb-3">
+                  <h4 className="text-[11px] font-bold uppercase tracking-wider text-[#162521]/70 mb-2">
                     Architectural Specifications
                   </h4>
-                  <ul className="space-y-2">
+                  <ul className="space-y-1.5">
                     {selectedPropertyDetail.specifications.map((spec, sIdx) => (
                       <li key={sIdx} className="flex items-start gap-2 text-xs text-[#162521]/85">
                         <CheckCircle2 className="w-3.5 h-3.5 text-[#D64933] shrink-0 mt-0.5" />
@@ -612,13 +610,13 @@ export default function FeaturedProperties({
                 </div>
 
                 <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#162521]/70 mb-3">
+                  <h4 className="text-[11px] font-bold uppercase tracking-wider text-[#162521]/70 mb-2">
                     Investment Highlights
                   </h4>
-                  <ul className="space-y-2">
+                  <ul className="space-y-1.5">
                     {selectedPropertyDetail.investmentHighlights.map((hl, hIdx) => (
                       <li key={hIdx} className="flex items-start gap-2 text-xs text-[#162521]/85">
-                        <Sparkles className="w-3.5 h-3.5 text-[#461313] shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#461313] shrink-0 mt-0.5" />
                         <span>{hl}</span>
                       </li>
                     ))}
@@ -627,11 +625,11 @@ export default function FeaturedProperties({
               </div>
             </div>
 
-            {/* Modal Footer */}
-            <div className="p-6 border-t border-stone-200 bg-stone-50 flex items-center justify-between gap-4">
+            {/* Modal Footer (Pinned and fitted with rounded-full buttons) */}
+            <div className="p-4 sm:p-5 border-t border-stone-200 bg-stone-50 flex items-center justify-between gap-3 shrink-0">
               <button
                 onClick={() => setSelectedPropertyDetail(null)}
-                className="px-5 py-2.5 rounded-xl border border-stone-300 text-xs font-semibold text-[#162521] hover:bg-stone-100 transition-colors cursor-pointer"
+                className="px-5 py-2.5 rounded-full border border-stone-300 text-xs font-semibold text-[#162521] hover:bg-stone-100 transition-colors cursor-pointer"
               >
                 Close
               </button>
@@ -643,7 +641,7 @@ export default function FeaturedProperties({
                   onInquireProperty(propName);
                 }}
                 id="modal-detail-inquire-btn"
-                className="bg-[#461313] hover:bg-[#D64933] text-white px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition-colors cursor-pointer shadow-sm"
+                className="bg-[#461313] hover:bg-[#D64933] text-white px-5 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm font-semibold flex items-center gap-2 transition-colors cursor-pointer shadow-sm"
               >
                 <span>Inquire & Reserve This Property</span>
                 <ArrowRight className="w-4 h-4" />

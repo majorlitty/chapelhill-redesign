@@ -173,7 +173,7 @@ export default function Navbar({
               setMobileMenuOpen(false);
               onContactClick();
             }}
-            className="w-full mt-2 bg-[#461313] hover:bg-[#D64933] text-white py-2.5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 transition-colors"
+            className="w-full mt-2 bg-[#461313] hover:bg-[#D64933] text-white py-2.5 rounded-full font-semibold text-sm flex items-center justify-center gap-2 transition-colors cursor-pointer"
           >
             Contact us
             <ArrowRight className="w-4 h-4" />
