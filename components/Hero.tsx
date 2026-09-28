@@ -69,7 +69,7 @@ export default function Hero({ onExploreHomes, onBookVisit }: HeroProps) {
           id="hero-title"
           className="text-4xl sm:text-6xl md:text-7xl lg:text-[84px] font-extrabold text-[#162521] tracking-[-0.038em] leading-[1.06] max-w-4xl mx-auto drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]"
         >
-          Find Your Dream Home
+          You Dream. We Build.
         </h1>
 
         {/* Subtitle - Exact copy and tone from reference */}

@@ -241,32 +241,32 @@ export const PROPERTIES: Property[] = [
     heroImage: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=85',
     gallery: [
       {
-        url: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=85',
+        url: '/images/5 bed Ogudu GRA Project/5 bed ogudu GRA 1.webp',
         caption: 'Sculptural Modernist Penthouse Architecture with Cantilevered Lounges',
         category: 'exterior',
       },
       {
-        url: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=85',
+        url: '/images/5 bed Ogudu GRA Project/5 bed ogudu GRA 2.webp',
         caption: 'Wraparound Penthouse Sky Terrace with Panoramic Horizon Vistas',
         category: 'living',
       },
       {
-        url: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=85',
+        url: '/images/5 bed Ogudu GRA Project/5 bed ogudu GRA 3.webp',
         caption: 'Double-Height Living Salon with Floor-to-Ceiling Acoustic Glazing',
         category: 'living',
       },
       {
-        url: 'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1600&q=85',
+        url: '/images/5 bed Ogudu GRA Project/Ogudu 3d/Ogudu 3d (7).jpeg',
         caption: 'Palatial Master Penthouse Suite with Private Sun Deck Access',
         category: 'bedroom',
       },
       {
-        url: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=85',
+        url: '/images/5 bed Ogudu GRA Project/Ogudu 3d/Ogudu 3d (6).jpeg',
         caption: 'Custom Italian Marble Kitchen Island and Concealed Pantry',
         category: 'kitchen',
       },
       {
-        url: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=85',
+        url: '/images/5 bed Ogudu GRA Project/Ogudu 3d/Ogudu 3d (11).jpeg',
         caption: 'Private Elevator Landing Foyer with Custom Architectural Paneling',
         category: 'interior',
       },
@@ -391,35 +391,50 @@ export const PROPERTIES: Property[] = [
     location: 'Prime Lekki Phase 1, Island Hub, Lagos',
     status: 'ongoing',
     statusLabel: 'Currently Ongoing • High Capital Appreciation',
-    heroImage: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=85',
+    heroImage: '/images/lekki-phase-1/site-1.webp',
     gallery: [
       {
-        url: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=85',
-        caption: 'Striking 18-Unit Modern Facade with Cascading Balconies',
+        url: '/images/lekki-phase-1/site-1.webp',
+        caption: 'Active Development Site - Structural Framework & Construction Progress',
         category: 'exterior',
       },
       {
-        url: 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1600&q=85',
+        url: '/images/lekki-phase-1/site-1.webp',
+        caption: 'Active Development Site - Structural Framework & Construction Progress',
+        category: 'exterior',
+      },
+      {
+        url: '/images/lekki-phase-1/site-2.webp',
+        caption: 'Ongoing Site Engineering & Foundation Core Assessment',
+        category: 'exterior',
+      },
+      {
+        url: '/images/lekki-phase-1/site-3.webp',
+        caption: 'Superstructure Works & Poured Slab Integrity Overview',
+        category: 'exterior',
+      },
+      {
+        url: '/images/lekki-phase-1/lekki 3d/Lekki phase 1(1).jpeg',
         caption: 'Resort-Style Swimming Pool, Sundeck and Residents Wellness Lounge',
         category: 'amenity',
       },
       {
-        url: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=85',
+        url: '/images/lekki-phase-1/lekki 3d/Lekki phase 1(2).jpeg',
         caption: 'Private Rooftop Sky Deck with Panoramic Lekki Skyline Vistas',
         category: 'living',
       },
       {
-        url: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=85',
+        url: '/images/lekki-phase-1/lekki 3d/Lekki phase 1(3).jpeg',
         caption: 'Architectural Reception Salon with Custom Fluted Feature Walls',
         category: 'living',
       },
       {
-        url: 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=85',
+        url: '/images/lekki-phase-1/lekki 3d/Lekki phase 1(4).jpeg',
         caption: 'Designer Open Kitchen with Island Bar and Quartz Worktops',
         category: 'kitchen',
       },
       {
-        url: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1600&q=85',
+        url: '/images/lekki-phase-1/lekki 3d/Lekki phase 1(5).jpeg',
         caption: 'Primary Suite Sanctuary with Tailored Built-In Storage',
         category: 'bedroom',
       },
