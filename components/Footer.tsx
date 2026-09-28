@@ -46,7 +46,7 @@ export default function Footer({
     <footer 
       id="main-footer" 
       aria-label="Chapelhill Footer and Advisory Directory"
-      className="w-full bg-[#0e1715] text-stone-300 relative z-20 pt-16 sm:pt-20 pb-12 border-t border-white/5"
+      className="w-full bg-[#0e1715] text-stone-300 relative z-20 pt-12 sm:pt-20 pb-12 border-t border-white/5"
     >
       {/* Subtle architectural ambient light matching the warm glow of the villa above */}
       <div 
@@ -54,11 +54,11 @@ export default function Footer({
         aria-hidden="true" 
       />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
         {/* Top Tier: Brand Statement & Instant Action */}
-        <div className="pb-12 sm:pb-16 border-b border-white/10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+        <div className="pb-10 sm:pb-16 border-b border-white/10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 sm:gap-8">
           <div className="max-w-2xl">
-            <div className="flex items-center gap-3 mb-3">
+            <div className="flex items-center gap-3 mb-3 flex-wrap">
               <span className="text-2xl sm:text-3xl font-black tracking-tight text-white font-serif">
                 CHAPELHILL
               </span>
@@ -67,16 +67,16 @@ export default function Footer({
                 LASRERA Accredited
               </span>
             </div>
-            <p className="text-sm sm:text-base text-stone-400 leading-relaxed">
+            <p className="text-xs sm:text-base text-stone-400 leading-relaxed">
               Institutional-grade luxury architecture, private estates, and verified diaspora development advisory across Lagos and prime African real estate corridors.
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto">
             <button
               onClick={onContactClick}
               id="footer-book-consultation-btn"
-              className="px-6 py-3 rounded-full bg-white hover:bg-stone-100 text-[#0e1715] font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(255,255,255,0.15)] transition-all duration-200 hover:scale-[1.02] cursor-pointer"
+              className="px-6 py-3.5 sm:py-3 rounded-full bg-white hover:bg-stone-100 text-[#0e1715] font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(255,255,255,0.15)] transition-all duration-200 hover:scale-[1.02] cursor-pointer min-h-[44px]"
             >
               <span>Book Private Consultation</span>
               <ArrowRight className="w-4 h-4 text-[#0e1715]" />
@@ -86,7 +86,7 @@ export default function Footer({
               target="_blank"
               rel="noopener noreferrer"
               id="footer-whatsapp-chat-btn"
-              className="px-5 py-3 rounded-full bg-[#25D366]/15 hover:bg-[#25D366]/25 text-[#25D366] font-semibold text-xs sm:text-sm border border-[#25D366]/30 flex items-center justify-center gap-2 transition-all cursor-pointer"
+              className="px-5 py-3.5 sm:py-3 rounded-full bg-[#25D366]/15 hover:bg-[#25D366]/25 text-[#25D366] font-semibold text-xs sm:text-sm border border-[#25D366]/30 flex items-center justify-center gap-2 transition-all cursor-pointer min-h-[44px]"
             >
               <MessageCircle className="w-4 h-4 fill-[#25D366]" />
               <span>WhatsApp Advisory Desk</span>
@@ -268,13 +268,13 @@ export default function Footer({
                     onChange={(e) => setEmailInput(e.target.value)}
                     placeholder="Enter your institutional or private email"
                     id="footer-email-input"
-                    className="w-full bg-white/5 border border-white/15 focus:border-[#E5C583] focus:outline-none rounded-xl px-3.5 py-2.5 text-xs text-white placeholder:text-stone-500 transition-colors"
+                    className="w-full bg-white/5 border border-white/15 focus:border-[#E5C583] focus:outline-none rounded-xl px-3.5 py-2.5 text-base sm:text-xs text-white placeholder:text-stone-500 transition-colors min-h-[44px]"
                   />
                 </div>
                 <button
                   type="submit"
                   id="footer-subscribe-submit-btn"
-                  className="w-full bg-[#1e2f2b] hover:bg-[#283e39] text-[#E5C583] border border-[#E5C583]/30 font-semibold text-xs py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                  className="w-full bg-[#1e2f2b] hover:bg-[#283e39] text-[#E5C583] border border-[#E5C583]/30 font-semibold text-xs py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors cursor-pointer min-h-[44px]"
                 >
                   <span>Request Investor Access</span>
                   <ArrowRight className="w-3.5 h-3.5" />

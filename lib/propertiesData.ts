@@ -238,7 +238,7 @@ export const PROPERTIES: Property[] = [
     location: 'Ogudu GRA, Mainland Prime, Lagos',
     status: 'ongoing',
     statusLabel: 'Currently Ongoing • Off-Plan Opportunity',
-    heroImage: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=85',
+    heroImage: '/images/5 bed Ogudu GRA Project/5 bed ogudu GRA 1.webp',
     gallery: [
       {
         url: '/images/5 bed Ogudu GRA Project/5 bed ogudu GRA 1.webp',
@@ -399,11 +399,6 @@ export const PROPERTIES: Property[] = [
         category: 'exterior',
       },
       {
-        url: '/images/lekki-phase-1/site-1.webp',
-        caption: 'Active Development Site - Structural Framework & Construction Progress',
-        category: 'exterior',
-      },
-      {
         url: '/images/lekki-phase-1/site-2.webp',
         caption: 'Ongoing Site Engineering & Foundation Core Assessment',
         category: 'exterior',
@@ -437,6 +432,16 @@ export const PROPERTIES: Property[] = [
         url: '/images/lekki-phase-1/lekki 3d/Lekki phase 1(5).jpeg',
         caption: 'Primary Suite Sanctuary with Tailored Built-In Storage',
         category: 'bedroom',
+      },
+      {
+        url: '/images/lekki-phase-1/lekki 3d/Lekki phase 1 floor plan.jpeg',
+        caption: 'Comprehensive Architectural Typical Floor Plan Layout',
+        category: 'interior',
+      },
+      {
+        url: '/images/lekki-phase-1/lekki 3d/Lekki phase 1 ground floor plan.jpeg',
+        caption: 'Ground Level Access, Parking & Concierge Master Plan',
+        category: 'exterior',
       },
     ],
     description: 'An 18-unit institutional-grade luxury residential development commanding a prime 866sqm parcel in Lekki Phase 1. Designed to set a benchmark in architectural elegance, spatial efficiency, and high rental yield.',

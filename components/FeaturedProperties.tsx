@@ -102,7 +102,7 @@ export const FEATURED_PROPERTIES: FeaturedProperty[] = [
     priceRange: '₦380M – ₦450M',
     paymentPlan: 'Structured Milestone Construction Schedule',
     totalUnits: 'Exclusive Single Penthouse',
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/5 bed Ogudu GRA Project/5 bed ogudu GRA 1.webp',
     description: 'An elite private penthouse residence crowned at the pinnacle of Ogudu GRA. Engineered for supreme privacy, lavish entertainment, and seamless indoor-outdoor living with panoramic skyline views of Lagos.',
     unitBreakdown: [
       {
@@ -143,7 +143,7 @@ export const FEATURED_PROPERTIES: FeaturedProperty[] = [
     paymentPlan: '30% Initial Deposit with Phased Quarterly Tranches',
     landSize: '866 sqm Site',
     totalUnits: '18 Luxury Units',
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/lekki-phase-1/site-1.webp',
     description: 'An 18-unit institutional-grade luxury residential development commanding a prime 866sqm parcel in Lekki Phase 1. Designed to set a benchmark in architectural elegance, spatial efficiency, and high rental yield.',
     unitBreakdown: [
       {
@@ -200,33 +200,33 @@ export default function FeaturedProperties({
   return (
     <section 
       id="featured-properties" 
-      className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 py-16 sm:py-24 relative z-20"
+      className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-12 sm:py-20 relative z-20"
     >
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-12">
         <div className="max-w-2xl">
-          <div className="inline-flex items-center bg-white/90 border border-stone-200/90 shadow-xs rounded-full px-4 py-1.5 mb-3.5">
+          <div className="inline-flex items-center bg-white/90 border border-stone-200/90 shadow-xs rounded-full px-4 py-1.5 mb-3">
             <span className="text-xs font-bold tracking-wider uppercase text-[#461313]">
               Properties Available for Sale
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#162521] tracking-tight leading-[1.15]">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#162521] tracking-tight leading-[1.15]">
             Featured Prime Developments
           </h2>
-          <p className="mt-3 text-base sm:text-lg text-[#162521]/75 leading-relaxed">
+          <p className="mt-2.5 text-sm sm:text-base md:text-lg text-[#162521]/75 leading-relaxed">
             Explore our curated portfolio of completed turnkey residences and high-yield ongoing developments across Nigeria’s most coveted residential destinations.
           </p>
         </div>
 
-        {/* Filter Tabs */}
-        <div className="flex items-center gap-1.5 p-1.5 bg-white border border-stone-200/90 rounded-full shadow-xs self-start md:self-auto shrink-0">
+        {/* Filter Tabs - Horizontal scrollable on mobile */}
+        <div className="flex items-center gap-1.5 p-1.5 bg-white border border-stone-200/90 rounded-2xl sm:rounded-full shadow-xs self-start md:self-auto shrink-0 overflow-x-auto max-w-full overscroll-x-contain scrollbar-none touch-manipulation">
           <button
             onClick={() => setFilter('all')}
             id="filter-all-properties"
-            className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+            className={`px-4 py-2 rounded-xl sm:rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all cursor-pointer min-h-[40px] touch-manipulation ${
               filter === 'all'
                 ? 'bg-[#461313] text-white shadow-xs'
-                : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50'
+                : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50 active:bg-stone-100'
             }`}
           >
             All Projects ({FEATURED_PROPERTIES.length})
@@ -234,10 +234,10 @@ export default function FeaturedProperties({
           <button
             onClick={() => setFilter('completed')}
             id="filter-completed-properties"
-            className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+            className={`px-4 py-2 rounded-xl sm:rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all cursor-pointer min-h-[40px] touch-manipulation ${
               filter === 'completed'
                 ? 'bg-[#461313] text-white shadow-xs'
-                : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50'
+                : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50 active:bg-stone-100'
             }`}
           >
             Completed (1)
@@ -245,19 +245,19 @@ export default function FeaturedProperties({
           <button
             onClick={() => setFilter('ongoing')}
             id="filter-ongoing-properties"
-            className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+            className={`px-4 py-2 rounded-xl sm:rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all cursor-pointer min-h-[40px] touch-manipulation ${
               filter === 'ongoing'
                 ? 'bg-[#461313] text-white shadow-xs'
-                : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50'
+                : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50 active:bg-stone-100'
             }`}
           >
-            Currently Ongoing (2)
+            Ongoing (2)
           </button>
         </div>
       </div>
 
-      {/* Properties Grid: 3 Distinct Architectural Showcases */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      {/* Properties Grid: Responsive 1 col (mobile), 2 cols (tablet), 3 cols (desktop) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {filteredProperties.map((property) => {
           const isCompleted = property.status === 'completed';
 
@@ -326,17 +326,17 @@ export default function FeaturedProperties({
                 </Link>
 
                 {/* Card Body Details */}
-                <div className="p-6">
+                <div className="p-4 sm:p-6">
                   {/* Tagline / Subtitle */}
                   <p className="text-xs font-bold uppercase tracking-wider text-[#D64933] mb-2">
                     {property.tagline}
                   </p>
-                  <p className="text-sm text-[#162521]/80 leading-relaxed line-clamp-3 mb-5">
+                  <p className="text-xs sm:text-sm text-[#162521]/80 leading-relaxed line-clamp-3 mb-4 sm:mb-5">
                     {property.description}
                   </p>
 
                   {/* Financial Expectations & Starting Price Card */}
-                  <div className="p-4 rounded-2xl bg-[#FEFCFD] border border-stone-200/90 shadow-2xs mb-5 group-hover:border-[#461313]/30 transition-colors">
+                  <div className="p-3.5 sm:p-4 rounded-2xl bg-[#FEFCFD] border border-stone-200/90 shadow-2xs mb-4 sm:mb-5 group-hover:border-[#461313]/30 transition-colors">
                     <div className="flex items-center justify-between gap-2 mb-1.5">
                       <div className="flex items-center gap-1.5">
                         <Tag className="w-3.5 h-3.5 text-[#D64933]" />
@@ -350,10 +350,10 @@ export default function FeaturedProperties({
                     </div>
 
                     <div className="flex items-baseline justify-between gap-2 flex-wrap">
-                      <span className="text-xl sm:text-2xl font-black text-[#162521] tracking-tight">
+                      <span className="text-lg sm:text-2xl font-black text-[#162521] tracking-tight">
                         {property.startingPrice}
                       </span>
-                      <span className="text-xs font-bold text-[#D64933] bg-[#D64933]/10 px-2.5 py-1 rounded-lg">
+                      <span className="text-[11px] sm:text-xs font-bold text-[#D64933] bg-[#D64933]/10 px-2 py-0.5 rounded-lg">
                         {property.priceRange}
                       </span>
                     </div>
@@ -367,8 +367,8 @@ export default function FeaturedProperties({
                   </div>
 
                   {/* Unit Breakdown Container */}
-                  <div className="p-4 rounded-2xl bg-[#FEFCFD] border border-stone-200/80 mb-2">
-                    <div className="flex items-center justify-between mb-3">
+                  <div className="p-3.5 sm:p-4 rounded-2xl bg-[#FEFCFD] border border-stone-200/80 mb-2">
+                    <div className="flex items-center justify-between mb-2.5">
                       <div className="flex items-center gap-2">
                         <Layers className="w-4 h-4 text-[#461313]" />
                         <span className="text-xs font-bold text-[#162521] uppercase tracking-wider">
@@ -376,20 +376,20 @@ export default function FeaturedProperties({
                         </span>
                       </div>
                       {property.totalUnits && (
-                        <span className="text-xs font-bold text-[#461313] bg-[#C0E8F9]/50 px-2.5 py-0.5 rounded-full">
+                        <span className="text-[11px] font-bold text-[#461313] bg-[#C0E8F9]/50 px-2.5 py-0.5 rounded-full">
                           {property.totalUnits}
                         </span>
                       )}
                     </div>
 
-                    <div className="space-y-2.5">
+                    <div className="space-y-2">
                       {property.unitBreakdown.map((unit, idx) => (
                         <div 
                           key={idx} 
-                          className="flex items-center justify-between gap-3 text-xs py-1.5 border-b border-stone-100 last:border-0"
+                          className="flex items-center justify-between gap-2.5 text-xs py-1.5 border-b border-stone-100 last:border-0"
                         >
                           <div className="flex flex-col min-w-0">
-                            <span className="font-semibold text-[#162521]/90">
+                            <span className="font-semibold text-[#162521]/90 truncate">
                               {unit.title}
                             </span>
                             {unit.price && (
@@ -398,7 +398,7 @@ export default function FeaturedProperties({
                               </span>
                             )}
                           </div>
-                          <span className="font-bold text-[#461313] bg-white border border-stone-200 px-2.5 py-0.5 rounded-md shadow-2xs shrink-0 self-center">
+                          <span className="font-bold text-[#461313] bg-white border border-stone-200 px-2 py-0.5 rounded-md shadow-2xs shrink-0 self-center text-[11px]">
                             {unit.count}
                           </span>
                         </div>
@@ -409,11 +409,11 @@ export default function FeaturedProperties({
               </div>
 
               {/* Card Actions Footer */}
-              <div className="p-6 pt-0">
+              <div className="p-4 sm:p-6 pt-0">
                 <Link
                   href={`/properties/${property.id}`}
                   id={`btn-view-${property.id}`}
-                  className="w-full bg-[#461313] hover:bg-[#D64933] text-white py-3 px-4 rounded-full font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer"
+                  className="w-full bg-[#461313] hover:bg-[#D64933] text-white py-3 px-4 rounded-full font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer min-h-[44px]"
                 >
                   <span>View Property</span>
                   <ArrowRight className="w-4 h-4" />
@@ -425,16 +425,16 @@ export default function FeaturedProperties({
       </div>
 
       {/* Advisory Banner */}
-      <div className="mt-14 p-6 sm:p-8 rounded-3xl bg-white border border-stone-200/90 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+      <div className="mt-10 sm:mt-14 p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-stone-200/90 shadow-sm flex flex-col md:flex-row items-stretch md:items-center justify-between gap-6">
         <div className="flex items-start gap-4">
-          <div className="w-12 h-12 rounded-2xl bg-[#461313] text-[#C0E8F9] flex items-center justify-center shrink-0 shadow-sm">
-            <Building2 className="w-6 h-6" />
+          <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-[#461313] text-[#C0E8F9] flex items-center justify-center shrink-0 shadow-sm mt-0.5">
+            <Building2 className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
           <div>
-            <h4 className="text-lg font-bold text-[#162521]">
+            <h4 className="text-base sm:text-lg font-bold text-[#162521]">
               Seeking Bespoke Bulk Allocations or Joint-Venture Collaborations?
             </h4>
-            <p className="text-xs sm:text-sm text-[#162521]/70 mt-1 max-w-2xl">
+            <p className="text-xs sm:text-sm text-[#162521]/70 mt-1 max-w-2xl leading-relaxed">
               Our acquisitions division provides institutional investors, diaspora buyers, and family offices with transparent milestone oversight, title verification, and tailored payment schedules.
             </p>
           </div>
@@ -443,7 +443,7 @@ export default function FeaturedProperties({
         <button
           onClick={onOpenConsultation}
           id="btn-featured-consult-advisory"
-          className="bg-[#461313] hover:bg-[#D64933] text-white px-6 py-3.5 rounded-full font-semibold text-xs sm:text-sm flex items-center gap-2.5 transition-all shadow-md shrink-0 cursor-pointer"
+          className="w-full sm:w-auto bg-[#461313] hover:bg-[#D64933] text-white px-6 py-3.5 rounded-full font-semibold text-xs sm:text-sm flex items-center justify-center gap-2.5 transition-all shadow-md shrink-0 cursor-pointer min-h-[44px]"
         >
           <span>Speak with Project Directors</span>
           <ArrowRight className="w-4 h-4" />

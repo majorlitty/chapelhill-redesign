@@ -131,7 +131,7 @@ export default function InfoDrawer({ isOpen, type, onClose, onBookVisit }: InfoD
                   onClose();
                   onBookVisit();
                 }}
-                className="bg-[#461313] hover:bg-[#D64933] text-white px-5 py-2.5 rounded-full font-semibold text-xs sm:text-sm transition-colors cursor-pointer shadow-xs"
+                className="bg-[#461313] hover:bg-[#D64933] text-white px-5 py-2.5 rounded-full font-semibold text-xs sm:text-sm transition-colors cursor-pointer shadow-xs min-h-[44px] touch-manipulation"
               >
                 Inquire With Advisor
               </button>
@@ -141,7 +141,7 @@ export default function InfoDrawer({ isOpen, type, onClose, onBookVisit }: InfoD
               <span className="text-xs text-slate-500">Chapelhill Advisory Group</span>
               <button
                 onClick={onClose}
-                className="bg-[#461313] hover:bg-[#D64933] text-white px-6 py-2.5 rounded-full font-semibold text-xs sm:text-sm transition-colors cursor-pointer shadow-xs"
+                className="bg-[#461313] hover:bg-[#D64933] text-white px-6 py-2.5 rounded-full font-semibold text-xs sm:text-sm transition-colors cursor-pointer shadow-xs min-h-[44px] touch-manipulation"
               >
                 Close
               </button>

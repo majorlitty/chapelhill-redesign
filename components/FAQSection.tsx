@@ -140,7 +140,7 @@ export default function FAQSection({ onContactClick }: FAQSectionProps) {
   return (
     <section 
       id="frequently-asked-questions" 
-      className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 py-16 sm:py-24 relative z-20 border-t border-stone-200/80"
+      className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-12 sm:py-20 relative z-20 border-t border-stone-200/80"
     >
       {/* Background ambient accents */}
       <div 
@@ -149,29 +149,29 @@ export default function FAQSection({ onContactClick }: FAQSectionProps) {
       />
 
       {/* Header Eyebrow & Title (Centered) */}
-      <div className="max-w-3xl mx-auto text-center flex flex-col items-center mb-12 sm:mb-16">
-        <div className="inline-flex items-center gap-2 bg-white/90 border border-stone-200/90 shadow-xs rounded-full px-4 py-1.5 mb-3.5">
+      <div className="max-w-3xl mx-auto text-center flex flex-col items-center mb-10 sm:mb-16">
+        <div className="inline-flex items-center gap-2 bg-white/90 border border-stone-200/90 shadow-xs rounded-full px-4 py-1.5 mb-3">
           <HelpCircle className="w-3.5 h-3.5 text-[#D64933]" />
           <span className="text-xs font-bold tracking-wider uppercase text-[#461313]">
             Investor Knowledge Base
           </span>
         </div>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#162521] tracking-tight leading-[1.15]">
+        <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#162521] tracking-tight leading-[1.15] px-2">
           Frequently Asked Questions
         </h2>
-        <p className="mt-3.5 text-base sm:text-lg text-[#162521]/75 leading-relaxed max-w-2xl">
+        <p className="mt-2.5 sm:mt-3.5 text-sm sm:text-base md:text-lg text-[#162521]/75 leading-relaxed max-w-2xl px-2">
           Clear, transparent guidance on acquiring prime Nigerian property, verifying title security, managing construction remotely, and maximizing investment returns with Chapelhill.
         </p>
 
-        {/* Filter Categories */}
-        <div className="flex items-center justify-center flex-wrap gap-1.5 p-1.5 bg-white border border-stone-200/90 rounded-full shadow-xs mt-6 max-w-full">
+        {/* Filter Categories - Mobile Horizontal Scrollable */}
+        <div className="flex items-center gap-1.5 p-1.5 bg-white border border-stone-200/90 rounded-2xl sm:rounded-full shadow-xs mt-6 max-w-full overflow-x-auto overscroll-x-contain scrollbar-none self-start sm:self-center touch-manipulation">
           <button
             onClick={() => setSelectedFilter('all')}
             id="faq-filter-all"
-            className={`px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
+            className={`px-4 py-2 rounded-xl sm:rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer min-h-[40px] touch-manipulation ${
               selectedFilter === 'all'
                 ? 'bg-[#461313] text-white shadow-xs'
-                : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50'
+                : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50 active:bg-stone-100'
             }`}
           >
             All Questions ({FAQS.length})
@@ -179,49 +179,49 @@ export default function FAQSection({ onContactClick }: FAQSectionProps) {
           <button
             onClick={() => setSelectedFilter('diaspora')}
             id="faq-filter-diaspora"
-            className={`px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 ${
+            className={`px-4 py-2 rounded-xl sm:rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 min-h-[40px] touch-manipulation ${
               selectedFilter === 'diaspora'
                 ? 'bg-[#461313] text-white shadow-xs'
-                : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50'
+                : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50 active:bg-stone-100'
             }`}
           >
-            <Globe2 className="w-3 h-3" />
+            <Globe2 className="w-3.5 h-3.5" />
             <span>Diaspora & Financing</span>
           </button>
           <button
             onClick={() => setSelectedFilter('legal')}
             id="faq-filter-legal"
-            className={`px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 ${
+            className={`px-4 py-2 rounded-xl sm:rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 min-h-[40px] touch-manipulation ${
               selectedFilter === 'legal'
                 ? 'bg-[#461313] text-white shadow-xs'
-                : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50'
+                : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50 active:bg-stone-100'
             }`}
           >
-            <ShieldCheck className="w-3 h-3" />
+            <ShieldCheck className="w-3.5 h-3.5" />
             <span>Title & Due Diligence</span>
           </button>
           <button
             onClick={() => setSelectedFilter('construction')}
             id="faq-filter-construction"
-            className={`px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 ${
+            className={`px-4 py-2 rounded-xl sm:rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 min-h-[40px] touch-manipulation ${
               selectedFilter === 'construction'
                 ? 'bg-[#461313] text-white shadow-xs'
-                : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50'
+                : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50 active:bg-stone-100'
             }`}
           >
-            <HardHat className="w-3 h-3" />
+            <HardHat className="w-3.5 h-3.5" />
             <span>Construction & Quality</span>
           </button>
           <button
             onClick={() => setSelectedFilter('general')}
             id="faq-filter-general"
-            className={`px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 ${
+            className={`px-4 py-2 rounded-xl sm:rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 min-h-[40px] touch-manipulation ${
               selectedFilter === 'general'
                 ? 'bg-[#461313] text-white shadow-xs'
-                : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50'
+                : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50 active:bg-stone-100'
             }`}
           >
-            <Building2 className="w-3 h-3" />
+            <Building2 className="w-3.5 h-3.5" />
             <span>Management & Onboarding</span>
           </button>
         </div>

@@ -39,7 +39,7 @@ const LUXURY_PROPERTIES: Property[] = [
     baths: 6,
     sqft: 'Penthouse + Service Room',
     tag: 'Currently Ongoing',
-    imageUrl: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: '/images/5 bed Ogudu GRA Project/5 bed ogudu GRA 1.webp',
     description: 'Exclusive 5-bedroom luxury penthouse with dedicated ensuite service room, double-height living spaces, panoramic rooftop terraces, and private elevator access.',
   },
   {
@@ -51,7 +51,7 @@ const LUXURY_PROPERTIES: Property[] = [
     baths: 3,
     sqft: '18 Units on 866sqm',
     tag: 'Currently Ongoing',
-    imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
+    imageUrl: '/images/lekki-phase-1/site-1.webp',
     description: 'High-yield 18-unit residential development featuring 8 units of 2-bedroom apartments, 8 units of 3-bedroom apartments, and 2 exclusive 2-bedroom penthouses.',
   },
   {

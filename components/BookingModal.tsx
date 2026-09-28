@@ -80,7 +80,7 @@ export default function BookingModal({
                   type="text"
                   value={formData.property}
                   onChange={(e) => setFormData({ ...formData, property: e.target.value })}
-                  className="w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-slate-50 text-xs sm:text-sm font-medium text-[#162521] focus:outline-none focus:ring-2 focus:ring-[#461313]"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-base sm:text-sm font-medium text-[#162521] focus:outline-none focus:ring-2 focus:ring-[#461313] min-h-[44px]"
                   required
                 />
               </div>
@@ -95,7 +95,7 @@ export default function BookingModal({
                     placeholder="e.g. Victoria Sinclair"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm text-[#162521] focus:outline-none focus:ring-2 focus:ring-[#461313]"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-base sm:text-sm text-[#162521] focus:outline-none focus:ring-2 focus:ring-[#461313] min-h-[44px]"
                     required
                   />
                 </div>
@@ -108,7 +108,7 @@ export default function BookingModal({
                     placeholder="client@domain.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm text-[#162521] focus:outline-none focus:ring-2 focus:ring-[#461313]"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-base sm:text-sm text-[#162521] focus:outline-none focus:ring-2 focus:ring-[#461313] min-h-[44px]"
                     required
                   />
                 </div>
@@ -123,7 +123,7 @@ export default function BookingModal({
                     type="date"
                     value={formData.date}
                     onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm text-[#162521] focus:outline-none focus:ring-2 focus:ring-[#461313]"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-base sm:text-sm text-[#162521] focus:outline-none focus:ring-2 focus:ring-[#461313] min-h-[44px]"
                     required
                   />
                 </div>
@@ -134,7 +134,7 @@ export default function BookingModal({
                   <select
                     value={formData.tourType}
                     onChange={(e) => setFormData({ ...formData, tourType: e.target.value })}
-                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm text-[#162521] focus:outline-none focus:ring-2 focus:ring-[#461313] bg-white"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-base sm:text-sm text-[#162521] focus:outline-none focus:ring-2 focus:ring-[#461313] bg-white min-h-[44px]"
                   >
                     <option value="in-person">Private In-Person Tour</option>
                     <option value="virtual-vip">Live 4K Virtual Walkthrough</option>
@@ -152,7 +152,7 @@ export default function BookingModal({
                   placeholder="Architectural preferences, timing flexibility, or private hangar/garage requirements..."
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                  className="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm text-[#162521] focus:outline-none focus:ring-2 focus:ring-[#461313] resize-none"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-base sm:text-sm text-[#162521] focus:outline-none focus:ring-2 focus:ring-[#461313] resize-none"
                 />
               </div>
 

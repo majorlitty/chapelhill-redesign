@@ -36,12 +36,12 @@ export default function WhatsAppFAB({
   return (
     <aside 
       aria-label="Direct WhatsApp Property Inquiries" 
-      className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3 pointer-events-none"
+      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end gap-2.5 sm:gap-3 pointer-events-none"
     >
       {/* Floating Prompt Notification Bubble (Optional preview card on first visit) */}
       {!dismissedNotification && (
         <div 
-          className="pointer-events-auto max-w-[290px] sm:max-w-xs bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-[0_12px_32px_rgba(22,37,33,0.12)] border border-stone-200/80 animate-in slide-in-from-bottom-3 duration-300 transition-all text-left"
+          className="pointer-events-auto w-[calc(100vw-2rem)] max-w-[310px] sm:max-w-xs bg-white/95 backdrop-blur-md rounded-2xl p-3.5 sm:p-4 shadow-[0_12px_32px_rgba(22,37,33,0.14)] border border-stone-200/90 animate-in slide-in-from-bottom-3 duration-300 transition-all text-left"
           role="dialog"
           aria-label="WhatsApp Inquiry Assistant"
         >
@@ -58,26 +58,26 @@ export default function WhatsAppFAB({
             <button
               onClick={() => setDismissedNotification(true)}
               id="dismiss-whatsapp-notification"
-              className="text-stone-400 hover:text-stone-700 p-0.5 rounded-md transition-colors cursor-pointer"
+              className="text-stone-400 hover:text-stone-700 p-1 rounded-md transition-colors cursor-pointer touch-manipulation"
               aria-label="Dismiss message"
             >
               <X className="w-3.5 h-3.5" />
             </button>
           </div>
 
-          <p className="text-xs text-[#162521]/80 leading-relaxed mb-3">
+          <p className="text-xs text-[#162521]/80 leading-relaxed mb-2.5">
             Interested in <strong className="text-[#461313]">Chapelhill luxury estates</strong>? Chat with our client director directly on WhatsApp for immediate brochures and pricing.
           </p>
 
           {/* Quick Select Buttons */}
-          <div className="space-y-1.5 mb-3">
+          <div className="space-y-1.5 mb-2.5">
             {propertyQuickInquiries.map((item, idx) => (
               <a
                 key={idx}
                 href={`https://wa.me/${phoneNumber}?text=${encodeURIComponent(item.msg)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between text-[11px] font-medium text-[#162521] hover:text-[#461313] bg-stone-50 hover:bg-[#C0E8F9]/30 border border-stone-200/60 rounded-lg px-2.5 py-1.5 transition-colors group cursor-pointer"
+                className="flex items-center justify-between text-[11px] font-medium text-[#162521] hover:text-[#461313] bg-stone-50 hover:bg-[#C0E8F9]/30 border border-stone-200/60 rounded-lg px-2.5 py-1.5 transition-colors group cursor-pointer touch-manipulation"
               >
                 <span className="truncate">{item.label}</span>
                 <ArrowUpRight className="w-3 h-3 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 transition-transform shrink-0" />
@@ -90,7 +90,7 @@ export default function WhatsAppFAB({
             target="_blank"
             rel="noopener noreferrer"
             id="whatsapp-notification-action-link"
-            className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-semibold py-2 px-3 rounded-full flex items-center justify-center gap-2 shadow-sm transition-colors cursor-pointer"
+            className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-semibold py-2.5 px-3 rounded-full flex items-center justify-center gap-2 shadow-sm transition-colors cursor-pointer touch-manipulation"
           >
             <MessageCircle className="w-3.5 h-3.5 fill-white text-[#25D366]" />
             <span>Open Direct Chat Window</span>
@@ -118,7 +118,7 @@ export default function WhatsAppFAB({
           aria-label="Direct WhatsApp chat window for Chapelhill luxury estates inquiries"
           onMouseEnter={() => setShowTooltip(true)}
           onMouseLeave={() => setShowTooltip(false)}
-          className="group relative flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-[0_8px_25px_rgba(37,211,102,0.45)] hover:shadow-[0_12px_32px_rgba(37,211,102,0.6)] transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer focus:outline-none focus:ring-4 focus:ring-[#25D366]/40"
+          className="group relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-[0_8px_25px_rgba(37,211,102,0.45)] hover:shadow-[0_12px_32px_rgba(37,211,102,0.6)] transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer focus:outline-none focus:ring-4 focus:ring-[#25D366]/40 touch-manipulation"
         >
           {/* Pulsing Presence Ring */}
           <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4">
@@ -128,7 +128,7 @@ export default function WhatsAppFAB({
             </span>
           </span>
 
-          <MessageCircle className="w-7 h-7 fill-white text-[#25D366] group-hover:scale-110 transition-transform duration-200" />
+          <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7 fill-white text-[#25D366] group-hover:scale-110 transition-transform duration-200" />
         </a>
       </div>
     </aside>

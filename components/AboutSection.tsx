@@ -91,39 +91,39 @@ export default function AboutSection({ onLearnMoreServices, onContactClick }: Ab
     DISCIPLINES.find((d) => d.id === activeDisciplineId) || DISCIPLINES[0];
 
   return (
-    <section id="about-us" className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 py-16 sm:py-24 relative z-20">
+    <section id="about-us" className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-12 sm:py-20 relative z-20">
       {/* Decorative ambient sky glow */}
       <div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[450px] bg-white/40 rounded-full blur-3xl pointer-events-none -z-10"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[450px] bg-white/40 rounded-full blur-3xl pointer-events-none -z-10" 
         aria-hidden="true" 
       />
 
       {/* Header Eyebrow & Brand Quote Statement */}
-      <div className="max-w-4xl mx-auto text-center mb-12 sm:mb-16">
-        <div className="inline-flex items-center bg-white/70 hover:bg-white/90 backdrop-blur-md border border-white/80 shadow-[0_2px_10px_rgba(22,37,33,0.05)] rounded-full px-4 py-1.5 mb-5 transition-all">
+      <div className="max-w-4xl mx-auto text-center mb-10 sm:mb-16">
+        <div className="inline-flex items-center bg-white/70 hover:bg-white/90 backdrop-blur-md border border-stone-200/80 shadow-2xs rounded-full px-4 py-1.5 mb-4 sm:mb-5 transition-all">
           <span className="text-xs font-semibold tracking-wider uppercase text-[#162521]">
             About Chapelhill
           </span>
         </div>
 
         {/* The Exact Quote Formatted with Editorial Elegance & Color Accents */}
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#162521] tracking-[-0.035em] leading-[1.18]">
+        <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#162521] tracking-[-0.03em] leading-[1.25] sm:leading-[1.18] px-2">
           &ldquo;At Chapelhill Multicompany International, we epitomize excellence in{' '}
-          <span className="underline decoration-[#D64933] decoration-2 underline-offset-8">
+          <span className="underline decoration-[#D64933] decoration-2 underline-offset-4 sm:underline-offset-8">
             property development
           </span>
           ,{' '}
-          <span className="underline decoration-[#D64933] decoration-2 underline-offset-8">
+          <span className="underline decoration-[#D64933] decoration-2 underline-offset-4 sm:underline-offset-8">
             construction
           </span>
           , and{' '}
-          <span className="underline decoration-[#D64933] decoration-2 underline-offset-8">
+          <span className="underline decoration-[#D64933] decoration-2 underline-offset-4 sm:underline-offset-8">
             maintenance services
           </span>
           .&rdquo;
         </h2>
 
-        <p className="mt-6 text-base sm:text-lg text-[#162521]/80 max-w-2xl mx-auto leading-relaxed">
+        <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-[#162521]/80 max-w-2xl mx-auto leading-relaxed px-2">
           A unified standard of architectural vision, bespoke construction rigor, and continuous estate preservation across premier global markets.
         </p>
       </div>
@@ -131,7 +131,7 @@ export default function AboutSection({ onLearnMoreServices, onContactClick }: Ab
       {/* Modern Asymmetric Editorial Layout: Interactive Disciplines + Dynamic Architectural Showcase */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
         
-        {/* Left Column (5 Cols): The 3 Disciplines with Sleek Minimalist Dividers */}
+        {/* Left Column (6 Cols): The 3 Disciplines with Sleek Minimalist Dividers */}
         <div className="lg:col-span-6 flex flex-col justify-between space-y-4">
           <div className="space-y-3">
             {DISCIPLINES.map((discipline) => {
@@ -143,34 +143,34 @@ export default function AboutSection({ onLearnMoreServices, onContactClick }: Ab
                   key={discipline.id}
                   onClick={() => setActiveDisciplineId(discipline.id)}
                   id={`discipline-tab-${discipline.id}`}
-                  className={`group relative rounded-2xl p-5 sm:p-6 transition-all duration-300 cursor-pointer border ${
+                  className={`group relative rounded-2xl p-4 sm:p-6 transition-all duration-300 cursor-pointer border ${
                     isActive
                       ? 'bg-white border-stone-200/90 shadow-[0_12px_32px_rgba(70,19,19,0.07)] scale-[1.01]'
                       : 'bg-white/60 hover:bg-white/90 backdrop-blur-sm border-stone-200/60 shadow-xs'
                   }`}
                 >
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex items-start gap-3.5">
+                  <div className="flex items-start justify-between gap-3 sm:gap-4">
+                    <div className="flex items-start gap-3 sm:gap-3.5">
                       <div
-                        className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
+                        className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors mt-0.5 sm:mt-0 ${
                           isActive
                             ? 'bg-[#461313] text-white shadow-sm'
                             : 'bg-slate-200/80 text-[#162521] group-hover:bg-[#C0E8F9] group-hover:text-[#461313]'
                         }`}
                       >
-                        <IconComponent className="w-5 h-5 stroke-[2]" />
+                        <IconComponent className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2]" />
                       </div>
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <span className={`text-xs font-mono font-bold tracking-wider uppercase ${isActive ? 'text-[#D64933]' : 'text-[#162521]/60'}`}>
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className={`text-[11px] sm:text-xs font-mono font-bold tracking-wider uppercase ${isActive ? 'text-[#D64933]' : 'text-[#162521]/60'}`}>
                             {discipline.number}
                           </span>
                           <span className="text-[#162521]/30">•</span>
-                          <span className="text-xs font-semibold text-[#162521]/70">
+                          <span className="text-[11px] sm:text-xs font-semibold text-[#162521]/70 truncate">
                             {discipline.subtitle}
                           </span>
                         </div>
-                        <h3 className="text-lg sm:text-xl font-bold text-[#162521] mt-0.5 tracking-tight group-hover:text-[#461313] transition-colors">
+                        <h3 className="text-base sm:text-xl font-bold text-[#162521] mt-0.5 tracking-tight group-hover:text-[#461313] transition-colors">
                           {discipline.title}
                         </h3>
                       </div>
@@ -189,12 +189,12 @@ export default function AboutSection({ onLearnMoreServices, onContactClick }: Ab
 
                   {/* Expanded Detail When Active */}
                   {isActive && (
-                    <div className="mt-4 pt-4 border-t border-slate-100 animate-in fade-in duration-300">
+                    <div className="mt-3.5 pt-3.5 border-t border-slate-100 animate-in fade-in duration-300">
                       <p className="text-xs sm:text-sm text-[#162521]/80 leading-relaxed">
                         {discipline.description}
                       </p>
 
-                      <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      <div className="mt-3.5 grid grid-cols-1 sm:grid-cols-2 gap-2">
                         {discipline.highlights.map((highlight, idx) => (
                           <div key={idx} className="flex items-center gap-2 text-xs font-medium text-[#162521]">
                             <CheckCircle2 className="w-3.5 h-3.5 text-[#D64933] shrink-0" />
@@ -210,14 +210,14 @@ export default function AboutSection({ onLearnMoreServices, onContactClick }: Ab
           </div>
 
           {/* Action Buttons */}
-          <div className="pt-4 flex flex-wrap items-center gap-3.5">
+          <div className="pt-2 sm:pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
             <button
               onClick={onContactClick}
               id="about-cta-inquire"
-              className="group bg-[#461313] hover:bg-[#D64933] text-white pl-6 pr-3 py-3 rounded-full font-semibold text-xs sm:text-sm inline-flex items-center gap-3 transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer"
+              className="group bg-[#461313] hover:bg-[#D64933] text-white pl-6 pr-3 py-3 rounded-full font-semibold text-xs sm:text-sm inline-flex items-center justify-center gap-3 transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer min-h-[44px]"
             >
               <span>Consult Our Senior Advisory</span>
-              <span className="w-7 h-7 rounded-full bg-white text-[#461313] group-hover:text-[#D64933] flex items-center justify-center group-hover:translate-x-0.5 transition-all duration-200">
+              <span className="w-7 h-7 rounded-full bg-white text-[#461313] group-hover:text-[#D64933] flex items-center justify-center group-hover:translate-x-0.5 transition-all duration-200 shrink-0">
                 <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
               </span>
             </button>
@@ -226,7 +226,7 @@ export default function AboutSection({ onLearnMoreServices, onContactClick }: Ab
               <button
                 onClick={onLearnMoreServices}
                 id="about-cta-view-services"
-                className="bg-white/70 hover:bg-white text-[#162521] hover:text-[#461313] border border-white/90 hover:border-[#D64933]/40 px-5 py-3 rounded-full font-semibold text-xs sm:text-sm backdrop-blur-sm transition-all duration-200 cursor-pointer"
+                className="bg-white/70 hover:bg-white text-[#162521] hover:text-[#461313] border border-stone-200/90 hover:border-[#D64933]/40 px-5 py-3 rounded-full font-semibold text-xs sm:text-sm backdrop-blur-sm transition-all duration-200 cursor-pointer min-h-[44px] flex items-center justify-center"
               >
                 Detailed Specifications
               </button>
@@ -236,7 +236,7 @@ export default function AboutSection({ onLearnMoreServices, onContactClick }: Ab
 
         {/* Right Column (6 Cols): Architectural Showcase Mirroring Active Discipline */}
         <div className="lg:col-span-6 flex flex-col">
-          <div className="relative w-full h-[380px] sm:h-[450px] lg:h-full min-h-[380px] rounded-3xl overflow-hidden border border-white/80 shadow-[0_16px_44px_rgba(22,37,33,0.09)] group">
+          <div className="relative w-full h-[280px] xs:h-[340px] sm:h-[420px] lg:h-full min-h-[280px] rounded-2xl sm:rounded-3xl overflow-hidden border border-white/80 shadow-[0_16px_44px_rgba(22,37,33,0.09)] group">
             {/* Background Image of Selected Discipline */}
             <Image
               src={currentDiscipline.image}

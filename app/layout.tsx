@@ -1,5 +1,5 @@
-import type {Metadata} from 'next';
-import {Plus_Jakarta_Sans} from 'next/font/google';
+import type { Metadata, Viewport } from 'next';
+import { Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -8,6 +8,13 @@ const plusJakarta = Plus_Jakarta_Sans({
   variable: '--font-sans',
   display: 'swap',
 });
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: '#461313',
+};
 
 export const metadata: Metadata = {
   title: 'Chapelhill — Luxury Real Estate & Architectural Estates',
@@ -27,10 +34,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({children}: {children: React.ReactNode}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={plusJakarta.variable}>
-      <body className="font-sans antialiased bg-[#FEFCFD] text-[#162521] selection:bg-[#461313] selection:text-white" suppressHydrationWarning>
+    <html lang="en" className={`${plusJakarta.variable} overflow-x-hidden scroll-smooth`}>
+      <body className="font-sans antialiased bg-[#FEFCFD] text-[#162521] selection:bg-[#461313] selection:text-white overflow-x-hidden min-h-screen w-full" suppressHydrationWarning>
         {children}
       </body>
     </html>

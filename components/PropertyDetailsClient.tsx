@@ -81,32 +81,32 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
         }}
       />
 
-      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 pt-6 pb-20">
+      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 pt-4 sm:pt-6 pb-28 sm:pb-20">
         {/* Breadcrumb & Navigation Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-4 py-4 mb-6 text-xs text-stone-500 border-b border-stone-200/60">
-          <nav className="flex items-center gap-2" aria-label="Breadcrumb">
+        <div className="flex flex-wrap items-center justify-between gap-3 py-3 mb-6 text-xs text-stone-500 border-b border-stone-200/60">
+          <nav className="flex items-center gap-1.5 sm:gap-2 flex-wrap" aria-label="Breadcrumb">
             <Link 
               href="/"
-              className="hover:text-[#461313] transition-colors font-medium flex items-center gap-1"
+              className="hover:text-[#461313] transition-colors font-medium flex items-center gap-1 py-1"
             >
               <span>Home</span>
             </Link>
             <span>/</span>
             <Link 
               href="/#featured-properties"
-              className="hover:text-[#461313] transition-colors font-medium"
+              className="hover:text-[#461313] transition-colors font-medium py-1"
             >
-              <span>Featured Properties</span>
+              <span>Properties</span>
             </Link>
             <span>/</span>
-            <span className="text-[#162521] font-semibold truncate max-w-[200px] sm:max-w-none">
+            <span className="text-[#162521] font-semibold truncate max-w-[150px] sm:max-w-none">
               {property.name}
             </span>
           </nav>
 
           <Link
             href="/#featured-properties"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#461313] hover:text-[#D64933] transition-colors group cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#461313] hover:text-[#D64933] transition-colors group cursor-pointer py-1 min-h-[36px]"
           >
             <ChevronLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
             <span>Back to All Properties</span>
@@ -115,16 +115,16 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
 
         {/* Hero Header Section */}
         <div className="mb-10">
-          <div className="flex flex-wrap items-center gap-2.5 text-xs text-stone-600 mb-3">
-            <span className="font-semibold tracking-wider uppercase text-[#D64933]">
+          <div className="flex flex-wrap items-center gap-2 text-xs text-stone-600 mb-3">
+            <span className="font-bold tracking-wider uppercase text-[#D64933]">
               {property.tagline}
             </span>
-            <span aria-hidden="true">·</span>
+            <span aria-hidden="true" className="text-stone-300">·</span>
             <span className="flex items-center gap-1">
-              <MapPin className="w-3.5 h-3.5 text-[#D64933]" />
-              {property.location}
+              <MapPin className="w-3.5 h-3.5 text-[#D64933] shrink-0" />
+              <span>{property.location}</span>
             </span>
-            <span aria-hidden="true">·</span>
+            <span aria-hidden="true" className="text-stone-300">·</span>
             <span className="font-semibold text-emerald-800">
               {property.statusLabel}
             </span>
@@ -132,21 +132,21 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
 
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#162521] tracking-tight font-serif">
+              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#162521] tracking-tight font-serif leading-tight">
                 {property.name}
               </h1>
-              <p className="mt-3 text-sm sm:text-base text-stone-600 max-w-3xl leading-relaxed">
+              <p className="mt-2.5 sm:mt-3 text-xs sm:text-base text-stone-600 max-w-3xl leading-relaxed">
                 {property.extendedOverview}
               </p>
             </div>
 
             {/* Price & Primary CTA */}
-            <div className="flex flex-col sm:flex-row lg:flex-col items-start sm:items-center lg:items-end gap-3 shrink-0">
+            <div className="flex flex-col sm:flex-row lg:flex-col items-stretch sm:items-center lg:items-end gap-3 shrink-0 w-full sm:w-auto">
               <div className="text-left lg:text-right">
-                <span className="text-xs font-semibold uppercase tracking-wider text-stone-400 block">
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-stone-400 block">
                   Guide Price
                 </span>
-                <span className="text-2xl sm:text-3xl font-extrabold text-[#461313]">
+                <span className="text-xl sm:text-3xl font-extrabold text-[#461313] block">
                   {property.financials.startingPrice}
                 </span>
                 <span className="text-xs text-stone-500 block font-medium">
@@ -157,7 +157,7 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
               <button
                 onClick={() => openBooking()}
                 id="hero-inquire-reserve-btn"
-                className="w-full sm:w-auto bg-[#461313] hover:bg-[#D64933] text-white px-7 py-3.5 rounded-full font-bold text-sm inline-flex items-center justify-center gap-2.5 shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer"
+                className="w-full sm:w-auto bg-[#461313] hover:bg-[#D64933] text-white px-7 py-3.5 rounded-full font-bold text-xs sm:text-sm inline-flex items-center justify-center gap-2.5 shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer min-h-[48px]"
               >
                 <span>Inquire & Reserve This Property</span>
                 <ArrowRight className="w-4 h-4" />
@@ -166,22 +166,22 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
           </div>
 
           {/* Quick Metrics Bar */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mt-8">
-            <div className="p-4 rounded-2xl bg-white border border-stone-200/80 shadow-2xs">
-              <span className="text-xs text-stone-500 block">Total Inventory</span>
-              <span className="text-base sm:text-lg font-bold text-[#162521]">{property.totalUnits}</span>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4 mt-6 sm:mt-8">
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-stone-200/80 shadow-2xs">
+              <span className="text-[11px] sm:text-xs text-stone-500 block">Total Inventory</span>
+              <span className="text-sm sm:text-lg font-bold text-[#162521] truncate block">{property.totalUnits}</span>
             </div>
-            <div className="p-4 rounded-2xl bg-white border border-stone-200/80 shadow-2xs">
-              <span className="text-xs text-stone-500 block">Development Stage</span>
-              <span className="text-base sm:text-lg font-bold text-[#461313]">{property.financials.handoverTimeline}</span>
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-stone-200/80 shadow-2xs">
+              <span className="text-[11px] sm:text-xs text-stone-500 block">Development Stage</span>
+              <span className="text-sm sm:text-lg font-bold text-[#461313] truncate block">{property.financials.handoverTimeline}</span>
             </div>
-            <div className="p-4 rounded-2xl bg-white border border-stone-200/80 shadow-2xs">
-              <span className="text-xs text-stone-500 block">Projected Net Yield</span>
-              <span className="text-base sm:text-lg font-bold text-emerald-700">{property.financials.projectedRentalYield}</span>
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-stone-200/80 shadow-2xs">
+              <span className="text-[11px] sm:text-xs text-stone-500 block">Projected Net Yield</span>
+              <span className="text-sm sm:text-lg font-bold text-emerald-700 truncate block">{property.financials.projectedRentalYield}</span>
             </div>
-            <div className="p-4 rounded-2xl bg-white border border-stone-200/80 shadow-2xs">
-              <span className="text-xs text-stone-500 block">Legal Title Status</span>
-              <span className="text-sm sm:text-base font-bold text-[#162521] truncate block" title={property.financials.titleStatus}>
+            <div className="p-3 sm:p-4 rounded-2xl bg-white border border-stone-200/80 shadow-2xs">
+              <span className="text-[11px] sm:text-xs text-stone-500 block">Legal Title Status</span>
+              <span className="text-xs sm:text-base font-bold text-[#162521] truncate block" title={property.financials.titleStatus}>
                 {property.financials.titleStatus.split(' ')[0]} Verified
               </span>
             </div>
@@ -189,19 +189,19 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
         </div>
 
         {/* SECTION: High-Resolution Image Gallery */}
-        <section className="mb-16" aria-label="Property High-Resolution Gallery">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+        <section className="mb-14 sm:mb-16" aria-label="Property High-Resolution Gallery">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 mb-5 sm:mb-6">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-[#D64933] block mb-1">
                 Visual Showcase
               </span>
-              <h2 className="text-2xl sm:text-3xl font-bold text-[#162521] tracking-tight">
+              <h2 className="text-xl sm:text-3xl font-bold text-[#162521] tracking-tight">
                 High-Resolution Architectural Gallery
               </h2>
             </div>
 
             {/* Gallery Category Filter Tabs */}
-            <div className="flex items-center gap-1.5 overflow-x-auto pb-2 sm:pb-0 scrollbar-none">
+            <div className="flex items-center gap-1.5 overflow-x-auto overscroll-x-contain pb-2 sm:pb-0 scrollbar-none max-w-full touch-manipulation">
               {[
                 { id: 'all', label: 'All Photos' },
                 { id: 'exterior', label: 'Exterior & Grounds' },
@@ -212,10 +212,10 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
                 <button
                   key={tab.id}
                   onClick={() => setActiveGalleryCategory(tab.id)}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer min-h-[36px] touch-manipulation ${
                     activeGalleryCategory === tab.id
-                      ? 'bg-[#461313] text-white'
-                      : 'bg-stone-100 hover:bg-stone-200 text-[#162521]/80'
+                      ? 'bg-[#461313] text-white shadow-xs'
+                      : 'bg-stone-100 hover:bg-stone-200 text-[#162521]/80 active:bg-stone-300'
                   }`}
                 >
                   {tab.label}
@@ -224,13 +224,13 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
             </div>
           </div>
 
-          {/* Gallery Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {/* Primary Highlight Image (Takes 2 cols & 2 rows on large) */}
+          {/* Gallery Grid: 2 columns on mobile, 3 on tablet, 4 on desktop */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-4">
+            {/* Primary Highlight Image (Takes full row on mobile, 2 cols & 2 rows on large) */}
             {filteredGallery[0] && (
               <div 
                 onClick={() => setLightboxIndex(0)}
-                className="relative md:col-span-2 md:row-span-2 h-72 sm:h-96 md:h-full min-h-[320px] rounded-3xl overflow-hidden cursor-pointer group shadow-sm"
+                className="relative col-span-2 md:col-span-2 md:row-span-2 h-64 xs:h-72 sm:h-96 md:h-full min-h-[260px] sm:min-h-[320px] rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer group shadow-sm active:scale-[0.99] transition-transform"
               >
                 <Image
                   src={filteredGallery[0].url}
@@ -242,16 +242,16 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
                   priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/10 opacity-80 group-hover:opacity-90 transition-opacity" />
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#C0E8F9] block mb-0.5">
+                <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 text-white">
+                  <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-[#C0E8F9] block mb-0.5">
                     Featured Perspective
                   </span>
-                  <p className="text-sm sm:text-base font-bold leading-tight drop-shadow-sm">
+                  <p className="text-xs sm:text-base font-bold leading-tight drop-shadow-sm line-clamp-2">
                     {filteredGallery[0].caption}
                   </p>
                 </div>
-                <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/40 backdrop-blur-md text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <Maximize2 className="w-4 h-4" />
+                <div className="absolute top-3 right-3 sm:top-4 sm:right-4 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/40 backdrop-blur-md text-white flex items-center justify-center opacity-80 sm:opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Maximize2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </div>
               </div>
             )}
@@ -263,7 +263,7 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
                 <div 
                   key={actualIndex}
                   onClick={() => setLightboxIndex(actualIndex)}
-                  className="relative h-48 sm:h-56 rounded-3xl overflow-hidden cursor-pointer group shadow-xs bg-stone-100"
+                  className="relative h-36 xs:h-44 sm:h-56 rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer group shadow-xs bg-stone-100 active:scale-[0.99] transition-transform"
                 >
                   <Image
                     src={img.url}
@@ -271,16 +271,16 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                     referrerPolicy="no-referrer"
-                    sizes="(max-width: 768px) 100vw, 25vw"
+                    sizes="(max-width: 768px) 50vw, 25vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-70 group-hover:opacity-90 transition-opacity" />
-                  <div className="absolute bottom-3 left-3 right-3 text-white">
-                    <p className="text-xs font-semibold leading-tight line-clamp-2 drop-shadow-sm">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent opacity-75 group-hover:opacity-90 transition-opacity" />
+                  <div className="absolute bottom-2.5 left-2.5 right-2.5 text-white">
+                    <p className="text-[11px] sm:text-xs font-semibold leading-tight line-clamp-2 drop-shadow-sm">
                       {img.caption}
                     </p>
                   </div>
-                  <div className="absolute top-3 right-3 w-7 h-7 rounded-full bg-black/40 backdrop-blur-md text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Maximize2 className="w-3.5 h-3.5" />
+                  <div className="absolute top-2.5 right-2.5 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-black/40 backdrop-blur-md text-white flex items-center justify-center opacity-80 sm:opacity-0 group-hover:opacity-100 transition-opacity">
+                    <Maximize2 className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                   </div>
                 </div>
               );
@@ -302,33 +302,34 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
 
         {/* Lightbox Modal */}
         {lightboxIndex !== null && (
-          <div className="fixed inset-0 z-50 bg-black/95 flex flex-col justify-between p-4 sm:p-6 animate-in fade-in duration-200">
-            <div className="flex items-center justify-between text-white pb-4 border-b border-white/15">
-              <div className="flex items-center gap-3">
-                <span className="text-sm font-medium text-stone-300">
+          <div className="fixed inset-0 z-50 bg-black/95 flex flex-col justify-between p-3 sm:p-6 animate-in fade-in duration-200">
+            <div className="flex items-center justify-between text-white pb-3 sm:pb-4 border-b border-white/15">
+              <div className="flex items-center gap-2 sm:gap-3 min-w-0 pr-2">
+                <span className="text-xs sm:text-sm font-medium text-stone-300 shrink-0">
                   {lightboxIndex + 1} of {filteredGallery.length}
                 </span>
-                <span className="text-sm font-semibold text-white">
+                <span className="text-xs sm:text-sm font-semibold text-white truncate">
                   {filteredGallery[lightboxIndex].caption}
                 </span>
               </div>
               <button
                 onClick={() => setLightboxIndex(null)}
-                className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center transition-colors cursor-pointer"
+                className="w-11 h-11 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center transition-colors cursor-pointer shrink-0"
                 aria-label="Close photo preview"
               >
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
             </div>
 
-            <div className="relative flex-1 flex items-center justify-center my-4 overflow-hidden">
-              <div className="relative w-full h-full max-h-[78vh] max-w-5xl">
+            <div className="relative flex-1 flex items-center justify-center my-2 sm:my-4 overflow-hidden">
+              <div className="relative w-full h-full max-h-[70vh] sm:max-h-[78vh] max-w-5xl">
                 <Image
                   src={filteredGallery[lightboxIndex].url}
                   alt={filteredGallery[lightboxIndex].caption}
                   fill
                   className="object-contain"
                   referrerPolicy="no-referrer"
+                  sizes="100vw"
                 />
               </div>
 
@@ -337,54 +338,54 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
                 <>
                   <button
                     onClick={() => setLightboxIndex((prev) => (prev! > 0 ? prev! - 1 : filteredGallery.length - 1))}
-                    className="absolute left-2 sm:left-6 w-12 h-12 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-colors cursor-pointer border border-white/20"
+                    className="absolute left-1 sm:left-6 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-colors cursor-pointer border border-white/20 touch-manipulation"
                     aria-label="Previous photo"
                   >
-                    <ChevronLeft className="w-6 h-6" />
+                    <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
                   </button>
                   <button
                     onClick={() => setLightboxIndex((prev) => (prev! < filteredGallery.length - 1 ? prev! + 1 : 0))}
-                    className="absolute right-2 sm:right-6 w-12 h-12 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-colors cursor-pointer border border-white/20"
+                    className="absolute right-1 sm:right-6 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-colors cursor-pointer border border-white/20 touch-manipulation"
                     aria-label="Next photo"
                   >
-                    <ChevronRight className="w-6 h-6" />
+                    <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
                   </button>
                 </>
               )}
             </div>
 
-            <div className="text-center text-xs text-stone-400 pt-2 border-t border-white/10">
-              {property.name} · Exclusive High-Resolution Architectural Archive
+            <div className="text-center text-[11px] sm:text-xs text-stone-400 pt-2 border-t border-white/10 truncate">
+              {property.name} · High-Resolution Architectural Archive
             </div>
           </div>
         )}
 
         {/* SECTION: Full Unit Breakdowns */}
-        <section className="mb-16" id="unit-breakdowns">
-          <div className="mb-6">
+        <section className="mb-14 sm:mb-16" id="unit-breakdowns">
+          <div className="mb-5 sm:mb-6">
             <span className="text-xs font-bold uppercase tracking-wider text-[#D64933] block mb-1">
               Residential Inventory & Layouts
             </span>
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4">
               <div>
-                <h2 className="text-2xl sm:text-3xl font-bold text-[#162521] tracking-tight">
+                <h2 className="text-xl sm:text-3xl font-bold text-[#162521] tracking-tight">
                   Comprehensive Unit Breakdowns
                 </h2>
-                <p className="mt-1 text-sm text-stone-600">
+                <p className="mt-1 text-xs sm:text-sm text-stone-600">
                   Carefully proportioned architectural floorplans designed for functional living and maximum rental returns.
                 </p>
               </div>
-              <span className="text-xs font-bold text-[#461313] bg-[#C0E8F9]/50 px-4 py-1.5 rounded-full self-start sm:self-auto shrink-0">
+              <span className="text-xs font-bold text-[#461313] bg-[#C0E8F9]/50 px-3.5 py-1 rounded-full self-start sm:self-auto shrink-0">
                 {property.totalUnits}
               </span>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             {property.unitBreakdown.map((unit, uIdx) => (
               <div 
                 key={uIdx}
-                className="bg-white rounded-3xl border border-stone-200/90 shadow-[0_10px_30px_rgba(22,37,33,0.04)] hover:border-[#461313]/30 transition-all duration-300 flex flex-col justify-between overflow-hidden p-6"
+                className="bg-white rounded-2xl sm:rounded-3xl border border-stone-200/90 shadow-[0_10px_30px_rgba(22,37,33,0.04)] hover:border-[#461313]/30 transition-all duration-300 flex flex-col justify-between overflow-hidden p-4 sm:p-6"
               >
                 <div>
                   {/* Top Unit Badge & Count */}
@@ -392,17 +393,17 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
                     <span className="text-xs font-bold text-[#D64933] bg-stone-100 px-3 py-1 rounded-full">
                       {unit.count}
                     </span>
-                    <span className="text-sm font-extrabold text-[#461313]">
+                    <span className="text-xs sm:text-sm font-extrabold text-[#461313]">
                       {unit.price}
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-bold text-[#162521] mb-2 tracking-tight">
+                  <h3 className="text-lg sm:text-xl font-bold text-[#162521] mb-2 tracking-tight">
                     {unit.title}
                   </h3>
 
                   {/* Size and bed/bath metrics */}
-                  <div className="flex items-center gap-4 text-xs text-stone-600 py-3 border-y border-stone-100 mb-4">
+                  <div className="flex items-center gap-3 sm:gap-4 text-xs text-stone-600 py-2.5 sm:py-3 border-y border-stone-100 mb-3.5 sm:mb-4 flex-wrap">
                     <div className="flex items-center gap-1.5">
                       <BedDouble className="w-4 h-4 text-[#461313]" />
                       <span>{unit.bedrooms} {unit.bedrooms === 1 ? 'Bed' : 'Beds'}</span>
@@ -419,13 +420,13 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
                     )}
                   </div>
 
-                  <p className="text-xs sm:text-sm text-stone-600 leading-relaxed mb-5">
+                  <p className="text-xs sm:text-sm text-stone-600 leading-relaxed mb-4 sm:mb-5">
                     {unit.description}
                   </p>
 
                   {/* Feature Highlights */}
-                  <div className="space-y-2 mb-6">
-                    <p className="text-[11px] font-bold tracking-wider uppercase text-stone-400">
+                  <div className="space-y-1.5 sm:space-y-2 mb-5 sm:mb-6">
+                    <p className="text-[10px] sm:text-[11px] font-bold tracking-wider uppercase text-stone-400">
                       Configuration Highlights
                     </p>
                     {unit.features.map((feature, fIdx) => (
@@ -440,7 +441,7 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
                 {/* Unit CTA */}
                 <button
                   onClick={() => openBooking(unit.title)}
-                  className="w-full bg-stone-50 hover:bg-[#461313] text-[#162521] hover:text-white border border-stone-200 hover:border-transparent py-3 px-4 rounded-full font-semibold text-xs flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer group"
+                  className="w-full bg-stone-50 hover:bg-[#461313] text-[#162521] hover:text-white border border-stone-200 hover:border-transparent py-3 px-4 rounded-full font-semibold text-xs flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer group min-h-[44px]"
                 >
                   <span>Inquire on this Unit</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -451,32 +452,32 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
         </section>
 
         {/* SECTION: Financial Expectations and Investment Pricing */}
-        <section className="mb-16 bg-white rounded-3xl border border-stone-200/90 shadow-[0_10px_35px_rgba(22,37,33,0.05)] p-6 sm:p-10 lg:p-12">
-          <div className="mb-8">
+        <section className="mb-14 sm:mb-16 bg-white rounded-2xl sm:rounded-3xl border border-stone-200/90 shadow-[0_10px_35px_rgba(22,37,33,0.05)] p-4 sm:p-10 lg:p-12">
+          <div className="mb-6 sm:mb-8">
             <span className="text-xs font-bold uppercase tracking-wider text-[#D64933] block mb-1">
               Investment Projections & Capital Security
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#162521] tracking-tight">
+            <h2 className="text-xl sm:text-3xl font-bold text-[#162521] tracking-tight">
               Financial Expectations & Investment Pricing
             </h2>
-            <p className="mt-1 text-sm text-stone-600 max-w-3xl">
+            <p className="mt-1 text-xs sm:text-sm text-stone-600 max-w-3xl">
               Transparent economic fundamentals structured for institutional investors, family offices, and diaspora wealth preservation.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {/* Column 1: Financial Yield Highlights */}
             <div className="space-y-4">
-              <div className="p-5 rounded-2xl bg-stone-50 border border-stone-200/70">
+              <div className="p-4 sm:p-5 rounded-2xl bg-stone-50 border border-stone-200/70">
                 <div className="flex items-center gap-2.5 mb-2">
                   <div className="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center">
                     <TrendingUp className="w-4 h-4" />
                   </div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-stone-500">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500">
                     Projected Net Rental Yield
                   </span>
                 </div>
-                <p className="text-2xl font-black text-emerald-800">
+                <p className="text-xl sm:text-2xl font-black text-emerald-800">
                   {property.financials.projectedRentalYield}
                 </p>
                 <p className="text-xs text-stone-600 mt-1">
@@ -485,16 +486,16 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
               </div>
 
               {property.financials.projectedShortLetAnnualGross && (
-                <div className="p-5 rounded-2xl bg-stone-50 border border-stone-200/70">
+                <div className="p-4 sm:p-5 rounded-2xl bg-stone-50 border border-stone-200/70">
                   <div className="flex items-center gap-2.5 mb-2">
                     <div className="w-8 h-8 rounded-full bg-[#C0E8F9] text-[#461313] flex items-center justify-center">
                       <Percent className="w-4 h-4" />
                     </div>
-                    <span className="text-xs font-bold uppercase tracking-wider text-stone-500">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500">
                       Short-Stay Hospitality Projection
                     </span>
                   </div>
-                  <p className="text-lg font-bold text-[#461313]">
+                  <p className="text-base sm:text-lg font-bold text-[#461313]">
                     {property.financials.projectedShortLetAnnualGross}
                   </p>
                   <p className="text-xs text-stone-600 mt-1">
@@ -503,16 +504,16 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
                 </div>
               )}
 
-              <div className="p-5 rounded-2xl bg-stone-50 border border-stone-200/70">
+              <div className="p-4 sm:p-5 rounded-2xl bg-stone-50 border border-stone-200/70">
                 <div className="flex items-center gap-2.5 mb-2">
                   <div className="w-8 h-8 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center">
                     <Banknote className="w-4 h-4" />
                   </div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-stone-500">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500">
                     Capital Appreciation Forecast
                   </span>
                 </div>
-                <p className="text-lg font-bold text-[#162521]">
+                <p className="text-base sm:text-lg font-bold text-[#162521]">
                   {property.financials.capitalAppreciationForecast}
                 </p>
               </div>
@@ -783,10 +784,48 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
         onContactClick={() => openBooking()}
       />
 
-      {/* WhatsApp Concierge FAB */}
-      <WhatsAppFAB
-        defaultMessage={`Hello Chapelhill, I am interested in inquiring about ${property.name}. Could you please share more details regarding availability, pricing, and scheduling a private viewing?`}
-      />
+      {/* Sticky Mobile Inquiry & Action Bar (Mobile Only) */}
+      <div 
+        className="md:hidden fixed bottom-0 inset-x-0 z-30 bg-white/95 backdrop-blur-xl border-t border-stone-200/90 px-4 py-3 shadow-[0_-8px_25px_rgba(22,37,33,0.08)] flex items-center justify-between gap-3 safe-area-pb"
+      >
+        <div className="min-w-0 flex-1">
+          <span className="text-[10px] uppercase font-bold text-stone-400 block tracking-wider">
+            Guide Starting Price
+          </span>
+          <span className="text-sm font-extrabold text-[#461313] truncate block">
+            {property.financials.startingPrice}
+          </span>
+        </div>
+
+        <div className="flex items-center gap-2 shrink-0">
+          <a
+            href={`https://wa.me/2348039876543?text=${encodeURIComponent(`Hello Chapelhill, I am interested in inquiring about ${property.name} (${property.financials.startingPrice}).`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xs active:scale-95 transition-transform"
+            aria-label="Chat on WhatsApp"
+          >
+            <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.043.072.043.419-.101.824z" />
+            </svg>
+          </a>
+
+          <button
+            onClick={() => openBooking()}
+            className="bg-[#461313] hover:bg-[#D64933] active:scale-95 text-white px-4 py-2.5 rounded-full font-bold text-xs flex items-center gap-1.5 shadow-sm min-h-[40px] touch-manipulation"
+          >
+            <span>Inquire</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </button>
+        </div>
+      </div>
+
+      {/* WhatsApp Concierge FAB (hidden on mobile when sticky bar is present to prevent overlap, or visible on desktop) */}
+      <div className="hidden md:block">
+        <WhatsAppFAB
+          defaultMessage={`Hello Chapelhill, I am interested in inquiring about ${property.name}. Could you please share more details regarding availability, pricing, and scheduling a private viewing?`}
+        />
+      </div>
 
       {/* Booking Modal */}
       <BookingModal

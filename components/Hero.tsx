@@ -62,32 +62,32 @@ export default function Hero({ onExploreHomes, onBookVisit }: HeroProps) {
       </div>
 
       {/* Main Content Container */}
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 text-center relative z-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 text-center relative z-20">
         
         {/* Hero Title - Centered & Bold over imagery */}
         <h1 
           id="hero-title"
-          className="text-4xl sm:text-6xl md:text-7xl lg:text-[84px] font-extrabold text-[#162521] tracking-[-0.038em] leading-[1.06] max-w-4xl mx-auto drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]"
+          className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-[76px] font-extrabold text-[#162521] tracking-[-0.035em] leading-[1.12] sm:leading-[1.06] max-w-4xl mx-auto drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)] px-2"
         >
           You Dream. We Build.
         </h1>
 
         {/* Subtitle - Exact copy and tone from reference */}
-        <p className="mt-5 sm:mt-6 text-base sm:text-lg md:text-xl text-[#162521]/80 max-w-2xl mx-auto font-normal leading-relaxed">
+        <p className="mt-3.5 sm:mt-6 text-sm sm:text-base md:text-lg text-[#162521]/80 max-w-2xl mx-auto font-normal leading-relaxed px-2">
           Explore thoughtfully designed homes in premium locations, crafted to match
           modern lifestyles with comfort, elegance, and long-term value.
         </p>
 
         {/* Action Buttons - Matching Reference with custom palette */}
-        <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-3.5 sm:gap-4">
+        <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto px-2 sm:px-0">
           {/* Button 1: Explore Homes with primary #461313 & accent #D64933 */}
           <button
             onClick={onExploreHomes}
             id="hero-cta-explore"
-            className="group bg-[#461313] hover:bg-[#D64933] text-white pl-6 pr-3 py-3 rounded-full font-semibold text-sm sm:text-base inline-flex items-center gap-3 transition-all duration-200 shadow-[0_4px_18px_rgba(70,19,19,0.25)] hover:shadow-[0_6px_24px_rgba(214,73,51,0.35)] hover:-translate-y-0.5 cursor-pointer"
+            className="group w-full sm:w-auto bg-[#461313] hover:bg-[#D64933] active:scale-[0.98] text-white pl-6 pr-3 py-3.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base inline-flex items-center justify-center gap-3 transition-all duration-200 shadow-[0_4px_18px_rgba(70,19,19,0.25)] hover:shadow-[0_6px_24px_rgba(214,73,51,0.35)] hover:-translate-y-0.5 cursor-pointer min-h-[48px] touch-manipulation"
           >
             <span>Explore Homes</span>
-            <span className="w-8 h-8 rounded-full bg-white text-[#461313] group-hover:text-[#D64933] flex items-center justify-center group-hover:translate-x-0.5 transition-all duration-200">
+            <span className="w-8 h-8 rounded-full bg-white text-[#461313] group-hover:text-[#D64933] flex items-center justify-center group-hover:translate-x-0.5 transition-all duration-200 shrink-0">
               <ArrowRight className="w-4 h-4 stroke-[2.5]" />
             </span>
           </button>
@@ -96,19 +96,19 @@ export default function Hero({ onExploreHomes, onBookVisit }: HeroProps) {
           <button
             onClick={onBookVisit}
             id="hero-cta-book-visit"
-            className="bg-white/80 hover:bg-white text-[#162521] border border-white/90 hover:border-[#D64933]/50 px-7 py-3 rounded-full font-semibold text-sm sm:text-base backdrop-blur-sm transition-all duration-200 shadow-[0_2px_10px_rgba(22,37,33,0.05)] hover:-translate-y-0.5 cursor-pointer"
+            className="w-full sm:w-auto bg-white/90 hover:bg-white active:scale-[0.98] text-[#162521] border border-stone-200 hover:border-[#D64933]/50 px-7 py-3.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base backdrop-blur-sm transition-all duration-200 shadow-[0_2px_10px_rgba(22,37,33,0.05)] hover:-translate-y-0.5 cursor-pointer min-h-[48px] flex items-center justify-center touch-manipulation"
           >
             Book a Visit
           </button>
         </div>
 
         {/* View Mode Toggle Pill (Lets users experience both Image 1 compact framing and Image 2 panoramic estate) */}
-        <div className="mt-6 flex items-center justify-center gap-2">
-          <div className="inline-flex items-center p-1 bg-white/50 backdrop-blur-md rounded-full border border-white/70 text-xs font-medium text-[#162521]">
+        <div className="mt-5 sm:mt-6 flex items-center justify-center gap-2">
+          <div className="inline-flex items-center p-1 bg-white/70 backdrop-blur-md rounded-full border border-stone-200/80 text-xs font-medium text-[#162521] shadow-2xs">
             <button
               onClick={() => setViewMode('framed')}
               id="toggle-view-framed"
-              className={`px-3 py-1 rounded-full transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-full transition-all cursor-pointer min-h-[32px] ${
                 viewMode === 'framed'
                   ? 'bg-[#461313] text-white shadow-xs font-semibold'
                   : 'hover:text-[#461313]'
@@ -119,26 +119,26 @@ export default function Hero({ onExploreHomes, onBookVisit }: HeroProps) {
             <button
               onClick={() => setViewMode('full')}
               id="toggle-view-full"
-              className={`px-3 py-1 rounded-full transition-all cursor-pointer flex items-center gap-1 ${
+              className={`px-3 py-1.5 rounded-full transition-all cursor-pointer flex items-center gap-1 min-h-[32px] ${
                 viewMode === 'full'
                   ? 'bg-[#461313] text-white shadow-xs font-semibold'
                   : 'hover:text-[#461313]'
               }`}
             >
               <Maximize2 className="w-3 h-3" />
-              Full Estate
+              <span>Full Estate</span>
             </button>
           </div>
         </div>
       </div>
 
       {/* Hero Imagery Showcase: The Modern Cantilevered Luxury Villa Nestled in Clouds */}
-      <div className="relative w-full max-w-6xl mx-auto mt-6 sm:mt-10 px-4 sm:px-6">
+      <div className="relative w-full max-w-6xl mx-auto mt-6 sm:mt-8 px-3 sm:px-6">
         <div 
-          className={`relative w-full mx-auto transition-all duration-700 ease-out overflow-hidden rounded-3xl ${
+          className={`relative w-full mx-auto transition-all duration-700 ease-out overflow-hidden rounded-2xl sm:rounded-3xl ${
             viewMode === 'framed'
-              ? 'h-[360px] sm:h-[460px] md:h-[540px]'
-              : 'h-[500px] sm:h-[640px] md:h-[760px]'
+              ? 'h-[280px] xs:h-[340px] sm:h-[460px] md:h-[540px]'
+              : 'h-[400px] xs:h-[480px] sm:h-[640px] md:h-[760px]'
           }`}
         >
           {/* Luxury Villa Hero Image */}
@@ -150,30 +150,31 @@ export default function Hero({ onExploreHomes, onBookVisit }: HeroProps) {
               priority
               className="object-cover object-center scale-100 hover:scale-[1.01] transition-transform duration-1000"
               referrerPolicy="no-referrer"
+              sizes="(max-width: 768px) 100vw, 1200px"
             />
           </div>
 
           {/* Cloud Mist Overlays (Top, sides, and bottom ethereal mist blending with the sky) */}
           {/* Top subtle fade into sky */}
-          <div className="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-[#FEFCFD] via-[#FEFCFD]/60 to-transparent pointer-events-none" />
+          <div className="absolute top-0 inset-x-0 h-16 sm:h-24 bg-gradient-to-b from-[#FEFCFD] via-[#FEFCFD]/60 to-transparent pointer-events-none" />
 
           {/* Bottom billowing cloud mist bank */}
-          <div className="absolute bottom-0 inset-x-0 h-44 sm:h-56 bg-gradient-to-t from-[#FEFCFD] via-[#FEFCFD]/85 to-transparent pointer-events-none" />
+          <div className="absolute bottom-0 inset-x-0 h-32 sm:h-56 bg-gradient-to-t from-[#FEFCFD] via-[#FEFCFD]/85 to-transparent pointer-events-none" />
 
           {/* Left & Right ambient mist vignetting */}
-          <div className="absolute inset-y-0 left-0 w-20 sm:w-32 bg-gradient-to-r from-[#FEFCFD]/70 to-transparent pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-20 sm:w-32 bg-gradient-to-l from-[#FEFCFD]/70 to-transparent pointer-events-none" />
+          <div className="absolute inset-y-0 left-0 w-12 sm:w-32 bg-gradient-to-r from-[#FEFCFD]/70 to-transparent pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-12 sm:w-32 bg-gradient-to-l from-[#FEFCFD]/70 to-transparent pointer-events-none" />
 
           {/* Interactive Architectural Hotspot Beacons */}
           {ARCHITECTURAL_HOTSPOTS.map((hotspot) => (
             <div
               key={hotspot.id}
-              className="absolute z-20 group"
+              className="absolute z-20"
               style={{ top: hotspot.top, left: hotspot.left }}
             >
               <button
                 onClick={() => setActiveHotspot(activeHotspot?.id === hotspot.id ? null : hotspot)}
-                className="relative flex items-center justify-center w-8 h-8 rounded-full bg-white text-[#162521] shadow-lg border border-white/90 hover:scale-110 transition-all cursor-pointer"
+                className="relative flex items-center justify-center w-8 h-8 rounded-full bg-white text-[#162521] shadow-lg border border-white/90 hover:scale-110 active:scale-95 transition-all cursor-pointer -translate-x-1/2 -translate-y-1/2 touch-manipulation before:absolute before:-inset-2 before:content-['']"
                 aria-label={hotspot.title}
                 id={`hotspot-${hotspot.id}`}
               >
@@ -184,15 +185,16 @@ export default function Hero({ onExploreHomes, onBookVisit }: HeroProps) {
 
               {/* Tooltip Card */}
               {activeHotspot?.id === hotspot.id && (
-                <div className="absolute bottom-11 left-1/2 -translate-x-1/2 w-64 p-3.5 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-white/80 text-left z-30 animate-in fade-in zoom-in-95 duration-200">
+                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-64 max-w-[calc(100vw-3rem)] p-3.5 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-stone-200/90 text-left z-30 animate-in fade-in zoom-in-95 duration-200">
                   <div className="flex items-center justify-between text-[11px] font-semibold tracking-wider text-[#D64933] uppercase mb-1">
-                    <span>{hotspot.subtitle}</span>
+                    <span className="truncate pr-2">{hotspot.subtitle}</span>
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
                         setActiveHotspot(null);
                       }}
-                      className="text-slate-400 hover:text-[#162521]"
+                      className="text-slate-400 hover:text-[#162521] p-1 cursor-pointer"
+                      aria-label="Close hotspot detail"
                     >
                       ✕
                     </button>
@@ -207,7 +209,7 @@ export default function Hero({ onExploreHomes, onBookVisit }: HeroProps) {
           ))}
 
           {/* Floating Estate Details Badge in Bottom Corner */}
-          <div className="absolute bottom-6 left-6 z-20 hidden sm:flex items-center gap-3 bg-white/90 backdrop-blur-md border border-white/90 rounded-2xl px-4 py-2.5 shadow-md">
+          <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 z-20 hidden md:flex items-center gap-3 bg-white/90 backdrop-blur-md border border-white/90 rounded-2xl px-4 py-2.5 shadow-md">
             <div className="w-9 h-9 rounded-xl bg-[#461313] text-white flex items-center justify-center">
               <Compass className="w-5 h-5 stroke-[2]" />
             </div>
@@ -222,7 +224,7 @@ export default function Hero({ onExploreHomes, onBookVisit }: HeroProps) {
           </div>
 
           {/* Verified Architecture Tag in Right Corner */}
-          <div className="absolute bottom-6 right-6 z-20 hidden sm:flex items-center gap-2 bg-white/90 backdrop-blur-md border border-white/90 rounded-full px-3.5 py-1.5 shadow-md text-xs font-medium text-[#162521]">
+          <div className="absolute bottom-4 sm:bottom-6 right-4 sm:right-6 z-20 hidden md:flex items-center gap-2 bg-white/90 backdrop-blur-md border border-white/90 rounded-full px-3.5 py-1.5 shadow-md text-xs font-medium text-[#162521]">
             <ShieldCheck className="w-4 h-4 text-[#D64933]" />
             <span>Curated Architectural Masterpiece</span>
           </div>

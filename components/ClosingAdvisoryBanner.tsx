@@ -13,7 +13,7 @@ export default function ClosingAdvisoryBanner({ onContactClick }: ClosingAdvisor
     <section 
       id="closing-advisory-banner" 
       aria-label="Book Private Advisory Consultation"
-      className="w-full relative overflow-hidden pt-20 sm:pt-28 pb-0 bg-gradient-to-b from-[#FEFCFD] via-[#cfe5f1]/40 via-45% to-[#0e1715] text-[#162521]"
+      className="w-full relative overflow-hidden pt-14 sm:pt-20 lg:pt-28 pb-0 bg-gradient-to-b from-[#FEFCFD] via-[#cfe5f1]/40 via-45% to-[#0e1715] text-[#162521]"
     >
       {/* Atmospheric Cloud & Sky Ambient Light */}
       <div 
@@ -28,37 +28,37 @@ export default function ClosingAdvisoryBanner({ onContactClick }: ClosingAdvisor
       />
 
       {/* Content Container (Centered exactly like inspiration) */}
-      <div className="max-w-5xl mx-auto px-6 sm:px-8 text-center relative z-20 flex flex-col items-center">
+      <div className="max-w-5xl mx-auto px-4 sm:px-8 text-center relative z-20 flex flex-col items-center">
         
         {/* Eyebrow Target Pill: "⊙ Find your next home" */}
-        <div className="inline-flex items-center gap-2 text-xs sm:text-[13px] font-medium tracking-wide text-[#162521]/75 mb-5 sm:mb-6">
+        <div className="inline-flex items-center gap-2 text-xs sm:text-[13px] font-medium tracking-wide text-[#162521]/75 mb-3 sm:mb-6">
           <CircleDot className="w-3.5 h-3.5 text-[#162521]/70 animate-pulse" />
           <span>Find your next home</span>
         </div>
 
         {/* Display Headline */}
-        <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-[64px] font-extrabold text-[#162521] tracking-tight leading-[1.08] sm:leading-[1.06] max-w-3xl">
+        <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-[64px] font-extrabold text-[#162521] tracking-tight leading-[1.12] sm:leading-[1.06] max-w-3xl px-2">
           Discover homes designed <br className="hidden sm:inline" />
           for your lifestyle
         </h2>
 
         {/* Editorial Subtitle */}
-        <p className="mt-5 sm:mt-6 text-sm sm:text-base md:text-lg text-[#162521]/80 max-w-2xl leading-relaxed">
+        <p className="mt-3 sm:mt-5 text-sm sm:text-base md:text-lg text-[#162521]/80 max-w-2xl leading-relaxed px-2">
           Explore properties, compare options, and move forward with confidence — everything you need in one place.
         </p>
 
         {/* Primary CTA: "Get in Touch →" */}
-        <div className="mt-7 sm:mt-9 flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
+        <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto px-2 sm:px-0">
           <button
             onClick={onContactClick}
             id="closing-advisory-cta-button"
-            className="group relative inline-flex items-center gap-3.5 bg-[#162521] hover:bg-[#461313] text-white pl-7 pr-3 py-3 rounded-full shadow-[0_10px_30px_rgba(22,37,33,0.25)] hover:shadow-[0_16px_36px_rgba(70,19,19,0.35)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+            className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-3.5 bg-[#162521] hover:bg-[#461313] text-white pl-7 pr-3 py-3.5 sm:py-3 rounded-full shadow-[0_10px_30px_rgba(22,37,33,0.25)] hover:shadow-[0_16px_36px_rgba(70,19,19,0.35)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer min-h-[48px] touch-manipulation"
             aria-label="Book a private consultation to get in touch"
           >
             <span className="text-sm sm:text-base font-semibold tracking-wide">
               Get in Touch
             </span>
-            <div className="w-8 h-8 rounded-full bg-white text-[#162521] flex items-center justify-center shadow-xs transition-transform duration-300 group-hover:translate-x-0.5">
+            <div className="w-8 h-8 rounded-full bg-white text-[#162521] flex items-center justify-center shadow-xs transition-transform duration-300 group-hover:translate-x-0.5 shrink-0">
               <ArrowRight className="w-4 h-4 text-[#162521]" />
             </div>
           </button>
@@ -69,7 +69,7 @@ export default function ClosingAdvisoryBanner({ onContactClick }: ClosingAdvisor
             target="_blank"
             rel="noopener noreferrer"
             id="closing-advisory-whatsapp-link"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#162521]/80 hover:text-[#162521] bg-white/70 hover:bg-white/95 backdrop-blur-md px-5 py-3 rounded-full border border-white/80 shadow-xs transition-all cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 text-xs sm:text-sm font-semibold text-[#162521]/90 hover:text-[#162521] bg-white/80 hover:bg-white backdrop-blur-md px-6 py-3.5 sm:py-3 rounded-full border border-stone-200 shadow-xs transition-all cursor-pointer min-h-[48px] touch-manipulation active:scale-[0.98]"
           >
             <MessageCircle className="w-4 h-4 text-[#25D366]" />
             <span>Chat on WhatsApp</span>
@@ -77,8 +77,8 @@ export default function ClosingAdvisoryBanner({ onContactClick }: ClosingAdvisor
         </div>
       </div>
 
-      {/* Majestic Curved Modern Villa Base (Rising from bottom of the banner) */}
-      <div className="relative w-full max-w-6xl mx-auto mt-12 sm:mt-16 h-[260px] sm:h-[360px] md:h-[460px] lg:h-[520px] overflow-hidden rounded-t-[32px] sm:rounded-t-[48px] shadow-[0_-15px_40px_rgba(22,37,33,0.08)]">
+      {/* Curved Modern Villa Base (Rising from bottom of the banner) */}
+      <div className="relative w-full max-w-6xl mx-auto mt-8 sm:mt-16 h-[200px] xs:h-[260px] sm:h-[360px] md:h-[460px] lg:h-[520px] overflow-hidden rounded-t-[28px] sm:rounded-t-[48px] shadow-[0_-15px_40px_rgba(22,37,33,0.08)]">
         <Image
           src="/luxury_villa_closing.jpg"
           alt="Curved modern luxury architecture designed for modern lifestyle"
