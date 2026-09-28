@@ -70,27 +70,27 @@ export const PROPERTIES: Property[] = [
     heroImage: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=85',
     gallery: [
       {
-        url: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=85',
+        url: '/images/Ivy Homes Abijo GRA/Ivy Homes Abijo GRA 1.webp',
         caption: 'Architectural Contemporary Exterior Facade',
         category: 'exterior',
       },
       {
-        url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85',
+        url: '/images/Ivy Homes Abijo GRA/Ivy Homes Abijo GRA 2.webp',
         caption: 'Sunlit Open-Concept Living Salon with High Ceilings',
         category: 'living',
       },
       {
-        url: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1600&q=85',
+        url: '/images/Ivy Homes Abijo GRA/Ivy Homes Abijo GRA 3.webp',
         caption: 'Chef-Inspired Fitted Kitchen with Quartz Countertops',
         category: 'kitchen',
       },
       {
-        url: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1600&q=85',
+        url: '/images/Ivy Homes Abijo GRA/Ivy Homes Abijo GRA 4.webp',
         caption: 'Master Suite Sanctuary with Floor-to-Ceiling Wardrobes',
         category: 'bedroom',
       },
       {
-        url: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1600&q=85',
+        url: '/images/Ivy Homes Abijo GRA/Ivy Homes Abijo GRA 5.webp',
         caption: 'Spa-Grade Ensuite Bath with Rainfall Shower Fixtures',
         category: 'interior',
       },

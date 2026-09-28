@@ -56,7 +56,7 @@ export const FEATURED_PROPERTIES: FeaturedProperty[] = [
     priceRange: '₦38M – ₦95M',
     paymentPlan: 'Immediate Outright & Flexible Mortgage Supported',
     totalUnits: '13 Total Units',
-    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/Ivy Homes Abijo GRA/Ivy Homes Abijo GRA 2.webp',
     description: 'A distinguished residential enclave offering immediate handover and turnkey contemporary living. Built with precision engineering, modern fixtures, and dedicated utilities in the tranquil master-planned Abijo GRA neighborhood.',
     unitBreakdown: [
       {

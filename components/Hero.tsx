@@ -144,7 +144,7 @@ export default function Hero({ onExploreHomes, onBookVisit }: HeroProps) {
           {/* Luxury Villa Hero Image */}
           <div className="absolute inset-0 w-full h-full">
             <Image
-              src="/luxury_villa_hero.jpg"
+              src="/images/lekki-phase-1/lekki 3d/Lekki phase 1(4).jpeg"
               alt="Chapelhill architectural hillside luxury estate nestled in clouds"
               fill
               priority
