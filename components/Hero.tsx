@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { ArrowRight, MapPin, CheckCircle2, Eye, Compass, Maximize2, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Compass, ShieldCheck } from 'lucide-react';
 
 interface HeroProps {
   onExploreHomes: () => void;
@@ -47,7 +47,6 @@ const ARCHITECTURAL_HOTSPOTS: Hotspot[] = [
 
 export default function Hero({ onExploreHomes, onBookVisit }: HeroProps) {
   const [activeHotspot, setActiveHotspot] = useState<Hotspot | null>(null);
-  const [viewMode, setViewMode] = useState<'framed' | 'full'>('framed');
 
   return (
     <section className="relative w-full overflow-hidden pt-10 sm:pt-14 md:pt-16 pb-12 sm:pb-20">
@@ -101,46 +100,11 @@ export default function Hero({ onExploreHomes, onBookVisit }: HeroProps) {
             Book a Visit
           </button>
         </div>
-
-        {/* View Mode Toggle Pill (Lets users experience both Image 1 compact framing and Image 2 panoramic estate) */}
-        <div className="mt-5 sm:mt-6 flex items-center justify-center gap-2">
-          <div className="inline-flex items-center p-1 bg-white/70 backdrop-blur-md rounded-full border border-stone-200/80 text-xs font-medium text-[#162521] shadow-2xs">
-            <button
-              onClick={() => setViewMode('framed')}
-              id="toggle-view-framed"
-              className={`px-3 py-1.5 rounded-full transition-all cursor-pointer min-h-[32px] ${
-                viewMode === 'framed'
-                  ? 'bg-[#461313] text-white shadow-xs font-semibold'
-                  : 'hover:text-[#461313]'
-              }`}
-            >
-              Framed Vista
-            </button>
-            <button
-              onClick={() => setViewMode('full')}
-              id="toggle-view-full"
-              className={`px-3 py-1.5 rounded-full transition-all cursor-pointer flex items-center gap-1 min-h-[32px] ${
-                viewMode === 'full'
-                  ? 'bg-[#461313] text-white shadow-xs font-semibold'
-                  : 'hover:text-[#461313]'
-              }`}
-            >
-              <Maximize2 className="w-3 h-3" />
-              <span>Full Estate</span>
-            </button>
-          </div>
-        </div>
       </div>
 
       {/* Hero Imagery Showcase: The Modern Cantilevered Luxury Villa Nestled in Clouds */}
-      <div className="relative w-full max-w-6xl mx-auto mt-6 sm:mt-8 px-3 sm:px-6">
-        <div 
-          className={`relative w-full mx-auto transition-all duration-700 ease-out overflow-hidden rounded-2xl sm:rounded-3xl ${
-            viewMode === 'framed'
-              ? 'h-[280px] xs:h-[340px] sm:h-[460px] md:h-[540px]'
-              : 'h-[400px] xs:h-[480px] sm:h-[640px] md:h-[760px]'
-          }`}
-        >
+      <div className="relative w-full max-w-6xl mx-auto mt-8 sm:mt-10 px-3 sm:px-6">
+        <div className="relative w-full mx-auto overflow-hidden rounded-2xl sm:rounded-3xl h-[400px] xs:h-[480px] sm:h-[640px] md:h-[760px]">
           {/* Luxury Villa Hero Image */}
           <div className="absolute inset-0 w-full h-full">
             <Image
