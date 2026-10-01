@@ -182,7 +182,7 @@ export default function Hero({ onExploreHomes, onBookVisit }: HeroProps) {
                 Flagship Estate • Chapelhill
               </p>
               <p className="text-xs font-bold text-[#162521]">
-                The Lumina Belvedere Residence
+                Lekki Phase 1 Project
               </p>
             </div>
           </div>

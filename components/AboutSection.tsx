@@ -33,7 +33,7 @@ const DISCIPLINES: Discipline[] = [
     icon: Building2,
     tagline: 'Transforming prime geographic topography into generational architectural icons.',
     description:
-      'We identify, acquire, and masterplan rare hilltop and coastal land reserves. Each project harmonizes contemporary biophilic design with maximum capital appreciation for private and institutional portfolios.',
+      'We excel in designing and constructing diverse projects, from buildings to industrial properties. Our expertise spans automated architectural designs, road construction, drainage, and structural steel work for clients and corporations alike.',
     highlights: [
       'Prime off-market acquisition & zoning entitlements',
       'Award-winning architectural concept integration',
@@ -47,12 +47,12 @@ const DISCIPLINES: Discipline[] = [
   {
     id: 'Remodeling & renovation',
     number: '02',
-    title: 'Precision Construction',
+    title: 'Remodelling & Renovation',
     subtitle: 'Structural Mastery & Bespoke Engineering',
     icon: Hammer,
     tagline: 'Uncompromising engineering standards from sub-grade foundations to frameless glass skies.',
     description:
-      'Our dedicated construction teams specialize in complex hillside stabilization, post-tensioned concrete cantilevers, and artisan-crafted Italian stone and timber finishes built to endure centuries.',
+      'We specialize in impeccable finishing for structures, from carcasses to semi-completed projects. Our expertise extends to remodeling, renovation, and innovative space design, including rapid wall partitions.',
     highlights: [
       'Seismic cantilever & structural glass engineering',
       'Artisan millwork, thermal envelopes & radiant systems',
