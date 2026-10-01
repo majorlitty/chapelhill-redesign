@@ -66,12 +66,12 @@ const DISCIPLINES: Discipline[] = [
   {
     id: 'maintenance',
     number: '03',
-    title: 'Maintenance Services',
+    title: 'Property Maintenance & Project Management',
     subtitle: 'White-Glove Asset Preservation',
     icon: ShieldCheck,
     tagline: 'Continuous private estate stewardship to protect and enhance property value.',
     description:
-      'We offer discretion-first, round-the-clock estate management for multi-residence owners. From automated HVAC and pool mechanics to biometric security audits, your estate remains in showroom condition.',
+      'Regular maintenance of our customers’ property/facility, plumbing, electrical works, air-conditioning repairs, tiling,building works,roof leakages,reclamation of land in water front areas etc to enable them focus on their core businesses',
     highlights: [
       '24/7 dedicated estate concierge & mechanical technicians',
       'Preventative climate, solar & structural diagnostics',

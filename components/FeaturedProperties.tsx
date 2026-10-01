@@ -503,42 +503,6 @@ export default function FeaturedProperties({
                 </p>
               </div>
 
-              {/* Financial Expectations & Investment Structure */}
-              <div className="p-4 rounded-2xl bg-[#FEFCFD] border border-stone-200 shadow-2xs">
-                <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
-                  <div className="flex items-center gap-2">
-                    <Banknote className="w-4 h-4 text-[#461313]" />
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-[#162521]">
-                      Financial Expectations & Investment Pricing
-                    </h4>
-                  </div>
-                  <span className="text-xs font-bold text-[#D64933] bg-[#D64933]/10 px-2.5 py-1 rounded-md">
-                    Range: {selectedPropertyDetail.priceRange}
-                  </span>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-1">
-                  <div className="p-3 bg-white rounded-xl border border-stone-200/80">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#162521]/60 block mb-0.5">
-                      Entry Price / Starting From
-                    </span>
-                    <span className="text-base sm:text-lg font-black text-[#461313]">
-                      {selectedPropertyDetail.startingPrice}
-                    </span>
-                  </div>
-
-                  <div className="p-3 bg-white rounded-xl border border-stone-200/80">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#162521]/60 block mb-0.5">
-                      Payment Terms & Plan
-                    </span>
-                    <span className="text-xs font-semibold text-[#162521] flex items-center gap-1.5 mt-0.5">
-                      <Banknote className="w-3.5 h-3.5 text-[#D64933] shrink-0" />
-                      {selectedPropertyDetail.paymentPlan || 'Milestone-based disbursement available'}
-                    </span>
-                  </div>
-                </div>
-              </div>
-
               {/* Unit Breakdown Detailed */}
               <div className="p-4 rounded-2xl bg-[#FEFCFD] border border-stone-200">
                 <h4 className="text-xs font-bold text-[#162521] uppercase tracking-wider mb-3 flex items-center justify-between">

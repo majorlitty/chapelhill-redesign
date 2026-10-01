@@ -7,27 +7,15 @@ import {
   Building2, 
   MapPin, 
   CheckCircle2, 
-  Clock, 
-  Layers, 
   ArrowRight, 
   ShieldCheck, 
   Maximize2,
-  CalendarCheck,
   ChevronRight,
-  Info,
-  Tag,
-  Banknote,
-  TrendingUp,
-  Percent,
-  Calendar,
-  FileCheck2,
-  Lock,
   ChevronLeft,
   X,
   BedDouble,
   Bath,
   Maximize,
-  Compass
 } from 'lucide-react';
 import { Property, getAllProperties } from '@/lib/propertiesData';
 import Navbar from '@/components/Navbar';
@@ -448,138 +436,6 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
                 </button>
               </div>
             ))}
-          </div>
-        </section>
-
-        {/* SECTION: Financial Expectations and Investment Pricing */}
-        <section className="mb-14 sm:mb-16 bg-white rounded-2xl sm:rounded-3xl border border-stone-200/90 shadow-[0_10px_35px_rgba(22,37,33,0.05)] p-4 sm:p-10 lg:p-12">
-          <div className="mb-6 sm:mb-8">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#D64933] block mb-1">
-              Investment Projections & Capital Security
-            </span>
-            <h2 className="text-xl sm:text-3xl font-bold text-[#162521] tracking-tight">
-              Financial Expectations & Investment Pricing
-            </h2>
-            <p className="mt-1 text-xs sm:text-sm text-stone-600 max-w-3xl">
-              Transparent economic fundamentals structured for institutional investors, family offices, and diaspora wealth preservation.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {/* Column 1: Financial Yield Highlights */}
-            <div className="space-y-4">
-              <div className="p-4 sm:p-5 rounded-2xl bg-stone-50 border border-stone-200/70">
-                <div className="flex items-center gap-2.5 mb-2">
-                  <div className="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center">
-                    <TrendingUp className="w-4 h-4" />
-                  </div>
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500">
-                    Projected Net Rental Yield
-                  </span>
-                </div>
-                <p className="text-xl sm:text-2xl font-black text-emerald-800">
-                  {property.financials.projectedRentalYield}
-                </p>
-                <p className="text-xs text-stone-600 mt-1">
-                  Benchmarked against prime corporate leasing rates in the immediate neighborhood.
-                </p>
-              </div>
-
-              {property.financials.projectedShortLetAnnualGross && (
-                <div className="p-4 sm:p-5 rounded-2xl bg-stone-50 border border-stone-200/70">
-                  <div className="flex items-center gap-2.5 mb-2">
-                    <div className="w-8 h-8 rounded-full bg-[#C0E8F9] text-[#461313] flex items-center justify-center">
-                      <Percent className="w-4 h-4" />
-                    </div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500">
-                      Short-Stay Hospitality Projection
-                    </span>
-                  </div>
-                  <p className="text-base sm:text-lg font-bold text-[#461313]">
-                    {property.financials.projectedShortLetAnnualGross}
-                  </p>
-                  <p className="text-xs text-stone-600 mt-1">
-                    Based on verified 70-75% historical occupancy across managed luxury assets.
-                  </p>
-                </div>
-              )}
-
-              <div className="p-4 sm:p-5 rounded-2xl bg-stone-50 border border-stone-200/70">
-                <div className="flex items-center gap-2.5 mb-2">
-                  <div className="w-8 h-8 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center">
-                    <Banknote className="w-4 h-4" />
-                  </div>
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500">
-                    Capital Appreciation Forecast
-                  </span>
-                </div>
-                <p className="text-base sm:text-lg font-bold text-[#162521]">
-                  {property.financials.capitalAppreciationForecast}
-                </p>
-              </div>
-            </div>
-
-            {/* Column 2 & 3: Phased Payment Milestone Structure & Title */}
-            <div className="lg:col-span-2 space-y-6">
-              <div className="p-6 rounded-2xl bg-stone-50 border border-stone-200/70">
-                <h3 className="text-base font-bold text-[#162521] mb-2 flex items-center gap-2">
-                  <Calendar className="w-4 h-4 text-[#461313]" />
-                  <span>Structured Milestone Payment Schedule</span>
-                </h3>
-                <p className="text-xs text-stone-600 mb-4">
-                  {property.financials.paymentStructure}
-                </p>
-
-                <div className="space-y-3">
-                  {property.financials.milestones.map((milestone, mIdx) => (
-                    <div 
-                      key={mIdx}
-                      className="p-3.5 rounded-xl bg-white border border-stone-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs"
-                    >
-                      <div className="flex items-start gap-3">
-                        <span className="w-6 h-6 rounded-full bg-[#461313] text-white flex items-center justify-center font-bold text-[11px] shrink-0 mt-0.5 sm:mt-0">
-                          {mIdx + 1}
-                        </span>
-                        <div>
-                          <span className="font-bold text-[#162521] block">
-                            {milestone.stage}
-                          </span>
-                          <span className="text-stone-500">
-                            {milestone.description}
-                          </span>
-                        </div>
-                      </div>
-                      <span className="font-extrabold text-[#D64933] bg-stone-100 px-3 py-1 rounded-full shrink-0 self-start sm:self-center">
-                        {milestone.percentage}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Title & Service Charge Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="p-5 rounded-2xl bg-stone-50 border border-stone-200/70">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-stone-400 block mb-1 flex items-center gap-1.5">
-                    <FileCheck2 className="w-3.5 h-3.5 text-emerald-600" />
-                    Verified Legal Title
-                  </span>
-                  <p className="text-xs font-bold text-[#162521] leading-relaxed">
-                    {property.financials.titleStatus}
-                  </p>
-                </div>
-
-                <div className="p-5 rounded-2xl bg-stone-50 border border-stone-200/70">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-stone-400 block mb-1 flex items-center gap-1.5">
-                    <ShieldCheck className="w-3.5 h-3.5 text-[#461313]" />
-                    Estimated Service Charge
-                  </span>
-                  <p className="text-xs font-bold text-[#162521] leading-relaxed">
-                    {property.financials.estimatedServiceCharge}
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
         </section>
 
