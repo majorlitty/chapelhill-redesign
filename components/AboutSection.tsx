@@ -249,11 +249,7 @@ export default function AboutSection({ onLearnMoreServices, onContactClick }: Ab
             {/* Subtle Gradient Overlays for High Legibility */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent pointer-events-none" />
 
-            {/* Top Pill Tag */}
-            <div className="absolute top-5 left-5 z-10 flex items-center gap-2 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full shadow-md text-xs font-bold text-[#162521]">
-              <Compass className="w-3.5 h-3.5 text-[#D64933]" />
-              <span>Chapelhill Discipline {currentDiscipline.number}</span>
-            </div>
+            
 
             {/* Top Right Metric Badge */}
             <div className="absolute top-5 right-5 z-10 bg-[#461313]/85 backdrop-blur-md px-3.5 py-1.5 rounded-full text-white text-xs font-semibold">
