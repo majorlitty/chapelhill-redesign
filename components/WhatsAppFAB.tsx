@@ -28,8 +28,8 @@ export default function WhatsAppFAB({
       msg: 'Hello Chapelhill, I would like to inquire about the 5-bedroom penthouse project at Ogudu GRA. Could you please send the brochure and milestone payment details?',
     },
     {
-      label: 'Lekki Phase 1 Project',
-      msg: 'Hello Chapelhill, I am inquiring about the 18-unit luxury residential development in Lekki Phase 1. Could you please provide off-plan pricing and reservation details?',
+      label: 'Ivy Heights (Lekki Phase 1)',
+      msg: 'Hello Chapelhill, I am inquiring about Ivy Heights, the 5-storey luxury residential development in Lekki Phase 1. Could you please provide off-plan pricing and reservation details?',
     },
   ];
 

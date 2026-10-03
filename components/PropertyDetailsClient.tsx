@@ -192,22 +192,28 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
             <div className="flex items-center gap-1.5 overflow-x-auto overscroll-x-contain pb-2 sm:pb-0 scrollbar-none max-w-full touch-manipulation">
               {[
                 { id: 'all', label: 'All Photos' },
-                { id: 'exterior', label: 'Exterior & Grounds' },
+                { id: 'exterior', label: 'Exterior & Architecture' },
+                { id: 'floorplan', label: 'Floor Plans' },
+                { id: 'site', label: 'Construction Progress' },
                 { id: 'interior', label: 'Interiors & Salons' },
+                { id: 'living', label: 'Living Areas' },
                 { id: 'bedroom', label: 'Suites' },
                 { id: 'kitchen', label: 'Kitchens' },
-              ].map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveGalleryCategory(tab.id)}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer min-h-[36px] touch-manipulation ${
-                    activeGalleryCategory === tab.id
-                      ? 'bg-[#461313] text-white shadow-xs'
-                      : 'bg-stone-100 hover:bg-stone-200 text-[#162521]/80 active:bg-stone-300'
-                  }`}
-                >
-                  {tab.label}
-                </button>
+                { id: 'amenity', label: 'Amenities' },
+              ]
+                .filter((tab) => tab.id === 'all' || property.gallery.some((img) => img.category === tab.id))
+                .map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveGalleryCategory(tab.id)}
+                    className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer min-h-[36px] touch-manipulation ${
+                      activeGalleryCategory === tab.id
+                        ? 'bg-[#461313] text-white shadow-xs'
+                        : 'bg-stone-100 hover:bg-stone-200 text-[#162521]/80 active:bg-stone-300'
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
               ))}
             </div>
           </div>

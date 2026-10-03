@@ -129,7 +129,7 @@ export default function Footer({
                   className="hover:text-white transition-colors flex items-center gap-1.5 text-left cursor-pointer group"
                 >
                   <span className="text-[#E5C583] opacity-60 group-hover:opacity-100">▸</span>
-                  <span>Lekki Phase 1 Project (18 Units)</span>
+                  <span>Ivy Heights (Lekki Phase 1)</span>
                   <span className="text-[10px] text-sky-400 font-mono ml-auto">Prime</span>
                 </button>
               </li>
