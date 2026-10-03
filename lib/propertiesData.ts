@@ -445,12 +445,12 @@ export const PROPERTIES: Property[] = [
       },
     ],
     description: 'An 18-unit institutional-grade luxury residential development commanding a prime 866sqm parcel in Lekki Phase 1. Designed to set a benchmark in architectural elegance, spatial efficiency, and high rental yield.',
-    extendedOverview: 'Commanding an enviable 866 square-meter parcel on one of Lekki Phase 1’s most coveted residential streets, this 18-unit luxury development represents an institutional-grade investment in Lagos’ most liquid real estate market. The project balances 2-bedroom and 3-bedroom luxury flats with two exclusive crown penthouses, supported by a resort swimming pool, modern fitness pavilion, fiber optic connectivity, dual backup diesel generators, and 24/7 concierge management.',
+    extendedOverview: 'Strategically located on Lekki Phase One, the project comprises a sophisticated 5-storey residential building designed to meet the highest standards of modern architecture and comfort. Each unit is meticulously crafted to offer expansive living spaces, premium finishes, and breathtaking views, providing an unparalleled residential experience.',
     landSize: '866 sqm Prime Commercial/Residential Parcel',
     totalUnits: '18 Ultra-Luxury Units',
     financials: {
-      startingPrice: '₦145,000,000',
-      priceRange: '₦145,000,000 – ₦285,000,000',
+      startingPrice: '₦200,000,000',
+      priceRange: '₦200,000,000 – ₦250,000,000',
       projectedRentalYield: '18.0% – 24.5% Annual Return (Optimized for Luxury Short-Lets & Corporate Leases)',
       projectedShortLetAnnualGross: '₦18,000,000 – ₦32,000,000 per unit / annum (Lekki Phase 1 Prime Rates)',
       capitalAppreciationForecast: '32% Projected Capital Uplift from Off-Plan to Final Commissioning',
@@ -490,7 +490,7 @@ export const PROPERTIES: Property[] = [
       {
         title: 'Spacious 2-Bedroom Luxury Apartment',
         count: '8 Units',
-        price: 'From ₦145,000,000',
+        price: 'From ₦200,000,000',
         bedrooms: 2,
         bathrooms: 2.5,
         sizeSqM: '118 sqm',
@@ -507,7 +507,7 @@ export const PROPERTIES: Property[] = [
       {
         title: 'Elegant 3-Bedroom Executive Apartment',
         count: '8 Units',
-        price: 'From ₦195,000,000',
+        price: 'From ₦250,000,000',
         bedrooms: 3,
         bathrooms: 3.5,
         sizeSqM: '172 sqm',
