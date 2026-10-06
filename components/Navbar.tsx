@@ -2,14 +2,16 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, ArrowUpRight, Home, Menu, X } from 'lucide-react';
 
 interface NavbarProps {
   onContactClick: () => void;
-  onExploreClick: () => void;
-  onServicesClick: () => void;
-  onAboutClick: () => void;
+  onExploreClick?: () => void;
+  onServicesClick?: () => void;
+  onAboutClick?: () => void;
   onFAQClick?: () => void;
+  activePage?: 'home' | 'about' | 'properties' | 'services' | 'faq';
 }
 
 export default function Navbar({
@@ -18,6 +20,7 @@ export default function Navbar({
   onServicesClick,
   onAboutClick,
   onFAQClick,
+  activePage,
 }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const mobileMenuRef = React.useRef<HTMLDivElement>(null);
@@ -40,73 +43,90 @@ export default function Navbar({
   return (
     <header className="w-full max-w-7xl mx-auto pt-3 sm:pt-6 md:pt-8 px-4 sm:px-8 lg:px-12 relative z-40">
       <nav className="flex items-center justify-between" aria-label="Main Navigation">
-        {/* Brand Logo matching reference */}
+        {/* Brand Logo */}
         <Link
           href="/"
-          className="flex items-center gap-2 sm:gap-2.5 text-[#162521] group transition-opacity hover:opacity-90 py-1"
+          className="flex items-center gap-2 group transition-opacity hover:opacity-90 py-1"
           id="chapelhill-logo"
+          aria-label="Chapelhill Home"
         >
-          <div className="w-8 h-8 rounded-lg bg-[#461313] text-white flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform shrink-0">
-            <svg
-              className="w-5 h-5 fill-current"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12 3L3 10V20C3 20.5523 3.44772 21 4 21H20C20.5523 21 21 20.5523 21 20V10L12 3Z"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                fill="none"
-              />
-              <path
-                d="M9 21V12H15V21"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-          <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-[#162521] group-hover:text-[#461313] transition-colors">
-            Chapelhill
-          </span>
+          <Image
+            src="/Chapelhill-Company-Logo.png"
+            alt="Chapelhill"
+            width={238}
+            height={107}
+            className="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-[1.02]"
+            priority
+            referrerPolicy="no-referrer"
+          />
         </Link>
 
         {/* Desktop Navigation Links */}
         <div className="hidden md:flex items-center gap-6 lg:gap-10">
-          <button
-            onClick={onExploreClick}
+          <Link
+            href="/#featured-properties"
+            onClick={(e) => {
+              if (onExploreClick && typeof window !== 'undefined' && window.location.pathname === '/') {
+                e.preventDefault();
+                onExploreClick();
+              }
+            }}
             id="nav-link-properties"
-            className="text-[13px] font-semibold tracking-[0.08em] text-[#162521] hover:text-[#D64933] transition-colors uppercase cursor-pointer py-1"
+            className={`text-[13px] font-semibold tracking-[0.08em] uppercase transition-colors py-1 ${
+              activePage === 'properties'
+                ? 'text-[#D64933] border-b-2 border-[#D64933]'
+                : 'text-[#162521] hover:text-[#D64933]'
+            }`}
           >
             Properties
-          </button>
-          <button
-            onClick={onServicesClick}
+          </Link>
+          <Link
+            href="/services"
             id="nav-link-services"
-            className="text-[13px] font-semibold tracking-[0.08em] text-[#162521] hover:text-[#D64933] transition-colors uppercase cursor-pointer py-1"
+            onClick={(e) => {
+              if (onServicesClick && typeof window !== 'undefined' && window.location.pathname === '/services') {
+                e.preventDefault();
+                onServicesClick();
+              }
+            }}
+            className={`text-[13px] font-semibold tracking-[0.08em] uppercase transition-colors py-1 ${
+              activePage === 'services'
+                ? 'text-[#D64933] border-b-2 border-[#D64933]'
+                : 'text-[#162521] hover:text-[#D64933]'
+            }`}
           >
             Services
-          </button>
-          <button
-            onClick={onAboutClick}
+          </Link>
+          <Link
+            href="/about"
             id="nav-link-about"
-            className="text-[13px] font-semibold tracking-[0.08em] text-[#162521] hover:text-[#D64933] transition-colors uppercase cursor-pointer py-1"
+            onClick={(e) => {
+              if (onAboutClick && typeof window !== 'undefined' && window.location.pathname === '/about') {
+                e.preventDefault();
+                onAboutClick();
+              }
+            }}
+            className={`text-[13px] font-semibold tracking-[0.08em] uppercase transition-colors py-1 ${
+              activePage === 'about'
+                ? 'text-[#D64933] border-b-2 border-[#D64933]'
+                : 'text-[#162521] hover:text-[#D64933]'
+            }`}
           >
             About
-          </button>
-          {onFAQClick && (
-            <button
-              onClick={onFAQClick}
-              id="nav-link-faq"
-              className="text-[13px] font-semibold tracking-[0.08em] text-[#162521] hover:text-[#D64933] transition-colors uppercase cursor-pointer py-1"
-            >
-              FAQ
-            </button>
-          )}
+          </Link>
+          <Link
+            href="/#frequently-asked-questions"
+            onClick={(e) => {
+              if (onFAQClick && typeof window !== 'undefined' && window.location.pathname === '/') {
+                e.preventDefault();
+                onFAQClick();
+              }
+            }}
+            id="nav-link-faq"
+            className="text-[13px] font-semibold tracking-[0.08em] text-[#162521] hover:text-[#D64933] transition-colors uppercase cursor-pointer py-1"
+          >
+            FAQ
+          </Link>
         </div>
 
         {/* Contact Us CTA matching reference */}
@@ -150,48 +170,79 @@ export default function Navbar({
           ref={mobileMenuRef}
           className="md:hidden mt-3 p-4 rounded-2xl bg-white/98 backdrop-blur-2xl border border-stone-200 shadow-2xl flex flex-col gap-1 animate-in fade-in slide-in-from-top-3 duration-200"
         >
-          <button
+          <div className="flex items-center justify-between px-2 py-1.5 border-b border-stone-100 mb-2">
+            <Image
+              src="/Chapelhill-Company-Logo.png"
+              alt="Chapelhill"
+              width={140}
+              height={63}
+              className="h-7 w-auto object-contain"
+              referrerPolicy="no-referrer"
+            />
+            <span className="text-[10px] font-bold uppercase tracking-wider text-[#461313] bg-[#C0E8F9]/40 px-2 py-0.5 rounded-full">
+              Menu
+            </span>
+          </div>
+          <Link
+            href="/#featured-properties"
             onClick={() => {
               setMobileMenuOpen(false);
-              onExploreClick();
+              if (onExploreClick && typeof window !== 'undefined' && window.location.pathname === '/') {
+                onExploreClick();
+              }
             }}
             className="text-left py-3 px-3.5 text-sm font-semibold tracking-wider text-[#162521] hover:text-[#D64933] active:bg-stone-100 hover:bg-stone-50 rounded-xl uppercase transition-colors min-h-[48px] flex items-center justify-between touch-manipulation"
           >
             <span>Properties</span>
             <ArrowRight className="w-4 h-4 text-stone-400" />
-          </button>
-          <button
+          </Link>
+          <Link
+            href="/services"
             onClick={() => {
               setMobileMenuOpen(false);
-              onServicesClick();
+              if (onServicesClick && typeof window !== 'undefined' && window.location.pathname === '/services') {
+                onServicesClick();
+              }
             }}
-            className="text-left py-3 px-3.5 text-sm font-semibold tracking-wider text-[#162521] hover:text-[#D64933] active:bg-stone-100 hover:bg-stone-50 rounded-xl uppercase transition-colors min-h-[48px] flex items-center justify-between touch-manipulation"
+            className={`text-left py-3 px-3.5 text-sm font-semibold tracking-wider rounded-xl uppercase transition-colors min-h-[48px] flex items-center justify-between touch-manipulation ${
+              activePage === 'services'
+                ? 'text-[#D64933] bg-stone-100 font-bold'
+                : 'text-[#162521] hover:text-[#D64933] active:bg-stone-100 hover:bg-stone-50'
+            }`}
           >
             <span>Services</span>
             <ArrowRight className="w-4 h-4 text-stone-400" />
-          </button>
-          <button
+          </Link>
+          <Link
+            href="/about"
             onClick={() => {
               setMobileMenuOpen(false);
-              onAboutClick();
+              if (onAboutClick && typeof window !== 'undefined' && window.location.pathname === '/about') {
+                onAboutClick();
+              }
             }}
-            className="text-left py-3 px-3.5 text-sm font-semibold tracking-wider text-[#162521] hover:text-[#D64933] active:bg-stone-100 hover:bg-stone-50 rounded-xl uppercase transition-colors min-h-[48px] flex items-center justify-between touch-manipulation"
+            className={`text-left py-3 px-3.5 text-sm font-semibold tracking-wider rounded-xl uppercase transition-colors min-h-[48px] flex items-center justify-between touch-manipulation ${
+              activePage === 'about'
+                ? 'text-[#D64933] bg-stone-100 font-bold'
+                : 'text-[#162521] hover:text-[#D64933] active:bg-stone-100 hover:bg-stone-50'
+            }`}
           >
             <span>About</span>
             <ArrowRight className="w-4 h-4 text-stone-400" />
-          </button>
-          {onFAQClick && (
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
+          </Link>
+          <Link
+            href="/#frequently-asked-questions"
+            onClick={() => {
+              setMobileMenuOpen(false);
+              if (onFAQClick && typeof window !== 'undefined' && window.location.pathname === '/') {
                 onFAQClick();
-              }}
-              className="text-left py-3 px-3.5 text-sm font-semibold tracking-wider text-[#162521] hover:text-[#D64933] active:bg-stone-100 hover:bg-stone-50 rounded-xl uppercase transition-colors min-h-[48px] flex items-center justify-between touch-manipulation"
-            >
-              <span>FAQ</span>
-              <ArrowRight className="w-4 h-4 text-stone-400" />
-            </button>
-          )}
+              }
+            }}
+            className="text-left py-3 px-3.5 text-sm font-semibold tracking-wider text-[#162521] hover:text-[#D64933] active:bg-stone-100 hover:bg-stone-50 rounded-xl uppercase transition-colors min-h-[48px] flex items-center justify-between touch-manipulation"
+          >
+            <span>FAQ</span>
+            <ArrowRight className="w-4 h-4 text-stone-400" />
+          </Link>
           <div className="pt-2 mt-1 border-t border-stone-100">
             <button
               onClick={() => {

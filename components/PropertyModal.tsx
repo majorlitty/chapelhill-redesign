@@ -34,13 +34,13 @@ const LUXURY_PROPERTIES: Property[] = [
     id: 'ogudu-gra-project',
     name: 'Ogudu GRA Project',
     location: 'Ogudu GRA, Mainland Prime, Lagos',
-    price: 'Starting from ₦380,000,000',
+    price: 'Sold Out (100% Allocated)',
     beds: 5,
     baths: 6,
     sqft: 'Penthouse + Service Room',
-    tag: 'Currently Ongoing',
+    tag: 'Sold Out • Fully Allocated',
     imageUrl: '/images/5 bed Ogudu GRA Project/5 bed ogudu GRA 1.webp',
-    description: 'Exclusive 5-bedroom luxury penthouse with dedicated ensuite service room, double-height living spaces, panoramic rooftop terraces, and private elevator access.',
+    description: 'Exclusive 5-bedroom luxury penthouse with dedicated ensuite service room, double-height living spaces, panoramic rooftop terraces, and private elevator access. 100% Sold Out.',
   },
   {
     id: 'lekki-phase-1-project',
@@ -86,9 +86,19 @@ export default function PropertyModal({ isOpen, onClose, onBookTour }: PropertyM
         {/* Header */}
         <div className="p-5 sm:p-6 bg-white border-b border-slate-100 flex items-center justify-between shrink-0">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
-              <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
-              Chapelhill Private Portfolio
+            <div className="flex items-center gap-3 mb-1.5 flex-wrap">
+              <Image
+                src="/Chapelhill-Company-Logo.png"
+                alt="Chapelhill"
+                width={120}
+                height={54}
+                className="h-6 w-auto object-contain"
+                referrerPolicy="no-referrer"
+              />
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-100 text-[11px] font-semibold uppercase tracking-wider text-slate-700">
+                <Star className="w-3 h-3 text-amber-500 fill-amber-500" />
+                Private Portfolio
+              </div>
             </div>
             <h2 className="text-xl sm:text-2xl font-bold text-slate-900">
               Curated Luxury Estates

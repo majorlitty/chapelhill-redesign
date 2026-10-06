@@ -44,7 +44,7 @@ export interface Property {
   name: string;
   tagline: string;
   location: string;
-  status: 'completed' | 'ongoing';
+  status: 'completed' | 'ongoing' | 'sold-out';
   statusLabel: string;
   heroImage: string;
   gallery: GalleryImage[];
@@ -234,8 +234,8 @@ export const PROPERTIES: Property[] = [
     name: 'Ogudu GRA Project',
     tagline: 'Architectural Trophy Penthouse Residence',
     location: 'Ogudu GRA, Mainland Prime, Lagos',
-    status: 'ongoing',
-    statusLabel: 'Currently Ongoing • Off-Plan Opportunity',
+    status: 'sold-out',
+    statusLabel: 'Sold Out • 100% Allocated',
     heroImage: '/images/5 bed Ogudu GRA Project/5 bed ogudu GRA 1.webp',
     gallery: [
       {
@@ -246,7 +246,7 @@ export const PROPERTIES: Property[] = [
       {
         url: '/images/5 bed Ogudu GRA Project/5 bed ogudu GRA 2.webp',
         caption: 'Wraparound Penthouse Sky Terrace with Panoramic Horizon Vistas',
-        category: 'living',
+        category: 'amenity',
       },
       {
         url: '/images/5 bed Ogudu GRA Project/5 bed ogudu GRA 3.webp',
@@ -269,27 +269,27 @@ export const PROPERTIES: Property[] = [
         category: 'interior',
       },
     ],
-    description: 'An elite private penthouse residence crowned at the pinnacle of Ogudu GRA. Engineered for supreme privacy, lavish entertainment, and seamless indoor-outdoor living with panoramic skyline views of Lagos.',
-    extendedOverview: 'The Ogudu GRA Project is an uncompromising architectural achievement—a private, multi-level crown penthouse tailored for high-net-worth families, diaspora collectors, and institutional leaders. Positioned in the tranquil, established inner enclave of Ogudu GRA (just 12 minutes from Ikeja and 20 minutes from Victoria Island via the Third Mainland Bridge), this trophy residence fuses cantilevered concrete geometries with floor-to-ceiling thermal glazing, private elevator access, and multi-tier entertaining terraces.',
+    description: 'An elite private penthouse residence crowned at the pinnacle of Ogudu GRA. Engineered for supreme privacy, lavish entertainment, and seamless indoor-outdoor living with panoramic skyline views of Lagos. This landmark development is now 100% sold out.',
+    extendedOverview: 'The Ogudu GRA Project is an uncompromising architectural achievement—a private, multi-level crown penthouse tailored for high-net-worth families, diaspora collectors, and institutional leaders. Positioned in the tranquil, established inner enclave of Ogudu GRA (just 12 minutes from Ikeja and 20 minutes from Victoria Island via the Third Mainland Bridge), this trophy residence fuses cantilevered concrete geometries with floor-to-ceiling thermal glazing, private elevator access, and multi-tier entertaining terraces.\n\nThis development has successfully reached 100% sell-out status. Inquiries are welcome for our secondary market waitlist and upcoming private penthouse collections.',
     landSize: 'Exclusive Top-Floor Air Rights & 4 Dedicated Staged Bays',
-    totalUnits: 'Exclusive Single Penthouse Residence',
+    totalUnits: 'Exclusive Single Penthouse Residence (100% Sold Out)',
     financials: {
-      startingPrice: '₦380,000,000',
-      priceRange: '₦380,000,000 – ₦450,000,000',
+      startingPrice: 'Sold Out (Guide: ₦650M)',
+      priceRange: 'Sold Out • Fully Allocated (Guide was ₦380M – ₦650M)',
       projectedRentalYield: '12.0% – 16.5% Net Annual Rental Yield',
       projectedShortLetAnnualGross: '₦28,000,000 – ₦36,000,000 (Prime VIP / Diplomatic Short-Stay Rate)',
       capitalAppreciationForecast: '28% Anticipated Capital Growth upon Structural Completion',
-      paymentStructure: '30% Milestone Commitment, 40% Across Superstructure Phases, 30% on Final Key Commissioning',
+      paymentStructure: 'Project 100% Sold Out — Secondary Market Waitlist Active',
       milestones: [
         {
           stage: 'Initial Commitment',
           percentage: '30%',
-          description: 'Reservation, bespoke floorplan personalization review, and formal contract documentation',
+          description: 'Reservation, bespoke floorplan personalization review, and formal contract documentation (Completed)',
         },
         {
           stage: 'Superstructure & Roofing',
           percentage: '25%',
-          description: 'Completion of reinforced concrete frame, floor slabs, and penthouse roof decking',
+          description: 'Completion of reinforced concrete frame, floor slabs, and penthouse roof decking (Completed)',
         },
         {
           stage: 'Interior MEP & Glazing',
@@ -304,19 +304,20 @@ export const PROPERTIES: Property[] = [
       ],
       titleStatus: 'Certificate of Occupancy (C of O) & Approved Building Permit from LASPPPA',
       estimatedServiceCharge: '₦60,000 / month (Includes dedicated elevator service maintenance, security, standby generator power)',
-      handoverTimeline: 'Q4 Handover (Currently in Advanced Milestone Construction)',
+      handoverTimeline: 'Sold Out — Final Commissioning & Handover in Progress',
     },
     unitBreakdown: [
       {
         title: '5-Bedroom Master Penthouse Suite',
-        count: '1 Trophy Unit',
-        price: 'Guide: ₦380,000,000 – ₦450,000,000',
+        count: '1 Trophy Unit (Sold Out)',
+        price: 'Sold Out',
         bedrooms: 5,
         bathrooms: 6,
         sizeSqM: '440 sqm',
         sizeSqFt: '4,736 sqft',
-        description: 'A monument to modern scale: double-height great room, private sky lounge, formal dining room, wraparound sunset terrace, and custom private elevator arrival.',
+        description: 'A monument to modern scale: double-height great room, private sky lounge, formal dining room, wraparound sunset terrace, and custom private elevator arrival. Currently 100% allocated.',
         features: [
+          'Status: 100% Sold Out (Secondary Market Waitlist Available)',
           'Direct keycard-controlled private elevator arrival straight into residence foyer',
           'Panoramic wraparound terrace with outdoor barbecue kitchen and sunset views',
           'Enormous 90 sqm Master Suite with dual walk-in dressing rooms and freestanding soaking tub',
@@ -326,14 +327,15 @@ export const PROPERTIES: Property[] = [
       },
       {
         title: 'Ensuite Service Quarters (Maid’s Quarters)',
-        count: '1 Suite',
-        price: 'Included with Penthouse',
+        count: '1 Suite (Sold Out)',
+        price: 'Sold Out (Included with Penthouse)',
         bedrooms: 1,
         bathrooms: 1,
         sizeSqM: '24 sqm',
         sizeSqFt: '258 sqft',
         description: 'Dedicated auxiliary staff accommodation with independent access point and ensuite bathroom.',
         features: [
+          'Status: 100% Sold Out',
           'Independent secondary service entrance off rear stairwell',
           'Private bathroom and ventilation shaft',
           'Direct connection to service pantry and utility zones',
@@ -375,10 +377,11 @@ export const PROPERTIES: Property[] = [
       },
     ],
     keyHighlights: [
-      'The premier high-density penthouse offering currently available on mainland Lagos',
+      '100% Sold Out: Exclusive single penthouse trophy residence fully allocated to institutional-grade standards',
+      'The premier high-density penthouse offering developed on mainland Lagos',
       'Unrivaled central connectivity: 12 minutes to Ikeja CBD, 20 minutes to Victoria Island',
-      'Significant early-stage off-plan pricing advantage prior to completed handover',
       'Unobstructed 270-degree horizon views spanning from mainland greenery to the lagoon',
+      'Secondary Market Waitlist: Inquire for potential resales or upcoming private collections',
     ],
   },
   {

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { ArrowRight, Building2, Hammer, ShieldCheck, CheckCircle2, ChevronRight, Compass } from 'lucide-react';
 
 interface AboutSectionProps {
@@ -100,8 +101,9 @@ export default function AboutSection({ onLearnMoreServices, onContactClick }: Ab
 
       {/* Header Eyebrow & Brand Quote Statement */}
       <div className="max-w-4xl mx-auto text-center mb-10 sm:mb-16">
-        <div className="inline-flex items-center bg-white/70 hover:bg-white/90 backdrop-blur-md border border-stone-200/80 shadow-2xs rounded-full px-4 py-1.5 mb-4 sm:mb-5 transition-all">
-          <span className="text-xs font-semibold tracking-wider uppercase text-[#162521]">
+        <div className="inline-flex items-center gap-2 bg-white/85 hover:bg-white backdrop-blur-md border border-stone-200/80 shadow-2xs rounded-full px-3.5 py-1.5 mb-4 sm:mb-5 transition-all">
+          
+          <span className="text-[11px] sm:text-xs font-semibold tracking-wider uppercase text-[#162521]">
             About Chapelhill
           </span>
         </div>
@@ -210,27 +212,34 @@ export default function AboutSection({ onLearnMoreServices, onContactClick }: Ab
           </div>
 
           {/* Action Buttons */}
-          <div className="pt-2 sm:pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-            <button
-              onClick={onContactClick}
-              id="about-cta-inquire"
+          <div className="pt-2 sm:pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 flex-wrap">
+            <Link
+              href="/about"
+              id="about-cta-full-page"
               className="group bg-[#461313] hover:bg-[#D64933] text-white pl-6 pr-3 py-3 rounded-full font-semibold text-xs sm:text-sm inline-flex items-center justify-center gap-3 transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer min-h-[44px]"
             >
-              <span>Consult Our Senior Advisory</span>
+              <span>Meet Leadership & Full Story</span>
               <span className="w-7 h-7 rounded-full bg-white text-[#461313] group-hover:text-[#D64933] flex items-center justify-center group-hover:translate-x-0.5 transition-all duration-200 shrink-0">
                 <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
               </span>
+            </Link>
+
+            <button
+              onClick={onContactClick}
+              id="about-cta-inquire"
+              className="bg-white/90 hover:bg-white text-[#162521] hover:text-[#461313] border border-stone-200/90 hover:border-[#461313]/40 px-5 py-3 rounded-full font-semibold text-xs sm:text-sm backdrop-blur-sm transition-all duration-200 cursor-pointer min-h-[44px] flex items-center justify-center"
+            >
+              Consult Senior Advisory
             </button>
 
-            {onLearnMoreServices && (
-              <button
-                onClick={onLearnMoreServices}
-                id="about-cta-view-services"
-                className="bg-white/70 hover:bg-white text-[#162521] hover:text-[#461313] border border-stone-200/90 hover:border-[#D64933]/40 px-5 py-3 rounded-full font-semibold text-xs sm:text-sm backdrop-blur-sm transition-all duration-200 cursor-pointer min-h-[44px] flex items-center justify-center"
-              >
-                Detailed Specifications
-              </button>
-            )}
+            <Link
+              href="/services"
+              id="about-cta-view-services"
+              className="bg-white/80 hover:bg-white text-stone-700 hover:text-[#162521] border border-stone-200/90 hover:border-stone-300 px-5 py-3 rounded-full font-semibold text-xs sm:text-sm backdrop-blur-sm transition-all duration-200 cursor-pointer min-h-[44px] flex items-center justify-center gap-1.5"
+            >
+              <span>Services Overview</span>
+              <ChevronRight className="w-4 h-4 text-stone-400" />
+            </Link>
           </div>
         </div>
 

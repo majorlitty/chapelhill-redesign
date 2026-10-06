@@ -32,6 +32,10 @@ export const metadata: Metadata = {
     description:
       'Explore thoughtfully designed luxury homes in premium locations, crafted to match modern lifestyles with comfort, elegance, and long-term value.',
   },
+  icons: {
+    icon: '/Chapelhill-Company-Logo.png',
+    apple: '/Chapelhill-Company-Logo.png',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

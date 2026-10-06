@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { MessageCircle, X, ArrowUpRight } from 'lucide-react';
 
 interface WhatsAppFABProps {
@@ -9,8 +10,8 @@ interface WhatsAppFABProps {
 }
 
 export default function WhatsAppFAB({
-  phoneNumber = '2348039876543',
-  defaultMessage = 'Hello Chapelhill, I am interested in inquiring about your luxury estates. Could you please share more details regarding property availability, pricing, and scheduling a private viewing?',
+  phoneNumber = '2349039130207',
+  defaultMessage = 'Hello Chapelhill, I am interested in inquiring about your luxury estates and property services. Could you please share more details regarding property availability, pricing, and scheduling a private viewing?',
 }: WhatsAppFABProps) {
   const [showTooltip, setShowTooltip] = useState(false);
   const [dismissedNotification, setDismissedNotification] = useState(false);
@@ -24,8 +25,8 @@ export default function WhatsAppFAB({
       msg: 'Hello Chapelhill, I am interested in the completed Ivy Homes Abijo GRA apartments. Could you please share current availability, unit pricing, and inspection dates?',
     },
     {
-      label: 'Ogudu GRA Penthouse',
-      msg: 'Hello Chapelhill, I would like to inquire about the 5-bedroom penthouse project at Ogudu GRA. Could you please send the brochure and milestone payment details?',
+      label: 'Ogudu GRA Penthouse (Waitlist)',
+      msg: 'Hello Chapelhill, I understand the Ogudu GRA penthouse is sold out. Could you please register me on the waitlist for secondary allocations or upcoming prime penthouses?',
     },
     {
       label: 'Ivy Heights (Lekki Phase 1)',
@@ -47,12 +48,20 @@ export default function WhatsAppFAB({
         >
           <div className="flex items-start justify-between gap-2 mb-2">
             <div className="flex items-center gap-2">
-              <span className="relative flex h-2.5 w-2.5">
+              <Image
+                src="/Chapelhill-Company-Logo.png"
+                alt="Chapelhill"
+                width={80}
+                height={36}
+                className="h-5 w-auto object-contain"
+                referrerPolicy="no-referrer"
+              />
+              <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
               </span>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-[#461313]">
-                Chapelhill Private Advisory
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#461313]">
+                Advisory Desk
               </span>
             </div>
             <button

@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { X, Building2, Shield, Compass, KeyRound, Award } from 'lucide-react';
 
 interface InfoDrawerProps {
@@ -20,18 +21,28 @@ export default function InfoDrawer({ isOpen, type, onClose, onBookVisit }: InfoD
         {/* Header with Close Button */}
         <div className="p-5 sm:p-6 pb-3 border-b border-stone-100 flex items-start justify-between gap-4 shrink-0">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C0E8F9]/70 text-[#461313] text-xs font-semibold mb-1.5">
-              {type === 'services' ? (
-                <>
-                  <Award className="w-3.5 h-3.5 text-[#D64933]" />
-                  <span>Bespoke Real Estate Advisory</span>
-                </>
-              ) : (
-                <>
-                  <Compass className="w-3.5 h-3.5 text-[#D64933]" />
-                  <span>Our Philosophy</span>
-                </>
-              )}
+            <div className="flex items-center gap-3 mb-2 flex-wrap">
+              <Image
+                src="/Chapelhill-Company-Logo.png"
+                alt="Chapelhill"
+                width={120}
+                height={54}
+                className="h-7 w-auto object-contain"
+                referrerPolicy="no-referrer"
+              />
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#C0E8F9]/70 text-[#461313] text-[11px] font-semibold">
+                {type === 'services' ? (
+                  <>
+                    <Award className="w-3 h-3 text-[#D64933]" />
+                    <span>Bespoke Advisory</span>
+                  </>
+                ) : (
+                  <>
+                    <Compass className="w-3 h-3 text-[#D64933]" />
+                    <span>Our Philosophy</span>
+                  </>
+                )}
+              </div>
             </div>
             <h2 className="text-xl sm:text-2xl font-bold text-[#162521] tracking-tight">
               {type === 'services' ? 'Chapelhill Private Services' : 'About Chapelhill'}

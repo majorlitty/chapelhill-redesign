@@ -101,8 +101,16 @@ export default function ClosingAdvisoryBanner({ onContactClick }: ClosingAdvisor
         />
 
         {/* Discreet Corner Badge */}
-        <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 z-10 flex items-center bg-[#0e1715]/80 backdrop-blur-md border border-white/20 text-white px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-medium shadow-lg">
-          <span>Chapelhill Architectural Masterpieces</span>
+        <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 z-10 flex items-center gap-2 bg-[#0e1715]/85 backdrop-blur-md border border-white/20 text-white px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-medium shadow-lg">
+          <Image
+            src="/Chapelhill-Company-Logo.png"
+            alt="Chapelhill"
+            width={48}
+            height={22}
+            className="h-4 w-auto object-contain brightness-0 invert"
+            referrerPolicy="no-referrer"
+          />
+          <span>Architectural Masterpieces</span>
         </div>
       </div>
 

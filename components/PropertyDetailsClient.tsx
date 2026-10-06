@@ -113,7 +113,11 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
               <span>{property.location}</span>
             </span>
             <span aria-hidden="true" className="text-stone-300">·</span>
-            <span className="font-semibold text-emerald-800">
+            <span className={`font-semibold ${
+              property.status === 'sold-out'
+                ? 'text-rose-800 bg-rose-50 border border-rose-200 px-2.5 py-0.5 rounded-full'
+                : 'text-emerald-800'
+            }`}>
               {property.statusLabel}
             </span>
           </div>
@@ -132,7 +136,7 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
             <div className="flex flex-col sm:flex-row lg:flex-col items-stretch sm:items-center lg:items-end gap-3 shrink-0 w-full sm:w-auto">
               <div className="text-left lg:text-right">
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-stone-400 block">
-                  Guide Price
+                  {property.status === 'sold-out' ? 'Current Status' : 'Guide Price'}
                 </span>
                 <span className="text-xl sm:text-3xl font-extrabold text-[#461313] block">
                   {property.financials.startingPrice}
@@ -143,11 +147,11 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
               </div>
 
               <button
-                onClick={() => openBooking()}
+                onClick={() => openBooking(property.status === 'sold-out' ? `${property.name} (Waitlist / Secondary Inquiry)` : undefined)}
                 id="hero-inquire-reserve-btn"
                 className="w-full sm:w-auto bg-[#461313] hover:bg-[#D64933] text-white px-7 py-3.5 rounded-full font-bold text-xs sm:text-sm inline-flex items-center justify-center gap-2.5 shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer min-h-[48px]"
               >
-                <span>Inquire & Reserve This Property</span>
+                <span>{property.status === 'sold-out' ? 'Join Waitlist / Inquire for Resale' : 'Inquire & Reserve This Property'}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -434,10 +438,10 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
 
                 {/* Unit CTA */}
                 <button
-                  onClick={() => openBooking(unit.title)}
+                  onClick={() => openBooking(property.status === 'sold-out' ? `${property.name} - ${unit.title} (Waitlist)` : unit.title)}
                   className="w-full bg-stone-50 hover:bg-[#461313] text-[#162521] hover:text-white border border-stone-200 hover:border-transparent py-3 px-4 rounded-full font-semibold text-xs flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer group min-h-[44px]"
                 >
-                  <span>Inquire on this Unit</span>
+                  <span>{property.status === 'sold-out' ? 'Join Waitlist for this Layout' : 'Inquire on this Unit'}</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                 </button>
               </div>
@@ -503,7 +507,15 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
           />
 
           <div className="relative z-10 max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-stone-200 text-xs font-semibold mb-4 border border-white/10">
+            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/10 text-stone-200 text-xs font-semibold mb-4 border border-white/10">
+              <Image
+                src="/Chapelhill-Company-Logo.png"
+                alt="Chapelhill"
+                width={50}
+                height={23}
+                className="h-4 w-auto object-contain brightness-0 invert"
+                referrerPolicy="no-referrer"
+              />
               <ShieldCheck className="w-3.5 h-3.5 text-[#C0E8F9]" />
               <span>Direct Developer Allocation · Chapelhill Verified</span>
             </div>
@@ -652,7 +664,7 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
       >
         <div className="min-w-0 flex-1">
           <span className="text-[10px] uppercase font-bold text-stone-400 block tracking-wider">
-            Guide Starting Price
+            {property.status === 'sold-out' ? 'Status' : 'Guide Starting Price'}
           </span>
           <span className="text-sm font-extrabold text-[#461313] truncate block">
             {property.financials.startingPrice}
@@ -661,7 +673,7 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
 
         <div className="flex items-center gap-2 shrink-0">
           <a
-            href={`https://wa.me/2348039876543?text=${encodeURIComponent(`Hello Chapelhill, I am interested in inquiring about ${property.name} (${property.financials.startingPrice}).`)}`}
+            href={`https://wa.me/2348039876543?text=${encodeURIComponent(`Hello Chapelhill, I am inquiring about ${property.name} (${property.financials.startingPrice}).`)}`}
             target="_blank"
             rel="noopener noreferrer"
             className="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xs active:scale-95 transition-transform"
@@ -673,10 +685,10 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
           </a>
 
           <button
-            onClick={() => openBooking()}
+            onClick={() => openBooking(property.status === 'sold-out' ? `${property.name} (Waitlist)` : undefined)}
             className="bg-[#461313] hover:bg-[#D64933] active:scale-95 text-white px-4 py-2.5 rounded-full font-bold text-xs flex items-center gap-1.5 shadow-sm min-h-[40px] touch-manipulation"
           >
-            <span>Inquire</span>
+            <span>{property.status === 'sold-out' ? 'Waitlist' : 'Inquire'}</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>

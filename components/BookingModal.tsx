@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { X, Calendar, Clock, MapPin, User, Mail, Phone, CheckCircle, Shield, MessageCircle } from 'lucide-react';
 
 interface BookingModalProps {
@@ -12,7 +13,7 @@ interface BookingModalProps {
 export default function BookingModal({
   isOpen,
   onClose,
-  defaultProperty = 'The Lumina Belvedere',
+  defaultProperty = 'Ivy Homes Abijo GRA',
 }: BookingModalProps) {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
@@ -45,9 +46,19 @@ export default function BookingModal({
         {/* Modal Header (Pinned at top) */}
         <div className="p-5 sm:p-6 pb-3 border-b border-stone-100 flex items-start justify-between gap-4 shrink-0">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C0E8F9]/70 text-[#461313] text-xs font-semibold mb-2">
-              <Shield className="w-3.5 h-3.5 text-[#D64933]" />
-              Private Advisory & Discreet Viewings
+            <div className="flex items-center gap-3 mb-2 flex-wrap">
+              <Image
+                src="/Chapelhill-Company-Logo.png"
+                alt="Chapelhill"
+                width={120}
+                height={54}
+                className="h-7 w-auto object-contain"
+                referrerPolicy="no-referrer"
+              />
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#C0E8F9]/70 text-[#461313] text-[11px] font-semibold">
+                <Shield className="w-3 h-3 text-[#D64933]" />
+                Private Advisory & Discreet Viewings
+              </div>
             </div>
 
             <h2 className="text-xl sm:text-2xl font-bold text-[#162521] tracking-tight">

@@ -25,7 +25,7 @@ export interface FeaturedProperty {
   name: string;
   location: string;
   tagline: string;
-  status: 'completed' | 'ongoing';
+  status: 'completed' | 'ongoing' | 'sold-out';
   statusLabel: string;
   startingPrice: string;
   priceRange: string;
@@ -96,25 +96,25 @@ export const FEATURED_PROPERTIES: FeaturedProperty[] = [
     name: 'Ogudu GRA Project',
     location: 'Ogudu GRA, Mainland Prime, Lagos',
     tagline: 'Architectural Trophy Penthouse Residence',
-    status: 'ongoing',
-    statusLabel: 'Currently Ongoing • Off-Plan Opportunity',
-    startingPrice: 'Starting from ₦380,000,000',
-    priceRange: '₦380M – ₦450M',
-    paymentPlan: 'Structured Milestone Construction Schedule',
-    totalUnits: 'Exclusive Single Penthouse',
+    status: 'sold-out',
+    statusLabel: 'Sold Out • 100% Allocated',
+    startingPrice: 'Sold Out (Guide: ₦650M)',
+    priceRange: 'Sold Out • Fully Allocated',
+    paymentPlan: 'Project 100% Sold Out — Waitlist Open',
+    totalUnits: 'Exclusive Single Penthouse (Sold Out)',
     image: '/images/5 bed Ogudu GRA Project/5 bed ogudu GRA 1.webp',
-    description: 'An elite private penthouse residence crowned at the pinnacle of Ogudu GRA. Engineered for supreme privacy, lavish entertainment, and seamless indoor-outdoor living with panoramic skyline views of Lagos.',
+    description: 'An elite private penthouse residence crowned at the pinnacle of Ogudu GRA. Engineered for supreme privacy, lavish entertainment, and seamless indoor-outdoor living with panoramic skyline views of Lagos. This landmark project is now 100% sold out.',
     unitBreakdown: [
       {
         title: '5-Bedroom Master Penthouse',
-        count: '1 Unit',
-        price: 'Guide: ₦380M – ₦450M',
-        description: 'Palatial multi-level penthouse with soaring double-height ceilings, wraparound terraces, and private elevator landing.',
+        count: '1 Unit (Sold Out)',
+        price: 'Sold Out',
+        description: 'Palatial multi-level penthouse with soaring double-height ceilings, wraparound terraces, and private elevator landing. 100% Allocated.',
       },
       {
         title: 'Ensuite Service Room (Maid’s Quarters)',
-        count: '1 Room',
-        price: 'Included with Penthouse',
+        count: '1 Room (Sold Out)',
+        price: 'Sold Out',
         description: 'Dedicated auxiliary staff accommodation with independent access point.',
       },
     ],
@@ -126,9 +126,9 @@ export const FEATURED_PROPERTIES: FeaturedProperty[] = [
       'Covered Multi-Vehicle Staged Parking',
     ],
     investmentHighlights: [
-      'Rare low-density penthouse asset in mainland Lagos’ premier GRA',
-      'Favorable phased milestone construction payments',
-      'High bespoke personalization potential during ongoing phase',
+      '100% Sold Out: Landmark single penthouse asset in mainland Lagos’ premier GRA',
+      'Secondary Market Inquiries: Waitlist active for potential resales or subsequent phases',
+      'Unobstructed 270-degree horizon views spanning from mainland greenery to the lagoon',
     ],
   },
   {
@@ -189,7 +189,7 @@ export default function FeaturedProperties({
   onInquireProperty,
   onOpenConsultation,
 }: FeaturedPropertiesProps) {
-  const [filter, setFilter] = useState<'all' | 'completed' | 'ongoing'>('all');
+  const [filter, setFilter] = useState<'all' | 'completed' | 'ongoing' | 'sold-out'>('all');
   const [selectedPropertyDetail, setSelectedPropertyDetail] = useState<FeaturedProperty | null>(null);
 
   const filteredProperties = FEATURED_PROPERTIES.filter((property) => {
@@ -214,7 +214,7 @@ export default function FeaturedProperties({
             Featured Prime Developments
           </h2>
           <p className="mt-2.5 text-sm sm:text-base md:text-lg text-[#162521]/75 leading-relaxed">
-            Explore our curated portfolio of completed turnkey residences and high-yield ongoing developments across Nigeria’s most coveted residential destinations.
+            Explore our curated portfolio of completed turnkey residences, high-yield ongoing developments, and landmark sold-out projects across Nigeria’s most coveted residential destinations.
           </p>
         </div>
 
@@ -240,7 +240,7 @@ export default function FeaturedProperties({
                 : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50 active:bg-stone-100'
             }`}
           >
-            Completed (1)
+            Completed ({FEATURED_PROPERTIES.filter(p => p.status === 'completed').length})
           </button>
           <button
             onClick={() => setFilter('ongoing')}
@@ -251,7 +251,18 @@ export default function FeaturedProperties({
                 : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50 active:bg-stone-100'
             }`}
           >
-            Ongoing (2)
+            Ongoing ({FEATURED_PROPERTIES.filter(p => p.status === 'ongoing').length})
+          </button>
+          <button
+            onClick={() => setFilter('sold-out')}
+            id="filter-sold-out-properties"
+            className={`px-4 py-2 rounded-xl sm:rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all cursor-pointer min-h-[40px] touch-manipulation ${
+              filter === 'sold-out'
+                ? 'bg-[#461313] text-white shadow-xs'
+                : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50 active:bg-stone-100'
+            }`}
+          >
+            Sold Out ({FEATURED_PROPERTIES.filter(p => p.status === 'sold-out').length})
           </button>
         </div>
       </div>
@@ -260,6 +271,7 @@ export default function FeaturedProperties({
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {filteredProperties.map((property) => {
           const isCompleted = property.status === 'completed';
+          const isSoldOut = property.status === 'sold-out';
 
           return (
             <article
@@ -288,12 +300,16 @@ export default function FeaturedProperties({
                   <div className="absolute top-4 left-4 right-4 flex items-center justify-between gap-2 z-10">
                     <span 
                       className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold backdrop-blur-md shadow-xs ${
-                        isCompleted 
-                          ? 'bg-emerald-900/90 text-emerald-100 border border-emerald-400/30' 
-                          : 'bg-[#461313]/90 text-[#C0E8F9] border border-white/20'
+                        isSoldOut
+                          ? 'bg-rose-950/90 text-rose-200 border border-rose-400/40'
+                          : isCompleted 
+                            ? 'bg-emerald-900/90 text-emerald-100 border border-emerald-400/30' 
+                            : 'bg-[#461313]/90 text-[#C0E8F9] border border-white/20'
                       }`}
                     >
-                      {isCompleted ? (
+                      {isSoldOut ? (
+                        <CheckCircle2 className="w-3.5 h-3.5 text-rose-300" />
+                      ) : isCompleted ? (
                         <CheckCircle2 className="w-3.5 h-3.5 text-emerald-300" />
                       ) : (
                         <Clock className="w-3.5 h-3.5 text-[#D64933]" />
@@ -315,7 +331,11 @@ export default function FeaturedProperties({
                         <MapPin className="w-3.5 h-3.5 text-[#D64933] shrink-0" />
                         <span className="font-medium truncate">{property.location}</span>
                       </div>
-                      <span className="text-[11px] font-bold text-[#C0E8F9] bg-black/50 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/15 shrink-0">
+                      <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full border shrink-0 backdrop-blur-md ${
+                        isSoldOut 
+                          ? 'text-rose-200 bg-rose-950/80 border-rose-400/30' 
+                          : 'text-[#C0E8F9] bg-black/50 border-white/15'
+                      }`}>
                         {property.startingPrice}
                       </span>
                     </div>
@@ -341,11 +361,13 @@ export default function FeaturedProperties({
                       <div className="flex items-center gap-1.5">
                         <Tag className="w-3.5 h-3.5 text-[#D64933]" />
                         <span className="text-[11px] font-bold uppercase tracking-wider text-[#461313]">
-                          Starting From
+                          {isSoldOut ? 'Allocation Status' : 'Starting From'}
                         </span>
                       </div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#162521]/60 bg-stone-100 px-2 py-0.5 rounded-md">
-                        Est. Price Range
+                      <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md ${
+                        isSoldOut ? 'text-rose-700 bg-rose-50' : 'text-[#162521]/60 bg-stone-100'
+                      }`}>
+                        {isSoldOut ? '100% Sold Out' : 'Est. Price Range'}
                       </span>
                     </div>
 
@@ -353,7 +375,9 @@ export default function FeaturedProperties({
                       <span className="text-lg sm:text-2xl font-black text-[#162521] tracking-tight">
                         {property.startingPrice}
                       </span>
-                      <span className="text-[11px] sm:text-xs font-bold text-[#D64933] bg-[#D64933]/10 px-2 py-0.5 rounded-lg">
+                      <span className={`text-[11px] sm:text-xs font-bold px-2 py-0.5 rounded-lg ${
+                        isSoldOut ? 'text-rose-700 bg-rose-50' : 'text-[#D64933] bg-[#D64933]/10'
+                      }`}>
                         {property.priceRange}
                       </span>
                     </div>
@@ -590,7 +614,11 @@ export default function FeaturedProperties({
                 id="modal-detail-inquire-btn"
                 className="bg-[#461313] hover:bg-[#D64933] text-white px-5 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm font-semibold flex items-center gap-2 transition-colors cursor-pointer shadow-sm"
               >
-                <span>Inquire & Reserve This Property</span>
+                <span>
+                  {selectedPropertyDetail.status === 'sold-out'
+                    ? 'Join Waitlist / Inquire for Resale'
+                    : 'Inquire & Reserve This Property'}
+                </span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>

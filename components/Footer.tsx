@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import { 
   Building2, 
   MapPin, 
@@ -58,12 +60,23 @@ export default function Footer({
         {/* Top Tier: Brand Statement & Instant Action */}
         <div className="pb-10 sm:pb-16 border-b border-white/10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 sm:gap-8">
           <div className="max-w-2xl">
-            <div className="flex items-center gap-3 mb-3 flex-wrap">
-              <span className="text-2xl sm:text-3xl font-black tracking-tight text-white font-serif">
-                CHAPELHILL
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#E5C583]/15 text-[#E5C583] text-[11px] font-semibold border border-[#E5C583]/30 tracking-wide">
-                <ShieldCheck className="w-3 h-3 text-[#E5C583]" />
+            <div className="flex items-center gap-4 mb-4 flex-wrap">
+              <Link 
+                href="/" 
+                className="inline-flex items-center bg-white rounded-xl px-3 py-1.5 shadow-sm hover:opacity-95 transition-opacity"
+                aria-label="Chapelhill Home"
+              >
+                <Image
+                  src="/Chapelhill-Company-Logo.png"
+                  alt="Chapelhill"
+                  width={238}
+                  height={107}
+                  className="h-9 sm:h-11 w-auto object-contain"
+                  referrerPolicy="no-referrer"
+                />
+              </Link>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E5C583]/15 text-[#E5C583] text-xs font-semibold border border-[#E5C583]/30 tracking-wide">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#E5C583]" />
                 LASRERA Accredited
               </span>
             </div>
@@ -162,41 +175,59 @@ export default function Footer({
             </h3>
             <ul className="space-y-3 text-stone-400">
               <li>
-                <button
-                  onClick={onServicesClick}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
+                <Link
+                  href="/about"
+                  className="hover:text-white transition-colors text-left flex items-center gap-1.5 text-[#E5C583] font-medium"
                 >
-                  Remote Diaspora Acquisitions
-                </button>
+                  <span>About Us & Executive Team</span>
+                  <ArrowUpRight className="w-3 h-3" />
+                </Link>
               </li>
               <li>
-                <button
-                  onClick={onServicesClick}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
+                <Link
+                  href="/services"
+                  className="hover:text-white transition-colors text-left flex items-center gap-1.5 text-[#C0E8F9] font-medium"
                 >
-                  C of O & Governor’s Consent Verification
-                </button>
+                  <span>All Services & Capabilities</span>
+                  <ArrowUpRight className="w-3 h-3" />
+                </Link>
               </li>
               <li>
-                <button
-                  onClick={onServicesClick}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
+                <Link
+                  href="/services#development"
+                  className="hover:text-white transition-colors text-left block"
                 >
-                  COREN-Certified Civil Construction
-                </button>
+                  Property Development & Infrastructure
+                </Link>
               </li>
               <li>
-                <button
-                  onClick={onServicesClick}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
+                <Link
+                  href="/services#remodeling"
+                  className="hover:text-white transition-colors text-left block"
                 >
-                  Turnkey Facility & Rental Management
-                </button>
+                  Remodeling, Renovation & Partitions
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/services#maintenance"
+                  className="hover:text-white transition-colors text-left block"
+                >
+                  Facility Care & Waterfront Reclamation
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/services#project-management"
+                  className="hover:text-white transition-colors text-left block"
+                >
+                  Project Management & Advisory
+                </Link>
               </li>
               <li>
                 <button
                   onClick={onFAQClick}
-                  className="hover:text-white transition-colors text-left cursor-pointer flex items-center gap-1 text-[#C0E8F9]"
+                  className="hover:text-white transition-colors text-left cursor-pointer flex items-center gap-1 text-stone-400 hover:text-[#C0E8F9]"
                 >
                   <span>Frequently Asked Questions</span>
                   <ArrowUpRight className="w-3 h-3" />
@@ -213,31 +244,38 @@ export default function Footer({
             </h3>
             <div className="space-y-3 text-stone-400">
               <div>
-                <p className="text-white font-medium text-xs">Lagos Principal Office</p>
-                <p className="text-stone-400 text-xs mt-0.5">
-                  Lekki Phase 1 / Victoria Island, Lagos State, Nigeria
+                <p className="text-white font-medium text-xs">Principal Corporate Office</p>
+                <p className="text-stone-400 text-xs mt-0.5 leading-relaxed">
+                  Block B4 357, HFP Shopping Complex, Abraham Adesanya Junction, Lekki, Lagos State, Nigeria
                 </p>
               </div>
               <div>
-                <p className="text-white font-medium text-xs">Diaspora Advisory Desk</p>
+                <p className="text-white font-medium text-xs">Diaspora & Investment Advisory</p>
                 <p className="text-stone-400 text-xs mt-0.5">
-                  Mayfair, London UK & North America Direct Liaison
+                  Direct Private Consultation & Overseas Client Liaison
                 </p>
               </div>
               <div className="pt-1 flex flex-col gap-1.5 text-xs">
                 <a
-                  href="tel:+2348039876543"
+                  href="tel:+2349039130207"
                   className="hover:text-white flex items-center gap-2 transition-colors"
                 >
-                  <Phone className="w-3 h-3 text-stone-400" />
-                  <span>+234 803 987 6543</span>
+                  <Phone className="w-3 h-3 text-[#E5C583]" />
+                  <span>(+234) 903 913 0207</span>
                 </a>
                 <a
-                  href="mailto:private@chapelhillre.com"
+                  href="tel:+2348032865488"
                   className="hover:text-white flex items-center gap-2 transition-colors"
                 >
-                  <Mail className="w-3 h-3 text-stone-400" />
-                  <span>private@chapelhillre.com</span>
+                  <Phone className="w-3 h-3 text-[#E5C583]" />
+                  <span>(+234) 803 286 5488</span>
+                </a>
+                <a
+                  href="mailto:chapelhillmulticompanyltd@gmail.com"
+                  className="hover:text-white flex items-center gap-2 transition-colors truncate max-w-full"
+                >
+                  <Mail className="w-3 h-3 text-[#E5C583] shrink-0" />
+                  <span className="truncate">chapelhillmulticompanyltd@gmail.com</span>
                 </a>
               </div>
             </div>
@@ -295,9 +333,9 @@ export default function Footer({
           </div>
 
           <div className="flex flex-wrap items-center gap-4 text-[11px] sm:text-xs text-stone-500">
-            <button onClick={onAboutClick} className="hover:text-stone-300 transition-colors cursor-pointer">
+            <Link href="/about" className="hover:text-stone-300 transition-colors">
               About Firm
-            </button>
+            </Link>
             <span>•</span>
             <button onClick={onFAQClick} className="hover:text-stone-300 transition-colors cursor-pointer">
               Due Diligence FAQ
