@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { 
   ChevronDown, 
   HelpCircle, 
@@ -233,10 +234,14 @@ export default function FAQSection({ onContactClick }: FAQSectionProps) {
           const isOpen = openItem === faq.id;
 
           return (
-            <div
+            <motion.div
               key={faq.id}
               id={`faq-item-${faq.id}`}
-              className={`rounded-2xl border transition-all duration-200 overflow-hidden bg-white ${
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
+              className={`rounded-2xl border transition-colors duration-200 overflow-hidden bg-white ${
                 isOpen 
                   ? 'border-[#461313]/40 shadow-[0_8px_25px_rgba(70,19,19,0.06)]' 
                   : 'border-stone-200/90 shadow-2xs hover:border-stone-300'
@@ -262,43 +267,52 @@ export default function FAQSection({ onContactClick }: FAQSectionProps) {
                 <div 
                   className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 ${
                     isOpen 
-                      ? 'bg-[#461313] text-white rotate-180' 
-                      : 'bg-stone-100 text-[#162521] hover:bg-stone-200'
+                  ? 'bg-[#461313] text-white rotate-180' 
+                  : 'bg-stone-100 text-[#162521] hover:bg-stone-200'
                   }`}
                 >
                   <ChevronDown className="w-4 h-4" />
                 </div>
               </button>
 
-              {isOpen && (
-                <div
-                  id={`faq-panel-${faq.id}`}
-                  role="region"
-                  aria-labelledby={`faq-btn-${faq.id}`}
-                  className="px-5 sm:px-6 pb-6 pt-1 text-sm text-[#162521]/80 leading-relaxed border-t border-stone-100"
-                >
-                  <p className="mt-2 text-stone-700 leading-relaxed sm:text-[15px]">
-                    {faq.answer}
-                  </p>
+              <AnimatePresence initial={false}>
+                {isOpen && (
+                  <motion.div
+                    key="content"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                    id={`faq-panel-${faq.id}`}
+                    role="region"
+                    aria-labelledby={`faq-btn-${faq.id}`}
+                    className="overflow-hidden border-t border-stone-100"
+                  >
+                    <div className="px-5 sm:px-6 pb-6 pt-3 text-sm text-[#162521]/80 leading-relaxed">
+                      <p className="text-stone-700 leading-relaxed sm:text-[15px]">
+                        {faq.answer}
+                      </p>
 
-                  {faq.highlights && faq.highlights.length > 0 && (
-                    <div className="mt-4 p-4 rounded-xl bg-[#FEFCFD] border border-stone-200/80">
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#461313] block mb-2">
-                        Key Assurance Protocols:
-                      </span>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                        {faq.highlights.map((item, hIdx) => (
-                          <div key={hIdx} className="flex items-start gap-2 text-xs text-[#162521]/85">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-[#D64933] shrink-0 mt-0.5" />
-                            <span>{item}</span>
+                      {faq.highlights && faq.highlights.length > 0 && (
+                        <div className="mt-4 p-4 rounded-xl bg-[#FEFCFD] border border-stone-200/80">
+                          <span className="text-[11px] font-bold uppercase tracking-wider text-[#461313] block mb-2">
+                            Key Assurance Protocols:
+                          </span>
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            {faq.highlights.map((item, hIdx) => (
+                              <div key={hIdx} className="flex items-start gap-2 text-xs text-[#162521]/85">
+                                <CheckCircle2 className="w-3.5 h-3.5 text-[#D64933] shrink-0 mt-0.5" />
+                                <span>{item}</span>
+                              </div>
+                            ))}
                           </div>
-                        ))}
-                      </div>
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
-              )}
-            </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
           );
         })}
       </div>

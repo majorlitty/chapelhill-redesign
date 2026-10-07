@@ -251,6 +251,7 @@ export default function AboutSection({ onLearnMoreServices, onContactClick }: Ab
               src={currentDiscipline.image}
               alt={currentDiscipline.imageAlt}
               fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
               referrerPolicy="no-referrer"
             />

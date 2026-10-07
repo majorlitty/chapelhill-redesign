@@ -17,6 +17,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   title: 'Chapelhill — Luxury Real Estate & Architectural Estates',
   description:
     'Explore thoughtfully designed luxury homes in premium locations, crafted to match modern lifestyles with comfort, elegance, and long-term value.',
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${plusJakarta.variable} overflow-x-hidden scroll-smooth`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${plusJakarta.variable} overflow-x-hidden scroll-smooth`}>
       <body className="font-sans antialiased bg-[#FEFCFD] text-[#162521] selection:bg-[#461313] selection:text-white overflow-x-hidden min-h-screen w-full" suppressHydrationWarning>
         {children}
       </body>

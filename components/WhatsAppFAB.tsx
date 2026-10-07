@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { MessageCircle, X, ArrowUpRight } from 'lucide-react';
 
@@ -13,8 +13,10 @@ export default function WhatsAppFAB({
   phoneNumber = '2349039130207',
   defaultMessage = 'Hello Chapelhill, I am interested in inquiring about your luxury estates and property services. Could you please share more details regarding property availability, pricing, and scheduling a private viewing?',
 }: WhatsAppFABProps) {
+  const [isOpen, setIsOpen] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
-  const [dismissedNotification, setDismissedNotification] = useState(false);
+  const popupRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   const encodedDefaultMessage = encodeURIComponent(defaultMessage);
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedDefaultMessage}`;
@@ -34,19 +36,48 @@ export default function WhatsAppFAB({
     },
   ];
 
+  // Close popup on outside click or Escape key
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        isOpen &&
+        popupRef.current &&
+        !popupRef.current.contains(event.target as Node) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    }
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape' && isOpen) {
+        setIsOpen(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen]);
+
   return (
     <aside 
       aria-label="Direct WhatsApp Property Inquiries" 
       className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end gap-2.5 sm:gap-3 pointer-events-none"
     >
-      {/* Floating Prompt Notification Bubble (Optional preview card on first visit) */}
-      {!dismissedNotification && (
+      {/* Floating Prompt Popup Dialog (Only shown when clicked) */}
+      {isOpen && (
         <div 
-          className="pointer-events-auto w-[calc(100vw-2rem)] max-w-[310px] sm:max-w-xs bg-white/95 backdrop-blur-md rounded-2xl p-3.5 sm:p-4 shadow-[0_12px_32px_rgba(22,37,33,0.14)] border border-stone-200/90 animate-in slide-in-from-bottom-3 duration-300 transition-all text-left"
+          ref={popupRef}
+          className="pointer-events-auto w-[calc(100vw-2rem)] max-w-[320px] sm:max-w-xs bg-white/98 backdrop-blur-md rounded-2xl p-4 shadow-[0_16px_40px_rgba(22,37,33,0.18)] border border-stone-200/90 animate-in fade-in slide-in-from-bottom-4 duration-200 transition-all text-left"
           role="dialog"
           aria-label="WhatsApp Inquiry Assistant"
         >
-          <div className="flex items-start justify-between gap-2 mb-2">
+          <div className="flex items-start justify-between gap-2 mb-2.5">
             <div className="flex items-center gap-2">
               <Image
                 src="/Chapelhill-Company-Logo.png"
@@ -65,27 +96,28 @@ export default function WhatsAppFAB({
               </span>
             </div>
             <button
-              onClick={() => setDismissedNotification(true)}
+              onClick={() => setIsOpen(false)}
               id="dismiss-whatsapp-notification"
               className="text-stone-400 hover:text-stone-700 p-1 rounded-md transition-colors cursor-pointer touch-manipulation"
-              aria-label="Dismiss message"
+              aria-label="Close WhatsApp popup"
             >
-              <X className="w-3.5 h-3.5" />
+              <X className="w-4 h-4" />
             </button>
           </div>
 
-          <p className="text-xs text-[#162521]/80 leading-relaxed mb-2.5">
+          <p className="text-xs text-[#162521]/80 leading-relaxed mb-3">
             Interested in <strong className="text-[#461313]">Chapelhill luxury estates</strong>? Chat with our client director directly on WhatsApp for immediate brochures and pricing.
           </p>
 
           {/* Quick Select Buttons */}
-          <div className="space-y-1.5 mb-2.5">
+          <div className="space-y-1.5 mb-3">
             {propertyQuickInquiries.map((item, idx) => (
               <a
                 key={idx}
                 href={`https://wa.me/${phoneNumber}?text=${encodeURIComponent(item.msg)}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => setIsOpen(false)}
                 className="flex items-center justify-between text-[11px] font-medium text-[#162521] hover:text-[#461313] bg-stone-50 hover:bg-[#C0E8F9]/30 border border-stone-200/60 rounded-lg px-2.5 py-1.5 transition-colors group cursor-pointer touch-manipulation"
               >
                 <span className="truncate">{item.label}</span>
@@ -98,6 +130,7 @@ export default function WhatsAppFAB({
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => setIsOpen(false)}
             id="whatsapp-notification-action-link"
             className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-semibold py-2.5 px-3 rounded-full flex items-center justify-center gap-2 shadow-sm transition-colors cursor-pointer touch-manipulation"
           >
@@ -109,36 +142,47 @@ export default function WhatsAppFAB({
 
       {/* Main Floating Action Button */}
       <div className="relative pointer-events-auto flex items-center gap-3">
-        {/* Hover Pill Label on Desktop */}
-        {showTooltip && (
+        {/* Hover Pill Label on Desktop when closed */}
+        {showTooltip && !isOpen && (
           <div 
             className="hidden sm:flex items-center bg-[#162521] text-white text-xs font-medium px-3.5 py-2 rounded-full shadow-lg border border-white/10 whitespace-nowrap animate-in fade-in zoom-in-95 duration-150"
             role="tooltip"
           >
-            <span>Chat about Chapelhill Estates</span>
+            <span>Chat on WhatsApp</span>
           </div>
         )}
 
-        <a
-          href={whatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          ref={buttonRef}
+          type="button"
+          onClick={() => {
+            setIsOpen((prev) => !prev);
+            setShowTooltip(false);
+          }}
           id="whatsapp-chat-fab"
-          aria-label="Direct WhatsApp chat window for Chapelhill luxury estates inquiries"
+          aria-label={isOpen ? "Close WhatsApp inquiry window" : "Open WhatsApp inquiry window"}
+          aria-expanded={isOpen}
+          aria-haspopup="dialog"
           onMouseEnter={() => setShowTooltip(true)}
           onMouseLeave={() => setShowTooltip(false)}
           className="group relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-[0_8px_25px_rgba(37,211,102,0.45)] hover:shadow-[0_12px_32px_rgba(37,211,102,0.6)] transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer focus:outline-none focus:ring-4 focus:ring-[#25D366]/40 touch-manipulation"
         >
-          {/* Pulsing Presence Ring */}
-          <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
-            <span className="relative inline-flex rounded-full h-4 w-4 bg-[#162521] border-2 border-white text-[8px] font-black text-white items-center justify-center">
-              1
+          {/* Pulsing Presence Ring when closed */}
+          {!isOpen && (
+            <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
+              <span className="relative inline-flex rounded-full h-4 w-4 bg-[#162521] border-2 border-white text-[8px] font-black text-white items-center justify-center">
+                1
+              </span>
             </span>
-          </span>
+          )}
 
-          <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7 fill-white text-[#25D366] group-hover:scale-110 transition-transform duration-200" />
-        </a>
+          {isOpen ? (
+            <X className="w-6 h-6 sm:w-7 sm:h-7 stroke-[2.5] text-white animate-in zoom-in-75 duration-200" />
+          ) : (
+            <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7 fill-white text-[#25D366] group-hover:scale-110 transition-transform duration-200" />
+          )}
+        </button>
       </div>
     </aside>
   );

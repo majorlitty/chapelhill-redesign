@@ -113,47 +113,49 @@ export default function Footer({
           <div>
             <h3 className="text-white font-semibold uppercase tracking-[0.12em] text-xs mb-4 flex items-center gap-2">
               <Building2 className="w-3.5 h-3.5 text-[#E5C583]" />
-              <span>Developments</span>
+              <Link href="/projects" className="hover:text-[#E5C583] transition-colors">
+                Our Projects
+              </Link>
             </h3>
             <ul className="space-y-3 text-stone-400">
               <li>
-                <button
-                  onClick={onExploreClick}
-                  className="hover:text-white transition-colors flex items-center gap-1.5 text-left cursor-pointer group"
+                <Link
+                  href="/projects"
+                  className="hover:text-white transition-colors flex items-center gap-1.5 text-left group text-[#E5C583] font-medium"
+                >
+                  <span>Explore All Projects</span>
+                  <ArrowUpRight className="w-3 h-3 ml-auto" />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/properties/ivy-homes-abijo"
+                  className="hover:text-white transition-colors flex items-center gap-1.5 text-left group"
                 >
                   <span className="text-[#E5C583] opacity-60 group-hover:opacity-100">▸</span>
                   <span>Ivy Homes, Abijo GRA</span>
-                  <span className="text-[10px] text-emerald-400 font-mono ml-auto">Ready</span>
-                </button>
+                  <span className="text-[10px] text-emerald-400 font-mono ml-auto">Completed</span>
+                </Link>
               </li>
               <li>
-                <button
-                  onClick={onExploreClick}
-                  className="hover:text-white transition-colors flex items-center gap-1.5 text-left cursor-pointer group"
-                >
-                  <span className="text-[#E5C583] opacity-60 group-hover:opacity-100">▸</span>
-                  <span>Ogudu GRA Penthouse</span>
-                  <span className="text-[10px] text-amber-300 font-mono ml-auto">Off-Plan</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={onExploreClick}
-                  className="hover:text-white transition-colors flex items-center gap-1.5 text-left cursor-pointer group"
+                <Link
+                  href="/properties/lekki-phase-1-project"
+                  className="hover:text-white transition-colors flex items-center gap-1.5 text-left group"
                 >
                   <span className="text-[#E5C583] opacity-60 group-hover:opacity-100">▸</span>
                   <span>Ivy Heights (Lekki Phase 1)</span>
-                  <span className="text-[10px] text-sky-400 font-mono ml-auto">Prime</span>
-                </button>
+                  <span className="text-[10px] text-sky-400 font-mono ml-auto">Ongoing</span>
+                </Link>
               </li>
               <li>
-                <button
-                  onClick={onContactClick}
-                  className="hover:text-white transition-colors flex items-center gap-1.5 text-left cursor-pointer group"
+                <Link
+                  href="/properties/ogudu-gra-project"
+                  className="hover:text-white transition-colors flex items-center gap-1.5 text-left group"
                 >
                   <span className="text-[#E5C583] opacity-60 group-hover:opacity-100">▸</span>
-                  <span>Epe Strategic Corridor Land</span>
-                </button>
+                  <span>Ogudu GRA Penthouse</span>
+                  <span className="text-[10px] text-rose-400 font-mono ml-auto">Sold Out</span>
+                </Link>
               </li>
               <li>
                 <button

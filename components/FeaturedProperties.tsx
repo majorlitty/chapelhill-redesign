@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'motion/react';
 import { 
   Building2, 
   MapPin, 
@@ -269,14 +270,18 @@ export default function FeaturedProperties({
 
       {/* Properties Grid: Responsive 1 col (mobile), 2 cols (tablet), 3 cols (desktop) */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-        {filteredProperties.map((property) => {
+        {filteredProperties.map((property, idx) => {
           const isCompleted = property.status === 'completed';
           const isSoldOut = property.status === 'sold-out';
 
           return (
-            <article
+            <motion.article
               key={property.id}
               id={`featured-property-${property.id}`}
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.65, delay: idx * 0.12, ease: [0.22, 1, 0.36, 1] }}
               className="group bg-white rounded-3xl border border-stone-200/90 shadow-[0_10px_30px_rgba(22,37,33,0.05)] hover:shadow-[0_20px_45px_rgba(70,19,19,0.09)] transition-all duration-300 flex flex-col justify-between overflow-hidden"
             >
               {/* Card Media Header */}
@@ -290,6 +295,7 @@ export default function FeaturedProperties({
                     src={property.image}
                     alt={property.name}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     referrerPolicy="no-referrer"
                   />
@@ -443,9 +449,21 @@ export default function FeaturedProperties({
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
-            </article>
+            </motion.article>
           );
         })}
+      </div>
+
+      {/* Link to Full Projects Portfolio */}
+      <div className="mt-8 text-center">
+        <Link
+          href="/projects"
+          id="btn-view-all-projects-portfolio"
+          className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-white hover:bg-stone-50 border border-stone-200 text-[#162521] hover:text-[#461313] font-semibold text-xs sm:text-sm shadow-xs transition-all hover:shadow-sm cursor-pointer"
+        >
+          <span>View All Projects in Full Portfolio</span>
+          <ArrowRight className="w-4 h-4 text-[#D64933]" />
+        </Link>
       </div>
 
       {/* Advisory Banner */}
@@ -488,6 +506,7 @@ export default function FeaturedProperties({
                 src={selectedPropertyDetail.image}
                 alt={selectedPropertyDetail.name}
                 fill
+                sizes="(max-width: 768px) 100vw, 768px"
                 className="object-cover"
                 referrerPolicy="no-referrer"
               />

@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { ArrowRight, Compass, ShieldCheck } from 'lucide-react';
+import { motion } from 'motion/react';
 
 interface HeroProps {
   onExploreHomes: () => void;
@@ -49,7 +50,7 @@ export default function Hero({ onExploreHomes, onBookVisit }: HeroProps) {
   const [activeHotspot, setActiveHotspot] = useState<Hotspot | null>(null);
 
   return (
-    <section className="relative w-full overflow-hidden pt-10 sm:pt-14 md:pt-16 pb-12 sm:pb-20">
+    <section className="relative w-full overflow-hidden min-h-[80vh] flex flex-col justify-start pb-16 sm:pb-24">
       {/* Background Soft Sky & Cloud Atmosphere */}
       <div 
         className="absolute inset-0 pointer-events-none -z-10 bg-gradient-to-b from-[#FEFCFD] via-[#FEFCFD] to-[#f7f3f5]"
@@ -60,25 +61,38 @@ export default function Hero({ onExploreHomes, onBookVisit }: HeroProps) {
         <div className="absolute top-1/3 right-[-10%] w-[650px] h-[400px] bg-[#C0E8F9]/25 rounded-full blur-3xl filter" />
       </div>
 
-      {/* Main Content Container */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-8 text-center relative z-20">
+      {/* Main Content Container with vertical spacing below the navbar */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 text-center relative z-20 pt-16 sm:pt-20 md:pt-24 lg:pt-32">
         
         {/* Hero Title - Centered & Bold over imagery */}
-        <h1 
+        <motion.h1 
           id="hero-title"
+          initial={{ opacity: 0, y: 22 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
           className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-[76px] font-extrabold text-[#162521] tracking-[-0.035em] leading-[1.12] sm:leading-[1.06] max-w-4xl mx-auto drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)] px-2"
         >
           You Dream. We Build.
-        </h1>
+        </motion.h1>
 
         {/* Subtitle - Exact copy and tone from reference */}
-        <p className="mt-3.5 sm:mt-6 text-sm sm:text-base md:text-lg text-[#162521]/80 max-w-2xl mx-auto font-normal leading-relaxed px-2">
-          Explore thoughtfully designed homes in premium locations, crafted to match
-          modern lifestyles with comfort, elegance, and long-term value.
-        </p>
+        <motion.p 
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.75, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-[#162521]/80 max-w-2xl mx-auto font-normal leading-relaxed px-2"
+        >
+          Embark on a journey of innovation and excellence with Chapelhill Multicompany International. 
+          Whether you have a specific project in mind or are seeking inspiration, we look forward to collaborating with you.
+        </motion.p>
 
         {/* Action Buttons - Matching Reference with custom palette */}
-        <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto px-2 sm:px-0">
+        <motion.div 
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.75, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto px-2 sm:px-0"
+        >
           {/* Button 1: Explore Homes with primary #461313 & accent #D64933 */}
           <button
             onClick={onExploreHomes}
@@ -99,11 +113,16 @@ export default function Hero({ onExploreHomes, onBookVisit }: HeroProps) {
           >
             Book a Visit
           </button>
-        </div>
+        </motion.div>
       </div>
 
       {/* Hero Imagery Showcase: The Modern Cantilevered Luxury Villa Nestled in Clouds */}
-      <div className="relative w-full max-w-6xl mx-auto mt-8 sm:mt-10 px-3 sm:px-6">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.85, delay: 0.38, ease: [0.22, 1, 0.36, 1] }}
+        className="relative w-full max-w-6xl mx-auto mt-10 sm:mt-14 lg:mt-16 px-3 sm:px-6"
+      >
         <div className="relative w-full mx-auto overflow-hidden rounded-2xl sm:rounded-3xl h-[400px] xs:h-[480px] sm:h-[640px] md:h-[760px]">
           {/* Luxury Villa Hero Image */}
           <div className="absolute inset-0 w-full h-full">
@@ -193,7 +212,7 @@ export default function Hero({ onExploreHomes, onBookVisit }: HeroProps) {
             <span>Curated Architectural Masterpiece</span>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

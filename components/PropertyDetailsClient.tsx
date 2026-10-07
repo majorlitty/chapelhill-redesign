@@ -20,7 +20,6 @@ import {
 import { Property, getAllProperties } from '@/lib/propertiesData';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import ClosingAdvisoryBanner from '@/components/ClosingAdvisoryBanner';
 import BookingModal from '@/components/BookingModal';
 import InfoDrawer from '@/components/InfoDrawer';
 import WhatsAppFAB from '@/components/WhatsAppFAB';
@@ -599,6 +598,7 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
                       src={other.heroImage}
                       alt={other.name}
                       fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                       referrerPolicy="no-referrer"
                     />
@@ -637,11 +637,6 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
           </section>
         )}
       </main>
-
-      {/* Closing Advisory Banner (Matches Home Page) */}
-      <ClosingAdvisoryBanner
-        onContactClick={() => openBooking()}
-      />
 
       {/* Full Integrated Luxury Footer (Matches Home Page) */}
       <Footer

@@ -19,6 +19,7 @@ import {
   FileText, 
   Check, 
   Sparkles,
+  Info,
   Compass,
   Wrench,
   DraftingCompass,
@@ -31,7 +32,6 @@ import {
 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import ClosingAdvisoryBanner from '@/components/ClosingAdvisoryBanner';
 import BookingModal from '@/components/BookingModal';
 import WhatsAppFAB from '@/components/WhatsAppFAB';
 
@@ -574,7 +574,7 @@ export default function ServicesPageClient() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="p-8 rounded-3xl bg-white border border-stone-200 shadow-xs hover:border-[#D64933]/50 transition-colors">
               <div className="w-12 h-12 rounded-2xl bg-[#461313]/10 text-[#461313] flex items-center justify-center mb-6">
-                <ShieldCheck className="w-6 h-6 stroke-[2]" />
+                <Info className="w-6 h-6 stroke-[2]" />
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-[#162521]">
                 Expertise you can trust, results you&apos;ll love
@@ -586,7 +586,7 @@ export default function ServicesPageClient() {
 
             <div className="p-8 rounded-3xl bg-white border border-stone-200 shadow-xs hover:border-[#D64933]/50 transition-colors">
               <div className="w-12 h-12 rounded-2xl bg-[#D64933]/10 text-[#D64933] flex items-center justify-center mb-6">
-                <Sparkles className="w-6 h-6 stroke-[2]" />
+                <Info className="w-6 h-6 stroke-[2]" />
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-[#162521]">
                 Maximizing value, exceeding expectations
@@ -598,7 +598,7 @@ export default function ServicesPageClient() {
 
             <div className="p-8 rounded-3xl bg-white border border-stone-200 shadow-xs hover:border-[#D64933]/50 transition-colors">
               <div className="w-12 h-12 rounded-2xl bg-[#162521]/10 text-[#162521] flex items-center justify-center mb-6">
-                <Building2 className="w-6 h-6 stroke-[2]" />
+                <Info className="w-6 h-6 stroke-[2]" />
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-[#162521]">
                 Finding your perfect match in real estate
@@ -757,9 +757,6 @@ export default function ServicesPageClient() {
           </div>
         </section>
       </main>
-
-      {/* Closing Advisory Banner */}
-      <ClosingAdvisoryBanner onContactClick={() => openBookingFor('General Consultation')} />
 
       {/* Footer */}
       <Footer

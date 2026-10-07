@@ -28,7 +28,6 @@ import {
 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import ClosingAdvisoryBanner from '@/components/ClosingAdvisoryBanner';
 import BookingModal from '@/components/BookingModal';
 import InfoDrawer from '@/components/InfoDrawer';
 import WhatsAppFAB from '@/components/WhatsAppFAB';
@@ -56,6 +55,19 @@ const TEAM_MEMBERS: TeamMember[] = [
       'Lagos Business School Certified',
       'UK Prince2 Project Management Practitioner',
       'Quantity Surveying & High-Yield Capital Deployment',
+    ],
+  },
+  {
+    name: 'Victoria Olubunmi Afolayan',
+    role: 'Board Member',
+    image: '/Victoria Olubunmi Afolayan.jpeg',
+    bio: 'Victoria Olubunmi Afolayan serves on the Board of Directors of Chapelhill Multicompany International, providing strategic corporate governance, executive advisory, and institutional stewardship across our property development, civil construction, and investment portfolio.',
+    email: 'chapelhillmulticompanyltd@gmail.com',
+    qualifications: [
+      'Board Governance & Corporate Oversight',
+      'Strategic Real Estate Investment Direction',
+      'Fiduciary & Institutional Stewardship',
+      'Stakeholder & Partner Relations',
     ],
   },
   {
@@ -486,17 +498,7 @@ export default function AboutPageClient() {
                       {member.bio}
                     </p>
 
-                    {member.phone && (
-                      <div className="mt-4 pt-4 border-t border-stone-100 flex items-center gap-2 text-xs text-stone-600 font-medium">
-                        <Phone className="w-3.5 h-3.5 text-[#D64933]" />
-                        <a 
-                          href={`tel:${member.phone.replace(/\s+/g, '')}`}
-                          className="hover:text-[#461313] transition-colors"
-                        >
-                          {member.phone}
-                        </a>
-                      </div>
-                    )}
+                    
                   </div>
                 </div>
 
@@ -673,9 +675,6 @@ export default function AboutPageClient() {
           </div>
         </section>
       </main>
-
-      {/* Closing Advisory Banner */}
-      <ClosingAdvisoryBanner onContactClick={() => setBookingModalOpen(true)} />
 
       {/* Footer */}
       <Footer

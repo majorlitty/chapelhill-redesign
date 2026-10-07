@@ -11,7 +11,7 @@ interface NavbarProps {
   onServicesClick?: () => void;
   onAboutClick?: () => void;
   onFAQClick?: () => void;
-  activePage?: 'home' | 'about' | 'properties' | 'services' | 'faq';
+  activePage?: 'home' | 'about' | 'properties' | 'services' | 'faq' | 'projects';
 }
 
 export default function Navbar({
@@ -41,8 +41,9 @@ export default function Navbar({
   }, [mobileMenuOpen]);
 
   return (
-    <header className="w-full max-w-7xl mx-auto pt-3 sm:pt-6 md:pt-8 px-4 sm:px-8 lg:px-12 relative z-40">
-      <nav className="flex items-center justify-between" aria-label="Main Navigation">
+    <header className="sticky top-0 z-50 w-full bg-[#FEFCFD]/95 backdrop-blur-md border-b border-stone-200/60 shadow-xs transition-all">
+      <div className="w-full max-w-7xl mx-auto py-3 sm:py-4 px-4 sm:px-8 lg:px-12">
+        <nav className="flex items-center justify-between" aria-label="Main Navigation">
         {/* Brand Logo */}
         <Link
           href="/"
@@ -64,21 +65,15 @@ export default function Navbar({
         {/* Desktop Navigation Links */}
         <div className="hidden md:flex items-center gap-6 lg:gap-10">
           <Link
-            href="/#featured-properties"
-            onClick={(e) => {
-              if (onExploreClick && typeof window !== 'undefined' && window.location.pathname === '/') {
-                e.preventDefault();
-                onExploreClick();
-              }
-            }}
-            id="nav-link-properties"
+            href="/projects"
+            id="nav-link-projects"
             className={`text-[13px] font-semibold tracking-[0.08em] uppercase transition-colors py-1 ${
-              activePage === 'properties'
+              activePage === 'properties' || activePage === 'projects'
                 ? 'text-[#D64933] border-b-2 border-[#D64933]'
                 : 'text-[#162521] hover:text-[#D64933]'
             }`}
           >
-            Properties
+            Projects
           </Link>
           <Link
             href="/services"
@@ -184,16 +179,17 @@ export default function Navbar({
             </span>
           </div>
           <Link
-            href="/#featured-properties"
+            href="/projects"
             onClick={() => {
               setMobileMenuOpen(false);
-              if (onExploreClick && typeof window !== 'undefined' && window.location.pathname === '/') {
-                onExploreClick();
-              }
             }}
-            className="text-left py-3 px-3.5 text-sm font-semibold tracking-wider text-[#162521] hover:text-[#D64933] active:bg-stone-100 hover:bg-stone-50 rounded-xl uppercase transition-colors min-h-[48px] flex items-center justify-between touch-manipulation"
+            className={`text-left py-3 px-3.5 text-sm font-semibold tracking-wider rounded-xl uppercase transition-colors min-h-[48px] flex items-center justify-between touch-manipulation ${
+              activePage === 'properties' || activePage === 'projects'
+                ? 'text-[#D64933] bg-stone-100 font-bold'
+                : 'text-[#162521] hover:text-[#D64933] active:bg-stone-100 hover:bg-stone-50'
+            }`}
           >
-            <span>Properties</span>
+            <span>Projects</span>
             <ArrowRight className="w-4 h-4 text-stone-400" />
           </Link>
           <Link
@@ -257,6 +253,7 @@ export default function Navbar({
           </div>
         </div>
       )}
+      </div>
     </header>
   );
 }

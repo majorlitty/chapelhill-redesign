@@ -10,8 +10,8 @@ import BookingModal from '@/components/BookingModal';
 import InfoDrawer from '@/components/InfoDrawer';
 import WhatsAppFAB from '@/components/WhatsAppFAB';
 import FAQSection from '@/components/FAQSection';
-import ClosingAdvisoryBanner from '@/components/ClosingAdvisoryBanner';
 import Footer from '@/components/Footer';
+import ScrollReveal from '@/components/ScrollReveal';
 
 export default function HomePage() {
   const [propertyModalOpen, setPropertyModalOpen] = useState(false);
@@ -63,41 +63,46 @@ export default function HomePage() {
       />
 
       {/* Hero Section */}
-      <Hero
-        onExploreHomes={scrollToFeatured}
-        onBookVisit={() => handleOpenBooking()}
-      />
+      <ScrollReveal yOffset={24} duration={0.8} viewportAmount="some">
+        <Hero
+          onExploreHomes={scrollToFeatured}
+          onBookVisit={() => handleOpenBooking()}
+        />
+      </ScrollReveal>
 
       {/* Brief About Us Section */}
-      <AboutSection
-        onLearnMoreServices={() => setInfoModal('services')}
-        onContactClick={() => handleOpenBooking()}
-      />
+      <ScrollReveal yOffset={36} duration={0.8} viewportAmount={0.12}>
+        <AboutSection
+          onLearnMoreServices={() => setInfoModal('services')}
+          onContactClick={() => handleOpenBooking()}
+        />
+      </ScrollReveal>
 
       {/* Featured Properties Section (Showcasing Ivy Homes Abijo GRA, Ogudu GRA, Lekki Phase 1) */}
-      <FeaturedProperties
-        onInquireProperty={(propName) => handleOpenBooking(propName)}
-        onOpenConsultation={() => handleOpenBooking()}
-      />
+      <ScrollReveal yOffset={36} duration={0.8} viewportAmount={0.08}>
+        <FeaturedProperties
+          onInquireProperty={(propName) => handleOpenBooking(propName)}
+          onOpenConsultation={() => handleOpenBooking()}
+        />
+      </ScrollReveal>
 
       {/* Frequently Asked Questions Section */}
-      <FAQSection
-        onContactClick={() => handleOpenBooking()}
-      />
+      <ScrollReveal yOffset={36} duration={0.8} viewportAmount={0.12}>
+        <FAQSection
+          onContactClick={() => handleOpenBooking()}
+        />
+      </ScrollReveal>
 
-      {/* Closing Advisory Banner (Inspired by curved luxury architecture banner) */}
-      <ClosingAdvisoryBanner
-        onContactClick={() => handleOpenBooking()}
-      />
-
-      {/* Full Integrated Luxury Footer blending into the banner bottom */}
-      <Footer
-        onExploreClick={scrollToFeatured}
-        onServicesClick={() => setInfoModal('services')}
-        onAboutClick={scrollToAbout}
-        onFAQClick={scrollToFAQ}
-        onContactClick={() => handleOpenBooking()}
-      />
+      {/* Full Integrated Luxury Footer */}
+      <ScrollReveal yOffset={20} duration={0.7} viewportAmount={0.05}>
+        <Footer
+          onExploreClick={scrollToFeatured}
+          onServicesClick={() => setInfoModal('services')}
+          onAboutClick={scrollToAbout}
+          onFAQClick={scrollToFAQ}
+          onContactClick={() => handleOpenBooking()}
+        />
+      </ScrollReveal>
 
       {/* Interactive Modals */}
       <PropertyModal
