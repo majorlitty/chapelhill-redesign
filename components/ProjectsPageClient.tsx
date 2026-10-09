@@ -62,6 +62,8 @@ export default function ProjectsPageClient() {
         cityState = 'Lekki Phase 1, Lagos State';
       } else if (p.id === 'ogudu-gra-project') {
         cityState = 'Ogudu GRA, Lagos State';
+      } else if (p.id.includes('royal-garden') || p.location.includes('Royal')) {
+        cityState = 'Royal Gardens, Lekki-Ajah';
       }
 
       return {
@@ -295,7 +297,7 @@ export default function ProjectsPageClient() {
                     <div>
                       {/* 1. Project Image / Preview Thumbnail with Smooth Hover Zoom */}
                       <Link 
-                        href={`/properties/${project.slug}`}
+                        href={`/projects/${project.slug}`}
                         className="block relative w-full aspect-[16/10] bg-stone-100 overflow-hidden cursor-pointer"
                         aria-label={`View ${project.name} details`}
                       >
@@ -349,7 +351,7 @@ export default function ProjectsPageClient() {
 
                         {/* 3. Project Title required by user */}
                         <h2 className="text-xl sm:text-2xl font-bold text-[#162521] group-hover:text-[#461313] transition-colors leading-snug">
-                          <Link href={`/properties/${project.slug}`}>
+                          <Link href={`/projects/${project.slug}`}>
                             {project.name}
                           </Link>
                         </h2>
@@ -374,7 +376,7 @@ export default function ProjectsPageClient() {
                     {/* Card Footer: 4. Clear "Project Details" / "View Project" link/button */}
                     <div className="p-6 pt-0 flex items-center gap-2.5">
                       <Link
-                        href={`/properties/${project.slug}`}
+                        href={`/projects/${project.slug}`}
                         id={`view-project-${project.slug}`}
                         className="flex-1 py-3 px-4 rounded-xl bg-[#461313] hover:bg-[#D64933] text-white font-semibold text-xs sm:text-sm transition-all duration-200 flex items-center justify-center gap-2 group-hover:shadow-md cursor-pointer"
                       >
