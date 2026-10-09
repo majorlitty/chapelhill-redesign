@@ -1,14 +1,19 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-/* Mobile touch and responsive utilities */
+/* Ensure only one global browser window scrollbar and natural document flow */
 html {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
+  min-height: 100%;
+  overflow-y: auto;
 }
 
 body {
   touch-action: manipulation;
+  min-height: 100%;
+  /* Avoid any independent scrolling on body or inner elements */
+  overflow: visible;
 }
 
 /* Hide scrollbar for mobile swipeable carousels while maintaining functionality */
@@ -19,3 +24,4 @@ body {
 .scrollbar-none::-webkit-scrollbar {
   display: none;
 }
+

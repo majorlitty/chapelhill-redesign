@@ -41,8 +41,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={`${plusJakarta.variable} overflow-x-hidden scroll-smooth`}>
-      <body className="font-sans antialiased bg-[#FEFCFD] text-[#162521] selection:bg-[#461313] selection:text-white overflow-x-hidden min-h-screen w-full" suppressHydrationWarning>
+    <html lang="en" data-scroll-behavior="smooth" className={`${plusJakarta.variable} scroll-smooth`}>
+      <body className="font-sans antialiased bg-[#FEFCFD] text-[#162521] selection:bg-[#461313] selection:text-white min-h-full w-full" suppressHydrationWarning>
         {children}
       </body>
     </html>
