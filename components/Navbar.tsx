@@ -62,18 +62,35 @@ export default function Navbar({
           />
         </Link>
 
-        {/* Desktop Navigation Links */}
+        {/* Desktop Navigation Links: [Home, About Us, Services, Projects] */}
         <div className="hidden md:flex items-center gap-6 lg:gap-10">
           <Link
-            href="/projects"
-            id="nav-link-projects"
+            href="/"
+            id="nav-link-home"
             className={`text-[13px] font-semibold tracking-[0.08em] uppercase transition-colors py-1 ${
-              activePage === 'properties' || activePage === 'projects'
+              activePage === 'home'
                 ? 'text-[#D64933] border-b-2 border-[#D64933]'
                 : 'text-[#162521] hover:text-[#D64933]'
             }`}
           >
-            Projects
+            Home
+          </Link>
+          <Link
+            href="/about"
+            id="nav-link-about"
+            onClick={(e) => {
+              if (onAboutClick && typeof window !== 'undefined' && window.location.pathname === '/about') {
+                e.preventDefault();
+                onAboutClick();
+              }
+            }}
+            className={`text-[13px] font-semibold tracking-[0.08em] uppercase transition-colors py-1 ${
+              activePage === 'about'
+                ? 'text-[#D64933] border-b-2 border-[#D64933]'
+                : 'text-[#162521] hover:text-[#D64933]'
+            }`}
+          >
+            About Us
           </Link>
           <Link
             href="/services"
@@ -93,34 +110,15 @@ export default function Navbar({
             Services
           </Link>
           <Link
-            href="/about"
-            id="nav-link-about"
-            onClick={(e) => {
-              if (onAboutClick && typeof window !== 'undefined' && window.location.pathname === '/about') {
-                e.preventDefault();
-                onAboutClick();
-              }
-            }}
+            href="/projects"
+            id="nav-link-projects"
             className={`text-[13px] font-semibold tracking-[0.08em] uppercase transition-colors py-1 ${
-              activePage === 'about'
+              activePage === 'properties' || activePage === 'projects'
                 ? 'text-[#D64933] border-b-2 border-[#D64933]'
                 : 'text-[#162521] hover:text-[#D64933]'
             }`}
           >
-            About
-          </Link>
-          <Link
-            href="/#frequently-asked-questions"
-            onClick={(e) => {
-              if (onFAQClick && typeof window !== 'undefined' && window.location.pathname === '/') {
-                e.preventDefault();
-                onFAQClick();
-              }
-            }}
-            id="nav-link-faq"
-            className="text-[13px] font-semibold tracking-[0.08em] text-[#162521] hover:text-[#D64933] transition-colors uppercase cursor-pointer py-1"
-          >
-            FAQ
+            Projects
           </Link>
         </div>
 
@@ -178,18 +176,36 @@ export default function Navbar({
               Menu
             </span>
           </div>
+          {/* Mobile links in requested order: Home, About Us, Services, Projects */}
           <Link
-            href="/projects"
+            href="/"
             onClick={() => {
               setMobileMenuOpen(false);
             }}
             className={`text-left py-3 px-3.5 text-sm font-semibold tracking-wider rounded-xl uppercase transition-colors min-h-[48px] flex items-center justify-between touch-manipulation ${
-              activePage === 'properties' || activePage === 'projects'
+              activePage === 'home'
                 ? 'text-[#D64933] bg-stone-100 font-bold'
                 : 'text-[#162521] hover:text-[#D64933] active:bg-stone-100 hover:bg-stone-50'
             }`}
           >
-            <span>Projects</span>
+            <span>Home</span>
+            <ArrowRight className="w-4 h-4 text-stone-400" />
+          </Link>
+          <Link
+            href="/about"
+            onClick={() => {
+              setMobileMenuOpen(false);
+              if (onAboutClick && typeof window !== 'undefined' && window.location.pathname === '/about') {
+                onAboutClick();
+              }
+            }}
+            className={`text-left py-3 px-3.5 text-sm font-semibold tracking-wider rounded-xl uppercase transition-colors min-h-[48px] flex items-center justify-between touch-manipulation ${
+              activePage === 'about'
+                ? 'text-[#D64933] bg-stone-100 font-bold'
+                : 'text-[#162521] hover:text-[#D64933] active:bg-stone-100 hover:bg-stone-50'
+            }`}
+          >
+            <span>About Us</span>
             <ArrowRight className="w-4 h-4 text-stone-400" />
           </Link>
           <Link
@@ -210,33 +226,17 @@ export default function Navbar({
             <ArrowRight className="w-4 h-4 text-stone-400" />
           </Link>
           <Link
-            href="/about"
+            href="/projects"
             onClick={() => {
               setMobileMenuOpen(false);
-              if (onAboutClick && typeof window !== 'undefined' && window.location.pathname === '/about') {
-                onAboutClick();
-              }
             }}
             className={`text-left py-3 px-3.5 text-sm font-semibold tracking-wider rounded-xl uppercase transition-colors min-h-[48px] flex items-center justify-between touch-manipulation ${
-              activePage === 'about'
+              activePage === 'properties' || activePage === 'projects'
                 ? 'text-[#D64933] bg-stone-100 font-bold'
                 : 'text-[#162521] hover:text-[#D64933] active:bg-stone-100 hover:bg-stone-50'
             }`}
           >
-            <span>About</span>
-            <ArrowRight className="w-4 h-4 text-stone-400" />
-          </Link>
-          <Link
-            href="/#frequently-asked-questions"
-            onClick={() => {
-              setMobileMenuOpen(false);
-              if (onFAQClick && typeof window !== 'undefined' && window.location.pathname === '/') {
-                onFAQClick();
-              }
-            }}
-            className="text-left py-3 px-3.5 text-sm font-semibold tracking-wider text-[#162521] hover:text-[#D64933] active:bg-stone-100 hover:bg-stone-50 rounded-xl uppercase transition-colors min-h-[48px] flex items-center justify-between touch-manipulation"
-          >
-            <span>FAQ</span>
+            <span>Projects</span>
             <ArrowRight className="w-4 h-4 text-stone-400" />
           </Link>
           <div className="pt-2 mt-1 border-t border-stone-100">
