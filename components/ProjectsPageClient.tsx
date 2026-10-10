@@ -236,7 +236,7 @@ export default function ProjectsPageClient() {
                   placeholder="Filter by city, area or name..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-white border border-stone-200 focus:border-[#461313] focus:outline-none rounded-xl pl-9 pr-4 py-2.5 text-xs sm:text-sm text-[#162521] placeholder:text-stone-400 transition-colors shadow-2xs"
+                  className="w-full bg-white border border-stone-200 focus:border-[#461313] focus:outline-none rounded-xl pl-9 pr-4 py-2.5 text-base sm:text-xs md:text-sm text-[#162521] placeholder:text-stone-400 transition-colors shadow-2xs min-h-[44px]"
                 />
               </div>
             </div>

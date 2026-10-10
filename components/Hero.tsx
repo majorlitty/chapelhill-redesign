@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { ArrowRight, Compass, ShieldCheck } from 'lucide-react';
 import { motion } from 'motion/react';
@@ -10,45 +10,7 @@ interface HeroProps {
   onBookVisit: () => void;
 }
 
-interface Hotspot {
-  id: string;
-  top: string;
-  left: string;
-  title: string;
-  subtitle: string;
-  details: string;
-}
-
-const ARCHITECTURAL_HOTSPOTS: Hotspot[] = [
-  {
-    id: 'penthouse',
-    top: '28%',
-    left: '68%',
-    title: 'Executive Sky Suite',
-    subtitle: 'Cantilevered Glass Panorama',
-    details: 'Frameless triple-pane thermal glass with 270° hillside horizon views and automated solar shading.',
-  },
-  {
-    id: 'biophilic',
-    top: '34%',
-    left: '38%',
-    title: 'Biophilic Sky Gardens',
-    subtitle: 'Tiered Rooftop Terraces',
-    details: 'Drought-tolerant native Mediterranean landscaping with integrated ambient drip irrigation and night uplighting.',
-  },
-  {
-    id: 'atrium',
-    top: '64%',
-    left: '52%',
-    title: 'Grand Living Atrium',
-    subtitle: 'Double-Height Hearth Gallery',
-    details: 'Seamless indoor-outdoor entertaining lounge with custom walnut accents and radiant heated Italian terrazzo.',
-  },
-];
-
 export default function Hero({ onExploreHomes, onBookVisit }: HeroProps) {
-  const [activeHotspot, setActiveHotspot] = useState<Hotspot | null>(null);
-
   return (
     <section className="relative w-full overflow-hidden min-h-[80vh] flex flex-col justify-start pb-16 sm:pb-24">
       {/* Background Soft Sky & Cloud Atmosphere */}
@@ -70,7 +32,7 @@ export default function Hero({ onExploreHomes, onBookVisit }: HeroProps) {
           initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-          className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-[76px] font-extrabold text-[#162521] tracking-[-0.035em] leading-[1.12] sm:leading-[1.06] max-w-4xl mx-auto drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)] px-2"
+          className="text-3xl sm:text-5xl md:text-6xl lg:text-[76px] font-extrabold text-[#162521] tracking-[-0.035em] leading-[1.12] sm:leading-[1.06] max-w-4xl mx-auto drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)] px-2"
         >
           You Dream. We Build.
         </motion.h1>
@@ -123,7 +85,7 @@ export default function Hero({ onExploreHomes, onBookVisit }: HeroProps) {
         transition={{ duration: 0.85, delay: 0.38, ease: [0.22, 1, 0.36, 1] }}
         className="relative w-full max-w-6xl mx-auto mt-10 sm:mt-14 lg:mt-16 px-3 sm:px-6"
       >
-        <div className="relative w-full mx-auto overflow-hidden rounded-2xl sm:rounded-3xl h-[400px] xs:h-[480px] sm:h-[640px] md:h-[760px]">
+        <div className="relative w-full mx-auto overflow-hidden rounded-2xl sm:rounded-3xl h-[340px] sm:h-[540px] md:h-[680px] lg:h-[760px]">
           {/* Luxury Villa Hero Image */}
           <div className="absolute inset-0 w-full h-full">
             <Image
@@ -147,49 +109,6 @@ export default function Hero({ onExploreHomes, onBookVisit }: HeroProps) {
           {/* Left & Right ambient mist vignetting */}
           <div className="absolute inset-y-0 left-0 w-12 sm:w-32 bg-gradient-to-r from-[#FEFCFD]/70 to-transparent pointer-events-none" />
           <div className="absolute inset-y-0 right-0 w-12 sm:w-32 bg-gradient-to-l from-[#FEFCFD]/70 to-transparent pointer-events-none" />
-
-          {/* Interactive Architectural Hotspot Beacons */}
-          {ARCHITECTURAL_HOTSPOTS.map((hotspot) => (
-            <div
-              key={hotspot.id}
-              className="absolute z-20"
-              style={{ top: hotspot.top, left: hotspot.left }}
-            >
-              <button
-                onClick={() => setActiveHotspot(activeHotspot?.id === hotspot.id ? null : hotspot)}
-                className="relative flex items-center justify-center w-8 h-8 rounded-full bg-white text-[#162521] shadow-lg border border-white/90 hover:scale-110 active:scale-95 transition-all cursor-pointer -translate-x-1/2 -translate-y-1/2 touch-manipulation before:absolute before:-inset-2 before:content-['']"
-                aria-label={hotspot.title}
-                id={`hotspot-${hotspot.id}`}
-              >
-                {/* Pulsing beacon wave with accent #D64933 */}
-                <span className="absolute inset-0 rounded-full bg-[#D64933] animate-ping opacity-40 pointer-events-none" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#461313]" />
-              </button>
-
-              {/* Tooltip Card */}
-              {activeHotspot?.id === hotspot.id && (
-                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-64 max-w-[calc(100vw-3rem)] p-3.5 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-stone-200/90 text-left z-30 animate-in fade-in zoom-in-95 duration-200">
-                  <div className="flex items-center justify-between text-[11px] font-semibold tracking-wider text-[#D64933] uppercase mb-1">
-                    <span className="truncate pr-2">{hotspot.subtitle}</span>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setActiveHotspot(null);
-                      }}
-                      className="text-slate-400 hover:text-[#162521] p-1 cursor-pointer"
-                      aria-label="Close hotspot detail"
-                    >
-                      ✕
-                    </button>
-                  </div>
-                  <h4 className="text-sm font-bold text-[#162521]">{hotspot.title}</h4>
-                  <p className="mt-1 text-xs text-slate-600 leading-relaxed">
-                    {hotspot.details}
-                  </p>
-                </div>
-              )}
-            </div>
-          ))}
 
           {/* Floating Estate Details Badge in Bottom Corner */}
           <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 z-20 hidden md:flex items-center gap-3 bg-white/90 backdrop-blur-md border border-white/90 rounded-2xl px-4 py-2.5 shadow-md">

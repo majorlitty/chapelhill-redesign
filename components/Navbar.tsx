@@ -140,14 +140,14 @@ export default function Navbar({
         <div className="flex md:hidden items-center gap-2">
           <button
             onClick={onContactClick}
-            className="bg-[#461313] hover:bg-[#D64933] text-white px-3.5 py-2 rounded-full text-xs font-semibold inline-flex items-center gap-1.5 transition-colors min-h-[40px] shadow-xs active:scale-95"
+            className="bg-[#461313] hover:bg-[#D64933] text-white px-3.5 py-2 rounded-full text-xs font-semibold inline-flex items-center gap-1.5 transition-colors min-h-[44px] shadow-xs active:scale-95 touch-manipulation cursor-pointer"
           >
             <span>Contact</span>
             <ArrowRight className="w-3 h-3" />
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="w-10 h-10 rounded-xl text-[#162521] bg-white/80 hover:bg-white border border-stone-200/80 shadow-xs flex items-center justify-center transition-colors cursor-pointer active:scale-95 touch-manipulation"
+            className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-xl text-[#162521] bg-white/80 hover:bg-white border border-stone-200/80 shadow-xs flex items-center justify-center transition-colors cursor-pointer active:scale-95 touch-manipulation"
             aria-label="Toggle menu"
             aria-expanded={mobileMenuOpen}
             id="mobile-menu-toggle"
@@ -161,7 +161,7 @@ export default function Navbar({
       {mobileMenuOpen && (
         <div 
           ref={mobileMenuRef}
-          className="md:hidden mt-3 p-4 rounded-2xl bg-white/98 backdrop-blur-2xl border border-stone-200 shadow-2xl flex flex-col gap-1 animate-in fade-in slide-in-from-top-3 duration-200"
+          className="md:hidden mt-3 p-4 rounded-2xl bg-white/98 backdrop-blur-2xl border border-stone-200 shadow-2xl flex flex-col gap-1 max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain animate-in fade-in slide-in-from-top-3 duration-200"
         >
           <div className="flex items-center justify-between px-2 py-1.5 border-b border-stone-100 mb-2">
             <Image

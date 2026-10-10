@@ -133,7 +133,7 @@ export default function InfoDrawer({ isOpen, type, onClose, onBookVisit }: InfoD
         </div>
 
         {/* Footer */}
-        <div className="p-4 sm:p-5 border-t border-slate-100 bg-stone-50 flex items-center justify-between gap-3 shrink-0">
+        <div className="p-4 sm:p-5 border-t border-slate-100 bg-stone-50 flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 shrink-0">
           {type === 'services' ? (
             <>
               <span className="text-xs text-slate-500">Tailored to your family office requirements</span>

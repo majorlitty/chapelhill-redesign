@@ -109,7 +109,7 @@ export default function AboutSection({ onLearnMoreServices, onContactClick }: Ab
         </div>
 
         {/* The Exact Quote Formatted with Editorial Elegance & Color Accents */}
-        <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#162521] tracking-[-0.03em] leading-[1.25] sm:leading-[1.18] px-2">
+        <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#162521] tracking-[-0.03em] leading-[1.25] sm:leading-[1.18] px-2">
           &ldquo;At Chapelhill Multicompany International, we epitomize excellence in{' '}
           <span className="underline decoration-[#D64933] decoration-2 underline-offset-4 sm:underline-offset-8">
             property development
@@ -245,7 +245,7 @@ export default function AboutSection({ onLearnMoreServices, onContactClick }: Ab
 
         {/* Right Column (6 Cols): Architectural Showcase Mirroring Active Discipline */}
         <div className="lg:col-span-6 flex flex-col">
-          <div className="relative w-full h-[280px] xs:h-[340px] sm:h-[420px] lg:h-full min-h-[280px] rounded-2xl sm:rounded-3xl overflow-hidden border border-white/80 shadow-[0_16px_44px_rgba(22,37,33,0.09)] group">
+          <div className="relative w-full h-[280px] sm:h-[400px] lg:h-full min-h-[280px] lg:min-h-[460px] rounded-2xl sm:rounded-3xl overflow-hidden border border-white/80 shadow-[0_16px_44px_rgba(22,37,33,0.09)] group">
             {/* Background Image of Selected Discipline */}
             <Image
               src={currentDiscipline.image}

@@ -349,10 +349,10 @@ export default function ServicesPageClient() {
             </p>
 
             {/* Interactive Service Filter Tabs */}
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-2 p-1.5 bg-stone-100/80 backdrop-blur-md rounded-2xl border border-stone-200 max-w-3xl mx-auto">
+            <div className="mt-8 sm:mt-10 flex items-center justify-start sm:justify-center gap-1.5 sm:gap-2 p-1.5 bg-stone-100/80 backdrop-blur-md rounded-2xl border border-stone-200 max-w-3xl mx-auto overflow-x-auto sm:flex-wrap scrollbar-none touch-manipulation">
               <button
                 onClick={() => setActiveFilter('all')}
-                className={`px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-all cursor-pointer ${
+                className={`px-3.5 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-all cursor-pointer whitespace-nowrap min-h-[40px] touch-manipulation ${
                   activeFilter === 'all'
                     ? 'bg-white text-[#461313] shadow-sm'
                     : 'text-stone-600 hover:text-[#162521]'
@@ -364,7 +364,7 @@ export default function ServicesPageClient() {
                 <button
                   key={srv.id}
                   onClick={() => setActiveFilter(srv.id)}
-                  className={`px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-all cursor-pointer flex items-center gap-1.5 ${
+                  className={`px-3.5 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap min-h-[40px] touch-manipulation ${
                     activeFilter === srv.id
                       ? 'bg-[#461313] text-white shadow-sm'
                       : 'text-stone-600 hover:text-[#162521]'

@@ -18,20 +18,20 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
-  title: 'Chapelhill — Luxury Real Estate & Architectural Estates',
+  title: 'Chapelhill Luxury Real Estate',
   description:
-    'Explore thoughtfully designed luxury homes in premium locations, crafted to match modern lifestyles with comfort, elegance, and long-term value.',
+    'Find your dream luxury home with Chapelhill. Curated architectural estates, premium locations, and bespoke property advisory.',
   openGraph: {
-    title: 'Chapelhill — Luxury Real Estate & Architectural Estates',
+    title: 'Chapelhill Luxury Real Estate',
     description:
-      'Explore thoughtfully designed luxury homes in premium locations, crafted to match modern lifestyles with comfort, elegance, and long-term value.',
+      'Find your dream luxury home with Chapelhill. Curated architectural estates, premium locations, and bespoke property advisory.',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Chapelhill — Luxury Real Estate & Architectural Estates',
+    title: 'Chapelhill Luxury Real Estate',
     description:
-      'Explore thoughtfully designed luxury homes in premium locations, crafted to match modern lifestyles with comfort, elegance, and long-term value.',
+      'Find your dream luxury home with Chapelhill. Curated architectural estates, premium locations, and bespoke property advisory.',
   },
   icons: {
     icon: '/Chapelhill-Company-Logo.png',

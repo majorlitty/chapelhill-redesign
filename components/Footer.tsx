@@ -75,10 +75,7 @@ export default function Footer({
                   referrerPolicy="no-referrer"
                 />
               </Link>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E5C583]/15 text-[#E5C583] text-xs font-semibold border border-[#E5C583]/30 tracking-wide">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#E5C583]" />
-                LASRERA Accredited
-              </span>
+              
             </div>
             <p className="text-xs sm:text-base text-stone-400 leading-relaxed">
               Institutional-grade luxury architecture, private estates, and verified diaspora development advisory across Lagos and prime African real estate corridors.

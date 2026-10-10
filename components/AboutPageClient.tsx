@@ -694,14 +694,14 @@ export default function AboutPageClient() {
       {/* Team Member Detail Modal */}
       {selectedMember && (
         <div 
-          className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 animate-in fade-in duration-200"
           onClick={() => setSelectedMember(null)}
         >
           <div 
-            className="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-stone-200 animate-in zoom-in-95 duration-200"
+            className="bg-white rounded-3xl max-w-lg w-full max-h-[calc(100dvh-2rem)] flex flex-col overflow-hidden shadow-2xl border border-stone-200 animate-in zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative aspect-video sm:aspect-[4/3] bg-stone-100">
+            <div className="relative aspect-video sm:aspect-[4/3] max-h-52 sm:max-h-64 bg-stone-100 shrink-0">
               <Image
                 src={selectedMember.image}
                 alt={selectedMember.name}
@@ -712,14 +712,14 @@ export default function AboutPageClient() {
               />
               <button
                 onClick={() => setSelectedMember(null)}
-                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center transition-colors cursor-pointer"
+                className="absolute top-3 right-3 sm:top-4 sm:right-4 w-9 h-9 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center transition-colors cursor-pointer"
                 aria-label="Close modal"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <div className="p-6 sm:p-8">
+            <div className="p-5 sm:p-8 overflow-y-auto flex-1 overscroll-contain">
               <span className="text-xs font-bold uppercase tracking-wider text-[#D64933]">
                 {selectedMember.role}
               </span>

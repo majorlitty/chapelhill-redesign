@@ -253,7 +253,7 @@ export default function FAQSection({ onContactClick }: FAQSectionProps) {
                 id={`faq-btn-${faq.id}`}
                 aria-expanded={isOpen}
                 aria-controls={`faq-panel-${faq.id}`}
-                className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#461313]/20"
+                className="w-full text-left p-4 sm:p-6 flex items-center justify-between gap-3 sm:gap-4 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#461313]/20 touch-manipulation min-h-[48px]"
               >
                 <div className="flex items-start gap-3 sm:gap-4">
                   <span className="w-6 h-6 rounded-full bg-stone-100 text-[#461313] text-xs font-bold flex items-center justify-center shrink-0 mt-0.5 border border-stone-200">

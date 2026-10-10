@@ -41,6 +41,7 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [copiedLink, setCopiedLink] = useState(false);
+  const touchStartXRef = React.useRef<number | null>(null);
 
   // Available categories in this project's gallery
   const categories = [
@@ -191,29 +192,31 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
             </div>
 
             {/* Quick Actions (Inspection & Share) */}
-            <div className="flex flex-wrap items-center gap-3 shrink-0">
-              <button
-                onClick={handleShare}
-                className="px-4 py-3 rounded-xl border border-stone-200 hover:border-stone-400 bg-white hover:bg-stone-50 text-stone-700 text-xs font-semibold flex items-center gap-2 transition-colors cursor-pointer shadow-2xs"
-                title="Copy project link"
-              >
-                <Share2 className="w-4 h-4 text-stone-500" />
-                <span>{copiedLink ? 'Link Copied!' : 'Share'}</span>
-              </button>
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 shrink-0 w-full lg:w-auto">
+              <div className="flex items-center gap-2.5 w-full sm:w-auto">
+                <button
+                  onClick={handleShare}
+                  className="flex-1 sm:flex-initial px-4 py-3 rounded-xl border border-stone-200 hover:border-stone-400 bg-white hover:bg-stone-50 text-stone-700 text-xs font-semibold flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-2xs min-h-[44px]"
+                  title="Copy project link"
+                >
+                  <Share2 className="w-4 h-4 text-stone-500" />
+                  <span>{copiedLink ? 'Link Copied!' : 'Share'}</span>
+                </button>
 
-              <a
-                href={whatsappInquiryUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold flex items-center gap-2 transition-colors cursor-pointer shadow-2xs"
-              >
-                <MessageCircle className="w-4 h-4 fill-white" />
-                <span>WhatsApp Inquiry</span>
-              </a>
+                <a
+                  href={whatsappInquiryUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 sm:flex-initial px-4 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-2xs min-h-[44px]"
+                >
+                  <MessageCircle className="w-4 h-4 fill-white" />
+                  <span>WhatsApp</span>
+                </a>
+              </div>
 
               <button
                 onClick={() => setBookingModalOpen(true)}
-                className="px-5 py-3 rounded-xl bg-[#461313] hover:bg-[#D64933] text-white text-xs sm:text-sm font-bold flex items-center gap-2 transition-all shadow-md hover:shadow-lg cursor-pointer"
+                className="w-full sm:w-auto px-5 py-3 rounded-xl bg-[#461313] hover:bg-[#D64933] text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-lg cursor-pointer min-h-[44px]"
               >
                 <Calendar className="w-4 h-4" />
                 <span>Schedule Private Viewing</span>
@@ -222,63 +225,63 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
           </div>
 
           {/* Key Metric Highlights Bar */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mt-6 sm:mt-8">
-            <div className="p-3.5 rounded-2xl bg-white border border-stone-200/80 shadow-2xs">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3 mt-6 sm:mt-8">
+            <div className="p-3 sm:p-3.5 rounded-2xl bg-white border border-stone-200/80 shadow-2xs">
               <span className="text-[11px] text-stone-500 flex items-center gap-1">
                 <BedDouble className="w-3.5 h-3.5 text-[#D64933]" />
                 Bedrooms
               </span>
-              <span className="text-base sm:text-lg font-bold text-[#162521] mt-1 block">
+              <span className="text-sm sm:text-base lg:text-lg font-bold text-[#162521] mt-1 block">
                 5 Ensuite
               </span>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-white border border-stone-200/80 shadow-2xs">
+            <div className="p-3 sm:p-3.5 rounded-2xl bg-white border border-stone-200/80 shadow-2xs">
               <span className="text-[11px] text-stone-500 flex items-center gap-1">
                 <Bath className="w-3.5 h-3.5 text-[#D64933]" />
                 Bathrooms
               </span>
-              <span className="text-base sm:text-lg font-bold text-[#162521] mt-1 block">
+              <span className="text-sm sm:text-base lg:text-lg font-bold text-[#162521] mt-1 block">
                 5.5 Baths
               </span>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-white border border-stone-200/80 shadow-2xs">
+            <div className="p-3 sm:p-3.5 rounded-2xl bg-white border border-stone-200/80 shadow-2xs">
               <span className="text-[11px] text-stone-500 flex items-center gap-1">
                 <Home className="w-3.5 h-3.5 text-[#D64933]" />
                 Staff BQ
               </span>
-              <span className="text-base sm:text-lg font-bold text-[#162521] mt-1 block">
+              <span className="text-sm sm:text-base lg:text-lg font-bold text-[#162521] mt-1 block truncate">
                 1 Ensuite BQ
               </span>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-white border border-stone-200/80 shadow-2xs">
+            <div className="p-3 sm:p-3.5 rounded-2xl bg-white border border-stone-200/80 shadow-2xs">
               <span className="text-[11px] text-stone-500 flex items-center gap-1">
                 <Car className="w-3.5 h-3.5 text-[#D64933]" />
                 Parking Space
               </span>
-              <span className="text-base sm:text-lg font-bold text-[#162521] mt-1 block">
+              <span className="text-sm sm:text-base lg:text-lg font-bold text-[#162521] mt-1 block truncate">
                 4 – 6 Cars
               </span>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-white border border-stone-200/80 shadow-2xs">
+            <div className="p-3 sm:p-3.5 rounded-2xl bg-white border border-stone-200/80 shadow-2xs">
               <span className="text-[11px] text-stone-500 flex items-center gap-1">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
                 Community
               </span>
-              <span className="text-base sm:text-lg font-bold text-[#162521] mt-1 block truncate">
+              <span className="text-sm sm:text-base lg:text-lg font-bold text-[#162521] mt-1 block truncate">
                 Royal Gardens
               </span>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-white border border-stone-200/80 shadow-2xs">
+            <div className="p-3 sm:p-3.5 rounded-2xl bg-white border border-stone-200/80 shadow-2xs">
               <span className="text-[11px] text-stone-500 flex items-center gap-1">
                 <Sparkles className="w-3.5 h-3.5 text-[#D64933]" />
                 Handover
               </span>
-              <span className="text-base sm:text-lg font-bold text-emerald-700 mt-1 block truncate">
+              <span className="text-sm sm:text-base lg:text-lg font-bold text-emerald-700 mt-1 block truncate">
                 Immediate
               </span>
             </div>
@@ -583,10 +586,26 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
               </div>
             </div>
 
-            {/* Main Image Stage */}
+            {/* Main Image Stage with Mobile Swipe Gesture Support */}
             <div 
-              className="relative flex-1 w-full max-w-6xl mx-auto my-3 flex items-center justify-center overflow-hidden"
+              className="relative flex-1 w-full max-w-6xl mx-auto my-3 flex items-center justify-center overflow-hidden touch-pan-y"
               onClick={(e) => e.stopPropagation()}
+              onTouchStart={(e) => {
+                touchStartXRef.current = e.touches[0].clientX;
+              }}
+              onTouchEnd={(e) => {
+                if (touchStartXRef.current === null) return;
+                const touchEndX = e.changedTouches[0].clientX;
+                const diff = touchStartXRef.current - touchEndX;
+                if (diff > 45) {
+                  setLightboxIndex((lightboxIndex + 1) % project.gallery.length);
+                } else if (diff < -45) {
+                  setLightboxIndex(
+                    (lightboxIndex - 1 + project.gallery.length) % project.gallery.length
+                  );
+                }
+                touchStartXRef.current = null;
+              }}
             >
               <div className="relative w-full h-full max-h-[75vh]">
                 <Image

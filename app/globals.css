@@ -1,19 +1,21 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-/* Ensure only one global browser window scrollbar and natural document flow */
+/* Ensure only one global browser window scrollbar, prevent horizontal blowout on all screen sizes */
 html {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
   min-height: 100%;
   overflow-y: auto;
+  overflow-x: clip;
 }
 
 body {
   touch-action: manipulation;
   min-height: 100%;
   /* Avoid any independent scrolling on body or inner elements */
-  overflow: visible;
+  overflow-y: visible;
+  overflow-x: clip;
 }
 
 /* Hide scrollbar for mobile swipeable carousels while maintaining functionality */
