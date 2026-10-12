@@ -47,23 +47,18 @@ const TEAM_MEMBERS: TeamMember[] = [
     name: 'Dr. Christopher Inegbedion',
     role: 'Chairman',
     image: '/images/team/dr-christopher-inegbedion.png',
-    bio: 'Steve brings vast expertise in facility management, projects, procurement, and quantity surveying. He holds certifications from Lagos Business School and the UK’s Prince2 program.',
-    phone: '+234 803 286 5488',
-    email: 'chapelhillmulticompanyltd@gmail.com',
+    bio: 'Dr. Christopher Obhiokholen Inegbedion brings a wealth of leadership, governance, and strategic expertise to our board as Chairman. A respected Geriatric Psychiatrist by profession—holding an MB BS from Ahmadu Bello University alongside advanced certifications from the Royal College of Physicians and Surgeons of Canada and the CPSBC—Dr. Inegbedion is deeply committed to ethical, community-focused leadership. His extensive background in specialized care and organizational oversight guides our company’s strategic direction, ensuring steady growth, strong governance, and a steadfast commitment to excellence.',
     qualifications: [
       'Board Governance & Strategic Direction',
-      'Lagos Business School Certified',
-      'UK Prince2 Project Management Practitioner',
-      'Quantity Surveying & High-Yield Capital Deployment',
+  
     ],
   },
   {
     name: 'Victoria Olubunmi Afolayan',
     role: 'Board Member',
     image: '/Victoria Olubunmi Afolayan.jpeg',
-    bio: 'Victoria Olubunmi Afolayan serves on the Board of Directors of Chapelhill Multicompany International, providing strategic corporate governance, executive advisory, and institutional stewardship across our property development, civil construction, and investment portfolio.',
-    email: 'chapelhillmulticompanyltd@gmail.com',
-    qualifications: [
+    bio: 'Victoria Afolayan brings 20 years of extensive experience in administration, finance, and business management. Holding a Postgraduate Diploma in Accounting, a Postgraduate Certificate in Business Accounting, and a Certificate IV in Human Resources, she has built a strong background across both corporate and community services sectors, including finance management and quality assurance. Victoria combines her robust financial expertise with a dedicated, people-first leadership style for our board.',
+        qualifications: [
       'Board Governance & Corporate Oversight',
       'Strategic Real Estate Investment Direction',
       'Fiduciary & Institutional Stewardship',
@@ -75,8 +70,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     role: 'Director',
     image: '/images/team/barr-blessing-agada.jpg',
     bio: 'Barrister Blessing Agada oversees institutional governance, legal risk mitigation, land title verification, and corporate structuring for Chapelhill Multicompany International.',
-    phone: '+234 803 286 5488',
-    email: 'chapelhillmulticompanyltd@gmail.com',
+    
     qualifications: [
       'Legal & Corporate Regulatory Governance',
       'Lands Bureau & Governor’s Consent Title Advisory',
@@ -103,7 +97,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     role: 'Chief Executive Officer',
     image: '/images/team/nick-joel-okpanachi.png',
     bio: 'Nick Joel Okpanachi leads the executive management, development pipeline, investor relations, and overall vision of Chapelhill Multicompany International across Nigeria and the diaspora.',
-    phone: '+234 343 8119',
+    phone: '+234 703 836 8119',
     email: 'chapelhillmulticompanyltd@gmail.com',
     qualifications: [
       'Executive Leadership & Corporate Vision',
@@ -117,7 +111,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     role: 'Technical Director',
     image: '/images/team/olueseun.png',
     bio: 'Directs engineering precision, structural integrity, rapid wall technologies, architectural execution, and on-site building compliance across all ongoing and completed projects.',
-    email: 'chapelhillmulticompanyltd@gmail.com',
+    
     qualifications: [
       'Civil Engineering & Structural Design',
       'Automated Architectural Execution',
@@ -130,7 +124,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     role: 'Secretary & Legal Adviser',
     image: '/images/team/dennis-baba.jpg',
     bio: 'Dennis Baba spearheads legal compliance, statutory board secretarial documentation, contracts, and regulatory liaison with governmental authorities and institutional partners.',
-    email: 'chapelhillmulticompanyltd@gmail.com',
+    
     qualifications: [
       'Corporate Secretarial Management',
       'Statutory & Contractual Compliance',
