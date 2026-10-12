@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { 
@@ -27,6 +27,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
 import WhatsAppFAB from '@/components/WhatsAppFAB';
+import { ProjectsSkeletonGrid } from '@/components/Skeleton';
 
 interface ProjectDisplayItem {
   id: string;
@@ -51,6 +52,15 @@ export default function ProjectsPageClient() {
   const [searchQuery, setSearchQuery] = useState('');
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const [selectedProjectForBooking, setSelectedProjectForBooking] = useState<string>('Ivy Homes Abijo GRA');
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Fast simulated client fetch/hydration phase to showcase skeleton screen
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 450);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Format properties with clear City, State
   const projects: ProjectDisplayItem[] = useMemo(() => {
@@ -265,7 +275,9 @@ export default function ProjectsPageClient() {
 
         {/* Project List / Grid Section */}
         <section className="py-12 sm:py-16">
-          {filteredProjects.length === 0 ? (
+          {isLoading ? (
+            <ProjectsSkeletonGrid count={6} />
+          ) : filteredProjects.length === 0 ? (
             <div className="py-20 text-center bg-white rounded-3xl border border-stone-200 p-8">
               <Building2 className="w-12 h-12 text-stone-300 mx-auto mb-4" />
               <h3 className="text-lg font-bold text-[#162521]">No projects found matching your criteria</h3>

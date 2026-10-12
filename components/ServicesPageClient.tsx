@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { 
@@ -34,6 +34,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
 import WhatsAppFAB from '@/components/WhatsAppFAB';
+import { ServicesSkeletonList } from '@/components/Skeleton';
 
 interface ServiceDetail {
   id: string;
@@ -286,6 +287,15 @@ export default function ServicesPageClient() {
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState<string>('all');
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Fast simulated client fetch/hydration phase to showcase skeleton screen
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 450);
+    return () => clearTimeout(timer);
+  }, []);
 
   const openBookingFor = (serviceTitle: string) => {
     setSelectedServiceForModal(serviceTitle);
@@ -400,12 +410,15 @@ export default function ServicesPageClient() {
 
         {/* Detailed Services Breakdown Modules */}
         <section className="py-16 sm:py-24 space-y-16 sm:space-y-24 border-b border-stone-200/80">
-          {filteredServices.map((service, idx) => {
-            const isEven = idx % 2 === 1;
-            const IconComponent = service.icon;
+          {isLoading ? (
+            <ServicesSkeletonList count={4} />
+          ) : (
+            filteredServices.map((service, idx) => {
+              const isEven = idx % 2 === 1;
+              const IconComponent = service.icon;
 
-            return (
-              <div 
+              return (
+                <div 
                 id={service.id} 
                 key={service.id} 
                 className="scroll-mt-24 p-6 sm:p-10 lg:p-12 rounded-3xl bg-white border border-stone-200 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden"
@@ -554,7 +567,7 @@ export default function ServicesPageClient() {
                 </div>
               </div>
             );
-          })}
+          }))}
         </section>
 
         {/* Why Choose Us: Real Estate Solutions That Click */}
