@@ -450,7 +450,7 @@ export default function ProjectsPageClient() {
                   className="w-full bg-white/10 hover:bg-white/20 text-white border border-white/20 py-3 px-6 rounded-2xl font-semibold text-xs sm:text-sm transition-colors flex items-center justify-center gap-2"
                 >
                   <MessageCircle className="w-4 h-4 fill-white" />
-                  <span>WhatsApp Advisory (+234 903 913 0207)</span>
+                  <span>WhatsApp Advisory (+234 803 286 5488)</span>
                 </a>
               </div>
             </div>
