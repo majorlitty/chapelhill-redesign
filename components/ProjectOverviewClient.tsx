@@ -47,11 +47,13 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
   const categories = [
     { id: 'all', label: `All Photos (${project.gallery.length})` },
     { id: 'exterior', label: 'Exterior & Architecture' },
+    { id: 'site', label: 'Construction & Site Progress' },
     { id: 'living', label: 'Living & Dining' },
     { id: 'kitchen', label: 'Fitted Kitchen' },
     { id: 'bedroom', label: 'Bedroom Suites' },
     { id: 'amenity', label: 'Baths & Amenities' },
     { id: 'interior', label: 'Interiors & Foyers' },
+    { id: 'floorplan', label: 'Floor Plans & Drawings' },
   ].filter(
     (cat) =>
       cat.id === 'all' ||
@@ -102,8 +104,15 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
   };
 
   const whatsappInquiryUrl = `https://wa.me/2348035222045?text=${encodeURIComponent(
-    `Hello Chapelhill, I am interested in viewing ${project.name} in Royal Gardens Estate, Lekki-Ajah.`
+    `Hello Chapelhill, I am interested in viewing ${project.name} located at ${project.location}.`
   )}`;
+
+  const communityName = project.location.split(',')[0].replace('Axis', '').trim();
+  const bedroomsLabel = project.unitBreakdown[0]?.bedrooms ? `${project.unitBreakdown[0].bedrooms} Ensuite` : '5 Ensuite';
+  const bathroomsLabel = project.unitBreakdown[0]?.bathrooms ? `${project.unitBreakdown[0].bathrooms} Baths` : '5.5 Baths';
+  const bqLabel = project.totalUnits.toLowerCase().includes('bq') ? '1 Ensuite BQ' : 'Self-Contained';
+  const parkingLabel = project.keyHighlights.some(h => h.toLowerCase().includes('parking')) ? 'Ample Parking' : '4–6 Cars';
+  const handoverLabel = project.status === 'completed' ? 'Immediate' : project.status === 'ongoing' ? 'In Progress' : '100% Sold';
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#FEFCFD] via-[#FEFCFD] to-[#f7f3f5] text-[#162521] flex flex-col justify-between selection:bg-[#461313] selection:text-white">
@@ -232,7 +241,7 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
                 Bedrooms
               </span>
               <span className="text-sm sm:text-base lg:text-lg font-bold text-[#162521] mt-1 block">
-                5 Ensuite
+                {bedroomsLabel}
               </span>
             </div>
 
@@ -242,7 +251,7 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
                 Bathrooms
               </span>
               <span className="text-sm sm:text-base lg:text-lg font-bold text-[#162521] mt-1 block">
-                5.5 Baths
+                {bathroomsLabel}
               </span>
             </div>
 
@@ -252,7 +261,7 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
                 Staff BQ
               </span>
               <span className="text-sm sm:text-base lg:text-lg font-bold text-[#162521] mt-1 block truncate">
-                1 Ensuite BQ
+                {bqLabel}
               </span>
             </div>
 
@@ -262,7 +271,7 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
                 Parking Space
               </span>
               <span className="text-sm sm:text-base lg:text-lg font-bold text-[#162521] mt-1 block truncate">
-                4 – 6 Cars
+                {parkingLabel}
               </span>
             </div>
 
@@ -272,7 +281,7 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
                 Community
               </span>
               <span className="text-sm sm:text-base lg:text-lg font-bold text-[#162521] mt-1 block truncate">
-                Royal Gardens
+                {communityName}
               </span>
             </div>
 
@@ -282,7 +291,7 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
                 Handover
               </span>
               <span className="text-sm sm:text-base lg:text-lg font-bold text-emerald-700 mt-1 block truncate">
-                Immediate
+                {handoverLabel}
               </span>
             </div>
           </div>
@@ -298,15 +307,21 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
                 <span>Project Overview</span>
               </div>
               <h2 className="text-xl sm:text-2xl font-bold text-[#162521] tracking-tight mb-4">
-                Refined Luxury Living in Royal Gardens, Lekki-Ajah
+                {project.name}
               </h2>
               <div className="space-y-3.5 text-stone-600 text-sm sm:text-base leading-relaxed">
                 <p>
                   {project.description}
                 </p>
-                <p>
-                  Built and delivered to the exacting standards of Chapelhill Multicompany International, this completed 5-bedroom residence brings together generous family proportions, high-spec modern finishes, and serene privacy within one of the Lekki-Ajah corridor’s most prestigious master-planned communities.
-                </p>
+                {project.extendedOverview ? (
+                  <p className="whitespace-pre-line text-stone-500 text-xs sm:text-sm">
+                    {project.extendedOverview}
+                  </p>
+                ) : (
+                  <p>
+                    Built and delivered to the exacting standards of Chapelhill Multicompany International, this development brings together generous family proportions, high-spec modern finishes, and serene privacy within one of Lagos State’s most sought-after enclaves.
+                  </p>
+                )}
               </div>
 
               {/* Key Features Bullet List */}
@@ -332,31 +347,31 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
                 <div className="absolute top-0 right-0 w-48 h-48 bg-[#D64933]/15 rounded-full blur-2xl pointer-events-none" />
 
                 <span className="text-[11px] font-bold uppercase tracking-wider text-[#E5C583] block mb-1">
-                  Prime Gated Community
+                  Location &amp; Enclave
                 </span>
                 <h3 className="text-lg sm:text-xl font-bold text-white mb-3">
-                  Royal Gardens Estate, Lekki-Ajah
+                  {communityName}
                 </h3>
                 <p className="text-xs sm:text-sm text-stone-300 leading-relaxed mb-5">
-                  Royal Gardens is celebrated for its lush greenery, wide tree-lined paved boulevards, underground drainage, 24/7 security with motorized patrols, and round-the-clock estate management.
+                  Situated in {project.location}. A prestigious, secure enclave celebrated for prime road connectivity, high capital appreciation, and tranquil residential living.
                 </p>
 
                 <div className="space-y-2.5 text-xs text-stone-300 border-t border-white/10 pt-4">
                   <div className="flex items-center justify-between">
                     <span className="text-stone-400">Title Document:</span>
-                    <span className="font-semibold text-white">Governor’s Consent / Deed</span>
+                    <span className="font-semibold text-white">{project.financials.titleStatus || 'Governor’s Consent / Deed'}</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-stone-400">Plot Footprint:</span>
-                    <span className="font-semibold text-white">{project.landSize || '600 sqm Site'}</span>
+                    <span className="font-semibold text-white">{project.landSize || 'Dedicated Parcel'}</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-stone-400">Power Supply:</span>
-                    <span className="font-semibold text-white">Solar / Generator Integrated</span>
+                    <span className="font-semibold text-white">24/7 Solar &amp; Estate Power</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-stone-400">Water Source:</span>
-                    <span className="font-semibold text-white">Treated Industrial Borehole</span>
+                    <span className="font-semibold text-white">Dedicated Industrial Borehole</span>
                   </div>
                 </div>
               </div>
@@ -365,13 +380,17 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
               <div className="bg-white rounded-3xl border border-stone-200/90 p-6 shadow-xs flex flex-col justify-between">
                 <div>
                   <span className="text-xs font-bold uppercase tracking-wider text-stone-400 block mb-1">
-                    Turnkey Handover
+                    {project.status === 'completed' ? 'Turnkey Handover' : 'Technical Site Inspection'}
                   </span>
                   <h4 className="text-base font-bold text-[#162521]">
-                    Ready for Immediate Physical Move-In
+                    {project.status === 'completed'
+                      ? 'Ready for Immediate Physical Move-In'
+                      : 'Private Site Walkthrough & Technical Consultation'}
                   </h4>
                   <p className="text-xs text-stone-500 mt-1.5 leading-relaxed">
-                    Keys are ready for inspection and immediate allocation. Connect with our dedicated property advisory team to arrange a private walkthrough.
+                    {project.status === 'completed'
+                      ? 'Keys are ready for inspection and immediate allocation. Connect with our dedicated property advisory team to arrange a private walkthrough.'
+                      : 'Connect with our structural engineers and project directors to inspect ongoing civil progress, concrete casting, and technical milestones.'}
                   </p>
                 </div>
 
@@ -479,6 +498,47 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
             })}
           </div>
         </section>
+
+        {/* SECTION 2.5: ARCHITECTURAL SPECIFICATIONS & ENGINEERING STANDARDS */}
+        {project.architecturalSpecifications && project.architecturalSpecifications.length > 0 && (
+          <section className="mb-16 sm:mb-20">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-8 pb-4 border-b border-stone-200/80">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-[#D64933] block mb-1">
+                  Structural Integrity &amp; Utilities
+                </span>
+                <h2 className="text-xl sm:text-3xl font-bold text-[#162521] tracking-tight">
+                  Architectural Specifications &amp; Engineering Standards
+                </h2>
+                <p className="text-xs sm:text-sm text-stone-500 mt-1">
+                  Civil engineering specifications, utility infrastructure, and structural compliance audited by Chapelhill.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {project.architecturalSpecifications.map((spec, sIdx) => (
+                <div 
+                  key={sIdx} 
+                  className="bg-white rounded-3xl border border-stone-200/90 p-6 sm:p-7 shadow-xs hover:border-stone-300 transition-colors"
+                >
+                  <h3 className="text-sm sm:text-base font-bold text-[#162521] flex items-center gap-2 mb-4 pb-3 border-b border-stone-100">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#461313]" />
+                    <span>{spec.category}</span>
+                  </h3>
+                  <ul className="space-y-3">
+                    {spec.items.map((item, iIdx) => (
+                      <li key={iIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-600 leading-relaxed">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* SECTION 3: OTHER COMPLETED & ONGOING PROJECTS */}
         <section className="pt-10 border-t border-stone-200/80">

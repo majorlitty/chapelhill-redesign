@@ -179,6 +179,40 @@ export const FEATURED_PROPERTIES: FeaturedProperty[] = [
       'Flexible 8-Month Payment Plan with 50% initial commitment',
     ],
   },
+  {
+    id: 'beachwood-lagos',
+    name: 'Beachwood Lagos — 5-Bed Semi-Detached Duplex',
+    location: 'Beachwood Estate, Ibeju-Lekki Axis, Lagos',
+    tagline: 'Direct Client Development • 5-Bedroom Semi-Detached Duplex with Rooftop Terrace',
+    status: 'ongoing',
+    statusLabel: 'Ongoing Construction • Direct Client Development',
+    startingPrice: 'Direct Client Development',
+    priceRange: 'Direct Client Commission • Custom Build Contract',
+    paymentPlan: 'Milestone-Based Construction Valuations',
+    totalUnits: '5-Bedroom Semi-Detached Duplex + BQ',
+    image: '/images/Beachwood Lagos/Beachwood project lagos 3d/Beachwood 3d images (1).jpeg',
+    description: 'A bespoke Direct Client Development delivered by Chapelhill Multicompany International in Beachwood Estate, Ibeju-Lekki. Featuring a 5-bedroom semi-detached luxury duplex with rooftop terrace, dedicated borehole water, 24/7 solar-backed power, and ample parking.',
+    unitBreakdown: [
+      {
+        title: '5-Bedroom Semi-Detached Duplex + Rooftop Terrace',
+        count: 'Bespoke Commission',
+        price: 'Direct Client Contract',
+        description: '3-storey contemporary semi-detached duplex featuring 5 ensuite bedrooms, dual family living salons, chef’s kitchen, self-contained staff BQ, and panoramic rooftop garden terrace.',
+      },
+    ],
+    specifications: [
+      'Dedicated High-Yield Industrial Borehole Potable Water System',
+      '24/7 Uninterruptible Power Supply with Solar-Inverter Changeover',
+      'Ample Multicar Interlocked Driveway Accommodating 4 to 6 Vehicles',
+      'Rooftop Garden Terrace Lounge & Cantilevered View Balconies',
+      'C25/30 Reinforced Concrete Slabs & High-Tensile Steel Rebar Works',
+    ],
+    investmentHighlights: [
+      'Direct Client Development: Managed end-to-end by Chapelhill civil engineers and project directors',
+      'Complete Utility Autonomy: Independent borehole and 24/7 power for maximum peace of mind',
+      'Prime Beachwood Location: High capital appreciation along the expanding Ibeju-Lekki corridor',
+    ],
+  },
 ];
 
 interface FeaturedPropertiesProps {

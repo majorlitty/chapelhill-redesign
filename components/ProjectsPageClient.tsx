@@ -74,6 +74,8 @@ export default function ProjectsPageClient() {
         cityState = 'Ogudu GRA, Lagos State';
       } else if (p.id.includes('royal-garden') || p.location.includes('Royal')) {
         cityState = 'Royal Gardens, Lekki-Ajah';
+      } else if (p.id.includes('beachwood') || p.location.includes('Beachwood')) {
+        cityState = 'Beachwood Estate, Ibeju-Lekki';
       }
 
       return {
@@ -99,11 +101,15 @@ export default function ProjectsPageClient() {
   const filteredProjects = useMemo(() => {
     return projects.filter((project) => {
       const matchesFilter = selectedFilter === 'all' || project.status === selectedFilter;
+      const q = searchQuery.toLowerCase().trim();
       const matchesSearch = 
-        project.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        project.cityState.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        project.fullLocation.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        project.tagline.toLowerCase().includes(searchQuery.toLowerCase());
+        !q ||
+        project.name.toLowerCase().includes(q) ||
+        project.cityState.toLowerCase().includes(q) ||
+        project.fullLocation.toLowerCase().includes(q) ||
+        project.tagline.toLowerCase().includes(q) ||
+        project.description.toLowerCase().includes(q) ||
+        project.highlights.some((h) => h.toLowerCase().includes(q));
       return matchesFilter && matchesSearch;
     });
   }, [projects, selectedFilter, searchQuery]);

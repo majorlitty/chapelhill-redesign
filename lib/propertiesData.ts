@@ -887,6 +887,167 @@ export const PROPERTIES: Property[] = [
       'Self-Contained Staff BQ: Ensuite boys’ quarters with independent side entrance',
     ],
   },
+  {
+    id: 'beachwood-lagos',
+    slug: 'beachwood-lagos',
+    name: 'Beachwood Lagos — 5-Bed Semi-Detached Duplex',
+    tagline: 'Direct Client Development • 5-Bedroom Semi-Detached Duplex with Rooftop Terrace',
+    location: 'Beachwood Estate, Ibeju-Lekki Axis, Lagos State, Nigeria',
+    status: 'ongoing',
+    statusLabel: 'Ongoing Construction • Direct Client Development',
+    heroImage: '/images/Beachwood Lagos/Beachwood project lagos 3d/Beachwood 3d images (1).jpeg',
+    gallery: [
+      {
+        url: '/images/Beachwood Lagos/Beachwood project lagos 3d/Beachwood 3d images (1).jpeg',
+        caption: 'Architectural Contemporary Exterior Facade at Twilight — 5-Bed Semi-Detached Duplex with Rooftop Terrace',
+        category: 'exterior',
+      },
+      {
+        url: '/images/Beachwood Lagos/Beachwood project lagos 3d/Beachwood 3d images (2).jpeg',
+        caption: 'Birds-Eye Aerial Perspective — Rooftop Garden Lounge, Ample Multicar Parking & Gated Driveway',
+        category: 'exterior',
+      },
+      {
+        url: '/images/Beachwood Lagos/Beachwood project lagos 3d/Beachwood 3d images (3).jpeg',
+        caption: 'Daylight Perspective Highlighting Floating Balconies, Geometric Wood-Clad Portico & Modern Fenestration',
+        category: 'exterior',
+      },
+      {
+        url: '/images/Beachwood Lagos/Beachwood project lagos 3d/Beachwood 3d images (4).jpeg',
+        caption: 'Dusk Ambient Lighting Render Showcasing Cantilevered Terraces, Glass Balustrades & Recessed Exterior Sconces',
+        category: 'exterior',
+      },
+      {
+        url: '/images/Beachwood Lagos/ongoing Beachwood project lagos/Beach wood construction progress (1).jpeg',
+        caption: 'Suspended Reinforced Concrete Slab Decking with High-Tensile Steel Rebar & Conduit Pipework Laid',
+        category: 'site',
+      },
+      {
+        url: '/images/Beachwood Lagos/ongoing Beachwood project lagos/Beach wood construction progress (2).jpeg',
+        caption: 'Dog-Leg Staircase Flight Formwork & Steel Rebar Structural Cages Prior to Concrete Cast',
+        category: 'site',
+      },
+      {
+        url: '/images/Beachwood Lagos/ongoing Beachwood project lagos/Beach wood construction progress (3).jpeg',
+        caption: 'Precision Staircase Riser Formwork & Electrical Conduit Layout Under Site Engineer Audit',
+        category: 'site',
+      },
+      {
+        url: '/images/Beachwood Lagos/ongoing Beachwood project lagos/Beach wood construction progress (4).jpeg',
+        caption: 'Panoramic Overview of Structural Suspended Floor Slab, Drop Beams & High-Spec Engineering Framework',
+        category: 'site',
+      },
+    ],
+    description: 'A bespoke Direct Client Development delivered by Chapelhill Multicompany International in Beachwood Estate, Ibeju-Lekki. This 5-bedroom semi-detached luxury duplex is designed with soaring contemporary lines, featuring a dedicated borehole potable water system, 24/7 power supply, ample multicar parking space, expansive cantilevered terraces, and a scenic rooftop lounge.',
+    extendedOverview: 'Beachwood Lagos represents an elite Direct Client Development custom-commissioned and currently under active civil construction by Chapelhill Multicompany International within the secure, serene Beachwood Estate along the prime Ibeju-Lekki corridor.\n\nFrom initial 3D architectural conceptualization to rigorous structural engineering and on-site concrete execution, Chapelhill manages every facet of the project lifecycle. The residence features 5 expansive ensuite bedrooms, a dual living room configuration with an upper private family lounge, a chef-grade contemporary kitchen, and an exclusive rooftop entertaining terrace.\n\nEngineered for enduring peace of mind and self-sufficiency, essential utility amenities include an independent high-yield borehole water treatment facility, 24/7 power supported by solar-inverter changeover infrastructure, and generous interlocked parking accommodating 4 to 6 vehicles with ease within a private gated compound.',
+    landSize: 'Dedicated Private Plot • Beachwood Estate',
+    totalUnits: '5-Bedroom Semi-Detached Duplex + BQ',
+    financials: {
+      startingPrice: 'Direct Client Development',
+      priceRange: 'Direct Client Commission • Custom Build Contract',
+      projectedRentalYield: '12% – 14% Annual Rental Yield in Prime Ibeju-Lekki Corridor',
+      projectedShortLetAnnualGross: '₦30,000,000 – ₦40,000,000 Projected Annual Gross',
+      capitalAppreciationForecast: 'High Capital Appreciation along the Lekki-Epe Infrastructure Corridor',
+      paymentStructure: 'Stage-by-Stage Milestone Valuations (Direct Client Contract)',
+      milestones: [
+        {
+          stage: 'Substructure & Foundation',
+          percentage: '25%',
+          description: 'Earthworks, deep raft foundation, ground beams, and damp-proof membrane installation (Completed)',
+        },
+        {
+          stage: 'Superstructure & Suspended Slabs',
+          percentage: '30%',
+          description: 'Reinforced concrete columns, suspended floor slabs, cantilevered terraces, and staircase casting (Currently In Progress)',
+        },
+        {
+          stage: 'Roofing, Blockwork & Carcass',
+          percentage: '20%',
+          description: 'Perimeter blockwork, parapet concrete capping, concealed roofing system, and exterior wall rendering',
+        },
+        {
+          stage: 'MEP, Borehole & Utilities',
+          percentage: '15%',
+          description: 'Industrial borehole drilling, 24/7 power wiring, solar changeover conduits, and plumbing first-fix',
+        },
+        {
+          stage: 'Turnkey Finishes & Commissioning',
+          percentage: '10%',
+          description: 'Custom fitted kitchen, sanitary ware, floor tiling, POP ceilings, interlocked paving, and physical handover',
+        },
+      ],
+      titleStatus: 'Governor’s Consent / Registered Deed of Assignment',
+      estimatedServiceCharge: 'Beachwood Estate Facility Management Rates',
+      handoverTimeline: 'Active Construction — Scheduled Milestone Delivery',
+    },
+    unitBreakdown: [
+      {
+        title: '5-Bedroom Semi-Detached Duplex + Rooftop Terrace',
+        count: '1 Bespoke Residence',
+        price: 'Direct Client Contract',
+        bedrooms: 5,
+        bathrooms: 6,
+        sizeSqM: '420 sqm Built Footprint',
+        description: 'A palatial 3-storey semi-detached residence boasting 5 ensuite bedrooms, expansive double-volume living and dining halls, private upper family lounge, self-contained staff quarters, and a scenic rooftop party terrace.',
+        features: [
+          '5 Generous Ensuite Bedroom Suites with Provision for Built-In Closets',
+          'Rooftop Terrace Garden Lounge with Panoramic Estate Views',
+          'Dedicated Industrial Borehole Potable Water System',
+          '24/7 Dual-Grid & Solar Inverter Power Infrastructure',
+          'Ample Interlocked Parking Space Accommodating 4–6 Vehicles',
+          'Ensuite Staff Quarters (Maid’s BQ) with Independent Access',
+          'Contemporary Chef Kitchen with Walk-In Storage Pantry',
+        ],
+      },
+    ],
+    architecturalSpecifications: [
+      {
+        category: 'Structural Engineering & Concrete Works',
+        items: [
+          'High-tensile ribbed steel rebar reinforcement exceeding Nigerian and British structural codes',
+          'C25/30 ready-mix vibrated reinforced concrete suspended slabs and heavy-duty drop beams',
+          'Monolithic reinforced concrete staircase flight with precision formwork and rebar cages',
+          'Multi-layered damp-proof coursing and waterproofing membrane across foundation and wet areas',
+        ],
+      },
+      {
+        category: 'Water, Plumbing & Drainage Utilities',
+        items: [
+          'Independent high-yield industrial borehole drilled into deep potable water aquifer',
+          'Automated submersible pump system with high-capacity overhead storage tanks',
+          'Multi-stage filtration and water treatment system supplying clean pressurized water',
+          'Engineered underground drainage layout with seamless connection to Beachwood central outfall',
+        ],
+      },
+      {
+        category: 'Electrical, Power & Solar Infrastructure',
+        items: [
+          '24/7 power provision backed by pre-installed solar-inverter conduits and heavy-duty changeover panels',
+          'Concealed heavy-gauge copper wiring with dedicated circuits for high-load appliances and air conditioning',
+          'Architectural warm LED recessed ceiling spotlights and exterior perimeter safety floodlights',
+          'Smart home automation conduits for automated access control, CCTV, and intercom',
+        ],
+      },
+      {
+        category: 'External Grounds, Parking & Compound Security',
+        items: [
+          'Spacious interlocked multicar driveway accommodating 4 to 6 vehicles with ease',
+          'High-security perimeter fencing with automated motorized gate wiring provision',
+          'Cantilevered terraces and open-air rooftop entertaining terrace with toughened glass balustrades',
+          'Dedicated pedestrian gatehouse and service entrance for independent staff movement',
+        ],
+      },
+    ],
+    keyHighlights: [
+      'Direct Client Development: Bespoke turnkey civil construction managed end-to-end by Chapelhill',
+      '5 Ensuite Bedrooms: Lavish private quarters including master sanctuary with private balcony',
+      'Private Borehole Water System: Independent, high-yield treated water supply for complete self-reliance',
+      '24/7 Power Infrastructure: Integrated solar inverter changeover panels and dual-grid estate connectivity',
+      'Ample Multicar Parking Space: Broad interlocked driveway comfortably parking 4 to 6 vehicles',
+      'Rooftop Terrace & Cantilevers: Expansive outdoor entertaining deck overlooking Beachwood Estate',
+      'Turnkey Engineering Quality: Supervised by COREN-certified engineers and Prince2 project managers',
+    ],
+  },
 ];
 
 export function getPropertyById(id: string): Property | undefined {
