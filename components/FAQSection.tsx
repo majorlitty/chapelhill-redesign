@@ -1,9 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   ChevronDown, 
+  ChevronLeft,
+  ChevronRight,
   HelpCircle, 
   ShieldCheck, 
   Globe2, 
@@ -128,6 +130,10 @@ interface FAQSectionProps {
 export default function FAQSection({ onContactClick }: FAQSectionProps) {
   const [openItem, setOpenItem] = useState<string | null>('buy-property-abroad');
   const [selectedFilter, setSelectedFilter] = useState<'all' | 'diaspora' | 'construction' | 'legal' | 'general'>('all');
+  
+  const tabsRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
 
   const filteredFaqs = FAQS.filter((item) => {
     if (selectedFilter === 'all') return true;
@@ -136,6 +142,53 @@ export default function FAQSection({ onContactClick }: FAQSectionProps) {
 
   const toggleAccordion = (id: string) => {
     setOpenItem(openItem === id ? null : id);
+  };
+
+  const updateScrollState = useCallback(() => {
+    const el = tabsRef.current;
+    if (!el) return;
+    const { scrollLeft, scrollWidth, clientWidth } = el;
+    setCanScrollLeft(scrollLeft > 4);
+    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 4);
+  }, []);
+
+  useEffect(() => {
+    updateScrollState();
+    const el = tabsRef.current;
+    if (!el) return;
+
+    window.addEventListener('resize', updateScrollState);
+    el.addEventListener('scroll', updateScrollState, { passive: true });
+
+    // Initial check after paint
+    const timer = setTimeout(updateScrollState, 150);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', updateScrollState);
+      el.removeEventListener('scroll', updateScrollState);
+    };
+  }, [updateScrollState]);
+
+  const handleSlideLeft = () => {
+    if (!tabsRef.current) return;
+    tabsRef.current.scrollBy({ left: -220, behavior: 'smooth' });
+    setTimeout(updateScrollState, 300);
+  };
+
+  const handleSlideRight = () => {
+    if (!tabsRef.current) return;
+    tabsRef.current.scrollBy({ left: 220, behavior: 'smooth' });
+    setTimeout(updateScrollState, 300);
+  };
+
+  const handleSelectFilter = (
+    category: 'all' | 'diaspora' | 'construction' | 'legal' | 'general',
+    e: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    setSelectedFilter(category);
+    e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    setTimeout(updateScrollState, 350);
   };
 
   return (
@@ -164,66 +217,127 @@ export default function FAQSection({ onContactClick }: FAQSectionProps) {
           Clear, transparent guidance on acquiring prime Nigerian property, verifying title security, managing construction remotely, and maximizing investment returns with Chapelhill.
         </p>
 
-        {/* Filter Categories - Mobile Horizontal Scrollable */}
-        <div className="flex items-center gap-1.5 p-1.5 bg-white border border-stone-200/90 rounded-2xl sm:rounded-full shadow-xs mt-6 max-w-full overflow-x-auto overscroll-x-contain scrollbar-none self-start sm:self-center touch-manipulation">
+        {/* Filter Categories with Left & Right Sliders */}
+        <div className="relative max-w-full w-full flex items-center justify-center gap-2 sm:gap-2.5 mt-6 px-1">
+          {/* Left Slider Button */}
           <button
-            onClick={() => setSelectedFilter('all')}
-            id="faq-filter-all"
-            className={`px-4 py-2 rounded-xl sm:rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer min-h-[40px] touch-manipulation ${
-              selectedFilter === 'all'
-                ? 'bg-[#461313] text-white shadow-xs'
-                : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50 active:bg-stone-100'
+            type="button"
+            onClick={handleSlideLeft}
+            disabled={!canScrollLeft}
+            id="faq-filter-slider-left"
+            aria-label="Slide FAQ categories left to view hidden options"
+            className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full border flex items-center justify-center transition-all duration-200 shrink-0 touch-manipulation shadow-xs cursor-pointer ${
+              canScrollLeft
+                ? 'bg-white hover:bg-[#461313] hover:text-white border-stone-300 text-[#162521] hover:shadow-md active:scale-95'
+                : 'bg-stone-100/70 border-stone-200/70 text-stone-300 cursor-not-allowed opacity-40'
             }`}
           >
-            All Questions ({FAQS.length})
+            <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
+
+          {/* Horizontal Scrollable Tabs Container with Dynamic Edge Fades */}
+          <div className="relative max-w-[calc(100vw-6.5rem)] sm:max-w-2xl lg:max-w-4xl overflow-hidden rounded-2xl sm:rounded-full">
+            {/* Left Edge Shadow / Fade Indicator when scrolled */}
+            {canScrollLeft && (
+              <div 
+                aria-hidden="true"
+                className="absolute left-0 inset-y-0 w-8 sm:w-12 bg-gradient-to-r from-white via-white/85 to-transparent pointer-events-none z-10 rounded-l-2xl sm:rounded-l-full" 
+              />
+            )}
+
+            {/* Right Edge Shadow / Fade Indicator when more options are hidden */}
+            {canScrollRight && (
+              <div 
+                aria-hidden="true"
+                className="absolute right-0 inset-y-0 w-8 sm:w-12 bg-gradient-to-l from-white via-white/85 to-transparent pointer-events-none z-10 rounded-r-2xl sm:rounded-r-full" 
+              />
+            )}
+
+            <div
+              ref={tabsRef}
+              className="flex items-center gap-1.5 p-1.5 bg-white border border-stone-200/90 rounded-2xl sm:rounded-full shadow-xs max-w-full overflow-x-auto scroll-smooth overscroll-x-contain scrollbar-none touch-manipulation"
+            >
+              <button
+                type="button"
+                onClick={(e) => handleSelectFilter('all', e)}
+                id="faq-filter-all"
+                className={`px-4 py-2 rounded-xl sm:rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer min-h-[40px] touch-manipulation shrink-0 ${
+                  selectedFilter === 'all'
+                    ? 'bg-[#461313] text-white shadow-xs'
+                    : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50 active:bg-stone-100'
+                }`}
+              >
+                All Questions ({FAQS.length})
+              </button>
+              <button
+                type="button"
+                onClick={(e) => handleSelectFilter('diaspora', e)}
+                id="faq-filter-diaspora"
+                className={`px-4 py-2 rounded-xl sm:rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 min-h-[40px] touch-manipulation shrink-0 ${
+                  selectedFilter === 'diaspora'
+                    ? 'bg-[#461313] text-white shadow-xs'
+                    : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50 active:bg-stone-100'
+                }`}
+              >
+                <Globe2 className="w-3.5 h-3.5" />
+                <span>Diaspora & Financing</span>
+              </button>
+              <button
+                type="button"
+                onClick={(e) => handleSelectFilter('legal', e)}
+                id="faq-filter-legal"
+                className={`px-4 py-2 rounded-xl sm:rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 min-h-[40px] touch-manipulation shrink-0 ${
+                  selectedFilter === 'legal'
+                    ? 'bg-[#461313] text-white shadow-xs'
+                    : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50 active:bg-stone-100'
+                }`}
+              >
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>Title & Due Diligence</span>
+              </button>
+              <button
+                type="button"
+                onClick={(e) => handleSelectFilter('construction', e)}
+                id="faq-filter-construction"
+                className={`px-4 py-2 rounded-xl sm:rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 min-h-[40px] touch-manipulation shrink-0 ${
+                  selectedFilter === 'construction'
+                    ? 'bg-[#461313] text-white shadow-xs'
+                    : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50 active:bg-stone-100'
+                }`}
+              >
+                <HardHat className="w-3.5 h-3.5" />
+                <span>Construction & Quality</span>
+              </button>
+              <button
+                type="button"
+                onClick={(e) => handleSelectFilter('general', e)}
+                id="faq-filter-general"
+                className={`px-4 py-2 rounded-xl sm:rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 min-h-[40px] touch-manipulation shrink-0 ${
+                  selectedFilter === 'general'
+                    ? 'bg-[#461313] text-white shadow-xs'
+                    : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50 active:bg-stone-100'
+                }`}
+              >
+                <Building2 className="w-3.5 h-3.5" />
+                <span>Management & Onboarding</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Right Slider Button */}
           <button
-            onClick={() => setSelectedFilter('diaspora')}
-            id="faq-filter-diaspora"
-            className={`px-4 py-2 rounded-xl sm:rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 min-h-[40px] touch-manipulation ${
-              selectedFilter === 'diaspora'
-                ? 'bg-[#461313] text-white shadow-xs'
-                : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50 active:bg-stone-100'
+            type="button"
+            onClick={handleSlideRight}
+            disabled={!canScrollRight}
+            id="faq-filter-slider-right"
+            aria-label="Slide FAQ categories right to view hidden options"
+            className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full border flex items-center justify-center transition-all duration-200 shrink-0 touch-manipulation shadow-xs cursor-pointer ${
+              canScrollRight
+                ? 'bg-white hover:bg-[#461313] hover:text-white border-stone-300 text-[#162521] hover:shadow-md active:scale-95'
+                : 'bg-stone-100/70 border-stone-200/70 text-stone-300 cursor-not-allowed opacity-40'
             }`}
           >
-            <Globe2 className="w-3.5 h-3.5" />
-            <span>Diaspora & Financing</span>
-          </button>
-          <button
-            onClick={() => setSelectedFilter('legal')}
-            id="faq-filter-legal"
-            className={`px-4 py-2 rounded-xl sm:rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 min-h-[40px] touch-manipulation ${
-              selectedFilter === 'legal'
-                ? 'bg-[#461313] text-white shadow-xs'
-                : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50 active:bg-stone-100'
-            }`}
-          >
-            <ShieldCheck className="w-3.5 h-3.5" />
-            <span>Title & Due Diligence</span>
-          </button>
-          <button
-            onClick={() => setSelectedFilter('construction')}
-            id="faq-filter-construction"
-            className={`px-4 py-2 rounded-xl sm:rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 min-h-[40px] touch-manipulation ${
-              selectedFilter === 'construction'
-                ? 'bg-[#461313] text-white shadow-xs'
-                : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50 active:bg-stone-100'
-            }`}
-          >
-            <HardHat className="w-3.5 h-3.5" />
-            <span>Construction & Quality</span>
-          </button>
-          <button
-            onClick={() => setSelectedFilter('general')}
-            id="faq-filter-general"
-            className={`px-4 py-2 rounded-xl sm:rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 min-h-[40px] touch-manipulation ${
-              selectedFilter === 'general'
-                ? 'bg-[#461313] text-white shadow-xs'
-                : 'text-[#162521]/70 hover:text-[#162521] hover:bg-stone-50 active:bg-stone-100'
-            }`}
-          >
-            <Building2 className="w-3.5 h-3.5" />
-            <span>Management & Onboarding</span>
+            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
         </div>
       </div>

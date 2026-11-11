@@ -1,12 +1,20 @@
 import type { Metadata, Viewport } from 'next';
-import { Plus_Jakarta_Sans } from 'next/font/google';
+import { Outfit, Manrope } from 'next/font/google';
 import './globals.css';
+import DigitalConcierge from '@/components/DigitalConcierge';
 
-const plusJakarta = Plus_Jakarta_Sans({
+const outfit = Outfit({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
-  variable: '--font-sans',
   display: 'swap',
+  variable: '--font-outfit',
+  weight: ['400', '500', '600', '700', '800'],
+});
+
+const manrope = Manrope({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-manrope',
+  weight: ['400', '500', '600', '700'],
 });
 
 export const viewport: Viewport = {
@@ -41,9 +49,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={`${plusJakarta.variable} scroll-smooth`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${outfit.variable} ${manrope.variable} font-sans scroll-smooth`}>
       <body className="font-sans antialiased bg-[#FEFCFD] text-[#162521] selection:bg-[#461313] selection:text-white min-h-full w-full" suppressHydrationWarning>
         {children}
+        <DigitalConcierge />
       </body>
     </html>
   );

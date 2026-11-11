@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import FeaturedProperties from '@/components/FeaturedProperties';
@@ -18,6 +18,19 @@ export default function HomePage() {
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const [infoModal, setInfoModal] = useState<'services' | 'about' | null>(null);
   const [selectedPropertyForBooking, setSelectedPropertyForBooking] = useState('Ivy Homes Abijo GRA');
+
+  useEffect(() => {
+    function handleBookingEvent(e: Event) {
+      const customEvent = e as CustomEvent<{ propertyName?: string }>;
+      if (customEvent.detail?.propertyName) {
+        setSelectedPropertyForBooking(customEvent.detail.propertyName);
+      }
+      setBookingModalOpen(true);
+    }
+
+    window.addEventListener('open-booking-consultation', handleBookingEvent);
+    return () => window.removeEventListener('open-booking-consultation', handleBookingEvent);
+  }, []);
 
   const handleOpenBooking = (propertyName?: string) => {
     if (propertyName) {

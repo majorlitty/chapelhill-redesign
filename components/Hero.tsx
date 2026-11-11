@@ -71,7 +71,7 @@ export default function Hero({ onExploreHomes, onBookVisit }: HeroProps) {
           <button
             onClick={onBookVisit}
             id="hero-cta-book-visit"
-            className="w-full sm:w-auto bg-white/90 hover:bg-white active:scale-[0.98] text-[#162521] border border-stone-200 hover:border-[#D64933]/50 px-7 py-3.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base backdrop-blur-sm transition-all duration-200 shadow-[0_2px_10px_rgba(22,37,33,0.05)] hover:-translate-y-0.5 cursor-pointer min-h-[48px] flex items-center justify-center touch-manipulation"
+            className="w-full sm:w-auto bg-white/90 hover:bg-white active:scale-[0.98] text-[#162521] border border-stone-200 hover:border-[#D64933]/50 px-6 py-3.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base backdrop-blur-sm transition-all duration-200 shadow-[0_2px_10px_rgba(22,37,33,0.05)] hover:-translate-y-0.5 cursor-pointer min-h-[48px] flex items-center justify-center touch-manipulation"
           >
             Book a Visit
           </button>
