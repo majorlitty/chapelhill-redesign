@@ -221,11 +221,11 @@ export default function DigitalConcierge() {
     <>
       {/* Floating Trigger Button Container */}
       <div
-        className="fixed bottom-20 right-4 sm:bottom-24 sm:right-6 z-40 pointer-events-none"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 pointer-events-none"
         aria-label="24/7 Digital Concierge Widget"
       >
         <div className="relative pointer-events-auto flex items-center gap-3">
-          {/* Main Floating Trigger Button - Always visible without hover */}
+          {/* Main Floating Trigger Button - Subtle Luxury Pill */}
           <button
             type="button"
             onClick={() => {
@@ -236,51 +236,51 @@ export default function DigitalConcierge() {
             id="digital-concierge-fab"
             aria-label={isOpen ? 'Close 24/7 digital concierge' : 'Ask 24/7 digital concierge AI assistant'}
             aria-expanded={isOpen}
-            className={`group relative flex items-center gap-2.5 sm:gap-3 rounded-full bg-[#461313] hover:bg-[#D64933] text-white shadow-[0_10px_30px_rgba(70,19,19,0.45)] hover:shadow-[0_14px_35px_rgba(214,73,51,0.55)] border border-[#E5C583]/40 transition-all duration-300 hover:scale-[1.02] active:scale-95 cursor-pointer focus:outline-none focus:ring-4 focus:ring-[#D64933]/30 touch-manipulation ${
-              isOpen ? 'px-4 py-2.5 sm:py-3' : 'px-3.5 sm:px-4 py-2 sm:py-2.5'
+            className={`group relative flex items-center gap-2.5 rounded-full bg-[#162521] hover:bg-[#341818] text-white shadow-[0_6px_22px_rgba(22,37,33,0.18)] hover:shadow-[0_8px_28px_rgba(52,24,24,0.28)] border border-[#E5C583]/25 transition-all duration-300 hover:scale-[1.02] active:scale-95 cursor-pointer focus:outline-none focus:ring-3 focus:ring-[#E5C583]/30 touch-manipulation ${
+              isOpen ? 'px-3.5 py-2' : 'px-3.5 sm:px-4 py-2 sm:py-2.5'
             }`}
           >
             {/* Unread Indicator if closed */}
             {hasUnread && !isOpen && (
-              <span className="absolute -top-1 -right-1 flex h-4 w-4">
+              <span className="absolute -top-0.5 -right-0.5 flex h-3.5 w-3.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E5C583] opacity-75" />
-                <span className="relative inline-flex rounded-full h-4 w-4 bg-[#D64933] border-2 border-white text-[9px] font-bold text-white items-center justify-center">
+                <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-[#D64933] border-2 border-white text-[8px] font-bold text-white items-center justify-center">
                   !
                 </span>
               </span>
             )}
 
             {/* Icon / Live Indicator */}
-            <div className="relative flex items-center justify-center w-8 h-8 rounded-full bg-white/10 shrink-0">
+            <div className="relative flex items-center justify-center w-7 h-7 rounded-full bg-white/10 shrink-0">
               {isOpen ? (
-                <X className="w-4 h-4 text-white transition-transform group-hover:rotate-90 duration-200" />
+                <X className="w-3.5 h-3.5 text-white transition-transform group-hover:rotate-90 duration-200" />
               ) : (
                 <>
-                  <MessageSquare className="w-4 h-4 text-white stroke-[2]" />
-                  <span className="absolute -top-0.5 -right-0.5 flex h-2.5 w-2.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E5C583] opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400" />
+                  <MessageSquare className="w-3.5 h-3.5 text-white stroke-[2]" />
+                  <span className="absolute -top-0.5 -right-0.5 flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
                   </span>
                 </>
               )}
             </div>
 
-            {/* Always-Visible Text & AI Assistant Badge */}
+            {/* Always-Visible Text & Subtle AI Assistant Badge */}
             {isOpen ? (
-              <span className="text-xs sm:text-sm font-semibold tracking-wide pr-1">
+              <span className="text-xs font-medium tracking-wide pr-1">
                 Close Concierge
               </span>
             ) : (
-              <div className="flex flex-col text-left leading-tight pr-1">
-                <div className="flex items-center gap-1.5 sm:gap-2">
-                  <span className="text-xs sm:text-[13px] font-bold text-white tracking-tight whitespace-nowrap">
-                    Ask 24/7 Digital Concierge
+              <div className="flex flex-col text-left leading-tight pr-0.5">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-xs sm:text-[13px] font-semibold text-white tracking-tight whitespace-nowrap">
+                    Ask 24/7 Concierge
                   </span>
-                  <span className="inline-flex items-center px-1.5 py-0.5 rounded bg-[#E5C583] text-[#461313] text-[9px] font-extrabold uppercase tracking-wider leading-none shadow-xs shrink-0">
-                    AI Assistant
+                  <span className="inline-flex items-center px-1.5 py-0.5 rounded bg-[#E5C583]/20 text-[#E5C583] text-[9px] font-bold uppercase tracking-wider leading-none border border-[#E5C583]/30 shrink-0">
+                    AI
                   </span>
                 </div>
-                <span className="text-[10px] sm:text-[11px] text-stone-300 font-medium tracking-normal hidden xs:inline mt-0.5">
+                <span className="text-[10px] text-stone-300 font-normal tracking-normal hidden xs:inline mt-0.5">
                   Instant Portfolio & Pricing Guidance
                 </span>
               </div>
@@ -289,39 +289,39 @@ export default function DigitalConcierge() {
         </div>
       </div>
 
-      {/* Floating Concierge Chat Window */}
+      {/* Floating Concierge Chat Window - Slightly Subtle Edition */}
       {isOpen && (
         <aside
           role="dialog"
           aria-label="Chapelhill Digital Concierge Chat"
-          className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-[420px] bg-white rounded-3xl shadow-[0_20px_60px_rgba(22,37,33,0.25)] border border-stone-200/90 flex flex-col overflow-hidden transition-all duration-300 animate-in fade-in slide-in-from-bottom-4 ${
-            isMinimized ? 'h-[72px]' : 'h-[620px] max-h-[calc(100dvh-2.5rem)]'
+          className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-[380px] bg-white rounded-2xl shadow-[0_12px_40px_rgba(22,37,33,0.14)] border border-stone-200/90 flex flex-col overflow-hidden transition-all duration-300 animate-in fade-in slide-in-from-bottom-3 ${
+            isMinimized ? 'h-[60px]' : 'h-[530px] max-h-[calc(100dvh-4.5rem)]'
           }`}
         >
-          {/* Header Bar */}
-          <div className="bg-gradient-to-r from-[#461313] via-[#350d0d] to-[#162521] text-white p-4 px-5 flex items-center justify-between gap-3 shrink-0 select-none shadow-sm">
-            <div className="flex items-center gap-3">
-              <div className="relative w-9 h-9 rounded-full bg-white/10 border border-white/20 flex items-center justify-center overflow-hidden shrink-0">
+          {/* Subtle Refined Header Bar */}
+          <div className="bg-[#162521] text-white p-3 sm:p-3.5 px-4 flex items-center justify-between gap-3 shrink-0 select-none border-b border-white/10">
+            <div className="flex items-center gap-2.5">
+              <div className="relative w-7 h-7 rounded-full bg-white/10 border border-white/15 flex items-center justify-center overflow-hidden shrink-0">
                 <Image
                   src="/Chapelhill-Company-Logo.png"
                   alt="Chapelhill"
-                  width={36}
-                  height={36}
-                  className="object-contain p-1"
+                  width={28}
+                  height={28}
+                  className="object-contain p-0.5"
                   referrerPolicy="no-referrer"
                 />
               </div>
               <div className="text-left">
-                <div className="flex items-center gap-2">
-                  <h3 className="text-sm font-bold tracking-tight text-white leading-tight">
+                <div className="flex items-center gap-1.5">
+                  <h3 className="text-xs sm:text-sm font-semibold tracking-tight text-white leading-tight">
                     Chapelhill Concierge
                   </h3>
-                  <span className="inline-flex items-center text-[10px] font-bold tracking-wider text-[#E5C583] bg-white/10 px-2 py-0.5 rounded-full uppercase border border-white/15">
-                    24/7 AI Assistant
+                  <span className="inline-flex items-center text-[9px] font-semibold tracking-wider text-[#E5C583] bg-white/10 px-1.5 py-0.5 rounded-full uppercase border border-white/15">
+                    24/7 AI
                   </span>
                 </div>
-                <p className="text-[11px] text-stone-300 truncate max-w-[220px]">
-                  Private Client & Portfolio AI Advisor
+                <p className="text-[10.5px] text-stone-300 truncate max-w-[200px]">
+                  Private Client & Portfolio Advisor
                 </p>
               </div>
             </div>
@@ -332,7 +332,7 @@ export default function DigitalConcierge() {
                 type="button"
                 onClick={handleReset}
                 title="Restart conversation"
-                className="text-stone-300 hover:text-white p-1.5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
+                className="text-stone-300 hover:text-white p-1 rounded-md hover:bg-white/10 transition-colors cursor-pointer"
                 aria-label="Restart conversation"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
@@ -341,7 +341,7 @@ export default function DigitalConcierge() {
                 type="button"
                 onClick={() => setIsMinimized((prev) => !prev)}
                 title={isMinimized ? 'Expand' : 'Minimize'}
-                className="text-stone-300 hover:text-white p-1.5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
+                className="text-stone-300 hover:text-white p-1 rounded-md hover:bg-white/10 transition-colors cursor-pointer"
                 aria-label={isMinimized ? 'Expand window' : 'Minimize window'}
               >
                 {isMinimized ? <Maximize2 className="w-3.5 h-3.5" /> : <Minimize2 className="w-3.5 h-3.5" />}
@@ -350,7 +350,7 @@ export default function DigitalConcierge() {
                 type="button"
                 onClick={() => setIsOpen(false)}
                 title="Close"
-                className="text-stone-300 hover:text-white p-1.5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
+                className="text-stone-300 hover:text-white p-1 rounded-md hover:bg-white/10 transition-colors cursor-pointer"
                 aria-label="Close concierge"
               >
                 <X className="w-4 h-4" />
@@ -361,19 +361,19 @@ export default function DigitalConcierge() {
           {/* Body Content (Visible when not minimized) */}
           {!isMinimized && (
             <>
-              {/* Trust Sub-Header Banner */}
-              <div className="bg-stone-50 border-b border-stone-200/70 px-4 py-2 flex items-center justify-between text-[11px] text-stone-600 shrink-0">
-                <span className="flex items-center gap-1.5 font-medium">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#D64933]" />
-                  Direct verified portfolio data & legal title guidance
+              {/* Subtle Trust Sub-Header Banner */}
+              <div className="bg-stone-50/70 border-b border-stone-200/60 px-3.5 py-1.5 flex items-center justify-between text-[10.5px] text-stone-500 shrink-0">
+                <span className="flex items-center gap-1.5 font-normal truncate">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#D64933] shrink-0" />
+                  <span className="truncate">Verified portfolio data & legal title guidance</span>
                 </span>
-                <span className="text-[10px] text-emerald-700 bg-emerald-50 border border-emerald-200/60 rounded px-1.5 py-0.5 font-semibold">
+                <span className="text-[9.5px] text-emerald-700 bg-emerald-50/80 border border-emerald-200/60 rounded px-1.5 py-0.5 font-medium shrink-0 ml-2">
                   Online
                 </span>
               </div>
 
               {/* Messages Thread */}
-              <div className="flex-1 overflow-y-auto p-4 space-y-3.5 text-left bg-gradient-to-b from-[#FEFCFD] to-[#f9f7f8]">
+              <div className="flex-1 overflow-y-auto p-3.5 space-y-3 text-left bg-[#FAF8F8]">
                 {messages.map((message) => {
                   const isUser = message.role === 'user';
                   return (
@@ -382,30 +382,30 @@ export default function DigitalConcierge() {
                       className={`flex flex-col ${isUser ? 'items-end' : 'items-start'} animate-in fade-in duration-150`}
                     >
                       <div
-                        className={`max-w-[88%] rounded-2xl p-3.5 text-xs sm:text-[13px] shadow-xs ${
+                        className={`max-w-[88%] rounded-2xl p-3 text-xs leading-relaxed shadow-2xs ${
                           isUser
-                            ? 'bg-[#461313] text-white rounded-tr-xs'
-                            : 'bg-white text-[#162521] border border-stone-200/80 rounded-tl-xs shadow-[0_2px_8px_rgba(0,0,0,0.03)]'
+                            ? 'bg-[#2b1717] text-white rounded-tr-xs'
+                            : 'bg-white text-[#162521] border border-stone-200/70 rounded-tl-xs shadow-[0_1px_6px_rgba(0,0,0,0.03)]'
                         }`}
                       >
                         {isUser ? (
-                          <p className="leading-relaxed whitespace-pre-wrap">{message.content}</p>
+                          <p className="whitespace-pre-wrap">{message.content}</p>
                         ) : (
                           <div className="text-[#162521]/90">{renderFormattedContent(message.content)}</div>
                         )}
                       </div>
 
                       {/* Timestamp */}
-                      <span className="text-[10px] text-stone-400 mt-1 px-1">{message.timestamp}</span>
+                      <span className="text-[9.5px] text-stone-400 mt-0.5 px-1">{message.timestamp}</span>
 
-                      {/* Suggested Handoff Action Cards (Only for assistant messages when triggered) */}
+                      {/* Suggested Handoff Action Cards */}
                       {!isUser && message.suggestedActions && (message.suggestedActions.whatsapp || message.suggestedActions.booking) && (
-                        <div className="mt-2.5 flex flex-wrap gap-2 max-w-[90%]">
+                        <div className="mt-2 flex flex-wrap gap-2 max-w-[90%]">
                           {message.suggestedActions.whatsapp && (
                             <button
                               type="button"
                               onClick={() => handleWhatsAppHandoff(message.content)}
-                              className="inline-flex items-center gap-1.5 bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-xs transition-transform active:scale-95 cursor-pointer touch-manipulation"
+                              className="inline-flex items-center gap-1.5 bg-[#25D366] hover:bg-[#20bd5a] text-white text-[11px] font-medium px-3 py-1.5 rounded-full shadow-2xs transition-transform active:scale-95 cursor-pointer touch-manipulation"
                             >
                               <MessageCircle className="w-3.5 h-3.5 fill-white text-[#25D366]" />
                               <span>Connect on WhatsApp</span>
@@ -417,7 +417,7 @@ export default function DigitalConcierge() {
                             <button
                               type="button"
                               onClick={() => handleBookingHandoff()}
-                              className="inline-flex items-center gap-1.5 bg-[#461313] hover:bg-[#D64933] text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-xs transition-transform active:scale-95 cursor-pointer touch-manipulation"
+                              className="inline-flex items-center gap-1.5 bg-[#2b1717] hover:bg-[#461313] text-white text-[11px] font-medium px-3 py-1.5 rounded-full shadow-2xs transition-transform active:scale-95 cursor-pointer touch-manipulation"
                             >
                               <Calendar className="w-3.5 h-3.5" />
                               <span>Schedule Private Viewing</span>
@@ -433,20 +433,20 @@ export default function DigitalConcierge() {
                 {/* Loading indicator */}
                 {isLoading && (
                   <div className="flex items-center gap-2 text-stone-500 text-xs py-2 px-1">
-                    <div className="w-6 h-6 rounded-full bg-[#461313]/10 flex items-center justify-center">
-                      <div className="w-3.5 h-3.5 border-2 border-[#461313] border-t-transparent rounded-full animate-spin" />
+                    <div className="w-5 h-5 rounded-full bg-[#162521]/10 flex items-center justify-center">
+                      <div className="w-3 h-3 border-2 border-[#162521] border-t-transparent rounded-full animate-spin" />
                     </div>
-                    <span className="animate-pulse">Concierge is drafting portfolio details...</span>
+                    <span className="animate-pulse text-[11px]">Drafting portfolio details...</span>
                   </div>
                 )}
 
                 <div ref={messagesEndRef} />
               </div>
 
-              {/* Quick Inquiry Chips (When user hasn't asked a lot yet or at start) */}
+              {/* Quick Inquiry Chips */}
               {messages.length <= 3 && !isLoading && (
-                <div className="px-4 py-2 bg-stone-50/80 border-t border-stone-200/50 flex flex-wrap gap-1.5">
-                  <span className="w-full text-[10px] font-semibold uppercase tracking-wider text-stone-500 mb-0.5">
+                <div className="px-3 py-2 bg-white/90 border-t border-stone-200/50 flex flex-wrap gap-1.5">
+                  <span className="w-full text-[9.5px] font-semibold uppercase tracking-wider text-stone-400 mb-0.5">
                     Suggested Inquiries:
                   </span>
                   {SUGGESTED_PROMPTS.map((prompt, pIdx) => (
@@ -454,7 +454,7 @@ export default function DigitalConcierge() {
                       key={pIdx}
                       type="button"
                       onClick={() => handleSendMessage(prompt)}
-                      className="text-[11px] bg-white hover:bg-[#C0E8F9]/30 text-[#162521] hover:text-[#461313] border border-stone-200/70 hover:border-[#D64933]/40 rounded-full px-2.5 py-1 transition-all text-left truncate max-w-full cursor-pointer touch-manipulation"
+                      className="text-[10.5px] bg-stone-50 hover:bg-stone-100 text-[#162521]/90 hover:text-[#162521] border border-stone-200/70 rounded-full px-2.5 py-1 transition-all text-left truncate max-w-full cursor-pointer touch-manipulation"
                     >
                       {prompt}
                     </button>
@@ -468,7 +468,7 @@ export default function DigitalConcierge() {
                   e.preventDefault();
                   handleSendMessage();
                 }}
-                className="p-3 bg-white border-t border-stone-200/80 flex items-center gap-2 shrink-0"
+                className="p-2.5 bg-white border-t border-stone-200/70 flex items-center gap-2 shrink-0"
               >
                 <input
                   ref={inputRef}
@@ -477,16 +477,16 @@ export default function DigitalConcierge() {
                   onChange={(e) => setInputValue(e.target.value)}
                   placeholder="Ask about pricing, timeline, or bespoke build..."
                   disabled={isLoading}
-                  className="flex-1 bg-stone-50 border border-stone-200 hover:border-stone-300 focus:border-[#461313] focus:bg-white focus:outline-none rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#162521] transition-colors disabled:opacity-50"
+                  className="flex-1 bg-stone-50 border border-stone-200 hover:border-stone-300 focus:border-[#162521] focus:bg-white focus:outline-none rounded-xl px-3 py-2 text-xs text-[#162521] transition-colors disabled:opacity-50"
                 />
                 <button
                   type="submit"
                   disabled={!inputValue.trim() || isLoading}
                   id="digital-concierge-send-btn"
-                  className="w-10 h-10 rounded-xl bg-[#461313] hover:bg-[#D64933] active:scale-95 disabled:opacity-40 disabled:hover:bg-[#461313] text-white flex items-center justify-center transition-all cursor-pointer shrink-0 touch-manipulation"
+                  className="w-8 h-8 rounded-xl bg-[#162521] hover:bg-[#341818] active:scale-95 disabled:opacity-30 disabled:hover:bg-[#162521] text-white flex items-center justify-center transition-all cursor-pointer shrink-0 touch-manipulation"
                   aria-label="Send message"
                 >
-                  <Send className="w-4 h-4 stroke-[2]" />
+                  <Send className="w-3.5 h-3.5 stroke-[2]" />
                 </button>
               </form>
             </>

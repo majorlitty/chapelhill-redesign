@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
@@ -43,6 +43,39 @@ export default function Navbar({
   activePage = 'home',
 }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const lastScrollY = useRef(0);
+
+  // Auto-hide navbar on scroll down, reappear on scroll up
+  useEffect(() => {
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+
+          // Always show at top of page or if cinematic menu is open
+          if (currentScrollY < 60 || menuOpen) {
+            setVisible(true);
+          } else if (currentScrollY > lastScrollY.current && currentScrollY - lastScrollY.current > 6) {
+            // Scrolling down -> hide navbar
+            setVisible(false);
+          } else if (currentScrollY < lastScrollY.current && lastScrollY.current - currentScrollY > 6) {
+            // Scrolling up -> show navbar
+            setVisible(true);
+          }
+
+          lastScrollY.current = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [menuOpen]);
 
   // Lock body scroll when overlay drawer is active
   useEffect(() => {
@@ -124,18 +157,22 @@ export default function Navbar({
 
   return (
     <>
-      {/* Split-Layout Header Navigation */}
-      <header className="sticky top-0 z-40 w-full bg-[#FEFCFD]/95 backdrop-blur-md border-b border-stone-200/60 shadow-xs transition-all">
-        <div className="w-full max-w-7xl mx-auto py-3 sm:py-3.5 px-4 sm:px-8 lg:px-12">
+      {/* Floating Pill Header Navigation with Hide on Scroll Down / Reappear on Scroll Up */}
+      <header
+        className={`sticky top-2 sm:top-4 z-40 w-full px-3 sm:px-6 lg:px-8 pointer-events-none transition-all duration-300 ease-out ${
+          visible ? 'translate-y-0 opacity-100' : '-translate-y-24 opacity-0 pointer-events-none'
+        }`}
+      >
+        <div className="pointer-events-auto w-full max-w-7xl mx-auto rounded-full bg-[#FEFCFD]/92 backdrop-blur-md border border-stone-200/80 shadow-[0_8px_30px_rgba(22,37,33,0.06)] px-3.5 sm:px-6 py-2 sm:py-2.5 transition-all duration-300 hover:shadow-[0_12px_36px_rgba(22,37,33,0.09)] hover:border-stone-300">
           <nav
-            className="flex items-center justify-between gap-4"
+            className="flex items-center justify-between gap-3 sm:gap-4"
             aria-label="Main Navigation"
           >
-            {/* LEFT ANCHOR: Chapelhill Brand Logo */}
+            {/* LEFT ANCHOR: Chapelhill Brand Logo with Scaling Micro-Interaction */}
             <div className="flex items-center shrink-0">
               <Link
                 href="/"
-                className="flex items-center gap-2 group transition-opacity hover:opacity-90 py-1"
+                className="flex items-center gap-2 group py-1 transition-transform duration-300 ease-out hover:scale-105 active:scale-95 origin-left"
                 id="chapelhill-logo"
                 aria-label="Chapelhill Home"
                 onClick={() => setMenuOpen(false)}
@@ -145,21 +182,21 @@ export default function Navbar({
                   alt="Chapelhill"
                   width={238}
                   height={107}
-                  className="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-[1.02]"
+                  className="h-9 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                   priority
                   referrerPolicy="no-referrer"
                 />
               </Link>
             </div>
 
-            {/* CENTER: Quick-Action Contact Details */}
-            <div className="hidden md:flex items-center gap-4 lg:gap-6 text-xs text-[#162521] font-medium">
+            {/* CENTER: Quick-Action Contact Details with Smooth Scaling Micro-Interactions */}
+            <div className="hidden md:flex items-center gap-3 lg:gap-5 text-xs text-[#162521] font-medium">
               {/* WhatsApp Advisory Desk */}
               <a
                 href="https://wa.me/2349039130207?text=Hello%20Chapelhill%2C%20I%20am%20inquiring%20about%20your%20luxury%20developments%20and%20private%20advisory%20services."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-stone-100/80 hover:bg-[#C0E8F9]/40 hover:text-[#461313] transition-all cursor-pointer group"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-stone-100/80 hover:bg-[#C0E8F9]/40 hover:text-[#461313] transition-all duration-300 ease-out hover:scale-105 active:scale-95 cursor-pointer group shadow-2xs hover:shadow-xs"
                 id="nav-center-whatsapp"
                 aria-label="WhatsApp Advisory Desk"
               >
@@ -174,15 +211,13 @@ export default function Navbar({
               {/* Direct Phone Line */}
               <a
                 href="tel:+2348032865488"
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full hover:bg-stone-100/80 transition-colors cursor-pointer text-stone-700 hover:text-[#461313]"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full hover:bg-stone-100/90 transition-all duration-300 ease-out hover:scale-105 active:scale-95 cursor-pointer text-stone-700 hover:text-[#461313] shadow-2xs hover:shadow-xs"
                 id="nav-center-phone"
                 aria-label="Call Chapelhill"
               >
-                <Phone className="w-3.5 h-3.5 text-[#D64933]" />
+                <Phone className="w-3.5 h-3.5 text-[#D64933] transition-transform duration-300 group-hover:rotate-12" />
                 <span>+234 803 286 5488</span>
               </a>
-
-              
             </div>
 
             {/* Mobile Compact Contact (Shown only on small screens) */}
@@ -191,7 +226,7 @@ export default function Navbar({
                 href="https://wa.me/2349039130207"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full bg-stone-100 text-[#25D366] hover:bg-[#25D366] hover:text-white transition-colors"
+                className="p-2 rounded-full bg-stone-100 text-[#25D366] hover:bg-[#25D366] hover:text-white transition-all duration-300 ease-out hover:scale-110 active:scale-95 shadow-2xs"
                 aria-label="WhatsApp Direct"
               >
                 <MessageCircle className="w-4 h-4 fill-current" />
@@ -199,20 +234,20 @@ export default function Navbar({
               <button
                 type="button"
                 onClick={onContactClick}
-                className="bg-[#461313] text-white text-xs font-semibold px-3 py-1.5 rounded-full"
+                className="bg-[#461313] hover:bg-[#D64933] text-white text-xs font-semibold px-3.5 py-1.5 rounded-full transition-all duration-300 ease-out hover:scale-105 active:scale-95 shadow-2xs"
               >
                 Consult
               </button>
             </div>
 
-            {/* RIGHT: Minimalist Hamburger Menu Trigger */}
-            <div className="flex items-center gap-3 shrink-0">
+            {/* RIGHT: Minimalist Hamburger Menu Trigger & CTA with Scaling Micro-Interactions */}
+            <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
               {/* Desktop quick consultation trigger before hamburger */}
               <button
                 type="button"
                 onClick={onContactClick}
                 id="nav-btn-book-consultation"
-                className="hidden lg:inline-flex items-center gap-2 bg-[#461313] hover:bg-[#D64933] text-white text-xs font-semibold px-4 py-2 rounded-full transition-all duration-200 shadow-xs cursor-pointer active:scale-95 touch-manipulation"
+                className="hidden lg:inline-flex items-center gap-2 bg-[#461313] hover:bg-[#D64933] text-white text-xs font-semibold px-4 py-2 rounded-full transition-all duration-300 ease-out hover:scale-105 active:scale-95 shadow-xs hover:shadow-md cursor-pointer touch-manipulation"
               >
                 <Calendar className="w-3.5 h-3.5" />
                 <span>Book Consultation</span>
@@ -225,15 +260,15 @@ export default function Navbar({
                 id="navbar-hamburger-btn"
                 aria-label="Open Full Navigation Menu"
                 aria-expanded={menuOpen}
-                className="group flex items-center gap-2.5 px-3.5 sm:px-4 py-2 rounded-full bg-stone-100/90 hover:bg-[#162521] text-[#162521] hover:text-white border border-stone-200/80 hover:border-[#162521] transition-all duration-200 cursor-pointer active:scale-95 touch-manipulation min-h-[42px]"
+                className="group flex items-center gap-2.5 px-3.5 sm:px-4 py-2 rounded-full bg-stone-100/90 hover:bg-[#162521] text-[#162521] hover:text-white border border-stone-200/80 hover:border-[#162521] transition-all duration-300 ease-out hover:scale-105 active:scale-95 cursor-pointer touch-manipulation min-h-[40px] shadow-2xs hover:shadow-xs"
               >
                 <span className="text-[11px] font-bold tracking-[0.16em] uppercase font-heading">
                   Menu
                 </span>
                 {/* Minimalist 2-line bespoke hamburger icon */}
                 <div className="flex flex-col justify-center items-end gap-1.2 w-4 h-3.5">
-                  <span className="w-4 h-[2px] bg-current rounded-full transition-transform group-hover:scale-x-90" />
-                  <span className="w-2.5 h-[2px] bg-current rounded-full transition-transform group-hover:w-4" />
+                  <span className="w-4 h-[2px] bg-current rounded-full transition-transform duration-300 group-hover:scale-x-90" />
+                  <span className="w-2.5 h-[2px] bg-current rounded-full transition-transform duration-300 group-hover:w-4" />
                 </div>
               </button>
             </div>
@@ -273,11 +308,11 @@ export default function Navbar({
 
             {/* OVERLAY TOP BAR: Logo, Immediate CTA & Minimalist Close Button */}
             <div className="w-full max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 flex items-center justify-between gap-4 border-b border-white/10 shrink-0">
-              {/* White Logo Container */}
+              {/* White Logo Container with Scaling Micro-Interaction */}
               <Link
                 href="/"
                 onClick={() => setMenuOpen(false)}
-                className="flex items-center gap-2 group transition-opacity hover:opacity-90 py-1"
+                className="flex items-center gap-2 group py-1 transition-transform duration-300 ease-out hover:scale-105 active:scale-95 origin-left"
                 aria-label="Chapelhill Home"
               >
                 <Image
@@ -285,7 +320,7 @@ export default function Navbar({
                   alt="Chapelhill"
                   width={200}
                   height={90}
-                  className="h-9 sm:h-11 w-auto object-contain brightness-0 invert opacity-95 transition-transform group-hover:scale-[1.02]"
+                  className="h-9 sm:h-11 w-auto object-contain brightness-0 invert opacity-95 transition-transform duration-300 group-hover:scale-[1.02]"
                   priority
                   referrerPolicy="no-referrer"
                 />
@@ -298,10 +333,10 @@ export default function Navbar({
                   type="button"
                   onClick={handleConsultationCTA}
                   id="overlay-cta-book-consultation"
-                  className="group bg-[#461313] hover:bg-[#D64933] active:scale-[0.98] text-white pl-4 sm:pl-5 pr-2.5 sm:pr-3 py-2 sm:py-2.5 rounded-full font-semibold text-xs sm:text-sm inline-flex items-center gap-2.5 transition-all duration-200 shadow-[0_4px_20px_rgba(70,19,19,0.5)] hover:shadow-[0_6px_28px_rgba(214,73,51,0.6)] cursor-pointer touch-manipulation min-h-[42px]"
+                  className="group bg-[#461313] hover:bg-[#D64933] text-white pl-4 sm:pl-5 pr-2.5 sm:pr-3 py-2 sm:py-2.5 rounded-full font-semibold text-xs sm:text-sm inline-flex items-center gap-2.5 transition-all duration-300 ease-out hover:scale-105 active:scale-95 shadow-[0_4px_20px_rgba(70,19,19,0.5)] hover:shadow-[0_6px_28px_rgba(214,73,51,0.6)] cursor-pointer touch-manipulation min-h-[42px]"
                 >
                   <span>Book Private Consultation</span>
-                  <span className="w-6 h-6 rounded-full bg-white text-[#461313] group-hover:text-[#D64933] flex items-center justify-center transition-transform group-hover:translate-x-0.5 shrink-0">
+                  <span className="w-6 h-6 rounded-full bg-white text-[#461313] group-hover:text-[#D64933] flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 shrink-0">
                     <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
                   </span>
                 </button>
@@ -312,7 +347,7 @@ export default function Navbar({
                   onClick={() => setMenuOpen(false)}
                   id="overlay-close-btn"
                   aria-label="Close navigation overlay"
-                  className="group flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-full bg-white/10 hover:bg-white text-white hover:text-[#162521] border border-white/15 transition-all duration-200 cursor-pointer active:scale-95 touch-manipulation min-h-[42px]"
+                  className="group flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-full bg-white/10 hover:bg-white text-white hover:text-[#162521] border border-white/15 transition-all duration-300 ease-out hover:scale-105 active:scale-95 cursor-pointer touch-manipulation min-h-[42px]"
                 >
                   <span className="text-[11px] font-bold tracking-[0.16em] uppercase font-heading">
                     Close
@@ -357,7 +392,7 @@ export default function Navbar({
                       <Link
                         href={item.href}
                         onClick={() => handleNavClick(item)}
-                        className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-6 py-1 cursor-pointer"
+                        className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-6 py-1 cursor-pointer transition-transform duration-300 ease-out group-hover:translate-x-2 active:scale-[0.99] origin-left"
                         id={`overlay-nav-${item.id}`}
                       >
                         <div className="flex items-baseline gap-3 sm:gap-6">
