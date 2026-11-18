@@ -126,7 +126,7 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
               <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#162521] tracking-tight font-serif leading-tight">
                 {property.name}
               </h1>
-              <p className="mt-2.5 sm:mt-3 text-xs sm:text-base text-stone-600 max-w-3xl leading-relaxed">
+              <p className="mt-2.5 sm:mt-3 text-xs sm:text-base text-stone-600 max-w-3xl leading-relaxed whitespace-pre-line">
                 {property.extendedOverview}
               </p>
             </div>
@@ -135,24 +135,32 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
             <div className="flex flex-col sm:flex-row lg:flex-col items-stretch sm:items-center lg:items-end gap-3 shrink-0 w-full sm:w-auto">
               <div className="text-left lg:text-right">
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-stone-400 block">
-                  {property.status === 'sold-out' ? 'Current Status' : 'Guide Price'}
+                  {property.status === 'sold-out' ? 'Current Status' : property.id === 'lekki-phase-1-project' ? 'Pricing & Terms' : 'Guide Price'}
                 </span>
                 <span className="text-xl sm:text-3xl font-extrabold text-[#461313] block">
                   {property.financials.startingPrice}
                 </span>
                 <span className="text-xs text-stone-500 block font-medium">
-                  Range: {property.financials.priceRange}
+                  {property.financials.priceRange}
                 </span>
               </div>
 
-              <button
-                onClick={() => openBooking(property.status === 'sold-out' ? `${property.name} (Waitlist / Secondary Inquiry)` : undefined)}
-                id="hero-inquire-reserve-btn"
-                className="w-full sm:w-auto bg-[#461313] hover:bg-[#D64933] text-white px-7 py-3.5 rounded-full font-bold text-xs sm:text-sm inline-flex items-center justify-center gap-2.5 shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer min-h-[48px]"
-              >
-                <span>{property.status === 'sold-out' ? 'Join Waitlist / Inquire for Resale' : 'Inquire & Reserve This Property'}</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              <div className="flex flex-col sm:flex-row lg:flex-col gap-2 w-full sm:w-auto">
+                <button
+                  onClick={() => openBooking(property.status === 'sold-out' ? `${property.name} (Waitlist / Secondary Inquiry)` : property.id === 'lekki-phase-1-project' ? `${property.name} (Approved Schedule & Inspection Request)` : undefined)}
+                  id="hero-inquire-reserve-btn"
+                  className="w-full sm:w-auto bg-[#461313] hover:bg-[#D64933] text-white px-7 py-3.5 rounded-full font-bold text-xs sm:text-sm inline-flex items-center justify-center gap-2.5 shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer min-h-[48px]"
+                >
+                  <span>
+                    {property.status === 'sold-out'
+                      ? 'Join Waitlist / Inquire for Resale'
+                      : property.id === 'lekki-phase-1-project'
+                        ? 'Request Approved Schedule / Inspect'
+                        : 'Inquire & Reserve This Property'}
+                  </span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
             </div>
           </div>
 
@@ -167,13 +175,13 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
               <span className="text-sm sm:text-lg font-bold text-[#461313] truncate block">{property.financials.handoverTimeline}</span>
             </div>
             <div className="p-3 sm:p-4 rounded-2xl bg-white border border-stone-200/80 shadow-2xs">
-              <span className="text-[11px] sm:text-xs text-stone-500 block">Projected Net Yield</span>
-              <span className="text-sm sm:text-lg font-bold text-emerald-700 truncate block">{property.financials.projectedRentalYield}</span>
+              <span className="text-[11px] sm:text-xs text-stone-500 block">Payment Structure</span>
+              <span className="text-xs sm:text-sm font-bold text-emerald-700 line-clamp-2 block">{property.financials.paymentStructure}</span>
             </div>
             <div className="p-3 sm:p-4 rounded-2xl bg-white border border-stone-200/80 shadow-2xs">
               <span className="text-[11px] sm:text-xs text-stone-500 block">Legal Title Status</span>
-              <span className="text-xs sm:text-base font-bold text-[#162521] truncate block" title={property.financials.titleStatus}>
-                {property.financials.titleStatus.split(' ')[0]} Verified
+              <span className="text-xs sm:text-sm font-bold text-[#162521] line-clamp-2 block" title={property.financials.titleStatus}>
+                {property.financials.titleStatus}
               </span>
             </div>
           </div>
@@ -187,17 +195,22 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
                 Visual Showcase
               </span>
               <h2 className="text-xl sm:text-3xl font-bold text-[#162521] tracking-tight">
-                High-Resolution Architectural Gallery
+                Architectural Gallery &amp; Perspectives
               </h2>
+              {property.status === 'ongoing' && (
+                <p className="mt-1.5 text-xs text-amber-900 bg-amber-50 border border-amber-200/80 rounded-lg px-3 py-1.5 inline-block font-medium">
+                  Note: Architectural renderings and floor plans shown are illustrative concepts and do not represent photographs of completed units.
+                </p>
+              )}
             </div>
 
             {/* Gallery Category Filter Tabs */}
             <div className="flex items-center gap-1.5 overflow-x-auto overscroll-x-contain pb-2 sm:pb-0 scrollbar-none max-w-full touch-manipulation">
               {[
-                { id: 'all', label: 'All Photos' },
-                { id: 'exterior', label: 'Exterior & Architecture' },
+                { id: 'all', label: 'All Visuals' },
+                { id: 'exterior', label: 'Architectural Renders' },
                 { id: 'floorplan', label: 'Floor Plans' },
-                { id: 'site', label: 'Construction Progress' },
+                { id: 'site', label: property.id === 'lekki-phase-1-project' ? 'Site Context' : 'Construction Progress' },
                 { id: 'interior', label: 'Interiors & Salons' },
                 { id: 'living', label: 'Living Areas' },
                 { id: 'bedroom', label: 'Suites' },
@@ -369,7 +382,7 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
                   Comprehensive Unit Breakdowns
                 </h2>
                 <p className="mt-1 text-xs sm:text-sm text-stone-600">
-                  Carefully proportioned architectural floorplans designed for functional living and maximum rental returns.
+                  Carefully proportioned architectural floorplans designed for comfortable contemporary living.
                 </p>
               </div>
               <span className="text-xs font-bold text-[#461313] bg-[#C0E8F9]/50 px-3.5 py-1 rounded-full self-start sm:self-auto shrink-0">
@@ -448,6 +461,60 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
           </div>
         </section>
 
+        {/* SECTION: Approved Payment Plans & Delivery Schedule */}
+        {property.financials.milestones && property.financials.milestones.length > 0 && (
+          <section className="mb-14 sm:mb-16" id="payment-plans">
+            <div className="mb-5 sm:mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-[#D64933] block mb-1">
+                  Commercial Terms &amp; Timeline
+                </span>
+                <h2 className="text-xl sm:text-3xl font-bold text-[#162521] tracking-tight">
+                  Payment Options &amp; Development Schedule
+                </h2>
+                <p className="mt-1 text-xs sm:text-sm text-stone-600 max-w-3xl">
+                  {property.financials.handoverTimeline}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => openBooking(`${property.name} — Approved Pricing & Payment Schedule Request`)}
+                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#461313] hover:bg-[#D64933] text-white text-xs font-semibold transition-colors cursor-pointer self-start sm:self-auto shrink-0"
+              >
+                <span>Request Official Offer Sheet</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
+              {property.financials.milestones.map((milestone, mIdx) => (
+                <div
+                  key={mIdx}
+                  className="bg-white rounded-2xl sm:rounded-3xl border border-stone-200/90 p-5 sm:p-6 shadow-2xs flex flex-col justify-between"
+                >
+                  <div>
+                    <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-[#461313] bg-[#C0E8F9]/50 px-3 py-1 rounded-full mb-3">
+                      {milestone.percentage}
+                    </span>
+                    <h3 className="text-base sm:text-lg font-bold text-[#162521] mb-2">
+                      {milestone.stage}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
+                      {milestone.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {property.id === 'lekki-phase-1-project' && (
+              <div className="mt-4 p-4 rounded-2xl bg-stone-50 border border-stone-200/90 text-xs text-stone-700 leading-relaxed">
+                <strong className="text-[#162521]">Commercial Qualification:</strong> Current unit pricing, deposit percentages, and monthly instalment schedules are confirmed solely via management-approved offer sheets from ChapelHill Multicompany Limited. Zero initial deposit under the 24-month plan does not remove contractual obligations or payments due at signing, and all terms remain subject to signed offer and management approval.
+              </div>
+            )}
+          </section>
+        )}
+
         {/* SECTION: Architectural Specifications */}
         <section className="mb-16">
           <div className="mb-8">
@@ -458,7 +525,7 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
               Architectural & Engineering Specifications
             </h2>
             <p className="mt-1 text-sm text-stone-600 max-w-3xl">
-              Constructed to international structural standards with premium European fixtures and sustainable MEP integration.
+              Engineered residential planning, utility infrastructure, and structural provisions overseen by ChapelHill Multicompany Limited.
             </p>
           </div>
 
@@ -516,15 +583,15 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
                 referrerPolicy="no-referrer"
               />
               <ShieldCheck className="w-3.5 h-3.5 text-[#C0E8F9]" />
-              <span>Direct Developer Allocation · Chapelhill Verified</span>
+              <span>Direct Developer Allocation · ChapelHill Multicompany Limited</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight font-serif text-white">
-              Inquire & Reserve This Property
+              Enquire &amp; Request Site Inspection
             </h2>
 
             <p className="mt-4 text-sm sm:text-base text-stone-300 leading-relaxed">
-              Connect directly with our senior development advisory team to request full architectural blueprints, review unencumbered title deeds, or schedule a private VIP site walkthrough.
+              Connect directly with our team to request the current management-approved pricing schedule, review available title documentation, or schedule a private site inspection.
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
@@ -533,34 +600,34 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
                 id="main-inquire-reserve-cta-btn"
                 className="bg-white hover:bg-stone-100 text-[#162521] px-8 py-4 rounded-full font-bold text-sm sm:text-base inline-flex items-center justify-center gap-3 transition-all duration-200 shadow-xl hover:scale-[1.02] cursor-pointer"
               >
-                <span>Inquire & Reserve This Property</span>
+                <span>Enquire &amp; Book Inspection</span>
                 <ArrowRight className="w-4 h-4 text-[#461313]" />
               </button>
 
               <button
                 onClick={() => {
                   const subject = encodeURIComponent(`Executive Inquiry: ${property.name}`);
-                  const body = encodeURIComponent(`Hello Chapelhill Advisory,\n\nI am interested in exploring an acquisition at ${property.name}. Please provide current allocation availability, payment plans, and legal title documents.\n\nThank you.`);
-                  window.location.href = `mailto:concierge@chapelhillre.com?subject=${subject}&body=${body}`;
+                  const body = encodeURIComponent(`Hello ChapelHill Multicompany Limited,\n\nI am interested in exploring ${property.name}. Please provide the current management-approved pricing schedule, payment plan terms, and inspection availability.\n\nThank you.`);
+                  window.location.href = `mailto:chapelhillmulticompanyltd@gmail.com?subject=${subject}&body=${body}`;
                 }}
                 className="bg-white/10 hover:bg-white/15 text-white border border-white/20 px-6 py-4 rounded-full font-semibold text-sm inline-flex items-center justify-center gap-2 transition-colors cursor-pointer"
               >
-                <span>Email Private Concierge</span>
+                <span>Email Advisory Desk</span>
               </button>
             </div>
 
             <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center gap-6 text-xs text-stone-400">
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                Guaranteed Allocation Transparency
+                Management-Approved Offer Terms
               </span>
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                Diaspora Escrow Protection
+                Independent Title Verification
               </span>
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                Zero Agency Commission Fees
+                Direct Developer Advisory
               </span>
             </div>
           </div>
@@ -668,7 +735,7 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
 
         <div className="flex items-center gap-2 shrink-0">
           <a
-            href={`https://wa.me/2348039876543?text=${encodeURIComponent(`Hello Chapelhill, I am inquiring about ${property.name} (${property.financials.startingPrice}).`)}`}
+            href={`https://wa.me/2348032865488?text=${encodeURIComponent(`Hello ChapelHill Multicompany Limited, I am inquiring about ${property.name} (${property.financials.startingPrice}).`)}`}
             target="_blank"
             rel="noopener noreferrer"
             className="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xs active:scale-95 transition-transform"

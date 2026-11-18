@@ -51,7 +51,7 @@ export default function ProjectsPageClient() {
   const [selectedFilter, setSelectedFilter] = useState<'all' | 'completed' | 'ongoing' | 'sold-out'>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
-  const [selectedProjectForBooking, setSelectedProjectForBooking] = useState<string>('Ivy Homes Abijo GRA');
+  const [selectedProjectForBooking, setSelectedProjectForBooking] = useState<string>('IVY Heights, Ikate, Lekki Phase 1, Lagos');
   const [isLoading, setIsLoading] = useState(true);
 
   // Fast simulated client fetch/hydration phase to showcase skeleton screen
@@ -69,7 +69,7 @@ export default function ProjectsPageClient() {
       if (p.id === 'ivy-homes-abijo') {
         cityState = 'Lekki, Lagos State';
       } else if (p.id === 'lekki-phase-1-project') {
-        cityState = 'Lekki Phase 1, Lagos State';
+        cityState = 'Ikate, Lekki Phase 1, Lagos';
       } else if (p.id === 'ogudu-gra-project') {
         cityState = 'Ogudu GRA, Lagos State';
       } else if (p.id.includes('royal-garden') || p.location.includes('Royal')) {
@@ -228,7 +228,7 @@ export default function ProjectsPageClient() {
                   role="tab"
                   aria-selected={selectedFilter === 'ongoing'}
                 >
-                  Ongoing ({counts.ongoing})
+                  Off-Plan / Ongoing ({counts.ongoing})
                 </button>
                 <button
                   onClick={() => setSelectedFilter('sold-out')}
@@ -258,23 +258,23 @@ export default function ProjectsPageClient() {
             </div>
           </div>
 
-          {/* Clean Unboxed Key Performance Indicators (Zero-Pill Discipline) */}
+          {/* Clean Unboxed Portfolio Highlights (Zero-Pill Discipline) */}
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-stone-200/60 max-w-4xl mx-auto text-center">
             <div>
-              <p className="text-2xl sm:text-3xl font-extrabold text-[#461313] font-serif">100%</p>
-              <p className="mt-1 text-xs text-stone-500 font-medium">Verified C of O / Governor’s Consent</p>
+              <p className="text-2xl sm:text-3xl font-extrabold text-[#461313] font-serif">Title Clarity</p>
+              <p className="mt-1 text-xs text-stone-500 font-medium">C of O / Governor’s Consent Documentation</p>
             </div>
             <div>
               <p className="text-2xl sm:text-3xl font-extrabold text-[#461313] font-serif">Turnkey</p>
               <p className="mt-1 text-xs text-stone-500 font-medium">Fitted Contemporary Standard</p>
             </div>
             <div>
-              <p className="text-2xl sm:text-3xl font-extrabold text-[#461313] font-serif">24/7</p>
-              <p className="mt-1 text-xs text-stone-500 font-medium">Solar-Backed Estate Power</p>
+              <p className="text-2xl sm:text-3xl font-extrabold text-[#461313] font-serif">Solar &amp; Power</p>
+              <p className="mt-1 text-xs text-stone-500 font-medium">Integrated Estate Utility Systems</p>
             </div>
             <div>
               <p className="text-2xl sm:text-3xl font-extrabold text-[#461313] font-serif">Lagos</p>
-              <p className="mt-1 text-xs text-stone-500 font-medium">Lekki &amp; Mainland High-Yield Zones</p>
+              <p className="mt-1 text-xs text-stone-500 font-medium">Lekki &amp; Mainland Corridors</p>
             </div>
           </div>
         </header>
@@ -338,7 +338,13 @@ export default function ProjectsPageClient() {
                               ? 'bg-amber-950/80 text-amber-200 border border-amber-500/30'
                               : 'bg-rose-950/80 text-rose-200 border border-rose-500/30'
                           }`}>
-                            {isCompleted ? 'Completed' : isOngoing ? 'Ongoing · Off-Plan' : 'Sold Out'}
+                            {isCompleted
+                              ? 'Completed'
+                              : isOngoing
+                                ? project.id === 'lekki-phase-1-project'
+                                  ? 'Pre-Construction · Off-Plan'
+                                  : 'Ongoing · Off-Plan'
+                                : 'Sold Out'}
                           </span>
 
                           <span className="text-[11px] font-mono font-medium text-white bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full">
@@ -433,7 +439,7 @@ export default function ProjectsPageClient() {
                   Looking for Upcoming Sites or Off-Market Acquisitions?
                 </h3>
                 <p className="mt-3 text-stone-300 text-sm sm:text-base leading-relaxed">
-                  In addition to our flagship residential developments, Chapelhill Multicompany International advises institutional investors, diaspora buyers, and private syndicates on strategic land banking and customized turnkey civil construction across Lagos.
+                  In addition to our residential developments, ChapelHill Multicompany Limited advises private clients, diaspora buyers, and corporate groups on strategic land acquisitions and customized turnkey civil construction across Lagos.
                 </p>
 
                 <div className="mt-6 flex flex-wrap items-center gap-4 text-xs text-stone-300">
@@ -462,7 +468,7 @@ export default function ProjectsPageClient() {
                 </button>
 
                 <a
-                  href="https://wa.me/2349039130207?text=Hello%20Chapelhill%2C%20I%20am%20interested%20in%20inquiring%20about%20your%20completed%20and%20ongoing%20projects."
+                  href="https://wa.me/2348032865488?text=Hello%20ChapelHill%20Multicompany%20Limited%2C%20I%20am%20interested%20in%20inquiring%20about%20your%20completed%20and%20ongoing%20projects."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full bg-white/10 hover:bg-white/20 text-white border border-white/20 py-3 px-6 rounded-2xl font-semibold text-xs sm:text-sm transition-colors flex items-center justify-center gap-2"

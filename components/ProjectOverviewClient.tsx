@@ -103,16 +103,39 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
     }
   };
 
-  const whatsappInquiryUrl = `https://wa.me/2348035222045?text=${encodeURIComponent(
-    `Hello Chapelhill, I am interested in viewing ${project.name} located at ${project.location}.`
+  const whatsappInquiryUrl = `https://wa.me/2348032865488?text=${encodeURIComponent(
+    `Hello ChapelHill Multicompany Limited, I am interested in viewing ${project.name} located at ${project.location}.`
   )}`;
 
-  const communityName = project.location.split(',')[0].replace('Axis', '').trim();
-  const bedroomsLabel = project.unitBreakdown[0]?.bedrooms ? `${project.unitBreakdown[0].bedrooms} Ensuite` : '5 Ensuite';
-  const bathroomsLabel = project.unitBreakdown[0]?.bathrooms ? `${project.unitBreakdown[0].bathrooms} Baths` : '5.5 Baths';
-  const bqLabel = project.totalUnits.toLowerCase().includes('bq') ? '1 Ensuite BQ' : 'Self-Contained';
-  const parkingLabel = project.keyHighlights.some(h => h.toLowerCase().includes('parking')) ? 'Ample Parking' : '4–6 Cars';
-  const handoverLabel = project.status === 'completed' ? 'Immediate' : project.status === 'ongoing' ? 'In Progress' : '100% Sold';
+  const isIvyHeights = project.id === 'lekki-phase-1-project';
+  const communityName = isIvyHeights ? 'Ikate, Lekki Phase 1' : project.location.split(',')[0].replace('Axis', '').trim();
+  const bedroomsLabel = isIvyHeights
+    ? '2 & 3 Bedroom'
+    : project.unitBreakdown[0]?.bedrooms
+      ? `${project.unitBreakdown[0].bedrooms} Ensuite`
+      : '5 Ensuite';
+  const bathroomsLabel = isIvyHeights
+    ? '2 & 3 Baths'
+    : project.unitBreakdown[0]?.bathrooms
+      ? `${project.unitBreakdown[0].bathrooms} Baths`
+      : '5.5 Baths';
+  const bqLabel = isIvyHeights
+    ? 'Apartments'
+    : project.totalUnits.toLowerCase().includes('bq')
+      ? '1 Ensuite BQ'
+      : 'Self-Contained';
+  const parkingLabel = isIvyHeights
+    ? 'Planned On-Site'
+    : project.keyHighlights.some((h) => h.toLowerCase().includes('parking'))
+      ? 'Ample Parking'
+      : '4–6 Cars';
+  const handoverLabel = isIvyHeights
+    ? '24-Mo Proposed'
+    : project.status === 'completed'
+      ? 'Immediate'
+      : project.status === 'ongoing'
+        ? 'In Progress'
+        : 'Sold Out';
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#FEFCFD] via-[#FEFCFD] to-[#f7f3f5] text-[#162521] flex flex-col justify-between selection:bg-[#461313] selection:text-white">
@@ -258,7 +281,7 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
             <div className="p-3 sm:p-3.5 rounded-2xl bg-white border border-stone-200/80 shadow-2xs">
               <span className="text-[11px] text-stone-500 flex items-center gap-1">
                 <Home className="w-3.5 h-3.5 text-[#D64933]" />
-                Staff BQ
+                {isIvyHeights ? 'Development Type' : 'Staff BQ'}
               </span>
               <span className="text-sm sm:text-base lg:text-lg font-bold text-[#162521] mt-1 block truncate">
                 {bqLabel}
@@ -288,7 +311,7 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
             <div className="p-3 sm:p-3.5 rounded-2xl bg-white border border-stone-200/80 shadow-2xs">
               <span className="text-[11px] text-stone-500 flex items-center gap-1">
                 <Sparkles className="w-3.5 h-3.5 text-[#D64933]" />
-                Handover
+                {isIvyHeights ? 'Build Period' : 'Handover'}
               </span>
               <span className="text-sm sm:text-base lg:text-lg font-bold text-emerald-700 mt-1 block truncate">
                 {handoverLabel}
@@ -319,7 +342,7 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
                   </p>
                 ) : (
                   <p>
-                    Built and delivered to the exacting standards of Chapelhill Multicompany International, this development brings together generous family proportions, high-spec modern finishes, and serene privacy within one of Lagos State’s most sought-after enclaves.
+                    Built and delivered by ChapelHill Multicompany Limited, this development brings together generous family proportions, modern finishes, and serene privacy within one of Lagos State’s sought-after residential areas.
                   </p>
                 )}
               </div>
@@ -353,25 +376,27 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
                   {communityName}
                 </h3>
                 <p className="text-xs sm:text-sm text-stone-300 leading-relaxed mb-5">
-                  Situated in {project.location}. A prestigious, secure enclave celebrated for prime road connectivity, high capital appreciation, and tranquil residential living.
+                  Situated in {project.location}. A secure residential environment valued for accessible road connectivity and tranquil family living.
                 </p>
 
                 <div className="space-y-2.5 text-xs text-stone-300 border-t border-white/10 pt-4">
-                  <div className="flex items-center justify-between">
-                    <span className="text-stone-400">Title Document:</span>
-                    <span className="font-semibold text-white">{project.financials.titleStatus || 'Governor’s Consent / Deed'}</span>
+                  <div className="flex items-start justify-between gap-4">
+                    <span className="text-stone-400 shrink-0">Title Review:</span>
+                    <span className="font-semibold text-white text-right">{project.financials.titleStatus || 'Governor’s Consent / Deed'}</span>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-stone-400">Plot Footprint:</span>
-                    <span className="font-semibold text-white">{project.landSize || 'Dedicated Parcel'}</span>
+                  <div className="flex items-start justify-between gap-4">
+                    <span className="text-stone-400 shrink-0">Location:</span>
+                    <span className="font-semibold text-white text-right">{project.landSize || 'Dedicated Parcel'}</span>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-stone-400">Power Supply:</span>
-                    <span className="font-semibold text-white">24/7 Solar &amp; Estate Power</span>
+                  <div className="flex items-start justify-between gap-4">
+                    <span className="text-stone-400 shrink-0">Utilities:</span>
+                    <span className="font-semibold text-white text-right">
+                      {isIvyHeights ? 'Planned Backup Power & Water Supply' : '24/7 Solar & Estate Power'}
+                    </span>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-stone-400">Water Source:</span>
-                    <span className="font-semibold text-white">Dedicated Industrial Borehole</span>
+                  <div className="flex items-start justify-between gap-4">
+                    <span className="text-stone-400 shrink-0">Schedule:</span>
+                    <span className="font-semibold text-white text-right">{project.financials.handoverTimeline}</span>
                   </div>
                 </div>
               </div>
@@ -380,17 +405,25 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
               <div className="bg-white rounded-3xl border border-stone-200/90 p-6 shadow-xs flex flex-col justify-between">
                 <div>
                   <span className="text-xs font-bold uppercase tracking-wider text-stone-400 block mb-1">
-                    {project.status === 'completed' ? 'Turnkey Handover' : 'Technical Site Inspection'}
+                    {project.status === 'completed'
+                      ? 'Turnkey Handover'
+                      : isIvyHeights
+                        ? 'Enquiry & Site Inspection'
+                        : 'Technical Site Inspection'}
                   </span>
                   <h4 className="text-base font-bold text-[#162521]">
                     {project.status === 'completed'
                       ? 'Ready for Immediate Physical Move-In'
-                      : 'Private Site Walkthrough & Technical Consultation'}
+                      : isIvyHeights
+                        ? 'Request Approved Schedule & Site Visit'
+                        : 'Private Site Walkthrough & Technical Consultation'}
                   </h4>
                   <p className="text-xs text-stone-500 mt-1.5 leading-relaxed">
                     {project.status === 'completed'
                       ? 'Keys are ready for inspection and immediate allocation. Connect with our dedicated property advisory team to arrange a private walkthrough.'
-                      : 'Connect with our structural engineers and project directors to inspect ongoing civil progress, concrete casting, and technical milestones.'}
+                      : isIvyHeights
+                        ? 'Connect with ChapelHill Multicompany Limited to receive the current management-approved pricing sheet, review 12/18/24-month payment options, or schedule an Ikate site inspection.'
+                        : 'Connect with our structural engineers and project directors to inspect ongoing civil progress, concrete casting, and technical milestones.'}
                   </p>
                 </div>
 
@@ -399,11 +432,11 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
                     onClick={() => setBookingModalOpen(true)}
                     className="flex-1 py-3 px-4 rounded-xl bg-[#461313] hover:bg-[#D64933] text-white text-xs font-bold text-center transition-colors cursor-pointer"
                   >
-                    Schedule Private Inspection
+                    {isIvyHeights ? 'Request Schedule / Inspection' : 'Schedule Private Inspection'}
                   </button>
 
                   <a
-                    href="tel:+2348035222045"
+                    href="tel:+2348032865488"
                     className="py-3 px-4 rounded-xl border border-stone-200 hover:border-[#461313] text-[#162521] text-xs font-semibold text-center transition-colors flex items-center justify-center gap-1.5"
                   >
                     <Phone className="w-3.5 h-3.5 text-stone-600" />
@@ -415,19 +448,116 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
           </div>
         </section>
 
+        {/* SECTION 1.5: APARTMENT OPTIONS & APPROVED PAYMENT PLANS */}
+        {(project.unitBreakdown.length > 0 || project.financials.milestones.length > 0) && (
+          <section className="mb-14 sm:mb-16" aria-label="Unit Options and Payment Plans">
+            <div className="mb-6 pb-4 border-b border-stone-200/80 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-[#D64933] block mb-1">
+                  Unit Options &amp; Commercial Terms
+                </span>
+                <h2 className="text-xl sm:text-3xl font-bold text-[#162521] tracking-tight">
+                  Approved Apartment Mix &amp; Payment Options
+                </h2>
+                <p className="text-xs sm:text-sm text-stone-500 mt-1">
+                  {project.financials.handoverTimeline}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setBookingModalOpen(true)}
+                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#461313] hover:bg-[#D64933] text-white text-xs font-semibold transition-colors cursor-pointer self-start sm:self-auto shrink-0"
+              >
+                <span>Request Current Pricing Sheet</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+              {project.unitBreakdown.map((unit, uIdx) => (
+                <div
+                  key={uIdx}
+                  className="bg-white rounded-3xl border border-stone-200/90 p-6 shadow-2xs flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-2">
+                      <span className="text-xs font-bold text-[#D64933] bg-stone-100 px-3 py-1 rounded-full">
+                        {unit.count}
+                      </span>
+                      <span className="text-xs sm:text-sm font-bold text-[#461313]">
+                        {unit.price}
+                      </span>
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-bold text-[#162521] mb-2">
+                      {unit.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-stone-600 leading-relaxed mb-4">
+                      {unit.description}
+                    </p>
+                    <ul className="space-y-1.5 mb-4">
+                      {unit.features.map((feat, fIdx) => (
+                        <li key={fIdx} className="flex items-start gap-2 text-xs text-stone-700">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                          <span>{feat}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setBookingModalOpen(true)}
+                    className="w-full py-2.5 px-4 rounded-full bg-stone-100 hover:bg-[#461313] text-[#162521] hover:text-white text-xs font-semibold transition-colors cursor-pointer"
+                  >
+                    Enquire About {unit.title}
+                  </button>
+                </div>
+              ))}
+            </div>
+
+            {project.financials.milestones.length > 0 && (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {project.financials.milestones.map((m, mIdx) => (
+                  <div
+                    key={mIdx}
+                    className="bg-white rounded-2xl border border-stone-200/90 p-5 shadow-2xs"
+                  >
+                    <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-[#461313] bg-[#C0E8F9]/50 px-3 py-1 rounded-full mb-2.5">
+                      {m.percentage}
+                    </span>
+                    <h4 className="text-sm sm:text-base font-bold text-[#162521] mb-1.5">
+                      {m.stage}
+                    </h4>
+                    <p className="text-xs text-stone-600 leading-relaxed">
+                      {m.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </section>
+        )}
+
         {/* SECTION 2: HIGH-RESOLUTION GALLERY */}
         <section className="mb-16 sm:mb-20" aria-label="Project Photo Gallery">
           {/* Gallery Header & Filter Tabs */}
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 pb-4 border-b border-stone-200/80">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-[#D64933] block mb-1">
-                Completed Project Gallery
+                {project.status === 'completed'
+                  ? 'Completed Project Gallery'
+                  : isIvyHeights
+                    ? 'Illustrative Renderings & Site Context'
+                    : 'Development Visual Gallery'}
               </span>
               <h2 className="text-xl sm:text-3xl font-bold text-[#162521] tracking-tight">
-                Explore Photographs from this Development
+                {isIvyHeights
+                  ? 'Explore Architectural Renders & Floor Plans'
+                  : 'Explore Photographs from this Development'}
               </h2>
               <p className="text-xs sm:text-sm text-stone-500 mt-1">
-                Click any photograph to view high-resolution details in full-screen gallery mode.
+                {isIvyHeights
+                  ? 'Architectural renderings and floor plans are illustrative concepts and do not represent photographs of completed units.'
+                  : 'Click any photograph to view high-resolution details in full-screen gallery mode.'}
               </p>
             </div>
 
@@ -511,7 +641,7 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
                   Architectural Specifications &amp; Engineering Standards
                 </h2>
                 <p className="text-xs sm:text-sm text-stone-500 mt-1">
-                  Civil engineering specifications, utility infrastructure, and structural compliance audited by Chapelhill.
+                  Civil engineering specifications, utility infrastructure, and structural features overseen by ChapelHill Multicompany Limited.
                 </p>
               </div>
             </div>
@@ -751,7 +881,7 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
 
       {/* Floating WhatsApp Action Button */}
       <WhatsAppFAB
-        defaultMessage={`Hello Chapelhill, I would like to schedule a private inspection or inquire about ${project.name} in Royal Gardens Estate.`}
+        defaultMessage={`Hello ChapelHill Multicompany Limited, I would like to schedule a private inspection or inquire about ${project.name}.`}
       />
 
       {/* Footer */}

@@ -19,6 +19,18 @@ interface Property {
 
 const LUXURY_PROPERTIES: Property[] = [
   {
+    id: 'lekki-phase-1-project',
+    name: 'IVY Heights, Ikate, Lekki Phase 1, Lagos',
+    location: 'Ikate, Lekki Phase 1, Lagos State, Nigeria',
+    price: 'Approved Schedule on Request',
+    beds: 3,
+    baths: 3,
+    sqft: '2-Bed & 3-Bed Apartments',
+    tag: 'Pre-Construction / Off-Plan • 24-Mo Build',
+    imageUrl: '/images/lekki-phase-1/lekki 3d/Lekki phase 1(4).jpeg',
+    description: 'Pre-construction / off-plan residential development at Ikate, Lekki Phase 1 featuring 2-bedroom and 3-bedroom apartments with 12-month, 18-month, and 24-month payment plans. Renderings are illustrative concepts.',
+  },
+  {
     id: 'ivy-homes-abijo',
     name: 'Ivy Homes Abijo GRA',
     location: 'Abijo GRA, Lekki Axis, Lagos',
@@ -34,37 +46,13 @@ const LUXURY_PROPERTIES: Property[] = [
     id: 'ogudu-gra-project',
     name: 'Ogudu GRA Project',
     location: 'Ogudu GRA, Mainland Prime, Lagos',
-    price: 'Sold Out (100% Allocated)',
+    price: 'Sold Out',
     beds: 5,
     baths: 6,
     sqft: 'Penthouse + Service Room',
     tag: 'Sold Out • Fully Allocated',
     imageUrl: '/images/5 bed Ogudu GRA Project/5 bed ogudu GRA 1.webp',
-    description: 'Exclusive 5-bedroom luxury penthouse with dedicated ensuite service room, double-height living spaces, panoramic rooftop terraces, and private elevator access. 100% Sold Out.',
-  },
-  {
-    id: 'lekki-phase-1-project',
-    name: 'Ivy Heights, Lekki Phase 1',
-    location: 'Lekki Phase 1, Lagos State, Nigeria',
-    price: 'Starting from ₦200,000,000',
-    beds: 3,
-    baths: 3.5,
-    sqft: '200m² – 250m² + Penthouses',
-    tag: 'Exclusive Off-Plan Investment',
-    imageUrl: '/images/lekki-phase-1/lekki 3d/Lekki phase 1(4).jpeg',
-    description: '5-storey luxury residential building in Lekki Phase 1 featuring 2-Bed & 3-Bed Flats + BQ and crown penthouses with world-class Afrocentric architecture.',
-  },
-  {
-    id: 'lumina-belvedere',
-    name: 'The Lumina Belvedere',
-    location: 'Chapelhill Ridge, Pacific Palisades',
-    price: '$18,500,000',
-    beds: 6,
-    baths: 8,
-    sqft: '9,450 sq ft',
-    tag: 'Architectural Trophy',
-    imageUrl: '/luxury_villa_hero.jpg',
-    description: 'Multi-tiered modernist sanctuary with cantilevered terraces, glass walls, and ethereal hillside vistas.',
+    description: 'Exclusive 5-bedroom penthouse with dedicated ensuite service room, double-height living spaces, wraparound terraces, and private elevator access.',
   },
 ];
 
@@ -188,7 +176,7 @@ export default function PropertyModal({ isOpen, onClose, onBookTour }: PropertyM
 
         {/* Footer */}
         <div className="p-3.5 sm:p-4 bg-slate-50 border-t border-slate-200/80 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500 shrink-0">
-          <p>Chapelhill Private Portfolio • Verified Off-Market and Premier Listings</p>
+          <p>ChapelHill Multicompany Limited • Property Portfolio</p>
           <button
             onClick={onClose}
             className="px-4 py-1.5 rounded-full border border-stone-300 text-xs font-semibold text-[#162521] hover:bg-stone-200 transition-colors cursor-pointer"

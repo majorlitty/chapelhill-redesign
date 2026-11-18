@@ -2,7 +2,14 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { X, Calendar, Clock, MapPin, User, Mail, Phone, CheckCircle, Shield, MessageCircle } from 'lucide-react';
+import {
+  X,
+  CheckCircle,
+  Shield,
+  MessageCircle,
+  Loader2,
+  AlertCircle,
+} from 'lucide-react';
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -13,29 +20,93 @@ interface BookingModalProps {
 export default function BookingModal({
   isOpen,
   onClose,
-  defaultProperty = 'Ivy Homes Abijo GRA',
+  defaultProperty = 'IVY Heights, Ikate, Lekki Phase 1, Lagos',
 }: BookingModalProps) {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [editedProperty, setEditedProperty] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    property: defaultProperty,
     tourType: 'in-person',
     date: '2026-09-24',
-    time: '14:00',
     notes: '',
   });
 
+  const selectedProperty = editedProperty ?? defaultProperty;
+
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+    setErrorMessage(null);
+
+    try {
+      const response = await fetch('/api/inquiries', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          property: selectedProperty,
+          tourType: formData.tourType,
+          date: formData.date,
+          message: formData.notes,
+        }),
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(
+          data.error || 'Unable to send your inquiry right now. Please try again.'
+        );
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setErrorMessage(
+        err instanceof Error
+          ? err.message
+          : 'A network error occurred while submitting your request. Please try again.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleReset = () => {
     setSubmitted(false);
+    setErrorMessage(null);
+    setIsSubmitting(false);
+    setEditedProperty(null);
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      tourType: 'in-person',
+      date: '2026-09-24',
+      notes: '',
+    });
+    onClose();
+  };
+
+  const handleClose = () => {
+    if (isSubmitting) return;
+    if (submitted) {
+      handleReset();
+      return;
+    }
+    setErrorMessage(null);
+    setEditedProperty(null);
     onClose();
   };
 
@@ -62,16 +133,18 @@ export default function BookingModal({
             </div>
 
             <h2 className="text-xl sm:text-2xl font-bold text-[#162521] tracking-tight">
-              Schedule a Private Viewing
+              Schedule a Consultation or Viewing
             </h2>
             <p className="mt-1 text-xs sm:text-sm text-[#162521]/70">
-              Experience the craftsmanship and tranquility of Chapelhill estates in person or via high-definition virtual tour.
+              Connect with the ChapelHill Multicompany Limited team regarding our properties, construction services, facility management, or joint-venture partnerships.
             </p>
           </div>
 
           <button
-            onClick={onClose}
-            className="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-black transition-colors shrink-0 cursor-pointer"
+            type="button"
+            onClick={handleClose}
+            disabled={isSubmitting}
+            className="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 disabled:opacity-50 flex items-center justify-center text-slate-500 hover:text-black transition-colors shrink-0 cursor-pointer"
             id="close-booking-modal"
             aria-label="Close modal"
           >
@@ -85,13 +158,14 @@ export default function BookingModal({
             <form onSubmit={handleSubmit} className="space-y-3.5">
               <div>
                 <label className="block text-xs font-semibold text-[#162521]/80 uppercase tracking-wider mb-1">
-                  Selected Estate
+                  Selected Property or Service
                 </label>
                 <input
                   type="text"
-                  value={formData.property}
-                  onChange={(e) => setFormData({ ...formData, property: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-base sm:text-sm font-medium text-[#162521] focus:outline-none focus:ring-2 focus:ring-[#461313] min-h-[44px]"
+                  value={selectedProperty}
+                  onChange={(e) => setEditedProperty(e.target.value)}
+                  disabled={isSubmitting}
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-base sm:text-sm font-medium text-[#162521] focus:outline-none focus:ring-2 focus:ring-[#461313] min-h-[44px] disabled:opacity-60"
                   required
                 />
               </div>
@@ -106,7 +180,8 @@ export default function BookingModal({
                     placeholder="e.g. Victoria Sinclair"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-base sm:text-sm text-[#162521] focus:outline-none focus:ring-2 focus:ring-[#461313] min-h-[44px]"
+                    disabled={isSubmitting}
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-base sm:text-sm text-[#162521] focus:outline-none focus:ring-2 focus:ring-[#461313] min-h-[44px] disabled:opacity-60"
                     required
                   />
                 </div>
@@ -119,10 +194,26 @@ export default function BookingModal({
                     placeholder="client@domain.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-base sm:text-sm text-[#162521] focus:outline-none focus:ring-2 focus:ring-[#461313] min-h-[44px]"
+                    disabled={isSubmitting}
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-base sm:text-sm text-[#162521] focus:outline-none focus:ring-2 focus:ring-[#461313] min-h-[44px] disabled:opacity-60"
                     required
                   />
                 </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-[#162521]/80 uppercase tracking-wider mb-1">
+                  Phone Number
+                </label>
+                <input
+                  type="tel"
+                  placeholder="+234 803 286 5488"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  disabled={isSubmitting}
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-base sm:text-sm text-[#162521] focus:outline-none focus:ring-2 focus:ring-[#461313] min-h-[44px] disabled:opacity-60"
+                  required
+                />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -134,46 +225,68 @@ export default function BookingModal({
                     type="date"
                     value={formData.date}
                     onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-base sm:text-sm text-[#162521] focus:outline-none focus:ring-2 focus:ring-[#461313] min-h-[44px]"
+                    disabled={isSubmitting}
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-base sm:text-sm text-[#162521] focus:outline-none focus:ring-2 focus:ring-[#461313] min-h-[44px] disabled:opacity-60"
                     required
                   />
                 </div>
                 <div>
                   <label className="block text-xs font-semibold text-[#162521]/80 uppercase tracking-wider mb-1">
-                    Viewing Format
+                    Consultation Format
                   </label>
                   <select
                     value={formData.tourType}
                     onChange={(e) => setFormData({ ...formData, tourType: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-base sm:text-sm text-[#162521] focus:outline-none focus:ring-2 focus:ring-[#461313] bg-white min-h-[44px]"
+                    disabled={isSubmitting}
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-base sm:text-sm text-[#162521] focus:outline-none focus:ring-2 focus:ring-[#461313] bg-white min-h-[44px] disabled:opacity-60"
                   >
-                    <option value="in-person">Private In-Person Tour</option>
-                    <option value="virtual-vip">Live 4K Virtual Walkthrough</option>
-                    <option value="advisory">Confidential Advisory Call</option>
+                    <option value="in-person">In-Person Meeting / Site Visit</option>
+                    <option value="virtual-vip">Virtual Walkthrough &amp; Briefing</option>
+                    <option value="advisory">Advisory &amp; Partnership Call</option>
                   </select>
                 </div>
               </div>
 
               <div>
                 <label className="block text-xs font-semibold text-[#162521]/80 uppercase tracking-wider mb-1">
-                  Specific Inquiries or Requirements (Optional)
+                  Inquiry Message & Requirements
                 </label>
                 <textarea
-                  rows={2}
-                  placeholder="Architectural preferences, timing flexibility, or private hangar/garage requirements..."
+                  rows={3}
+                  placeholder="Share architectural preferences, budget range, payment plan questions, or timing flexibility..."
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-base sm:text-sm text-[#162521] focus:outline-none focus:ring-2 focus:ring-[#461313] resize-none"
+                  disabled={isSubmitting}
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-base sm:text-sm text-[#162521] focus:outline-none focus:ring-2 focus:ring-[#461313] resize-none disabled:opacity-60"
+                  required
                 />
               </div>
+
+              {errorMessage && (
+                <div
+                  role="alert"
+                  className="flex items-start gap-2.5 rounded-xl border border-red-200 bg-red-50 px-3.5 py-2.5 text-xs text-red-800"
+                >
+                  <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+                  <span>{errorMessage}</span>
+                </div>
+              )}
 
               <div className="pt-2">
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   id="submit-booking-button"
-                  className="w-full bg-[#461313] hover:bg-[#D64933] text-white py-3 px-6 rounded-full font-semibold text-xs sm:text-sm transition-colors shadow-md cursor-pointer"
+                  className="w-full bg-[#461313] hover:bg-[#D64933] disabled:bg-[#461313]/70 disabled:cursor-not-allowed text-white py-3 px-6 rounded-full font-semibold text-xs sm:text-sm transition-colors shadow-md cursor-pointer inline-flex items-center justify-center gap-2 min-h-[44px]"
                 >
-                  Confirm Viewing Request
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>Sending Inquiry...</span>
+                    </>
+                  ) : (
+                    <span>Submit Enquiry</span>
+                  )}
                 </button>
                 <div className="mt-2.5 flex items-center justify-center gap-2">
                   <div className="h-px bg-stone-200 flex-1" />
@@ -181,17 +294,17 @@ export default function BookingModal({
                   <div className="h-px bg-stone-200 flex-1" />
                 </div>
                 <a
-                  href={`https://wa.me/2348039876543?text=${encodeURIComponent(`Hello Chapelhill, I am interested in inquiring about ${formData.property} and scheduling a private viewing.`)}`}
+                  href={`https://wa.me/2348032865488?text=${encodeURIComponent(`Hello ChapelHill Multicompany Limited, I am interested in inquiring about ${selectedProperty} and scheduling a private viewing.`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   id="booking-modal-whatsapp-link"
                   className="mt-2 w-full bg-[#25D366]/10 hover:bg-[#25D366]/20 text-[#128C7E] border border-[#25D366]/30 py-2.5 px-4 rounded-full font-semibold text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
                 >
                   <MessageCircle className="w-4 h-4 fill-[#25D366] text-[#25D366]" />
-                  <span>Chat with Senior Advisor on WhatsApp</span>
+                  <span>Chat on WhatsApp (+234 803 286 5488)</span>
                 </a>
                 <p className="text-[10px] text-center text-slate-500 mt-1.5">
-                  All requests are held under strict non-disclosure and assigned to a dedicated Senior Partner.
+                  All inquiries are handled confidentially by the ChapelHill Multicompany Limited advisory team.
                 </p>
               </div>
             </form>
@@ -201,17 +314,19 @@ export default function BookingModal({
                 <CheckCircle className="w-7 h-7 stroke-[2.5]" />
               </div>
               <h3 className="text-xl font-bold text-[#162521]">
-                Viewing Request Received
+                Enquiry Request Sent
               </h3>
               <p className="mt-1.5 text-xs sm:text-sm text-[#162521]/70 max-w-sm mx-auto">
-                Thank you, {formData.name || 'valued guest'}. A Chapelhill Senior Private Advisor will contact you at {formData.email || 'your email'} within 2 hours to confirm your confidential access.
+                Thank you, {formData.name || 'valued guest'}. Your inquiry has been dispatched to our team, and a ChapelHill representative will contact you at {formData.email} or {formData.phone}.
               </p>
               <div className="mt-4 p-3.5 rounded-2xl bg-slate-50 border border-slate-100 text-left text-xs text-slate-600 space-y-1">
-                <p><strong className="text-[#162521]">Estate:</strong> {formData.property}</p>
+                <p><strong className="text-[#162521]">Subject:</strong> {selectedProperty}</p>
+                <p><strong className="text-[#162521]">Phone:</strong> {formData.phone}</p>
                 <p><strong className="text-[#162521]">Date:</strong> {formData.date}</p>
                 <p><strong className="text-[#162521]">Format:</strong> {formData.tourType}</p>
               </div>
               <button
+                type="button"
                 onClick={handleReset}
                 className="mt-5 w-full bg-[#461313] text-white py-2.5 rounded-full font-semibold text-xs sm:text-sm hover:bg-[#D64933] transition-colors cursor-pointer"
               >

@@ -2,28 +2,29 @@ import { Metadata } from 'next';
 import AboutPageClient from '@/components/AboutPageClient';
 
 export const metadata: Metadata = {
-  title: 'About Us | Chapelhill Multicompany International — Property Development, Construction & Maintenance',
+  title:
+    'About Us | ChapelHill Multicompany Limited — Property Development, Construction, Facility Management & Partnerships',
   description:
-    'Excellence in property development, construction, remodeling, renovation, and maintenance. Meet our executive leadership team and explore our mission, vision, and core capabilities.',
+    'Property Development and Sales, Construction and Project Management, Property and Facility Management, and Joint Ventures and Investment Partnerships across Nigeria.',
   openGraph: {
-    title: 'About Us | Chapelhill Multicompany International',
+    title: 'About Us | ChapelHill Multicompany Limited',
     description:
-      'Excellence in property development, construction, remodeling, renovation, and maintenance. Where Home Meets Happiness.',
+      'Property Development and Sales, Construction and Project Management, Property and Facility Management, and Joint Ventures and Investment Partnerships.',
     type: 'website',
     images: [
       {
         url: '/Chapelhill-Company-Logo.png',
         width: 1200,
         height: 630,
-        alt: 'Chapelhill Multicompany International',
+        alt: 'ChapelHill Multicompany Limited',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About Us | Chapelhill Multicompany International',
+    title: 'About Us | ChapelHill Multicompany Limited',
     description:
-      'Excellence in property development, construction, remodeling, renovation, and maintenance. Where Home Meets Happiness.',
+      'Property Development and Sales, Construction and Project Management, Property and Facility Management, and Joint Ventures and Investment Partnerships.',
     images: ['/Chapelhill-Company-Logo.png'],
   },
 };

@@ -54,15 +54,15 @@ export default function Footer({
           
           {/* ================= COLUMN 1: High-Res Emblem & Brand Manifesto ================= */}
           <div className="flex flex-col text-left">
-            {/* High-Res Chapelhill Emblem */}
+            {/* High-Res ChapelHill Emblem */}
             <Link 
               href="/" 
               className="inline-flex items-center self-start bg-white/95 hover:bg-white rounded-2xl px-4 py-2.5 border border-[#E5C583]/30 shadow-[0_4px_25px_rgba(0,0,0,0.6)] transition-all duration-300 hover:scale-[1.02] mb-5 group"
-              aria-label="Chapelhill Multicompany International Home"
+              aria-label="ChapelHill Multicompany Limited Home"
             >
               <Image
                 src="/Chapelhill-Company-Logo.png"
-                alt="Chapelhill Multicompany International"
+                alt="ChapelHill Multicompany Limited"
                 width={240}
                 height={110}
                 className="h-10 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.01]"
@@ -73,20 +73,20 @@ export default function Footer({
 
             {/* Premium Brand Manifesto Statement */}
             <p className="text-stone-300 text-xs sm:text-[13px] leading-relaxed mb-5 font-normal">
-              Institutional-grade architectural excellence, bespoke turnkey civil engineering, and vetted high-yield prime developments. Engineered to create enduring generational legacy across Lagos, Nigeria, and key global diaspora gateways.
+              Property development and sales, construction and project management, property and facility management, and joint venture partnerships across Nigeria. Committed to quality, clarity, and enduring craftsmanship.
             </p>
 
-            {/* Corporate Accreditations & Trust Metrics */}
+            {/* Corporate Location & Title Focus */}
             <div className="space-y-2 text-[11px] text-stone-400 mb-6">
               <div className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#E5C583]" />
-                <span className="text-white font-semibold">RC Number: 1849204</span>
+                <span className="text-white font-semibold">ChapelHill Multicompany Limited</span>
                 <span className="text-stone-600">•</span>
                 <span className="text-stone-400">Lagos, Nigeria</span>
               </div>
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#E5C583] shrink-0" />
-                <span>Governor&apos;s Consent & Verified Title Records</span>
+                <span>Verified Title Documentation &amp; Advisory</span>
               </div>
             </div>
 
@@ -129,16 +129,16 @@ export default function Footer({
                     <div className="flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#E5C583]/50 group-hover:bg-[#E5C583] group-hover:scale-125 transition-all duration-300 shrink-0" />
                       <span className="text-stone-300 group-hover:text-white font-medium text-xs sm:text-[13px] transition-colors duration-200">
-                        Ivy Heights (Lekki Phase 1)
+                        IVY Heights, Ikate, Lekki Phase 1
                       </span>
                     </div>
                     <span className="text-[10px] font-mono text-sky-400/90 bg-sky-950/60 border border-sky-500/30 px-1.5 py-0.5 rounded opacity-90 group-hover:opacity-100 transition-opacity shrink-0">
-                      Ongoing
+                      Off-Plan
                     </span>
                   </div>
                   <div className="flex items-center justify-between mt-1 pl-3.5">
                     <p className="text-[11px] text-stone-500 group-hover:text-stone-400 transition-colors line-clamp-1">
-                      Multi-floor luxury residences & commercial units
+                      Pre-construction 2 &amp; 3 bedroom apartments
                     </p>
                     <ArrowRight className="w-3.5 h-3.5 text-[#E5C583] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0" />
                   </div>
@@ -190,7 +190,7 @@ export default function Footer({
                   </div>
                   <div className="flex items-center justify-between mt-1 pl-3.5">
                     <p className="text-[11px] text-stone-500 group-hover:text-stone-400 transition-colors line-clamp-1">
-                      High-yield sold out architectural milestone
+                      Completed luxury penthouse residence
                     </p>
                     <ArrowRight className="w-3.5 h-3.5 text-[#E5C583] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0" />
                   </div>
@@ -252,92 +252,92 @@ export default function Footer({
 
             {/* Services List with Clean Hover-Reveal Animations */}
             <ul className="space-y-1.5">
-              {/* Service 1 */}
+              {/* Service A */}
               <li>
                 <Link
-                  href="/services#development"
+                  href="/services#development-sales"
                   className="group relative block p-2.5 -mx-2.5 rounded-xl border border-transparent hover:border-[#E5C583]/30 hover:bg-white/[0.04] transition-all duration-300"
                 >
                   <div className="flex items-center justify-between gap-2">
                     <div className="flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#E5C583]/50 group-hover:bg-[#E5C583] group-hover:scale-125 transition-all duration-300 shrink-0" />
                       <span className="text-stone-300 group-hover:text-white font-medium text-xs sm:text-[13px] transition-colors duration-200">
-                        Turnkey Civil Construction
+                        Property Development and Sales
                       </span>
                     </div>
                   </div>
                   <div className="flex items-center justify-between mt-1 pl-3.5">
                     <p className="text-[11px] text-stone-500 group-hover:text-stone-400 transition-colors line-clamp-1">
-                      Structural foundations, engineering & turnkey delivery
+                      Residential &amp; approved off-plan developments
                     </p>
                     <ArrowRight className="w-3.5 h-3.5 text-[#E5C583] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0" />
                   </div>
                 </Link>
               </li>
 
-              {/* Service 2 */}
+              {/* Service B */}
               <li>
                 <Link
-                  href="/services#development"
+                  href="/services#construction-management"
                   className="group relative block p-2.5 -mx-2.5 rounded-xl border border-transparent hover:border-[#E5C583]/30 hover:bg-white/[0.04] transition-all duration-300"
                 >
                   <div className="flex items-center justify-between gap-2">
                     <div className="flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#E5C583]/50 group-hover:bg-[#E5C583] group-hover:scale-125 transition-all duration-300 shrink-0" />
                       <span className="text-stone-300 group-hover:text-white font-medium text-xs sm:text-[13px] transition-colors duration-200">
-                        Off-Plan Property Development
+                        Construction and Project Management
                       </span>
                     </div>
                   </div>
                   <div className="flex items-center justify-between mt-1 pl-3.5">
                     <p className="text-[11px] text-stone-500 group-hover:text-stone-400 transition-colors line-clamp-1">
-                      Flexible 8-month installment milestone plans
+                      Builds, project coordination, renovations &amp; remodelling
                     </p>
                     <ArrowRight className="w-3.5 h-3.5 text-[#E5C583] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0" />
                   </div>
                 </Link>
               </li>
 
-              {/* Service 3 */}
+              {/* Service C */}
               <li>
                 <Link
-                  href="/services#remodeling"
+                  href="/services#facility-management"
                   className="group relative block p-2.5 -mx-2.5 rounded-xl border border-transparent hover:border-[#E5C583]/30 hover:bg-white/[0.04] transition-all duration-300"
                 >
                   <div className="flex items-center justify-between gap-2">
                     <div className="flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#E5C583]/50 group-hover:bg-[#E5C583] group-hover:scale-125 transition-all duration-300 shrink-0" />
                       <span className="text-stone-300 group-hover:text-white font-medium text-xs sm:text-[13px] transition-colors duration-200">
-                        Remodeling & Interior Architecture
+                        Property and Facility Management
                       </span>
                     </div>
                   </div>
                   <div className="flex items-center justify-between mt-1 pl-3.5">
                     <p className="text-[11px] text-stone-500 group-hover:text-stone-400 transition-colors line-clamp-1">
-                      Acoustic finishing, partition walls & fit-outs
+                      Maintenance, building repairs &amp; infrastructure care
                     </p>
                     <ArrowRight className="w-3.5 h-3.5 text-[#E5C583] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0" />
                   </div>
                 </Link>
               </li>
 
-              {/* Service 4 */}
+              {/* Service D */}
               <li>
                 <Link
-                  href="/services#project-management"
+                  href="/services#joint-ventures"
                   className="group relative block p-2.5 -mx-2.5 rounded-xl border border-transparent hover:border-[#E5C583]/30 hover:bg-white/[0.04] transition-all duration-300"
                 >
                   <div className="flex items-center justify-between gap-2">
                     <div className="flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#E5C583]/50 group-hover:bg-[#E5C583] group-hover:scale-125 transition-all duration-300 shrink-0" />
                       <span className="text-stone-300 group-hover:text-white font-medium text-xs sm:text-[13px] transition-colors duration-200">
-                        Diaspora Project Supervision
+                        Joint Ventures &amp; Partnerships
                       </span>
                     </div>
                   </div>
                   <div className="flex items-center justify-between mt-1 pl-3.5">
                     <p className="text-[11px] text-stone-500 group-hover:text-stone-400 transition-colors line-clamp-1">
-                      Drone site audits, milestone verification & escrow
+                      Landowners, investors, developers &amp; strategic partners
                     </p>
                     <ArrowRight className="w-3.5 h-3.5 text-[#E5C583] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0" />
                   </div>
@@ -391,7 +391,7 @@ export default function Footer({
 
             {/* Direct WhatsApp Advisory Button with Polished State */}
             <a
-              href="https://wa.me/2349039130207?text=Hello%20Chapelhill%2C%20I%20am%20inquiring%20about%20your%20luxury%20estates%20and%20civil%20engineering%20advisory."
+              href="https://wa.me/2348032865488?text=Hello%20ChapelHill%2C%20I%20am%20inquiring%20about%20your%20developments%20and%20advisory%20services."
               target="_blank"
               rel="noopener noreferrer"
               id="footer-whatsapp-direct-btn"
@@ -412,7 +412,7 @@ export default function Footer({
                     </span>
                   </div>
                   <span className="text-[10px] text-stone-300 font-medium leading-tight">
-                    Instant brochures, floorplans & title deeds
+                    +234 803 286 5488 • Brochures &amp; viewings
                   </span>
                 </div>
               </div>
@@ -422,24 +422,6 @@ export default function Footer({
             {/* Direct Phone & Email Advisory Lines with Polished States */}
             <div className="space-y-1.5 pt-0.5">
               <a
-                href="tel:+2349039130207"
-                className="group flex items-center justify-between p-2 rounded-xl bg-white/[0.02] hover:bg-white/[0.05] border border-white/5 hover:border-[#E5C583]/40 transition-all duration-200"
-              >
-                <div className="flex items-center gap-2.5">
-                  <div className="w-6 h-6 rounded-lg bg-[#E5C583]/10 flex items-center justify-center text-[#E5C583] group-hover:bg-[#E5C583]/20 transition-colors">
-                    <Phone className="w-3 h-3" />
-                  </div>
-                  <div className="text-left">
-                    <p className="text-[10px] text-stone-400 leading-none">Senior Client Director</p>
-                    <p className="text-white font-semibold text-xs mt-1 leading-none group-hover:text-[#E5C583] transition-colors">
-                      (+234) 903 913 0207
-                    </p>
-                  </div>
-                </div>
-                <ArrowUpRight className="w-3 h-3 text-stone-500 group-hover:text-[#E5C583] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-              </a>
-
-              <a
                 href="tel:+2348032865488"
                 className="group flex items-center justify-between p-2 rounded-xl bg-white/[0.02] hover:bg-white/[0.05] border border-white/5 hover:border-[#E5C583]/40 transition-all duration-200"
               >
@@ -448,9 +430,9 @@ export default function Footer({
                     <Phone className="w-3 h-3" />
                   </div>
                   <div className="text-left">
-                    <p className="text-[10px] text-stone-400 leading-none">Corporate Liaison Desk</p>
+                    <p className="text-[10px] text-stone-400 leading-none">Phone &amp; WhatsApp Desk</p>
                     <p className="text-white font-semibold text-xs mt-1 leading-none group-hover:text-[#E5C583] transition-colors">
-                      (+234) 803 286 5488
+                      +234 803 286 5488
                     </p>
                   </div>
                 </div>
@@ -484,13 +466,9 @@ export default function Footer({
         {/* Bottom Attribution & Legal Bar */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-stone-400">
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 sm:gap-4 text-[11px] sm:text-xs">
-            <span className="font-semibold text-white tracking-wide">CHAPELHILL REAL ESTATE INC.</span>
+            <span className="font-semibold text-white tracking-wide">ChapelHill Multicompany Limited</span>
             <span className="text-[#E5C583]">•</span>
-            <span className="text-stone-300">RC: 1849204</span>
-            <span className="text-[#E5C583]">•</span>
-            <span className="text-stone-400">Equal Housing Opportunity</span>
-            <span className="text-[#E5C583]">•</span>
-            <span className="text-stone-400">LASRERA Compliant</span>
+            <span className="text-stone-400">Lagos, Nigeria</span>
           </div>
 
           <div className="flex flex-wrap items-center justify-center md:justify-end gap-3 sm:gap-4 text-[11px] sm:text-xs text-stone-400">
@@ -514,13 +492,13 @@ export default function Footer({
               Legal Disclaimers
             </button>
             <span>•</span>
-            <span className="text-stone-300">© {currentYear} Chapelhill. All rights reserved.</span>
+            <span className="text-stone-300">© {currentYear} ChapelHill Multicompany Limited. All rights reserved.</span>
           </div>
         </div>
 
         {/* Statutory Regulatory Notice */}
         <p className="mt-4 text-[10px] text-stone-400 leading-relaxed text-center sm:text-left">
-          Notice: Architectural representations, 3D renderings, and milestone projections are for illustrative and artistic purposes and are subject to architectural modifications and statutory approvals. Official land titles, survey coordinates, and Governor&apos;s Consent records are verified under official Lagos State Lands Bureau parameters.
+          Notice: Architectural representations and 3D renderings presented by ChapelHill Multicompany Limited are for illustrative purposes and are subject to architectural refinements and statutory approvals. Title documentation is available for independent verification during property inquiries.
         </p>
       </div>
     </footer>

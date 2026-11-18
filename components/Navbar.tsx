@@ -23,6 +23,7 @@ interface NavbarProps {
   onAboutClick?: () => void;
   onFAQClick?: () => void;
   activePage?: 'home' | 'about' | 'properties' | 'services' | 'faq' | 'projects';
+  overlayHero?: boolean;
 }
 
 interface NavItem {
@@ -41,6 +42,7 @@ export default function Navbar({
   onAboutClick,
   onFAQClick,
   activePage = 'home',
+  overlayHero = false,
 }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [visible, setVisible] = useState(true);
@@ -121,7 +123,7 @@ export default function Navbar({
       id: 'services',
       number: '03',
       label: 'Services',
-      subtitle: 'Turnkey civil engineering, construction & title advisory',
+      subtitle: 'Property development & sales, construction, facility care & joint ventures',
       href: '/services',
       action: onServicesClick,
     },
@@ -129,7 +131,7 @@ export default function Navbar({
       id: 'projects',
       number: '04',
       label: 'Projects',
-      subtitle: 'Ivy Heights Lekki, Ivy Homes Abijo & development pipeline',
+      subtitle: 'IVY Heights (Ikate, Lekki Phase 1), Ivy Homes Abijo & portfolio',
       href: '/projects',
     },
     {
@@ -159,7 +161,9 @@ export default function Navbar({
     <>
       {/* Floating Pill Header Navigation with Hide on Scroll Down / Reappear on Scroll Up */}
       <header
-        className={`sticky top-2 sm:top-4 z-40 w-full px-3 sm:px-6 lg:px-8 pointer-events-none transition-all duration-300 ease-out ${
+        className={`${
+          overlayHero ? 'fixed left-0 right-0' : 'sticky'
+        } top-2 sm:top-4 z-40 w-full px-3 sm:px-6 lg:px-8 pointer-events-none transition-all duration-300 ease-out ${
           visible ? 'translate-y-0 opacity-100' : '-translate-y-24 opacity-0 pointer-events-none'
         }`}
       >
@@ -174,12 +178,12 @@ export default function Navbar({
                 href="/"
                 className="flex items-center gap-2 group py-1 transition-transform duration-300 ease-out hover:scale-105 active:scale-95 origin-left"
                 id="chapelhill-logo"
-                aria-label="Chapelhill Home"
+                aria-label="ChapelHill Multicompany Limited Home"
                 onClick={() => setMenuOpen(false)}
               >
                 <Image
                   src="/Chapelhill-Company-Logo.png"
-                  alt="Chapelhill"
+                  alt="ChapelHill Multicompany Limited"
                   width={238}
                   height={107}
                   className="h-9 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
@@ -193,7 +197,7 @@ export default function Navbar({
             <div className="hidden md:flex items-center gap-3 lg:gap-5 text-xs text-[#162521] font-medium">
               {/* WhatsApp Advisory Desk */}
               <a
-                href="https://wa.me/2349039130207?text=Hello%20Chapelhill%2C%20I%20am%20inquiring%20about%20your%20luxury%20developments%20and%20private%20advisory%20services."
+                href="https://wa.me/2348032865488?text=Hello%20ChapelHill%2C%20I%20am%20inquiring%20about%20your%20developments%20and%20advisory%20services."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-stone-100/80 hover:bg-[#C0E8F9]/40 hover:text-[#461313] transition-all duration-300 ease-out hover:scale-105 active:scale-95 cursor-pointer group shadow-2xs hover:shadow-xs"
@@ -205,7 +209,7 @@ export default function Navbar({
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
                 </span>
                 <span className="font-semibold text-[#461313]">WhatsApp Desk:</span>
-                <span className="text-stone-700 group-hover:text-[#461313]">+234 903 913 0207</span>
+                <span className="text-stone-700 group-hover:text-[#461313]">+234 803 286 5488</span>
               </a>
 
               {/* Direct Phone Line */}
@@ -213,7 +217,7 @@ export default function Navbar({
                 href="tel:+2348032865488"
                 className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full hover:bg-stone-100/90 transition-all duration-300 ease-out hover:scale-105 active:scale-95 cursor-pointer text-stone-700 hover:text-[#461313] shadow-2xs hover:shadow-xs"
                 id="nav-center-phone"
-                aria-label="Call Chapelhill"
+                aria-label="Call ChapelHill Multicompany Limited"
               >
                 <Phone className="w-3.5 h-3.5 text-[#D64933] transition-transform duration-300 group-hover:rotate-12" />
                 <span>+234 803 286 5488</span>
@@ -223,7 +227,7 @@ export default function Navbar({
             {/* Mobile Compact Contact (Shown only on small screens) */}
             <div className="flex md:hidden items-center gap-2">
               <a
-                href="https://wa.me/2349039130207"
+                href="https://wa.me/2348032865488"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-stone-100 text-[#25D366] hover:bg-[#25D366] hover:text-white transition-all duration-300 ease-out hover:scale-110 active:scale-95 shadow-2xs"
@@ -438,13 +442,13 @@ export default function Navbar({
                   Private Client WhatsApp
                 </p>
                 <a
-                  href="https://wa.me/2349039130207"
+                  href="https://wa.me/2348032865488"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white hover:text-[#E5C583] transition-colors font-medium flex items-center gap-1.5"
                 >
                   <MessageCircle className="w-3.5 h-3.5 text-[#25D366]" />
-                  <span>+234 903 913 0207</span>
+                  <span>+234 803 286 5488</span>
                 </a>
               </div>
 
@@ -468,11 +472,11 @@ export default function Navbar({
                   Official Email
                 </p>
                 <a
-                  href="mailto:info@chapelhillmulticompany.com"
+                  href="mailto:chapelhillmulticompany@gmail.com"
                   className="text-white hover:text-[#E5C583] transition-colors font-medium flex items-center gap-1.5 truncate"
                 >
                   <Mail className="w-3.5 h-3.5 text-[#E5C583]" />
-                  <span>info@chapelhillmulticompany.com</span>
+                  <span>chapelhillmulticompany@gmail.com</span>
                 </a>
               </div>
 
@@ -483,7 +487,7 @@ export default function Navbar({
                 </p>
                 <p className="text-stone-400 text-[11px] leading-tight flex items-center gap-1.5">
                   <ShieldCheck className="w-3.5 h-3.5 text-[#D64933] shrink-0" />
-                  100% verified Governor’s Consent & C of O
+                  Verified Title &amp; Property Documentation
                 </p>
               </div>
             </motion.div>

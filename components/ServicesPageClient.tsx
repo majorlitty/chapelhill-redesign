@@ -3,32 +3,21 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { 
-  Building2, 
-  Hammer, 
-  ShieldCheck, 
-  Briefcase, 
-  CheckCircle2, 
-  ArrowRight, 
-  ChevronRight, 
+import {
+  Building2,
+  Hammer,
+  ShieldCheck,
+  Handshake,
+  CheckCircle2,
+  ArrowRight,
   ChevronDown,
-  Phone, 
-  Mail, 
-  MapPin, 
-  MessageCircle, 
-  FileText, 
-  Check, 
-  Sparkles,
+  Phone,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Check,
   Info,
-  Compass,
-  Wrench,
-  DraftingCompass,
-  HardHat,
-  Droplets,
-  Zap,
-  Wind,
-  Layers,
-  ArrowUpRight
+  ArrowUpRight,
 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -38,11 +27,13 @@ import { ServicesSkeletonList } from '@/components/Skeleton';
 
 interface ServiceDetail {
   id: string;
+  code: string;
   number: string;
   title: string;
   tagline: string;
   summary: string;
   description: string;
+  enquiryLabel: string;
   icon: React.ComponentType<{ className?: string }>;
   image: string;
   imageAlt: string;
@@ -61,167 +52,188 @@ interface ServiceDetail {
 
 const SERVICES_DATA: ServiceDetail[] = [
   {
-    id: 'development',
+    id: 'development-sales',
+    code: 'A',
     number: '01',
-    title: 'Property Development',
-    tagline: 'Automated Architectural Design, Civil Construction & Infrastructure',
-    summary: 'We excel in designing and constructing diverse projects, from residential buildings to industrial properties. Our expertise spans automated architectural designs, road construction, drainage, and structural steel work for clients and corporations alike.',
-    description: 'At Chapelhill Multicompany International, our property development division transforms raw terrain and strategic parcels into enduring architectural masterworks. Leveraging automated CAD/BIM tools, state-of-the-art structural modeling, and deep institutional relationships with regulatory bodies, we guide developments from initial topography assessment through to full civil infrastructure execution.',
+    title: 'Property Development and Sales',
+    tagline: 'Residential & Approved Real Estate Projects, Including Off-Plan Developments',
+    summary:
+      'Development and sale of residential and other approved real estate projects, including off-plan developments.',
+    description:
+      'At ChapelHill Multicompany Limited, our Property Development and Sales division plans, builds, and delivers contemporary residential and approved real estate projects tailored to homeowners and property buyers. From completed apartment residences ready for immediate occupation to structured off-plan developments, every project prioritizes sound design, verified title documentation, and dependable delivery.',
+    enquiryLabel: 'Enquire About Property Development & Sales',
     icon: Building2,
-    image: '/images/lekki-phase-1/lekki 3d/Lekki phase 1(1).jpeg',
-    imageAlt: 'Chapelhill luxury architectural estate development in Lekki Phase 1',
+    image: '/images/lekki-phase-1/lekki 3d/Lekki phase 1(4).jpeg',
+    imageAlt: 'ChapelHill Multicompany Limited Property Development and Sales showcase',
     scopeItems: [
       {
-        category: 'Architectural & Engineering Design',
+        category: 'Residential & Approved Developments',
         items: [
-          'Automated architectural design and photorealistic 3D visualization',
-          'Structural steel engineering and load-bearing calculations',
-          'HVAC, MEP, and electrical system schematics',
-          'Environmental impact and natural lighting simulations',
+          'Design and development of residential apartment buildings and terraces',
+          'Execution of other approved residential and mixed-use real estate projects',
+          'Site preparation, roadworks, stormwater drainage, and estate utilities',
+          'Coordinated architectural design and statutory building approvals',
         ],
       },
       {
-        category: 'Civil Infrastructure & Construction',
+        category: 'Off-Plan & Completed Property Sales',
         items: [
-          'Site clearance, grading, and sub-grade soil stabilization',
-          'Heavy-duty concrete road networks and paved access corridors',
-          'Reinforced stormwater drainage and flood mitigation systems',
-          'Multi-storey residential towers, terraces, and trophy penthouses',
-          'Industrial complexes, logistics hubs, and commercial spaces',
+          'Structured off-plan acquisition opportunities with milestone payment plans',
+          'Completed turnkey residences ready for inspection and physical handover',
+          'Transparent allocation guidance for domestic and diaspora buyers',
+          'Verified title documentation and conveyancing support upon purchase',
         ],
       },
     ],
     deliverables: [
-      'Approved LASPPPA / statutory building approvals',
-      'Structural integrity certification by COREN-registered engineers',
-      'Turnkey physical handover with full utility integration',
+      'Approved architectural and statutory documentation',
+      'Flexible outright and milestone off-plan payment structures',
+      'End-to-end handover support for buyers and corporate purchasers',
     ],
     caseStudyRef: {
-      projectName: 'Ivy Heights (Lekki Phase 1)',
-      location: 'Lekki Phase 1, Lagos',
-      type: '5-Storey Luxury Development',
-      href: '/properties/lekki-phase-1',
+      projectName: 'IVY Heights, Ikate, Lekki Phase 1, Lagos',
+      location: 'Ikate, Lekki Phase 1, Lagos',
+      type: 'Pre-Construction / Off-Plan 2 & 3 Bed Apartments',
+      href: '/properties/lekki-phase-1-project',
     },
   },
   {
-    id: 'remodeling',
+    id: 'construction-management',
+    code: 'B',
     number: '02',
-    title: 'Remodeling & Renovation',
-    tagline: 'Structural Mastery, Impeccable Finishing & Innovative Space Design',
-    summary: 'We specialize in impeccable finishing for structures, from carcasses to semi-completed projects. Our expertise extends to remodeling, renovation, and innovative space design, including rapid wall partitions.',
-    description: 'Whether you hold an uncompleted carcass structure or desire to completely modernize an existing residence into a contemporary luxury showcase, Chapelhill delivers artisan craftsmanship. We eliminate contractor bottlenecks, replace subpar structural elements, and implement cutting-edge rapid partition walls that dramatically reduce construction timelines while maximizing acoustic and thermal insulation.',
+    title: 'Construction and Project Management',
+    tagline: 'Construction for Individuals & Corporate Clients, Renovations & Remodelling',
+    summary:
+      'Construction services for individuals and corporate clients, project coordination, renovations, remodelling and related construction solutions.',
+    description:
+      'Whether commissioning a ground-up residential or corporate building, completing an uncompleted carcass structure, or renovating and remodelling an existing property, ChapelHill Multicompany Limited provides disciplined construction execution and end-to-end project coordination. We manage contractors, technical consultants, material quality, and milestone schedules from pre-contract planning through final completion.',
+    enquiryLabel: 'Request Construction or Project Proposal',
     icon: Hammer,
-    image: '/images/5 bed Ogudu GRA Project/Ogudu 3d/Ogudu 3d (11).jpeg',
-    imageAlt: 'Chapelhill precision interior remodeling and luxury ceiling finishes',
+    image:
+      '/images/Beachwood Lagos/ongoing Beachwood project lagos/Beach wood construction progress (1).jpeg',
+    imageAlt: 'ChapelHill Multicompany Limited Construction and Project Management site work',
     scopeItems: [
       {
-        category: 'Carcass Completion & Structural Upgrades',
+        category: 'Individual & Corporate Construction',
         items: [
-          'Structural integrity audits of abandoned or semi-completed buildings',
-          'Reinforcement of slabs, cantilevered balconies, and roof trusses',
-          'Frameless floor-to-ceiling curtain wall glazing installation',
-          'Premium marble, porcelain tiling, and custom micro-cement finishes',
+          'Ground-up construction for private homeowners and corporate clients',
+          'Sub-structure foundations, structural framing, and civil works',
+          'Pre-contract feasibility, quantity surveying, and budget planning',
+          'Post-contract project coordination and contractor supervision',
         ],
       },
       {
-        category: 'Modern Space Redesign & Rapid Partitions',
+        category: 'Renovations, Remodelling & Finishing',
         items: [
-          'Innovative rapid wall partitions for agile, lightweight layouts',
-          'Double-height ceiling conversions and architectural void lighting',
-          'Custom carpentry, acoustic wall panelling, and integrated joinery',
-          'Complete bathroom and chef’s kitchen luxury overhauls',
+          'Completion of carcass and semi-completed structures to turnkey standard',
+          'Interior and exterior property renovations and spatial remodelling',
+          'Rapid wall partitions, ceiling works, tiling, glazing, and joinery',
+          'MEP upgrades, acoustic enhancements, and site quality inspections',
         ],
       },
     ],
     deliverables: [
-      'Zero-defect snag-free completion schedule',
-      'Upgraded mechanical, electrical, and plumbing certifications',
-      'Substantial immediate capital value appreciation',
+      'Regular milestone progress updates with site photo and video logs',
+      'Structured cost tracking and pre-/post-contract supervision',
+      'Thorough snag clearance and quality verification before handover',
     ],
     caseStudyRef: {
-      projectName: 'Ogudu GRA Project',
-      location: 'Ogudu GRA, Mainland Prime',
-      type: 'Trophy Penthouse Residence',
-      href: '/properties/ogudu-gra-project',
+      projectName: 'Beachwood Lagos Project',
+      location: 'Ibeju-Lekki Axis, Lagos',
+      type: 'Active Residential Construction Commission',
+      href: '/properties/beachwood-lagos',
     },
   },
   {
-    id: 'maintenance',
+    id: 'facility-management',
+    code: 'C',
     number: '03',
-    title: 'Property Maintenance & Facility Stewardship',
-    tagline: 'Preventive Preservation, MEP Diagnostics & Waterfront Land Reclamation',
-    summary: 'Regular maintenance of our customers’ property/facility, plumbing, electrical works, air-conditioning repairs, tiling, building works, roof leakages, reclamation of land in waterfront areas etc., to enable them to focus on their core businesses.',
-    description: 'Chapelhill offers institutional-grade facility management and technical property maintenance for residential estates, corporate headquarters, and high-net-worth private residences. Our rapid-response technicians and preventive maintenance protocols protect capital investments from weathering, tropical humidity, and infrastructure wear.',
+    title: 'Property and Facility Management',
+    tagline: 'Preventive Maintenance, Building Repairs & Estate Infrastructure Care',
+    summary:
+      'Property maintenance, facility management, building repairs, infrastructure maintenance and other approved management services.',
+    description:
+      'ChapelHill Multicompany Limited provides structured property maintenance and facility management so residential homeowners, estate communities, and corporate facility owners can preserve asset condition without operational stress. Our technical team handles routine diagnostics, building repairs, electro-mechanical systems care, and shared estate infrastructure maintenance.',
+    enquiryLabel: 'Enquire About Facility Management',
     icon: ShieldCheck,
     image: '/maintenance.webp',
-    imageAlt: 'Chapelhill comprehensive luxury property and pool grounds maintenance',
+    imageAlt: 'ChapelHill Multicompany Limited Property and Facility Management team',
     scopeItems: [
       {
-        category: 'Facility & MEP Stewardship',
+        category: 'Property Maintenance & Building Repairs',
         items: [
-          'Plumbing, high-pressure booster systems & sewage maintenance',
-          'Electrical distribution boards, backup generators & surge arrestors',
-          'HVAC and split/ducted air-conditioning preventative overhauls',
-          'Roof leakage diagnostics, elastomeric coatings & gutter clearing',
-          'Floor tiling, grout remediation, and exterior facade power-washing',
+          'Plumbing, booster pump servicing, and drainage line clearance',
+          'Electrical systems upkeep, distribution boards, and solar/power care',
+          'Air-conditioning servicing, HVAC diagnostics, and preventive repairs',
+          'Roof leakage remediation, waterproofing, painting, tiling, and masonry',
         ],
       },
       {
-        category: 'Waterfront & Marine Infrastructure',
+        category: 'Facility & Infrastructure Management',
         items: [
-          'Reclamation of land in prime waterfront and marshy coastal zones',
-          'Shoreline revetment, sheet piling, and erosion barrier construction',
-          'Drainage outfall clearing and high-tide anti-backflow valves',
-          'Groundwater filtration and borehole water purification systems',
+          'Ongoing residential estate and commercial facility management',
+          'Interlocked roads, perimeter drainage, and estate infrastructure maintenance',
+          'Groundskeeping, common-area upkeep, and security access coordination',
+          'Planned preventive maintenance schedules and responsive callouts',
         ],
       },
     ],
     deliverables: [
-      '24/7 dedicated emergency technical dispatch desk',
-      'Scheduled quarterly MEP diagnostics and asset health reports',
-      'Significantly extended lifespan of electro-mechanical equipment',
-    ],
-  },
-  {
-    id: 'project-management',
-    number: '04',
-    title: 'Project Management & Advisory',
-    tagline: 'Specialist Acquisition Due Diligence, Consultant Coordination & Budget Rigor',
-    summary: 'We offer specialist advice on property purchase, construction and development as well as management of consultants and contractors at both pre- and post-contract stages to meet our clients’ requirements.',
-    description: 'Navigating real estate development in Lagos requires strict fiduciary controls, legal vigilance, and experienced on-site oversight. Led by certified professionals with credentials from Lagos Business School and the UK’s Prince2 framework, Chapelhill serves as your trusted owner’s representative, managing contractors, auditing material costs, and safeguarding your capital from inflation and delays.',
-    icon: Briefcase,
-    image: '/luxury_villa_closing.jpg',
-    imageAlt: 'Chapelhill senior management conducting high-level property advisory',
-    scopeItems: [
-      {
-        category: 'Pre-Contract Due Diligence & Tendering',
-        items: [
-          'Land title verification with Lagos State Lands Bureau (C of O, Consent)',
-          'Pre-acquisition feasibility, highest-and-best-use financial models',
-          'Architectural, structural, and quantity surveying consultant selection',
-          'Comprehensive contractor bill of quantities (BOQ) auditing',
-        ],
-      },
-      {
-        category: 'Post-Contract Supervision & Handover',
-        items: [
-          'Continuous on-site quality assurance and statutory milestone sign-offs',
-          'Escrow milestone valuations and transparent payment disbursements',
-          'Risk management, material testing, and delay mitigation protocols',
-          'Commissioning, final snag clearance, and statutory title perfection',
-        ],
-      },
-    ],
-    deliverables: [
-      'Prince2-governed weekly progress dashboards with photo/video logs',
-      'Transparent itemized accounting with zero surprise cost escalations',
-      'Independent investor protection for domestic and diaspora clients',
+      'Responsive technical repair dispatch and preventive maintenance logs',
+      'Preservation of building integrity and electro-mechanical systems',
+      'Structured upkeep of shared estate infrastructure and utilities',
     ],
     caseStudyRef: {
       projectName: 'Ivy Homes, Abijo GRA',
       location: 'Abijo GRA Corridor, Lekki-Epe',
-      type: 'Completed Luxury Residential Community',
+      type: 'Managed Residential Apartment Community',
       href: '/properties/ivy-homes-abijo',
+    },
+  },
+  {
+    id: 'joint-ventures',
+    code: 'D',
+    number: '04',
+    title: 'Joint Ventures and Investment Partnerships',
+    tagline: 'Collaborations with Landowners, Investors, Developers & Financial Institutions',
+    summary:
+      'Engagement with landowners, investors, developers, financial institutions and other strategic partners on suitable property development opportunities.',
+    description:
+      'ChapelHill Multicompany Limited partners with landowners, private and institutional investors, co-developers, and financial institutions to unlock viable property development opportunities. By combining technical development expertise, legal diligence, and transparent governance structures, we collaborate with strategic partners to transform well-located land and capital into completed real estate assets.',
+    enquiryLabel: 'Discuss a Joint Venture or Partnership',
+    icon: Handshake,
+    image: '/images/joint-venture-partnerships.jpg',
+    imageAlt: 'ChapelHill Multicompany Limited Joint Ventures and Investment Partnerships briefing room',
+    scopeItems: [
+      {
+        category: 'Landowner & Co-Developer Joint Ventures',
+        items: [
+          'Joint-venture development structuring on well-situated land parcels',
+          'Title verification, technical site assessment, and development feasibility',
+          'Shared architectural planning, statutory approvals, and build execution',
+          'Transparent equity, milestone, and unit allocation frameworks',
+        ],
+      },
+      {
+        category: 'Investor & Institutional Partnerships',
+        items: [
+          'Structured real estate development collaborations with private investors',
+          'Engagement with financial institutions on vetted development projects',
+          'Dedicated project governance, cost transparency, and milestone reporting',
+          'End-to-end delivery from concept structuring to sales or asset management',
+        ],
+      },
+    ],
+    deliverables: [
+      'Clear joint-venture terms and transparent title due diligence',
+      'Feasibility analysis, architectural concepting, and budget planning',
+      'Structured partner reporting across planning, build, and delivery',
+    ],
+    caseStudyRef: {
+      projectName: 'Ogudu GRA Project',
+      location: 'Ogudu GRA, Mainland Prime',
+      type: 'Delivered Residential Showcase',
+      href: '/properties/ogudu-gra-project',
     },
   },
 ];
@@ -230,81 +242,94 @@ const WORK_STEPS = [
   {
     step: '01',
     title: 'Initial Consultation',
-    desc: 'We start with an in-depth conversation to understand your vision, operational goals, and budget. This helps us align our services with your exact project needs.',
+    desc: 'We start with an in-depth conversation to understand your goals—whether purchasing property, commissioning construction, arranging facility care, or exploring a joint venture.',
   },
   {
     step: '02',
     title: 'Site Visit & Assessment',
-    desc: 'Our technical and engineering team visits your site to evaluate soil conditions, topography, access roads, drainage dynamics, and potential project challenges.',
+    desc: 'Our technical team evaluates site conditions, existing structures, topography, access, drainage, or property documentation to establish a reliable baseline.',
   },
   {
     step: '03',
-    title: 'Proposal & Quotation',
-    desc: 'We prepare a detailed project proposal, including the full scope of work, automated design concepts, milestone timelines, and a transparent, itemized cost breakdown.',
+    title: 'Proposal & Structure',
+    desc: 'We prepare a clear scope of work, design concepts or maintenance schedule, milestone timelines, and a transparent, itemized commercial framework.',
   },
   {
     step: '04',
     title: 'Agreement & Kickoff',
-    desc: 'Once approved, we formalize the statutory contract agreement and assign a dedicated project manager to lead your project from inception to handover.',
+    desc: 'Once terms are aligned, we formalize the agreement and assign a dedicated coordinator to oversee execution with clarity from start to finish.',
   },
   {
     step: '05',
-    title: 'Project Execution & Updates',
-    desc: 'We execute with precision craftsmanship and keep you informed through regular photo updates, video milestone reports, and transparent communication.',
+    title: 'Execution & Updates',
+    desc: 'We carry out development, construction, facility operations, or joint-venture delivery with regular photo/video updates and milestone accountability.',
   },
   {
     step: '06',
-    title: 'Final Delivery & Ongoing Support',
-    desc: 'After rigorous multi-stage inspection and official handover, we remain available for needed maintenance or support to ensure long-term satisfaction.',
+    title: 'Handover & Ongoing Care',
+    desc: 'Following thorough inspection and formal delivery, our Property and Facility Management team remains available to support long-term asset preservation.',
   },
 ];
 
 const FAQ_ITEMS = [
   {
-    q: 'What’s included in your property maintenance services?',
-    a: 'Our maintenance services cover plumbing, electrical work, air-conditioning repairs, tiling, roofing, general building repairs, and even land reclamation in waterfront areas to protect your asset and enable you to focus on your core business.',
+    q: 'What residential properties and off-plan options do you develop and sell?',
+    a: 'Through our Property Development and Sales division, we develop and sell residential estates and approved real estate projects—including completed apartments ready for immediate handover at Ivy Homes Abijo GRA and pre-construction / off-plan 2- and 3-bedroom residences at IVY Heights, Ikate, Lekki Phase 1, Lagos with 12-month, 18-month, and management-approved 24-month zero-initial-deposit options (subject to offer terms).',
   },
   {
-    q: 'Can you handle both new constructions and renovations?',
-    a: 'Yes, we specialize in both. We build from the ground up — managing excavation, civil works, and structural engineering — and also remodel or renovate existing structures, including carcasses and semi-completed buildings.',
+    q: 'Do you handle both new construction and property renovations or remodelling?',
+    a: 'Yes. Under Construction and Project Management, we deliver ground-up residential and corporate builds, manage pre- and post-contract project coordination, and execute renovations, remodelling, and finishing works on carcass or semi-completed buildings.',
   },
   {
-    q: 'Do you provide customized architectural designs?',
-    a: 'Absolutely. We use automated architectural design and 3D modeling tools to deliver tailored building plans and photorealistic interior/exterior renderings that suit each client’s unique aesthetic and functional requirements.',
+    q: 'What is covered under Property and Facility Management?',
+    a: 'Our maintenance and facility management services cover routine building repairs, plumbing, electrical works, air-conditioning repairs, tiling, roofing maintenance, estate infrastructure upkeep, and other approved property management services.',
   },
   {
-    q: 'Can you manage an entire construction project for me?',
-    a: 'Yes. We offer full project management services — from property acquisition and pre-construction planning to contractor coordination, quality audits, cost control, and post-construction maintenance.',
+    q: 'How can landowners, investors, or institutions partner with ChapelHill?',
+    a: 'Through our Joint Ventures and Investment Partnerships division, we engage with landowners, investors, developers, financial institutions, and strategic partners to evaluate suitable land parcels and development opportunities, establish clear legal and technical terms, and execute joint real estate projects.',
   },
   {
-    q: 'How do I get started with your services?',
-    a: 'Simply contact us for a consultation. We’ll assess your needs, provide expert advice, and develop a customized plan tailored to your project goals, timelines, and budget.',
+    q: 'How do I initiate an enquiry for any of your four service categories?',
+    a: 'Click any enquiry button on this page to submit a consultation request directly to our team, or reach our direct WhatsApp and phone desk on +234 803 286 5488.',
   },
 ];
 
 export default function ServicesPageClient() {
-  const [selectedServiceForModal, setSelectedServiceForModal] = useState<string>('Property Development');
+  const [selectedServiceForModal, setSelectedServiceForModal] = useState<string>(
+    'Property Development and Sales'
+  );
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState<string>('all');
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Fast simulated client fetch/hydration phase to showcase skeleton screen
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 450);
+    }, 350);
     return () => clearTimeout(timer);
   }, []);
+
+  // Scroll smoothly to hash target (e.g. /services#joint-ventures) once skeleton finishes
+  useEffect(() => {
+    if (!isLoading && typeof window !== 'undefined' && window.location.hash) {
+      const targetId = window.location.hash.replace('#', '');
+      const el = document.getElementById(targetId);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 80);
+      }
+    }
+  }, [isLoading]);
 
   const openBookingFor = (serviceTitle: string) => {
     setSelectedServiceForModal(serviceTitle);
     setBookingModalOpen(true);
   };
 
-  const filteredServices = activeFilter === 'all' 
-    ? SERVICES_DATA 
-    : SERVICES_DATA.filter((s) => s.id === activeFilter);
+  const filteredServices =
+    activeFilter === 'all' ? SERVICES_DATA : SERVICES_DATA.filter((s) => s.id === activeFilter);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#FEFCFD] via-[#FEFCFD] to-[#f7f3f5] text-[#162521] flex flex-col justify-between selection:bg-[#461313] selection:text-white">
@@ -340,70 +365,85 @@ export default function ServicesPageClient() {
           />
 
           <div className="max-w-4xl mx-auto text-center">
-            {/* Header Eyebrow */}
-            <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-md border border-stone-200/80 shadow-2xs rounded-full px-4 py-1.5 mb-6">
-              <span className="w-2 h-2 rounded-full bg-[#D64933]" />
-              <span className="text-xs font-semibold tracking-wider uppercase text-[#162521]">
-                Our Services &amp; Capabilities
-              </span>
-            </div>
-
-            {/* Main Headline directly from chapelhill.com.ng/services/ */}
-            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#162521] tracking-[-0.03em] leading-[1.2] sm:leading-[1.15]">
-              Empowering You to Make the Right Move
-            </h1>
-
-            {/* Subhead Quote */}
-            <p className="mt-6 text-base sm:text-lg md:text-xl text-[#162521]/80 max-w-3xl mx-auto leading-relaxed">
-              With a foundation built on years of dedicated service in property development, construction, remodeling, renovation, and maintenance, <strong className="font-semibold text-[#162521]">Chapelhill Multicompany International</strong> has established a legacy of unmatched expertise.
+            {/* Clean Eyebrow Label */}
+            <p className="text-xs font-semibold tracking-wider uppercase text-[#D64933] mb-4">
+              Our Services &amp; Capabilities
             </p>
 
-            {/* Interactive Service Filter Tabs */}
-            <div className="mt-8 sm:mt-10 flex items-center justify-start sm:justify-center gap-1.5 sm:gap-2 p-1.5 bg-stone-100/80 backdrop-blur-md rounded-2xl border border-stone-200 max-w-3xl mx-auto overflow-x-auto sm:flex-wrap scrollbar-none touch-manipulation">
+            {/* Main Headline */}
+            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#162521] tracking-[-0.03em] leading-[1.2] sm:leading-[1.15] text-balance">
+              Four Integrated Real Estate &amp; Construction Divisions
+            </h1>
+
+            {/* Subhead */}
+            <p className="mt-6 text-base sm:text-lg md:text-xl text-[#162521]/80 max-w-3xl mx-auto leading-relaxed">
+              <strong className="font-semibold text-[#162521]">ChapelHill Multicompany Limited</strong> operates across four core service categories: Property Development and Sales, Construction and Project Management, Property and Facility Management, and Joint Ventures and Investment Partnerships.
+            </p>
+
+            {/* Interactive Service Category Filter Tabs */}
+            <div className="mt-8 sm:mt-10 flex items-center justify-start sm:justify-center gap-1.5 sm:gap-2 p-1.5 bg-stone-100/80 backdrop-blur-md rounded-2xl border border-stone-200 max-w-4xl mx-auto overflow-x-auto sm:flex-wrap scrollbar-none touch-manipulation">
               <button
+                type="button"
                 onClick={() => setActiveFilter('all')}
-                className={`px-3.5 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-all cursor-pointer whitespace-nowrap min-h-[40px] touch-manipulation ${
+                className={`px-3.5 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-all cursor-pointer whitespace-nowrap shrink-0 min-h-[40px] touch-manipulation ${
                   activeFilter === 'all'
                     ? 'bg-white text-[#461313] shadow-sm'
                     : 'text-stone-600 hover:text-[#162521]'
                 }`}
               >
-                All Capabilities
+                All Services (4)
               </button>
               {SERVICES_DATA.map((srv) => (
                 <button
+                  type="button"
                   key={srv.id}
                   onClick={() => setActiveFilter(srv.id)}
-                  className={`px-3.5 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap min-h-[40px] touch-manipulation ${
+                  className={`px-3.5 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap shrink-0 min-h-[40px] touch-manipulation ${
                     activeFilter === srv.id
                       ? 'bg-[#461313] text-white shadow-sm'
                       : 'text-stone-600 hover:text-[#162521]'
                   }`}
                 >
-                  <span className="text-xs opacity-75 font-mono">{srv.number}</span>
-                  <span>{srv.title.split('&')[0].trim()}</span>
+                  <span className="text-xs opacity-75 font-mono">{srv.code}.</span>
+                  <span>{srv.title}</span>
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Clean Typographic Metrics Strip (Zero-Pill Discipline) */}
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 pt-10 border-t border-stone-200/60 max-w-5xl mx-auto text-center">
+          {/* 4-Category Summary Strip */}
+          <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-6 pt-10 border-t border-stone-200/60 max-w-5xl mx-auto text-center">
             <div>
-              <p className="text-3xl sm:text-4xl font-extrabold text-[#461313] font-serif">Turnkey</p>
-              <p className="mt-1 text-xs text-stone-500 font-medium">From Carcass to Luxury Handover</p>
+              <p className="text-xl sm:text-2xl font-extrabold text-[#461313] font-serif">
+                Development &amp; Sales
+              </p>
+              <p className="mt-1 text-xs text-stone-500 font-medium">
+                Residential &amp; Off-Plan Projects
+              </p>
             </div>
             <div>
-              <p className="text-3xl sm:text-4xl font-extrabold text-[#461313] font-serif">Automated</p>
-              <p className="mt-1 text-xs text-stone-500 font-medium">BIM &amp; 3D Architectural Designs</p>
+              <p className="text-xl sm:text-2xl font-extrabold text-[#461313] font-serif">
+                Construction
+              </p>
+              <p className="mt-1 text-xs text-stone-500 font-medium">
+                Builds, Coordination &amp; Remodelling
+              </p>
             </div>
             <div>
-              <p className="text-3xl sm:text-4xl font-extrabold text-[#461313] font-serif">COREN</p>
-              <p className="mt-1 text-xs text-stone-500 font-medium">Certified Civil &amp; Structural Standards</p>
+              <p className="text-xl sm:text-2xl font-extrabold text-[#461313] font-serif">
+                Facility Care
+              </p>
+              <p className="mt-1 text-xs text-stone-500 font-medium">
+                Maintenance, Repairs &amp; Infrastructure
+              </p>
             </div>
             <div>
-              <p className="text-3xl sm:text-4xl font-extrabold text-[#461313] font-serif">24/7</p>
-              <p className="mt-1 text-xs text-stone-500 font-medium">Rapid Facility Maintenance Support</p>
+              <p className="text-xl sm:text-2xl font-extrabold text-[#461313] font-serif">
+                Joint Ventures
+              </p>
+              <p className="mt-1 text-xs text-stone-500 font-medium">
+                Landowners, Investors &amp; Partners
+              </p>
             </div>
           </div>
         </section>
@@ -418,169 +458,175 @@ export default function ServicesPageClient() {
               const IconComponent = service.icon;
 
               return (
-                <div 
-                id={service.id} 
-                key={service.id} 
-                className="scroll-mt-24 p-6 sm:p-10 lg:p-12 rounded-3xl bg-white border border-stone-200 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden"
-              >
-                {/* Asymmetric 2-Column Layout */}
-                <div className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start ${isEven ? 'lg:flex-row-reverse' : ''}`}>
-                  
-                  {/* Left / Info Column (7 Cols) */}
-                  <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
-                    <div>
-                      {/* Top Category Badge */}
-                      <div className="flex items-center gap-3 mb-4">
-                        <span className="text-sm font-mono font-bold text-[#D64933] bg-[#D64933]/10 px-3.5 py-1 rounded-full">
-                          {service.number} / SERVICE PILLAR
-                        </span>
-                        <span className="text-xs font-medium text-stone-500 tracking-wide uppercase">
-                          {service.tagline.split(',')[0]}
-                        </span>
+                <div
+                  id={service.id}
+                  key={service.id}
+                  className="scroll-mt-24 p-6 sm:p-10 lg:p-12 rounded-3xl bg-white border border-stone-200 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden"
+                >
+                  {/* Asymmetric 2-Column Layout */}
+                  <div
+                    className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start ${
+                      isEven ? 'lg:flex-row-reverse' : ''
+                    }`}
+                  >
+                    {/* Info Column (7 Cols) */}
+                    <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
+                      <div>
+                        {/* Clean Unboxed Category Metadata */}
+                        <div className="flex items-center gap-2 text-xs text-stone-500 mb-3">
+                          <span className="font-mono font-bold text-[#D64933]">
+                            Category {service.code} ({service.number})
+                          </span>
+                          <span aria-hidden="true">·</span>
+                          <span className="font-medium text-stone-600">{service.tagline}</span>
+                        </div>
+
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#162521] leading-tight">
+                          {service.title}
+                        </h2>
+
+                        {/* Primary Excerpt */}
+                        <p className="mt-4 text-base sm:text-lg text-stone-800 leading-relaxed font-medium">
+                          {service.summary}
+                        </p>
+
+                        {/* Comprehensive Narrative */}
+                        <p className="mt-3 text-sm sm:text-base text-stone-600 leading-relaxed">
+                          {service.description}
+                        </p>
                       </div>
 
-                      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#162521] leading-tight">
-                        {service.title}
-                      </h2>
-
-                      {/* Primary Excerpt */}
-                      <p className="mt-4 text-base sm:text-lg text-stone-700 leading-relaxed font-medium">
-                        {service.summary}
-                      </p>
-
-                      {/* Comprehensive Narrative */}
-                      <p className="mt-3 text-sm sm:text-base text-stone-600 leading-relaxed">
-                        {service.description}
-                      </p>
-                    </div>
-
-                    {/* Detailed Scopes Grid */}
-                    <div className="pt-6 border-t border-stone-100 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                      {service.scopeItems.map((scope, sIdx) => (
-                        <div key={sIdx} className="space-y-2.5">
-                          <h3 className="text-xs font-bold uppercase tracking-wider text-[#461313] flex items-center gap-1.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#D64933]" />
-                            <span>{scope.category}</span>
-                          </h3>
-                          <ul className="space-y-2 text-xs text-stone-600">
-                            {scope.items.map((item, iIdx) => (
-                              <li key={iIdx} className="flex items-start gap-2">
-                                <Check className="w-3.5 h-3.5 text-[#D64933] shrink-0 mt-0.5" />
-                                <span>{item}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Deliverables Banner */}
-                    <div className="p-4 sm:p-5 rounded-2xl bg-stone-50 border border-stone-200/80">
-                      <p className="text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">
-                        Guaranteed Execution Standards
-                      </p>
-                      <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-xs text-[#162521] font-medium">
-                        {service.deliverables.map((del, dIdx) => (
-                          <div key={dIdx} className="flex items-center gap-2">
-                            <CheckCircle2 className="w-4 h-4 text-[#D64933] shrink-0" />
-                            <span>{del}</span>
+                      {/* Detailed Scopes Grid */}
+                      <div className="pt-6 border-t border-stone-100 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        {service.scopeItems.map((scope, sIdx) => (
+                          <div key={sIdx} className="space-y-2.5">
+                            <h3 className="text-xs font-bold uppercase tracking-wider text-[#461313]">
+                              {scope.category}
+                            </h3>
+                            <ul className="space-y-2 text-xs text-stone-600">
+                              {scope.items.map((item, iIdx) => (
+                                <li key={iIdx} className="flex items-start gap-2">
+                                  <Check className="w-3.5 h-3.5 text-[#D64933] shrink-0 mt-0.5" />
+                                  <span>{item}</span>
+                                </li>
+                              ))}
+                            </ul>
                           </div>
                         ))}
                       </div>
-                    </div>
 
-                    {/* CTAs */}
-                    <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                      <button
-                        onClick={() => openBookingFor(service.title)}
-                        className="bg-[#461313] hover:bg-[#D64933] text-white pl-6 pr-3 py-3 rounded-full font-semibold text-xs sm:text-sm inline-flex items-center justify-center gap-3 transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer min-h-[44px] group"
-                      >
-                        <span>Inquire About {service.title}</span>
-                        <span className="w-7 h-7 rounded-full bg-white text-[#461313] group-hover:text-[#D64933] flex items-center justify-center group-hover:translate-x-0.5 transition-all">
-                          <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
-                        </span>
-                      </button>
-
-                      <a
-                        href={`https://wa.me/2349039130207?text=${encodeURIComponent(`Hello Chapelhill, I am interested in inquiring about your "${service.title}" services. Could you please share more details and arrange a consultation?`)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-stone-50 hover:bg-stone-100 text-stone-800 border border-stone-200 px-5 py-3 rounded-full font-semibold text-xs sm:text-sm transition-colors flex items-center justify-center gap-2 min-h-[44px]"
-                      >
-                        <MessageCircle className="w-4 h-4 text-[#25D366]" />
-                        <span>Chat with Specialist</span>
-                      </a>
-                    </div>
-                  </div>
-
-                  {/* Right / Visual Column (5 Cols) */}
-                  <div className="lg:col-span-5 flex flex-col space-y-4">
-                    <div className="relative w-full aspect-[4/3] sm:aspect-[16/11] lg:aspect-auto lg:h-[480px] rounded-2xl overflow-hidden border border-stone-200 shadow-inner group">
-                      <Image
-                        src={service.image}
-                        alt={service.imageAlt}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-700"
-                        sizes="(max-width: 1024px) 100vw, 40vw"
-                        referrerPolicy="no-referrer"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent pointer-events-none" />
-
-                      {/* Icon overlay */}
-                      <div className="absolute top-4 left-4 z-10 w-11 h-11 rounded-xl bg-white/90 backdrop-blur-md flex items-center justify-center text-[#461313] shadow-md">
-                        <IconComponent className="w-5 h-5 stroke-[2.5]" />
-                      </div>
-
-                      {/* Bottom Caption Overlay */}
-                      <div className="absolute bottom-5 inset-x-5 z-10 text-white">
-                        <span className="text-[11px] uppercase tracking-wider font-semibold text-[#C0E8F9]">
-                          Chapelhill Portfolio Standard
-                        </span>
-                        <p className="text-base sm:text-lg font-bold text-white mt-1 leading-snug">
-                          {service.tagline}
+                      {/* Execution Standards */}
+                      <div className="p-4 sm:p-5 rounded-2xl bg-stone-50 border border-stone-200/80">
+                        <p className="text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">
+                          Key Deliverables &amp; Focus
                         </p>
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-xs text-[#162521] font-medium">
+                          {service.deliverables.map((del, dIdx) => (
+                            <div key={dIdx} className="flex items-center gap-2">
+                              <CheckCircle2 className="w-4 h-4 text-[#D64933] shrink-0" />
+                              <span>{del}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Relevant Enquiry Options */}
+                      <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                        <button
+                          type="button"
+                          onClick={() => openBookingFor(service.title)}
+                          className="bg-[#461313] hover:bg-[#D64933] text-white pl-6 pr-3 py-3 rounded-full font-semibold text-xs sm:text-sm inline-flex items-center justify-center gap-3 transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer min-h-[44px] group"
+                        >
+                          <span>{service.enquiryLabel}</span>
+                          <span className="w-7 h-7 rounded-full bg-white text-[#461313] group-hover:text-[#D64933] flex items-center justify-center group-hover:translate-x-0.5 transition-all">
+                            <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
+                          </span>
+                        </button>
+
+                        <a
+                          href={`https://wa.me/2348032865488?text=${encodeURIComponent(
+                            `Hello ChapelHill Multicompany Limited, I am inquiring about your "${service.title}" services. Could you please share more details and arrange a consultation?`
+                          )}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-stone-50 hover:bg-stone-100 text-stone-800 border border-stone-200 px-5 py-3 rounded-full font-semibold text-xs sm:text-sm transition-colors flex items-center justify-center gap-2 min-h-[44px]"
+                        >
+                          <MessageCircle className="w-4 h-4 text-[#25D366]" />
+                          <span>Enquire on WhatsApp</span>
+                        </a>
                       </div>
                     </div>
 
-                    {/* Related Project Card if available */}
-                    {service.caseStudyRef && (
-                      <Link
-                        href={service.caseStudyRef.href}
-                        className="p-4 rounded-2xl bg-white border border-stone-200 hover:border-[#D64933] shadow-2xs hover:shadow-xs transition-all flex items-center justify-between group"
-                      >
-                        <div className="flex items-center gap-3">
-                          <div className="w-9 h-9 rounded-xl bg-[#461313]/10 text-[#461313] flex items-center justify-center shrink-0">
-                            <Building2 className="w-4 h-4" />
-                          </div>
-                          <div>
-                            <p className="text-xs text-stone-500 font-medium">Explore Related Estate</p>
-                            <p className="text-sm font-bold text-[#162521] group-hover:text-[#D64933] transition-colors">
-                              {service.caseStudyRef.projectName}
-                            </p>
-                          </div>
-                        </div>
-                        <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover:text-[#D64933] transition-colors" />
-                      </Link>
-                    )}
-                  </div>
+                    {/* Visual Column (5 Cols) */}
+                    <div className="lg:col-span-5 flex flex-col space-y-4">
+                      <div className="relative w-full aspect-[4/3] sm:aspect-[16/11] lg:aspect-auto lg:h-[480px] rounded-2xl overflow-hidden border border-stone-200 shadow-inner group">
+                        <Image
+                          src={service.image}
+                          alt={service.imageAlt}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-700"
+                          sizes="(max-width: 1024px) 100vw, 40vw"
+                          referrerPolicy="no-referrer"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent pointer-events-none" />
 
+                        {/* Icon overlay */}
+                        <div className="absolute top-4 left-4 z-10 w-11 h-11 rounded-xl bg-white/90 backdrop-blur-md flex items-center justify-center text-[#461313] shadow-md">
+                          <IconComponent className="w-5 h-5 stroke-[2.5]" />
+                        </div>
+
+                        {/* Bottom Caption Overlay */}
+                        <div className="absolute bottom-5 inset-x-5 z-10 text-white">
+                          <span className="text-[11px] uppercase tracking-wider font-semibold text-[#C0E8F9]">
+                            Division {service.code} · {service.title}
+                          </span>
+                          <p className="text-base sm:text-lg font-bold text-white mt-1 leading-snug">
+                            {service.tagline}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Related Project Card */}
+                      {service.caseStudyRef && (
+                        <Link
+                          href={service.caseStudyRef.href}
+                          className="p-4 rounded-2xl bg-white border border-stone-200 hover:border-[#D64933] shadow-2xs hover:shadow-xs transition-all flex items-center justify-between group"
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="w-9 h-9 rounded-xl bg-[#461313]/10 text-[#461313] flex items-center justify-center shrink-0">
+                              <Building2 className="w-4 h-4" />
+                            </div>
+                            <div>
+                              <p className="text-xs text-stone-500 font-medium">
+                                Explore Related Project
+                              </p>
+                              <p className="text-sm font-bold text-[#162521] group-hover:text-[#D64933] transition-colors">
+                                {service.caseStudyRef.projectName}
+                              </p>
+                            </div>
+                          </div>
+                          <ArrowUpRight className="w-4 h-4 text-stone-400 group-hover:text-[#D64933] transition-colors" />
+                        </Link>
+                      )}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            );
-          }))}
+              );
+            })
+          )}
         </section>
 
-        {/* Why Choose Us: Real Estate Solutions That Click */}
+        {/* Why Choose Us */}
         <section className="py-16 sm:py-24 border-b border-stone-200/80">
           <div className="max-w-3xl mb-12">
             <span className="text-xs font-semibold tracking-wider uppercase text-[#D64933]">
               Why Choose Us
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#162521] mt-2">
-              Real Estate Solutions That Click
+              Real Estate Solutions Built on Clear Execution
             </h2>
             <p className="mt-3 text-stone-600 text-sm sm:text-base leading-relaxed">
-              With a foundation built on years of dedicated service in property development, construction, remodeling, renovation, and maintenance, Chapelhill Multicompany International has established a legacy of unmatched expertise.
+              Whether acquiring an off-plan home, commissioning construction, maintaining a facility, or structuring a joint venture, ChapelHill Multicompany Limited delivers disciplined execution across Nigeria.
             </p>
           </div>
 
@@ -590,10 +636,10 @@ export default function ServicesPageClient() {
                 <Info className="w-6 h-6 stroke-[2]" />
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-[#162521]">
-                Expertise you can trust, results you&apos;ll love
+                Practical Expertise &amp; Coordination
               </h3>
               <p className="mt-3 text-sm text-stone-600 leading-relaxed">
-                Backed by formal credentials from Lagos Business School and UK Prince2 project governance, our leadership delivers structural mastery and audited execution.
+                Experienced leadership across quantity surveying, engineering supervision, legal diligence, and facility operations ensures coordinated delivery across every phase.
               </p>
             </div>
 
@@ -602,10 +648,10 @@ export default function ServicesPageClient() {
                 <Info className="w-6 h-6 stroke-[2]" />
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-[#162521]">
-                Maximizing value, exceeding expectations
+                Long-Term Asset Quality
               </h3>
               <p className="mt-3 text-sm text-stone-600 leading-relaxed">
-                From value engineering to eliminate costly variations, to selecting durable materials suited for tropical coastal climates, we protect and optimize your return on capital.
+                From structural builds and renovations to ongoing facility maintenance and infrastructure care, we prioritize durable workmanship that protects asset longevity.
               </p>
             </div>
 
@@ -614,26 +660,26 @@ export default function ServicesPageClient() {
                 <Info className="w-6 h-6 stroke-[2]" />
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-[#162521]">
-                Finding your perfect match in real estate
+                Aligned Strategic Partnerships
               </h3>
               <p className="mt-3 text-sm text-stone-600 leading-relaxed">
-                Whether creating a bespoke multi-generational residence in Lekki or acquiring high-yield residential units in Abijo, we match individual visions with precision.
+                We collaborate openly with landowners, private buyers, corporate clients, investors, and financial institutions to align project structure with real development value.
               </p>
             </div>
           </div>
         </section>
 
-        {/* How We Work: Paving the Way to Real Estate Glory */}
+        {/* How We Work */}
         <section className="py-16 sm:py-24 border-b border-stone-200/80">
           <div className="max-w-3xl mb-12">
             <span className="text-xs font-semibold tracking-wider uppercase text-[#D64933]">
               How We Work
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#162521] mt-2">
-              Paving the Way to Real Estate Glory
+              Structured Delivery Across Every Engagement
             </h2>
             <p className="mt-3 text-stone-600 text-sm sm:text-base leading-relaxed">
-              Our structured 6-step project delivery methodology guarantees clarity, transparency, and uncompromised quality from initial consultation to long-term warranty support.
+              Our 6-step engagement workflow keeps communication, technical assessment, budgeting, and delivery transparent from initial discussion through ongoing facility care.
             </p>
           </div>
 
@@ -647,9 +693,7 @@ export default function ServicesPageClient() {
                   <span className="text-3xl font-serif font-extrabold text-[#461313]/25 block mb-4">
                     {step.step}.
                   </span>
-                  <h3 className="text-lg font-bold text-[#162521]">
-                    {step.title}
-                  </h3>
+                  <h3 className="text-lg font-bold text-[#162521]">{step.title}</h3>
                   <p className="mt-2.5 text-xs sm:text-sm text-stone-600 leading-relaxed">
                     {step.desc}
                   </p>
@@ -673,7 +717,7 @@ export default function ServicesPageClient() {
               Frequently Asked Questions
             </h2>
             <p className="mt-3 text-stone-600 text-sm sm:text-base leading-relaxed">
-              We are here to help you 7 days a week and respond within 24 hours. Plus, you can find the most common answers to your questions right here.
+              Common questions covering property development and sales, construction and project management, facility management, and joint venture partnerships.
             </p>
           </div>
 
@@ -686,16 +730,19 @@ export default function ServicesPageClient() {
                   className="rounded-2xl border border-stone-200 bg-white overflow-hidden shadow-2xs transition-all"
                 >
                   <button
+                    type="button"
                     onClick={() => setOpenFaqIndex(isOpen ? null : index)}
                     className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-stone-50/50 transition-colors"
                     aria-expanded={isOpen}
                   >
-                    <span className="text-base sm:text-lg font-bold text-[#162521]">
-                      {item.q}
-                    </span>
-                    <span className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform ${
-                      isOpen ? 'bg-[#461313] text-white rotate-180' : 'bg-stone-100 text-stone-600'
-                    }`}>
+                    <span className="text-base sm:text-lg font-bold text-[#162521]">{item.q}</span>
+                    <span
+                      className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform ${
+                        isOpen
+                          ? 'bg-[#461313] text-white rotate-180'
+                          : 'bg-stone-100 text-stone-600'
+                      }`}
+                    >
                       <ChevronDown className="w-4 h-4 stroke-[2.5]" />
                     </span>
                   </button>
@@ -714,19 +761,18 @@ export default function ServicesPageClient() {
         {/* Corporate Engagement & Direct Proposal Request Banner */}
         <section className="py-16 sm:py-24">
           <div className="p-8 sm:p-12 rounded-3xl bg-[#461313] text-white relative overflow-hidden">
-            {/* Ambient subtle glow */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl pointer-events-none" />
 
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               <div className="lg:col-span-7">
                 <span className="text-xs font-semibold tracking-wider uppercase text-[#E5C583]">
-                  Ready to Build or Preserve?
+                  Start a Conversation
                 </span>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-2 leading-tight">
-                  Request an Official Technical Proposal
+                  Request a Service Consultation or Partnership Discussion
                 </h2>
                 <p className="mt-4 text-stone-200 text-sm sm:text-base leading-relaxed">
-                  Connect with our senior engineering and project management team. We will evaluate your drawings, inspect your site, and prepare a tailored milestone proposal.
+                  Connect with our team regarding property development and sales, construction and project management, facility management, or joint venture opportunities.
                 </p>
 
                 <div className="mt-8 space-y-3 text-xs sm:text-sm text-stone-300">
@@ -738,7 +784,7 @@ export default function ServicesPageClient() {
                   </div>
                   <div className="flex items-center gap-3">
                     <Phone className="w-4 h-4 text-[#E5C583] shrink-0" />
-                    <span>(+234) 903 913 0207 &nbsp;•&nbsp; (+234) 803 286 5488</span>
+                    <span>+234 803 286 5488</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Mail className="w-4 h-4 text-[#E5C583] shrink-0" />
@@ -749,21 +795,22 @@ export default function ServicesPageClient() {
 
               <div className="lg:col-span-5 flex flex-col gap-3">
                 <button
-                  onClick={() => openBookingFor('Custom Technical Proposal')}
+                  type="button"
+                  onClick={() => openBookingFor('General Services Consultation')}
                   className="w-full bg-[#E5C583] hover:bg-white text-[#461313] py-4 px-6 rounded-2xl font-bold text-sm transition-all duration-200 flex items-center justify-center gap-2 shadow-lg cursor-pointer"
                 >
-                  <span>Request Project Proposal</span>
+                  <span>Submit a Service Enquiry</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
 
                 <a
-                  href="https://wa.me/2349039130207?text=Hello%20Chapelhill%2C%20I%20would%20like%20to%20request%20a%20project%20proposal%20for%20your%20services."
+                  href="https://wa.me/2348032865488?text=Hello%20ChapelHill%20Multicompany%20Limited%2C%20I%20would%20like%20to%20discuss%20your%20services%20or%20a%20joint-venture%20opportunity."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full bg-white/10 hover:bg-white/20 text-white border border-white/20 py-3.5 px-6 rounded-2xl font-semibold text-xs sm:text-sm transition-colors flex items-center justify-center gap-2"
                 >
                   <MessageCircle className="w-4 h-4 fill-white" />
-                  <span>Direct WhatsApp Line (+234 903 913 0207)</span>
+                  <span>Direct WhatsApp Line (+234 803 286 5488)</span>
                 </a>
               </div>
             </div>
@@ -797,7 +844,7 @@ export default function ServicesPageClient() {
       />
 
       {/* Floating WhatsApp Action */}
-      <WhatsAppFAB defaultMessage="Hello Chapelhill, I am inquiring from the Services page regarding your property development, remodeling, and maintenance solutions." />
+      <WhatsAppFAB defaultMessage="Hello ChapelHill Multicompany Limited, I am inquiring from the Services page regarding your real estate development, construction, facility management, or partnership services." />
     </div>
   );
 }

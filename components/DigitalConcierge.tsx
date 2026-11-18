@@ -31,7 +31,7 @@ const INITIAL_GREETING: ChatMessage = {
   id: 'initial-greeting',
   role: 'assistant',
   content:
-    'Welcome to **Chapelhill Multicompany International**. I am your 24/7 Digital Concierge & Private Property Advisor.\n\nWhether you are exploring active developments such as **Ivy Heights Lekki Phase 1** and **Ivy Homes Abijo GRA**, evaluating our 8-month installment schedules, or commissioning bespoke turnkey civil construction, how may I assist your portfolio today?',
+    'Welcome to **ChapelHill Multicompany Limited**. I am your 24/7 Digital Concierge & Private Property Advisor.\n\nWhether you are exploring our key pre-construction development **IVY Heights, Ikate, Lekki Phase 1, Lagos**, completed homes at **Ivy Homes Abijo GRA**, evaluating payment options, or enquiring about construction, facility management, or joint ventures, how may I assist you today?',
   timestamp: 'Just now',
   suggestedActions: {
     whatsapp: false,
@@ -40,10 +40,10 @@ const INITIAL_GREETING: ChatMessage = {
 };
 
 const SUGGESTED_PROMPTS = [
-  'Ivy Heights Lekki Phase 1 pricing & plans',
+  'IVY Heights Ikate, Lekki Phase 1 payment options',
   'Ivy Homes Abijo GRA completed flats',
-  'What are your flexible milestone payment plans?',
-  'Turnkey construction on personal land',
+  'Construction, renovations & facility management',
+  'Joint ventures & investment partnerships',
 ];
 
 let globalMsgCounter = 0;
@@ -130,7 +130,7 @@ export default function DigitalConcierge() {
       const assistantMessage: ChatMessage = {
         id: generateMessageId('assistant'),
         role: 'assistant',
-        content: data.text || 'Thank you for your inquiry. Our Senior Advisory Desk is available on WhatsApp (+234 903 913 0207) to assist you with tailored portfolio schedules.',
+        content: data.text || 'Thank you for your inquiry. Our Advisory Desk is available on WhatsApp (+234 803 286 5488) to assist you with property information and viewings.',
         timestamp: getFormattedTimestamp(),
         suggestedActions: data.suggestedActions,
       };
@@ -146,7 +146,7 @@ export default function DigitalConcierge() {
         id: generateMessageId('fallback'),
         role: 'assistant',
         content:
-          'Thank you for your inquiry. Our Senior Advisory Desk is immediately accessible via WhatsApp (+234 903 913 0207) or by booking a confidential private viewing.',
+          'Thank you for your inquiry. Our Advisory Desk is immediately accessible via WhatsApp (+234 803 286 5488) or by booking a private viewing.',
         timestamp: getFormattedTimestamp(),
         suggestedActions: { whatsapp: true, booking: true },
       };
@@ -163,14 +163,14 @@ export default function DigitalConcierge() {
 
   const handleWhatsAppHandoff = (summaryText?: string) => {
     const message = encodeURIComponent(
-      `Hello Chapelhill Advisory, I was consulting with your Digital Concierge regarding luxury developments in Lagos. ${
-        summaryText ? `I am specifically inquiring about: ${summaryText.slice(0, 120)}...` : 'I would like to receive current brochure allocations and schedule an inspection.'
+      `Hello ChapelHill Multicompany Limited, I was consulting with your Digital Concierge regarding developments in Lagos. ${
+        summaryText ? `I am specifically inquiring about: ${summaryText.slice(0, 120)}...` : 'I would like to receive current brochure details and schedule an inspection.'
       }\n\nThank you.`
     );
-    window.open(`https://wa.me/2349039130207?text=${message}`, '_blank', 'noopener,noreferrer');
+    window.open(`https://wa.me/2348032865488?text=${message}`, '_blank', 'noopener,noreferrer');
   };
 
-  const handleBookingHandoff = (propertyName = 'Ivy Heights Lekki Phase 1') => {
+  const handleBookingHandoff = (propertyName = 'IVY Heights, Ikate, Lekki Phase 1, Lagos') => {
     if (typeof window !== 'undefined') {
       window.dispatchEvent(
         new CustomEvent('open-booking-consultation', {
@@ -314,7 +314,7 @@ export default function DigitalConcierge() {
               <div className="text-left">
                 <div className="flex items-center gap-1.5">
                   <h3 className="text-xs sm:text-sm font-semibold tracking-tight text-white leading-tight">
-                    Chapelhill Concierge
+                    ChapelHill Concierge
                   </h3>
                   <span className="inline-flex items-center text-[9px] font-semibold tracking-wider text-[#E5C583] bg-white/10 px-1.5 py-0.5 rounded-full uppercase border border-white/15">
                     24/7 AI

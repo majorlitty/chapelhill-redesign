@@ -17,7 +17,7 @@ export default function HomePage() {
   const [propertyModalOpen, setPropertyModalOpen] = useState(false);
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const [infoModal, setInfoModal] = useState<'services' | 'about' | null>(null);
-  const [selectedPropertyForBooking, setSelectedPropertyForBooking] = useState('Ivy Homes Abijo GRA');
+  const [selectedPropertyForBooking, setSelectedPropertyForBooking] = useState('IVY Heights, Ikate, Lekki Phase 1, Lagos');
 
   useEffect(() => {
     function handleBookingEvent(e: Event) {
@@ -66,8 +66,9 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-[#FEFCFD] via-[#FEFCFD] to-[#f7f3f5] text-[#162521] flex flex-col justify-between selection:bg-[#461313] selection:text-white">
-      {/* Top Navigation */}
+      {/* Top Navigation Overlay */}
       <Navbar
+        overlayHero
         onContactClick={() => handleOpenBooking()}
         onExploreClick={scrollToFeatured}
         onServicesClick={() => setInfoModal('services')}
@@ -75,23 +76,21 @@ export default function HomePage() {
         onFAQClick={scrollToFAQ}
       />
 
-      {/* Hero Section */}
-      <ScrollReveal yOffset={24} duration={0.8} viewportAmount="some">
-        <Hero
-          onExploreHomes={scrollToFeatured}
-          onBookVisit={() => handleOpenBooking()}
-        />
-      </ScrollReveal>
+      {/* Full-Viewport Video Hero Section */}
+      <Hero
+        onExploreHomes={scrollToFeatured}
+        onBookVisit={() => handleOpenBooking()}
+      />
 
       {/* Brief About Us Section */}
       <ScrollReveal yOffset={36} duration={0.8} viewportAmount={0.12}>
         <AboutSection
           onLearnMoreServices={() => setInfoModal('services')}
-          onContactClick={() => handleOpenBooking()}
+          onContactClick={(serviceTitle) => handleOpenBooking(serviceTitle)}
         />
       </ScrollReveal>
 
-      {/* Featured Properties Section (Showcasing Ivy Homes Abijo GRA, Ogudu GRA, Lekki Phase 1) */}
+      {/* Featured Properties Section (Showcasing IVY Heights Ikate Lekki Phase 1 first) */}
       <ScrollReveal yOffset={36} duration={0.8} viewportAmount={0.08}>
         <FeaturedProperties
           onInquireProperty={(propName) => handleOpenBooking(propName)}
@@ -134,7 +133,7 @@ export default function HomePage() {
         isOpen={infoModal !== null}
         type={infoModal}
         onClose={() => setInfoModal(null)}
-        onBookVisit={() => handleOpenBooking()}
+        onBookVisit={(topic) => handleOpenBooking(topic)}
       />
 
       {/* Direct WhatsApp Inquiries Floating Action Button */}

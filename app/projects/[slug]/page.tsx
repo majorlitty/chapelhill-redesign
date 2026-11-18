@@ -22,15 +22,15 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 
   if (!project) {
     return {
-      title: 'Project Not Found | Chapelhill Multicompany International',
+      title: 'Project Not Found | ChapelHill Multicompany Limited',
     };
   }
 
   return {
-    title: `${project.name} | Chapelhill Multicompany International`,
+    title: `${project.name} | ChapelHill Multicompany Limited`,
     description: `${project.tagline}. ${project.description} Located at ${project.location}.`,
     openGraph: {
-      title: `${project.name} | Chapelhill Developments`,
+      title: `${project.name} | ChapelHill Multicompany Limited`,
       description: project.description,
       images: [
         {
@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${project.name} | Chapelhill`,
+      title: `${project.name} | ChapelHill Multicompany Limited`,
       description: project.description,
       images: [project.heroImage],
     },

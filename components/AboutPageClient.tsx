@@ -14,7 +14,6 @@ import {
   Mail, 
   MapPin, 
   Compass, 
-  Award, 
   Layers, 
   Clock, 
   Users, 
@@ -24,7 +23,7 @@ import {
   Eye,
   HeartHandshake,
   MessageCircle,
-  Briefcase
+  Handshake
 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -69,7 +68,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     name: 'Barr. Blessing Agada',
     role: 'Director',
     image: '/images/team/barr-blessing-agada.jpg',
-    bio: 'Barrister Blessing Agada oversees institutional governance, legal risk mitigation, land title verification, and corporate structuring for Chapelhill Multicompany International.',
+    bio: 'Barrister Blessing Agada oversees institutional governance, legal risk mitigation, land title verification, and corporate structuring for ChapelHill Multicompany Limited.',
     
     qualifications: [
       'Legal & Corporate Regulatory Governance',
@@ -82,21 +81,21 @@ const TEAM_MEMBERS: TeamMember[] = [
     name: 'Stephen Agada',
     role: 'Chief Operating Officer',
     image: '/images/team/stephen-agada.jpg',
-    bio: 'Steve brings vast expertise in facility management, projects, procurement, and quantity surveying. He holds certifications from Lagos Business School and the UK’s Prince2 program.',
+    bio: 'Stephen Agada brings extensive expertise in facility management, project execution, procurement, and quantity surveying.',
     phone: '+234 803 286 5488',
     email: 'chapelhillmulticompanyltd@gmail.com',
     qualifications: [
       'Facility Management & Turnkey Operations',
       'Procurement & Supply Chain Efficiency',
-      'Lagos Business School Alumnus',
-      'UK Prince2 Certified Project Director',
+      'Project Costing & Quantity Surveying',
+      'End-to-End Construction Oversight',
     ],
   },
   {
     name: 'Nick Joel Okpanachi',
     role: 'Chief Executive Officer',
     image: '/images/team/nick-joel-okpanachi.png',
-    bio: 'Nick Joel Okpanachi leads the executive management, development pipeline, investor relations, and overall vision of Chapelhill Multicompany International across Nigeria and the diaspora.',
+    bio: 'Nick Joel Okpanachi leads the executive management, development pipeline, client relations, and overall vision of ChapelHill Multicompany Limited across Nigeria and the diaspora.',
     phone: '+234 703 836 8119',
     email: 'chapelhillmulticompanyltd@gmail.com',
     qualifications: [
@@ -136,52 +135,73 @@ const TEAM_MEMBERS: TeamMember[] = [
 
 const CORE_SERVICES = [
   {
+    id: 'development-sales',
+    code: 'A',
     number: '01',
-    title: 'Property Development',
-    description: 'We excel in designing and constructing diverse projects, from residential buildings to industrial properties. Our expertise spans automated architectural designs, road construction, drainage, and structural steel work for clients and corporations alike.',
+    title: 'Property Development and Sales',
+    description:
+      'Development and sale of residential and other approved real estate projects, including off-plan developments.',
+    image: '/images/lekki-phase-1/lekki 3d/Lekki phase 1(4).jpeg',
+    imageAlt: 'ChapelHill Multicompany Limited Property Development and Sales',
     highlights: [
-      'Automated architectural design & 3D visualization',
-      'Residential estates & luxury penthouse developments',
-      'Road construction, storm drainage & civil infrastructure',
-      'Industrial complexes & structural steel engineering',
+      'Residential & approved real estate developments',
+      'Off-plan property sales with structured payment options',
+      'Completed homes ready for inspection and handover',
+      'Verified title documentation & buyer support',
     ],
     icon: Building2,
   },
   {
+    id: 'construction-management',
+    code: 'B',
     number: '02',
-    title: 'Remodeling & Renovation',
-    description: 'We specialize in impeccable finishing for structures, from carcasses to semi-completed projects. Our expertise extends to remodeling, renovation, and innovative space design, including rapid wall partitions.',
+    title: 'Construction and Project Management',
+    description:
+      'Construction services for individuals and corporate clients, project coordination, renovations, remodelling and related construction solutions.',
+    image:
+      '/images/Beachwood Lagos/ongoing Beachwood project lagos/Beach wood construction progress (1).jpeg',
+    imageAlt: 'ChapelHill Multicompany Limited Construction and Project Management',
     highlights: [
-      'Carcass completion to luxury turnkey handover',
-      'Interior space redesign & structural layout optimization',
-      'Innovative rapid wall partitions & acoustic systems',
-      'Comprehensive modernization of mature properties',
+      'Construction for private individuals & corporate clients',
+      'Pre- and post-contract project coordination & supervision',
+      'Renovations, remodelling & carcass-to-turnkey finishing',
+      'Transparent milestone reporting & budget discipline',
     ],
     icon: Hammer,
   },
   {
+    id: 'facility-management',
+    code: 'C',
     number: '03',
-    title: 'Property Maintenance & Facility Stewardship',
-    description: 'Regular maintenance of our customers’ property and facility, including plumbing, electrical works, air-conditioning repairs, tiling, building works, roof leakages, and reclamation of land in waterfront areas to enable them focus on their core businesses.',
+    title: 'Property and Facility Management',
+    description:
+      'Property maintenance, facility management, building repairs, infrastructure maintenance and other approved management services.',
+    image: '/maintenance.webp',
+    imageAlt: 'ChapelHill Multicompany Limited Property and Facility Management',
     highlights: [
-      'Preventive electrical & MEP systems maintenance',
-      'Plumbing, drainage & roof leak remediation',
-      'Air-conditioning / HVAC diagnostics & repairs',
-      'Specialized waterfront land reclamation & shoreline care',
+      'Ongoing property maintenance & facility management',
+      'Building repairs, plumbing, electrical & HVAC upkeep',
+      'Estate roads, drainage & infrastructure maintenance',
+      'Scheduled preventive asset care & technical support',
     ],
     icon: ShieldCheck,
   },
   {
+    id: 'joint-ventures',
+    code: 'D',
     number: '04',
-    title: 'Project Management & Advisory',
-    description: 'We offer specialist advice on property purchase, construction and development as well as management of consultants and contractors at both pre- and post-contract stages to meet our clients’ requirements.',
+    title: 'Joint Ventures and Investment Partnerships',
+    description:
+      'Engagement with landowners, investors, developers, financial institutions and other strategic partners on suitable property development opportunities.',
+    image: '/images/joint-venture-partnerships.jpg',
+    imageAlt: 'ChapelHill Multicompany Limited Joint Ventures and Investment Partnerships',
     highlights: [
-      'Pre-contract feasibility & land title vetting',
-      'Architectural, engineering & QS consultant coordination',
-      'Post-contract supervision & transparent budget auditing',
-      'Timely milestone delivery & verified quality handover',
+      'Landowner & developer joint-venture collaborations',
+      'Investor & financial institution project partnerships',
+      'Feasibility review, planning & joint development structuring',
+      'Transparent governance from inception to project delivery',
     ],
-    icon: Briefcase,
+    icon: Handshake,
   },
 ];
 
@@ -220,15 +240,25 @@ const WORK_PROCESS_STEPS = [
 
 export default function AboutPageClient() {
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
+  const [selectedInquiryTopic, setSelectedInquiryTopic] = useState(
+    'ChapelHill Multicompany Limited Consultation'
+  );
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   const [infoModal, setInfoModal] = useState<'services' | 'about' | null>(null);
+
+  const openBookingFor = (topic?: string) => {
+    if (topic) {
+      setSelectedInquiryTopic(topic);
+    }
+    setBookingModalOpen(true);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#FEFCFD] via-[#FEFCFD] to-[#f7f3f5] text-[#162521] flex flex-col justify-between selection:bg-[#461313] selection:text-white">
       {/* Top Navigation */}
       <Navbar
         activePage="about"
-        onContactClick={() => setBookingModalOpen(true)}
+        onContactClick={() => openBookingFor('ChapelHill Multicompany Limited Consultation')}
         onServicesClick={() => setInfoModal('services')}
         onExploreClick={() => {
           window.location.href = '/#featured-properties';
@@ -261,11 +291,11 @@ export default function AboutPageClient() {
             <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-md border border-stone-200/80 shadow-2xs rounded-full px-4 py-1.5 mb-6">
               <span className="w-2 h-2 rounded-full bg-[#D64933]" />
               <span className="text-xs font-semibold tracking-wider uppercase text-[#162521]">
-                Chapelhill Multicompany International
+                ChapelHill Multicompany Limited
               </span>
             </div>
 
-            {/* Main Headline from chapelhill.com.ng/about-us/ */}
+            {/* Main Headline */}
             <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#162521] tracking-[-0.03em] leading-[1.2] sm:leading-[1.15]">
               Excellence in Property Development, Construction &amp; Maintenance
             </h1>
@@ -273,27 +303,25 @@ export default function AboutPageClient() {
             {/* Core Brand Quote */}
             <div className="mt-8 p-6 sm:p-8 rounded-3xl bg-white/80 border border-stone-200/80 shadow-[0_8px_30px_rgba(22,37,33,0.04)] backdrop-blur-md">
               <p className="text-base sm:text-xl md:text-2xl font-serif italic text-[#461313] leading-relaxed">
-                &ldquo;At Chapelhill Multicompany International, we epitomize excellence in property development, construction, and maintenance services.&rdquo;
+                &ldquo;At ChapelHill Multicompany Limited, we epitomize excellence in property development, construction, and maintenance services.&rdquo;
               </p>
               <div className="mt-4 flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#D64933]">
                 <span>Where Home Meets Happiness</span>
-                <span>•</span>
-                <span>RC: 1849204</span>
               </div>
             </div>
 
             {/* Narrative Overview */}
             <p className="mt-8 text-base sm:text-lg text-[#162521]/80 max-w-3xl mx-auto leading-relaxed">
-              At <strong className="font-semibold text-[#162521]">Chapelhill Multicompany International</strong>, we specialize in property development, construction, remodeling, renovation, and maintenance, delivering top-tier solutions tailored to our clients’ unique needs. With a commitment to quality, innovation, and precision, we transform spaces into enduring masterpieces.
+              At <strong className="font-semibold text-[#162521]">ChapelHill Multicompany Limited</strong>, we deliver Property Development and Sales, Construction and Project Management, Property and Facility Management, and Joint Ventures and Investment Partnerships tailored to our clients’ goals.
             </p>
             <p className="mt-4 text-sm sm:text-base text-[#162521]/75 max-w-3xl mx-auto leading-relaxed">
-              Our leadership team brings decades of expertise, serving high-net-worth individuals, institutional investors, and leading corporate entities. With a meticulous focus on innovation, craftsmanship, and attention to detail, we create inspiring spaces that stand the test of time.
+              Our leadership team brings broad multidisciplinary expertise, serving private homeowners, diaspora buyers, corporate clients, landowners, and strategic development partners.
             </p>
 
             {/* Action CTAs */}
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
-                onClick={() => setBookingModalOpen(true)}
+                onClick={() => openBookingFor('ChapelHill Multicompany Limited Consultation')}
                 className="w-full sm:w-auto bg-[#461313] hover:bg-[#D64933] text-white pl-6 pr-3 py-3.5 rounded-full font-semibold text-sm inline-flex items-center justify-center gap-3 transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer min-h-[48px] group"
               >
                 <span>Book a Private Consultation</span>
@@ -303,7 +331,7 @@ export default function AboutPageClient() {
               </button>
 
               <a
-                href="https://wa.me/2349039130207?text=Hello%20Chapelhill%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20services%20and%20developments."
+                href="https://wa.me/2348032865488?text=Hello%20ChapelHill%20Multicompany%20Limited%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20services%20and%20developments."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto bg-[#25D366]/10 hover:bg-[#25D366]/20 text-[#128C7E] border border-[#25D366]/30 px-6 py-3.5 rounded-full font-semibold text-sm inline-flex items-center justify-center gap-2.5 transition-colors min-h-[48px]"
@@ -314,23 +342,39 @@ export default function AboutPageClient() {
             </div>
           </div>
 
-          {/* Clean Typographic Metrics Strip (Zero-Pill Discipline) */}
+          {/* Clean Typographic Pillars Strip (Zero-Pill Discipline) */}
           <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 pt-10 border-t border-stone-200/60 max-w-5xl mx-auto text-center">
             <div>
-              <p className="text-3xl sm:text-4xl font-extrabold text-[#461313] font-serif">Decades</p>
-              <p className="mt-1 text-xs text-stone-500 font-medium">Combined Leadership Expertise</p>
+              <p className="text-xl sm:text-2xl font-extrabold text-[#461313] font-serif">
+                Development &amp; Sales
+              </p>
+              <p className="mt-1 text-xs text-stone-500 font-medium">
+                Residential &amp; Off-Plan Projects
+              </p>
             </div>
             <div>
-              <p className="text-3xl sm:text-4xl font-extrabold text-[#461313] font-serif">100%</p>
-              <p className="mt-1 text-xs text-stone-500 font-medium">Verified On-Time Handover</p>
+              <p className="text-xl sm:text-2xl font-extrabold text-[#461313] font-serif">
+                Construction
+              </p>
+              <p className="mt-1 text-xs text-stone-500 font-medium">
+                Builds, Coordination &amp; Remodelling
+              </p>
             </div>
             <div>
-              <p className="text-3xl sm:text-4xl font-extrabold text-[#461313] font-serif">LASRERA</p>
-              <p className="mt-1 text-xs text-stone-500 font-medium">Accredited Real Estate Practice</p>
+              <p className="text-xl sm:text-2xl font-extrabold text-[#461313] font-serif">
+                Facility Care
+              </p>
+              <p className="mt-1 text-xs text-stone-500 font-medium">
+                Maintenance, Repairs &amp; Infrastructure
+              </p>
             </div>
             <div>
-              <p className="text-3xl sm:text-4xl font-extrabold text-[#461313] font-serif">RC 1849204</p>
-              <p className="mt-1 text-xs text-stone-500 font-medium">Officially Incorporated in Nigeria</p>
+              <p className="text-xl sm:text-2xl font-extrabold text-[#461313] font-serif">
+                Joint Ventures
+              </p>
+              <p className="mt-1 text-xs text-stone-500 font-medium">
+                Landowners, Investors &amp; Partners
+              </p>
             </div>
           </div>
         </section>
@@ -403,7 +447,7 @@ export default function AboutPageClient() {
                 Where Home Meets Happiness
               </h3>
               <p className="mt-3 text-stone-300 text-sm sm:text-base leading-relaxed">
-                At Chapelhill, we understand that every client is unique. That’s why we tailor our services to match individual visions, turning ideas into reality with precision and excellence.
+                At ChapelHill Multicompany Limited, we understand that every client is unique. That’s why we tailor our services to match individual visions, turning ideas into reality with precision and excellence.
               </p>
             </div>
 
@@ -414,7 +458,7 @@ export default function AboutPageClient() {
                   <span>Expertise you can trust</span>
                 </div>
                 <p className="text-xs sm:text-sm text-stone-400 leading-relaxed">
-                  Decades of quantity surveying, civil engineering, and facility stewardship producing results you will love.
+                  Seasoned experience in quantity surveying, civil engineering, and facility stewardship producing dependable results.
                 </p>
               </div>
 
@@ -424,7 +468,7 @@ export default function AboutPageClient() {
                   <span>Maximizing value</span>
                 </div>
                 <p className="text-xs sm:text-sm text-stone-400 leading-relaxed">
-                  Transparent budgeting, value engineering, and milestone tracking that consistently exceed investor expectations.
+                  Transparent budgeting, value engineering, and milestone tracking aligned with your project scope and budget.
                 </p>
               </div>
 
@@ -451,7 +495,7 @@ export default function AboutPageClient() {
               Meet the Team
             </h2>
             <p className="mt-3 text-stone-600 text-sm sm:text-base leading-relaxed">
-              At Chapelhill Multicompany International, our success is driven by the collective expertise and dedication of our management team. Together, we form a dynamic team committed to pushing boundaries and exceeding expectations.
+              At ChapelHill Multicompany Limited, our work is driven by the collective expertise and dedication of our management team. Together, we form a dynamic team committed to pushing boundaries and delivering reliable execution.
             </p>
           </div>
 
@@ -515,13 +559,13 @@ export default function AboutPageClient() {
         <section id="services-grid" className="py-16 sm:py-24 border-b border-stone-200/80">
           <div className="max-w-3xl mb-12">
             <span className="text-xs font-semibold tracking-wider uppercase text-[#D64933]">
-              End-to-End Capabilities
+              Our Four Service Categories
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#162521] mt-2">
-              Comprehensive Real Estate &amp; Construction Solutions
+              Property Development, Construction, Facility Management &amp; Partnerships
             </h2>
             <p className="mt-3 text-stone-600 text-sm sm:text-base leading-relaxed">
-              From raw topography assessment and automated architectural planning to precision civil engineering and long-term facility preservation.
+              Each division is structured to support homeowners, corporate clients, landowners, investors, and institutional partners across Nigeria.
             </p>
           </div>
 
@@ -531,44 +575,81 @@ export default function AboutPageClient() {
               return (
                 <div
                   key={service.number}
-                  className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-200 shadow-xs hover:shadow-md transition-shadow flex flex-col justify-between"
+                  className="rounded-3xl bg-white border border-stone-200 shadow-xs hover:shadow-md transition-shadow flex flex-col justify-between overflow-hidden group"
                 >
                   <div>
-                    <div className="flex items-center justify-between gap-4 mb-6">
-                      <span className="text-xs font-mono font-bold text-[#D64933] bg-[#D64933]/10 px-3 py-1 rounded-full">
-                        {service.number}
-                      </span>
-                      <div className="w-10 h-10 rounded-xl bg-stone-100 flex items-center justify-center text-[#461313]">
+                    {/* Supporting Service Imagery */}
+                    <div className="relative w-full aspect-[16/10] bg-stone-100 overflow-hidden">
+                      <Image
+                        src={service.image}
+                        alt={service.imageAlt}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className="object-cover group-hover:scale-105 transition-transform duration-700"
+                        referrerPolicy="no-referrer"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
+                      <div className="absolute top-4 left-4 w-10 h-10 rounded-xl bg-white/90 backdrop-blur-md flex items-center justify-center text-[#461313] shadow-sm">
                         <IconComp className="w-5 h-5" />
+                      </div>
+                      <div className="absolute bottom-4 left-4 right-4 text-white">
+                        <span className="text-[11px] font-mono font-semibold tracking-wider uppercase text-[#C0E8F9]">
+                          Category {service.code} · {service.number}
+                        </span>
                       </div>
                     </div>
 
-                    <h3 className="text-xl sm:text-2xl font-bold text-[#162521]">
-                      {service.title}
-                    </h3>
+                    <div className="p-6 sm:p-8">
+                      <h3 className="text-xl sm:text-2xl font-bold text-[#162521]">
+                        {service.title}
+                      </h3>
 
-                    <p className="mt-3 text-sm text-stone-600 leading-relaxed">
-                      {service.description}
-                    </p>
+                      <p className="mt-3 text-sm text-stone-600 leading-relaxed">
+                        {service.description}
+                      </p>
 
-                    <div className="mt-6 pt-6 border-t border-stone-100 space-y-2.5">
-                      {service.highlights.map((item, idx) => (
-                        <div key={idx} className="flex items-start gap-2.5 text-xs text-stone-700">
-                          <CheckCircle2 className="w-4 h-4 text-[#D64933] shrink-0 mt-0.5" />
-                          <span>{item}</span>
-                        </div>
-                      ))}
+                      <div className="mt-6 pt-5 border-t border-stone-100 space-y-2.5">
+                        {service.highlights.map((item, idx) => (
+                          <div key={idx} className="flex items-start gap-2.5 text-xs text-stone-700">
+                            <CheckCircle2 className="w-4 h-4 text-[#D64933] shrink-0 mt-0.5" />
+                            <span>{item}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
 
-                  <div className="mt-8 pt-6 border-t border-stone-100">
+                  <div className="px-6 sm:px-8 pb-6 sm:pb-8 pt-4 border-t border-stone-100 flex flex-wrap items-center justify-between gap-3">
                     <button
-                      onClick={() => setBookingModalOpen(true)}
-                      className="text-xs font-semibold text-[#461313] hover:text-[#D64933] inline-flex items-center gap-1.5 transition-colors cursor-pointer group"
+                      type="button"
+                      onClick={() => openBookingFor(service.title)}
+                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#461313] hover:bg-[#D64933] text-white text-xs font-semibold transition-colors cursor-pointer"
                     >
-                      <span>Inquire regarding {service.title}</span>
-                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                      <span>Enquire Now</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
                     </button>
+
+                    <div className="flex items-center gap-4">
+                      <a
+                        href={`https://wa.me/2348032865488?text=${encodeURIComponent(
+                          `Hello ChapelHill Multicompany Limited, I would like to inquire about your "${service.title}" services.`
+                        )}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-semibold text-[#128C7E] hover:text-[#461313] inline-flex items-center gap-1.5 transition-colors"
+                      >
+                        <MessageCircle className="w-3.5 h-3.5" />
+                        <span>WhatsApp</span>
+                      </a>
+
+                      <Link
+                        href={`/services#${service.id}`}
+                        className="text-xs font-semibold text-stone-600 hover:text-[#461313] inline-flex items-center gap-1 transition-colors"
+                      >
+                        <span>Full Details</span>
+                        <ChevronRight className="w-3.5 h-3.5" />
+                      </Link>
+                    </div>
                   </div>
                 </div>
               );
@@ -622,10 +703,10 @@ export default function AboutPageClient() {
                   Direct Engagement
                 </span>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-2 leading-tight">
-                  Partner with Chapelhill Multicompany International
+                  Partner with ChapelHill Multicompany Limited
                 </h2>
                 <p className="mt-4 text-stone-200 text-sm sm:text-base leading-relaxed">
-                  Whether you are seeking custom architectural development, prime off-plan residential acquisition, carcass finishing, or institutional facility maintenance, our leadership desk is ready to assist.
+                  Whether you are interested in property development and sales, construction and project management, property and facility management, or joint venture partnerships, our team is ready to assist.
                 </p>
 
                 <div className="mt-8 space-y-3 text-xs sm:text-sm text-stone-300">
@@ -637,7 +718,7 @@ export default function AboutPageClient() {
                   </div>
                   <div className="flex items-center gap-3">
                     <Phone className="w-4 h-4 text-[#E5C583] shrink-0" />
-                    <span>(+234) 903 913 0207 &nbsp;•&nbsp; (+234) 803 286 5488</span>
+                    <span>+234 803 286 5488</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Mail className="w-4 h-4 text-[#E5C583] shrink-0" />
@@ -648,7 +729,7 @@ export default function AboutPageClient() {
 
               <div className="lg:col-span-5 flex flex-col gap-3">
                 <button
-                  onClick={() => setBookingModalOpen(true)}
+                  onClick={() => openBookingFor('ChapelHill Multicompany Limited Consultation')}
                   className="w-full bg-[#E5C583] hover:bg-white text-[#461313] py-4 px-6 rounded-2xl font-bold text-sm transition-all duration-200 flex items-center justify-center gap-2 shadow-lg cursor-pointer"
                 >
                   <span>Schedule Private Consultation</span>
@@ -656,13 +737,13 @@ export default function AboutPageClient() {
                 </button>
 
                 <a
-                  href="https://wa.me/2349039130207?text=Hello%20Chapelhill%2C%20I%20am%20reaching%20out%20from%20the%20About%20Us%20page."
+                  href="https://wa.me/2348032865488?text=Hello%20ChapelHill%20Multicompany%20Limited%2C%20I%20am%20reaching%20out%20from%20the%20About%20Us%20page."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full bg-white/10 hover:bg-white/20 text-white border border-white/20 py-3.5 px-6 rounded-2xl font-semibold text-xs sm:text-sm transition-colors flex items-center justify-center gap-2"
                 >
                   <MessageCircle className="w-4 h-4 fill-white" />
-                  <span>Direct WhatsApp Line (+234 903 913 0207)</span>
+                  <span>Direct WhatsApp Line (+234 803 286 5488)</span>
                 </a>
               </div>
             </div>
@@ -771,7 +852,7 @@ export default function AboutPageClient() {
       <BookingModal
         isOpen={bookingModalOpen}
         onClose={() => setBookingModalOpen(false)}
-        defaultProperty="Chapelhill Advisory Consultation"
+        defaultProperty={selectedInquiryTopic}
       />
 
       {/* Info Drawer */}
@@ -779,7 +860,9 @@ export default function AboutPageClient() {
         isOpen={infoModal !== null}
         type={infoModal}
         onClose={() => setInfoModal(null)}
-        onBookVisit={() => setBookingModalOpen(true)}
+        onBookVisit={(topic) =>
+          openBookingFor(topic || 'ChapelHill Multicompany Limited Consultation')
+        }
       />
 
       {/* Floating WhatsApp Action */}

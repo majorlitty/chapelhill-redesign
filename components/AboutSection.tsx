@@ -3,11 +3,19 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Building2, Hammer, ShieldCheck, CheckCircle2, ChevronRight, Compass } from 'lucide-react';
+import {
+  ArrowRight,
+  Building2,
+  Hammer,
+  ShieldCheck,
+  Handshake,
+  CheckCircle2,
+  ChevronRight,
+} from 'lucide-react';
 
 interface AboutSectionProps {
   onLearnMoreServices?: () => void;
-  onContactClick?: () => void;
+  onContactClick?: (serviceTitle?: string) => void;
 }
 
 interface Discipline {
@@ -21,96 +29,112 @@ interface Discipline {
   highlights: string[];
   image: string;
   imageAlt: string;
-  statLabel: string;
-  statValue: string;
 }
 
 const DISCIPLINES: Discipline[] = [
   {
-    id: 'development',
+    id: 'development-sales',
     number: '01',
-    title: 'Property Development',
-    subtitle: 'Visionary Masterplanning & Site Curation',
+    title: 'Property Development and Sales',
+    subtitle: 'Residential & Approved Off-Plan Projects',
     icon: Building2,
-    tagline: 'Transforming prime geographic topography into generational architectural icons.',
+    tagline:
+      'Development and sale of residential and other approved real estate projects, including off-plan developments.',
     description:
-      'We excel in designing and constructing diverse projects, from buildings to industrial properties. Our expertise spans automated architectural designs, road construction, drainage, and structural steel work for clients and corporations alike.',
+      'Development and sale of residential and other approved real estate projects, including off-plan developments. From pre-construction residences at IVY Heights, Ikate, Lekki Phase 1, Lagos to completed homes at Ivy Homes Abijo GRA, we deliver thoughtfully planned properties with verified documentation.',
     highlights: [
-      'Prime off-market acquisition & zoning entitlements',
-      'Award-winning architectural concept integration',
-      'Sustainable high-performance ecological footprint',
+      'Residential & approved real estate developments',
+      'Off-plan acquisition with flexible payment schedules',
+      'Verified title documentation & structured handover',
     ],
-    image: '/images/lekki-phase-1/lekki 3d/Lekki phase 1(1).jpeg',
-    imageAlt: 'Chapelhill cantilevered masterplanned hillside estate',
-    statLabel: 'Portfolio Value',
-    statValue: '$2.8B+',
+    image: '/images/lekki-phase-1/lekki 3d/Lekki phase 1(4).jpeg',
+    imageAlt: 'ChapelHill Multicompany Limited residential development and sales',
   },
   {
-    id: 'Remodeling & renovation',
+    id: 'construction-management',
     number: '02',
-    title: 'Remodelling & Renovation',
-    subtitle: 'Structural Mastery & Bespoke Engineering',
+    title: 'Construction and Project Management',
+    subtitle: 'Builds, Coordination, Renovations & Remodelling',
     icon: Hammer,
-    tagline: 'Uncompromising engineering standards from sub-grade foundations to frameless glass skies.',
+    tagline:
+      'Construction services for individuals and corporate clients, project coordination, renovations, remodelling and related construction solutions.',
     description:
-      'We specialize in impeccable finishing for structures, from carcasses to semi-completed projects. Our expertise extends to remodeling, renovation, and innovative space design, including rapid wall partitions.',
+      'Construction services for individuals and corporate clients, project coordination, renovations, remodelling and related construction solutions. Our team manages ground-up builds, carcass completion, interior transformations, and disciplined site coordination.',
     highlights: [
-      'Seismic cantilever & structural glass engineering',
-      'Artisan millwork, thermal envelopes & radiant systems',
-      'Zero-defect delivery and verified acoustic insulation',
+      'Construction for private & corporate clients',
+      'Pre- and post-contract project coordination',
+      'Renovations, remodelling & finishing solutions',
     ],
-    image: '/images/5 bed Ogudu GRA Project/Ogudu 3d/Ogudu 3d (11).jpeg',
-    imageAlt: 'Chapelhill precision construction and contemporary architectural finishes',
-    statLabel: 'On-Time Handover',
-    statValue: '100%',
+    image:
+      '/images/Beachwood Lagos/ongoing Beachwood project lagos/Beach wood construction progress (1).jpeg',
+    imageAlt: 'ChapelHill Multicompany Limited construction and project management',
   },
   {
-    id: 'maintenance',
+    id: 'facility-management',
     number: '03',
-    title: 'Property Maintenance & Project Management',
-    subtitle: 'White-Glove Asset Preservation',
+    title: 'Property and Facility Management',
+    subtitle: 'Maintenance, Repairs & Infrastructure Care',
     icon: ShieldCheck,
-    tagline: 'Continuous private estate stewardship to protect and enhance property value.',
+    tagline:
+      'Property maintenance, facility management, building repairs, infrastructure maintenance and other approved management services.',
     description:
-      'Regular maintenance of our customers’ property/facility, plumbing, electrical works, air-conditioning repairs, tiling,building works,roof leakages,reclamation of land in water front areas etc to enable them focus on their core businesses',
+      'Property maintenance, facility management, building repairs, infrastructure maintenance and other approved management services. We preserve residential estates and commercial facilities through responsive MEP repairs, grounds care, and scheduled preventive maintenance.',
     highlights: [
-      '24/7 dedicated estate concierge & mechanical technicians',
-      'Preventative climate, solar & structural diagnostics',
-      'Discreet family office and VIP privacy compliance',
+      'Preventive property & facility management',
+      'Building repairs, electrical, plumbing & HVAC care',
+      'Estate infrastructure & utilities maintenance',
     ],
     image: '/maintenance.webp',
-    imageAlt: 'Chapelhill luxury estate maintenance and pool grounds care',
-    statLabel: 'Client Retention',
-    statValue: '98.4%',
+    imageAlt: 'ChapelHill Multicompany Limited property and facility management',
+  },
+  {
+    id: 'joint-ventures',
+    number: '04',
+    title: 'Joint Ventures and Investment Partnerships',
+    subtitle: 'Landowners, Investors & Strategic Partners',
+    icon: Handshake,
+    tagline:
+      'Engagement with landowners, investors, developers, financial institutions and other strategic partners on suitable property development opportunities.',
+    description:
+      'Engagement with landowners, investors, developers, financial institutions and other strategic partners on suitable property development opportunities. We structure transparent co-development frameworks that unlock viable residential and commercial land parcels.',
+    highlights: [
+      'Landowner & developer joint-venture structuring',
+      'Investor & institutional co-development partnerships',
+      'Feasibility review & end-to-end project delivery',
+    ],
+    image: '/images/joint-venture-partnerships.jpg',
+    imageAlt: 'ChapelHill Multicompany Limited joint ventures and investment partnerships',
   },
 ];
 
 export default function AboutSection({ onLearnMoreServices, onContactClick }: AboutSectionProps) {
-  const [activeDisciplineId, setActiveDisciplineId] = useState<string>('development');
+  const [activeDisciplineId, setActiveDisciplineId] = useState<string>('development-sales');
 
   const currentDiscipline =
     DISCIPLINES.find((d) => d.id === activeDisciplineId) || DISCIPLINES[0];
 
   return (
-    <section id="about-us" className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-12 sm:py-20 relative z-20">
+    <section
+      id="about-us"
+      className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-12 sm:py-20 relative z-20"
+    >
       {/* Decorative ambient sky glow */}
-      <div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[450px] bg-white/40 rounded-full blur-3xl pointer-events-none -z-10" 
-        aria-hidden="true" 
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[450px] bg-white/40 rounded-full blur-3xl pointer-events-none -z-10"
+        aria-hidden="true"
       />
 
       {/* Header Eyebrow & Brand Quote Statement */}
       <div className="max-w-4xl mx-auto text-center mb-10 sm:mb-16">
         <div className="inline-flex items-center gap-2 bg-white/85 hover:bg-white backdrop-blur-md border border-stone-200/80 shadow-2xs rounded-full px-3.5 py-1.5 mb-4 sm:mb-5 transition-all">
-          
           <span className="text-[11px] sm:text-xs font-semibold tracking-wider uppercase text-[#162521]">
-            About Chapelhill
+            Our Core Services &amp; Focus
           </span>
         </div>
 
-        {/* The Exact Quote Formatted with Editorial Elegance & Color Accents */}
+        {/* Brand Editorial Statement */}
         <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#162521] tracking-[-0.03em] leading-[1.25] sm:leading-[1.18] px-2">
-          &ldquo;At Chapelhill Multicompany International, we epitomize excellence in{' '}
+          &ldquo;At ChapelHill Multicompany Limited, we deliver trusted expertise across{' '}
           <span className="underline decoration-[#D64933] decoration-2 underline-offset-4 sm:underline-offset-8">
             property development
           </span>
@@ -118,22 +142,25 @@ export default function AboutSection({ onLearnMoreServices, onContactClick }: Ab
           <span className="underline decoration-[#D64933] decoration-2 underline-offset-4 sm:underline-offset-8">
             construction
           </span>
+          ,{' '}
+          <span className="underline decoration-[#D64933] decoration-2 underline-offset-4 sm:underline-offset-8">
+            facility management
+          </span>
           , and{' '}
           <span className="underline decoration-[#D64933] decoration-2 underline-offset-4 sm:underline-offset-8">
-            maintenance services
+            partnerships
           </span>
           .&rdquo;
         </h2>
 
         <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-[#162521]/80 max-w-2xl mx-auto leading-relaxed px-2">
-          A unified standard of architectural vision, bespoke construction rigor, and continuous estate preservation across premier global markets.
+          A unified standard of architectural vision, bespoke construction rigor, continuous property preservation, and collaborative partnerships across Nigeria.
         </p>
       </div>
 
-      {/* Modern Asymmetric Editorial Layout: Interactive Disciplines + Dynamic Architectural Showcase */}
+      {/* Asymmetric Editorial Layout: Interactive 4 Disciplines + Dynamic Showcase */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
-        
-        {/* Left Column (6 Cols): The 3 Disciplines with Sleek Minimalist Dividers */}
+        {/* Left Column (6 Cols): The 4 Official Service Categories */}
         <div className="lg:col-span-6 flex flex-col justify-between space-y-4">
           <div className="space-y-3">
             {DISCIPLINES.map((discipline) => {
@@ -145,14 +172,14 @@ export default function AboutSection({ onLearnMoreServices, onContactClick }: Ab
                   key={discipline.id}
                   onClick={() => setActiveDisciplineId(discipline.id)}
                   id={`discipline-tab-${discipline.id}`}
-                  className={`group relative rounded-2xl p-4 sm:p-6 transition-all duration-300 cursor-pointer border ${
+                  className={`group relative rounded-2xl p-4 sm:p-5 transition-all duration-300 cursor-pointer border ${
                     isActive
-                      ? 'bg-white border-stone-200/90 shadow-[0_12px_32px_rgba(70,19,19,0.07)] scale-[1.01]'
+                      ? 'bg-white border-stone-200/90 shadow-[0_12px_32px_rgba(70,19,19,0.07)]'
                       : 'bg-white/60 hover:bg-white/90 backdrop-blur-sm border-stone-200/60 shadow-xs'
                   }`}
                 >
                   <div className="flex items-start justify-between gap-3 sm:gap-4">
-                    <div className="flex items-start gap-3 sm:gap-3.5">
+                    <div className="flex items-start gap-3 sm:gap-3.5 min-w-0">
                       <div
                         className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors mt-0.5 sm:mt-0 ${
                           isActive
@@ -164,15 +191,19 @@ export default function AboutSection({ onLearnMoreServices, onContactClick }: Ab
                       </div>
                       <div className="min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <span className={`text-[11px] sm:text-xs font-mono font-bold tracking-wider uppercase ${isActive ? 'text-[#D64933]' : 'text-[#162521]/60'}`}>
+                          <span
+                            className={`text-[11px] sm:text-xs font-mono font-bold tracking-wider uppercase ${
+                              isActive ? 'text-[#D64933]' : 'text-[#162521]/60'
+                            }`}
+                          >
                             {discipline.number}
                           </span>
-                          <span className="text-[#162521]/30">•</span>
+                          <span className="text-[#162521]/30">·</span>
                           <span className="text-[11px] sm:text-xs font-semibold text-[#162521]/70 truncate">
                             {discipline.subtitle}
                           </span>
                         </div>
-                        <h3 className="text-base sm:text-xl font-bold text-[#162521] mt-0.5 tracking-tight group-hover:text-[#461313] transition-colors">
+                        <h3 className="text-base sm:text-lg font-bold text-[#162521] mt-0.5 tracking-tight group-hover:text-[#461313] transition-colors">
                           {discipline.title}
                         </h3>
                       </div>
@@ -196,13 +227,40 @@ export default function AboutSection({ onLearnMoreServices, onContactClick }: Ab
                         {discipline.description}
                       </p>
 
-                      <div className="mt-3.5 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      <div className="mt-3 grid grid-cols-1 gap-1.5">
                         {discipline.highlights.map((highlight, idx) => (
-                          <div key={idx} className="flex items-center gap-2 text-xs font-medium text-[#162521]">
+                          <div
+                            key={idx}
+                            className="flex items-center gap-2 text-xs font-medium text-[#162521]"
+                          >
                             <CheckCircle2 className="w-3.5 h-3.5 text-[#D64933] shrink-0" />
                             <span>{highlight}</span>
                           </div>
                         ))}
+                      </div>
+
+                      {/* Relevant Per-Category Enquiry Action */}
+                      <div className="mt-4 pt-3 border-t border-slate-100 flex flex-wrap items-center gap-3">
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onContactClick?.(discipline.title);
+                          }}
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#461313] hover:bg-[#D64933] text-white text-xs font-semibold transition-colors cursor-pointer"
+                        >
+                          <span>Enquire About This Service</span>
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </button>
+
+                        <Link
+                          href={`/services#${discipline.id}`}
+                          onClick={(e) => e.stopPropagation()}
+                          className="inline-flex items-center gap-1 text-xs font-semibold text-[#461313] hover:text-[#D64933] transition-colors"
+                        >
+                          <span>Explore Full Scope</span>
+                          <ChevronRight className="w-3.5 h-3.5" />
+                        </Link>
                       </div>
                     </div>
                   )}
@@ -214,39 +272,49 @@ export default function AboutSection({ onLearnMoreServices, onContactClick }: Ab
           {/* Action Buttons */}
           <div className="pt-2 sm:pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 flex-wrap">
             <Link
-              href="/about"
-              id="about-cta-full-page"
+              href="/services"
+              id="about-cta-view-services"
               className="group bg-[#461313] hover:bg-[#D64933] text-white pl-6 pr-3 py-3 rounded-full font-semibold text-xs sm:text-sm inline-flex items-center justify-center gap-3 transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer min-h-[44px]"
             >
-              <span>Meet Leadership & Full Story</span>
+              <span>Explore All Services</span>
               <span className="w-7 h-7 rounded-full bg-white text-[#461313] group-hover:text-[#D64933] flex items-center justify-center group-hover:translate-x-0.5 transition-all duration-200 shrink-0">
                 <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
               </span>
             </Link>
 
             <button
-              onClick={onContactClick}
+              type="button"
+              onClick={() => onContactClick?.(currentDiscipline.title)}
               id="about-cta-inquire"
               className="bg-white/90 hover:bg-white text-[#162521] hover:text-[#461313] border border-stone-200/90 hover:border-[#461313]/40 px-5 py-3 rounded-full font-semibold text-xs sm:text-sm backdrop-blur-sm transition-all duration-200 cursor-pointer min-h-[44px] flex items-center justify-center"
             >
-              Consult Senior Advisory
+              Consult Our Team
             </button>
 
             <Link
-              href="/services"
-              id="about-cta-view-services"
+              href="/about"
+              id="about-cta-full-page"
               className="bg-white/80 hover:bg-white text-stone-700 hover:text-[#162521] border border-stone-200/90 hover:border-stone-300 px-5 py-3 rounded-full font-semibold text-xs sm:text-sm backdrop-blur-sm transition-all duration-200 cursor-pointer min-h-[44px] flex items-center justify-center gap-1.5"
             >
-              <span>Services Overview</span>
+              <span>Meet Leadership</span>
               <ChevronRight className="w-4 h-4 text-stone-400" />
             </Link>
+
+            {onLearnMoreServices && (
+              <button
+                type="button"
+                onClick={onLearnMoreServices}
+                className="text-xs font-semibold text-[#461313] hover:text-[#D64933] underline underline-offset-4 cursor-pointer px-2 py-2"
+              >
+                Quick Service Summary
+              </button>
+            )}
           </div>
         </div>
 
-        {/* Right Column (6 Cols): Architectural Showcase Mirroring Active Discipline */}
+        {/* Right Column (6 Cols): Architectural Showcase Mirroring Active Service Category */}
         <div className="lg:col-span-6 flex flex-col">
-          <div className="relative w-full h-[280px] sm:h-[400px] lg:h-full min-h-[280px] lg:min-h-[460px] rounded-2xl sm:rounded-3xl overflow-hidden border border-white/80 shadow-[0_16px_44px_rgba(22,37,33,0.09)] group">
-            {/* Background Image of Selected Discipline */}
+          <div className="relative w-full h-[300px] sm:h-[420px] lg:h-full min-h-[300px] lg:min-h-[500px] rounded-2xl sm:rounded-3xl overflow-hidden border border-white/80 shadow-[0_16px_44px_rgba(22,37,33,0.09)] group">
             <Image
               src={currentDiscipline.image}
               alt={currentDiscipline.imageAlt}
@@ -256,20 +324,13 @@ export default function AboutSection({ onLearnMoreServices, onContactClick }: Ab
               referrerPolicy="no-referrer"
             />
 
-            {/* Subtle Gradient Overlays for High Legibility */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent pointer-events-none" />
+            {/* Measured Scrim for Contrast */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent pointer-events-none" />
 
-            
-
-            {/* Top Right Metric Badge */}
-            <div className="absolute top-5 right-5 z-10 bg-[#461313]/85 backdrop-blur-md px-3.5 py-1.5 rounded-full text-white text-xs font-semibold">
-              {currentDiscipline.statLabel}: <span className="font-bold text-[#C0E8F9]">{currentDiscipline.statValue}</span>
-            </div>
-
-            {/* Bottom Caption Overlay */}
+            {/* Bottom Caption & Enquiry Action Overlay */}
             <div className="absolute bottom-6 inset-x-6 z-10 text-white">
               <span className="text-[11px] uppercase tracking-wider font-semibold text-[#C0E8F9]">
-                {currentDiscipline.subtitle}
+                {currentDiscipline.number} · {currentDiscipline.subtitle}
               </span>
               <h4 className="text-xl sm:text-2xl font-bold text-white mt-1">
                 {currentDiscipline.title}
@@ -277,10 +338,26 @@ export default function AboutSection({ onLearnMoreServices, onContactClick }: Ab
               <p className="mt-1.5 text-xs sm:text-sm text-slate-200 line-clamp-2 max-w-lg leading-relaxed">
                 {currentDiscipline.tagline}
               </p>
+
+              <div className="mt-4 flex flex-wrap items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => onContactClick?.(currentDiscipline.title)}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-[#162521] hover:bg-[#E5C583] text-xs font-bold transition-colors cursor-pointer"
+                >
+                  <span>Enquire Now</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+                <Link
+                  href={`/services#${currentDiscipline.id}`}
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-white/90 hover:text-white underline underline-offset-4"
+                >
+                  <span>Service Details</span>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

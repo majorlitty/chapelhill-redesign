@@ -22,15 +22,15 @@ export async function generateMetadata({ params }: PropertyPageProps): Promise<M
 
   if (!property) {
     return {
-      title: 'Property Not Found | Chapelhill Private Advisory',
+      title: 'Property Not Found | ChapelHill Multicompany Limited',
     };
   }
 
   return {
-    title: `${property.name} | Chapelhill Private Real Estate`,
+    title: `${property.name} | ChapelHill Multicompany Limited`,
     description: `${property.tagline}. ${property.description} Located at ${property.location}. ${property.financials.startingPrice}.`,
     openGraph: {
-      title: `${property.name} | Chapelhill`,
+      title: `${property.name} | ChapelHill Multicompany Limited`,
       description: property.description,
       images: [
         {

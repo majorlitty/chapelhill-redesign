@@ -19,9 +19,6 @@ export interface UnitDetail {
 export interface FinancialExpectations {
   startingPrice: string;
   priceRange: string;
-  projectedRentalYield: string;
-  projectedShortLetAnnualGross?: string;
-  capitalAppreciationForecast: string;
   paymentStructure: string;
   milestones: {
     stage: string;
@@ -60,6 +57,172 @@ export interface Property {
 
 export const PROPERTIES: Property[] = [
   {
+    id: 'lekki-phase-1-project',
+    slug: 'lekki-phase-1-project',
+    name: 'IVY Heights, Ikate, Lekki Phase 1, Lagos',
+    tagline: 'Key Development • Pre-Construction / Off-Plan Residential Apartments',
+    location: 'Ikate, Lekki Phase 1, Lagos State, Nigeria',
+    status: 'ongoing',
+    statusLabel: 'Pre-Construction / Off-Plan • 24-Month Proposed Build',
+    heroImage: '/images/lekki-phase-1/lekki 3d/Lekki phase 1(4).jpeg',
+    gallery: [
+      {
+        url: '/images/lekki-phase-1/lekki 3d/Lekki phase 1(4).jpeg',
+        caption: 'IVY Heights Front Facade & Arrival Courtyard (Illustrative Architectural Render)',
+        category: 'exterior',
+      },
+      {
+        url: '/images/lekki-phase-1/lekki 3d/Lekki phase 1(1).jpeg',
+        caption: 'Street-Level Architectural Perspective — IVY Heights, Ikate, Lekki Phase 1 (Illustrative Render)',
+        category: 'exterior',
+      },
+      {
+        url: '/images/lekki-phase-1/lekki 3d/Lekki phase 1(2).jpeg',
+        caption: 'Angled Elevation — Terraced Balconies & Ground Parking (Illustrative Architectural Render)',
+        category: 'exterior',
+      },
+      {
+        url: '/images/lekki-phase-1/lekki 3d/Lekki phase 1(3).jpeg',
+        caption: 'Aerial Perspective — Mid-Rise Massing & Roofline (Illustrative Architectural Render)',
+        category: 'exterior',
+      },
+      {
+        url: '/images/lekki-phase-1/lekki 3d/Lekki phase 1(5).jpeg',
+        caption: 'Facade Materiality, Planters & Glazed Balustrades (Illustrative Architectural Render)',
+        category: 'exterior',
+      },
+      {
+        url: '/images/lekki-phase-1/lekki 3d/Lekki phase 1 floor plan.jpeg',
+        caption: 'Illustrative Typical Floor Plan Layout — 2-Bedroom & 3-Bedroom Apartments',
+        category: 'floorplan',
+      },
+      {
+        url: '/images/lekki-phase-1/lekki 3d/Lekki phase 1 ground floor plan.jpeg',
+        caption: 'Illustrative Ground Level Access & Parking Concept Plan',
+        category: 'floorplan',
+      },
+      {
+        url: '/images/lekki-phase-1/site-1.webp',
+        caption: 'Site Location Reference — Ikate, Lekki Phase 1 Development Parcel',
+        category: 'site',
+      },
+      {
+        url: '/images/lekki-phase-1/site-2.webp',
+        caption: 'Site Inspection Context — Ikate, Lekki Phase 1 Surrounding Access Corridor',
+        category: 'site',
+      },
+      {
+        url: '/images/lekki-phase-1/site-3.webp',
+        caption: 'Site Parcel Aerial Context — Ikate, Lekki Phase 1, Lagos',
+        category: 'site',
+      },
+    ],
+    description: 'A flagship residential apartment development situated at Ikate, Lekki Phase 1, Lagos. Currently at the pre-construction / off-plan stage with a proposed 24-month construction period, offering approved two-bedroom and three-bedroom apartment options.',
+    extendedOverview: 'Located at Ikate, Lekki Phase 1, Lagos, IVY Heights is ChapelHill Multicompany Limited’s key pre-construction / off-plan residential apartment development featuring well-proportioned two-bedroom and three-bedroom apartments.\n\nThe proposed construction period is 24 months, subject to formal offer execution, statutory clearances, and management confirmation. Three management-approved payment pathways are available: a 12-month deposit-based plan, an 18-month deposit-based plan, and a management-approved 24-month zero-initial-deposit plan. Zero initial deposit does not remove contractual obligations or payments due at signing, and all terms remain subject to signed offer documentation and management approval.\n\nDisclaimer: All architectural renderings and floor plans shown are illustrative concepts and do not portray completed units.',
+    landSize: 'Ikate, Lekki Phase 1, Lagos',
+    totalUnits: '2-Bedroom & 3-Bedroom Apartments • Pre-Construction / Off-Plan',
+    financials: {
+      startingPrice: 'Approved Schedule on Request',
+      priceRange: '2-Bedroom & 3-Bedroom Off-Plan Options',
+      paymentStructure: '12-Month Deposit Plan • 18-Month Deposit Plan • 24-Month Zero-Initial-Deposit Option',
+      milestones: [
+        {
+          stage: '12-Month Deposit-Based Plan',
+          percentage: '12 Months',
+          description: 'Deposit-based off-plan payment structure spread across 12 months in accordance with the current management-approved pricing schedule.',
+        },
+        {
+          stage: '18-Month Deposit-Based Plan',
+          percentage: '18 Months',
+          description: 'Extended deposit-based instalment schedule over 18 months per the current management-approved commercial offer sheet.',
+        },
+        {
+          stage: '24-Month Zero-Initial-Deposit Plan',
+          percentage: '24 Months (Zero Initial Deposit)',
+          description: 'Management-approved 24-month zero-initial-deposit option. Note: Zero initial deposit does not mean no contractual obligations or no payment at signing; all terms remain subject to signed offer and management approval.',
+        },
+      ],
+      titleStatus: 'Available title and statutory documentation shared for independent buyer verification prior to signing',
+      estimatedServiceCharge: 'Facility management, security, power, water, and common-area upkeep schedule issued upon offer documentation',
+      handoverTimeline: 'Proposed 24-Month Construction Period (Subject to Formal Offer Terms & Management Confirmation)',
+    },
+    unitBreakdown: [
+      {
+        title: '2-Bedroom Apartment',
+        count: 'Pre-Construction / Off-Plan',
+        price: 'Approved Pricing on Request',
+        bedrooms: 2,
+        bathrooms: 2,
+        description: 'Approved two-bedroom residential apartment designed for functional contemporary living in Ikate, Lekki Phase 1. Available across the 12-month deposit-based, 18-month deposit-based, or management-approved 24-month zero-initial-deposit payment options.',
+        features: [
+          'Current pricing & instalment sheet provided directly upon enquiry',
+          'Eligible for 12-month, 18-month, or 24-month zero-initial-deposit plan (subject to signed offer & management approval)',
+          'Pre-construction / off-plan allocation with proposed 24-month build period',
+          'All architectural renderings are illustrative concepts, not completed units',
+        ],
+      },
+      {
+        title: '3-Bedroom Apartment',
+        count: 'Pre-Construction / Off-Plan',
+        price: 'Approved Pricing on Request',
+        bedrooms: 3,
+        bathrooms: 3,
+        description: 'Approved three-bedroom residential apartment offering generous family proportions at Ikate, Lekki Phase 1. Eligible for our structured 12-month, 18-month, and 24-month payment pathways upon formal management offer.',
+        features: [
+          'Current pricing & instalment sheet provided directly upon enquiry',
+          'Eligible for 12-month, 18-month, or 24-month zero-initial-deposit plan (subject to signed offer & management approval)',
+          'Pre-construction / off-plan allocation with proposed 24-month build period',
+          'All architectural renderings are illustrative concepts, not completed units',
+        ],
+      },
+    ],
+    architecturalSpecifications: [
+      {
+        category: 'Development Status & Construction Programme',
+        items: [
+          'Current Stage: Pre-Construction / Off-Plan as confirmed by management',
+          'Proposed Construction Period: 24 months (subject to signed offer terms, approvals, and project schedule)',
+          'Residential Apartment Mix: Two-bedroom and three-bedroom apartment options at Ikate, Lekki Phase 1, Lagos',
+          'All 3D renders and visuals are illustrative architectural representations rather than photographs of finished apartments',
+        ],
+      },
+      {
+        category: 'Planned Resident Amenities & Shared Spaces',
+        items: [
+          'Thoughtfully planned residential building layout with dedicated arrival and parking areas',
+          'Residents’ lounge, fitness space, and landscaped courtyard concepts (illustrative)',
+          'Vertical circulation via planned lift access and well-ventilated stairwells',
+          'Backup power and treated water supply provisions integrated into building services planning',
+        ],
+      },
+      {
+        category: 'Commercial Terms & Payment Pathways',
+        items: [
+          '12-month deposit-based payment plan per current management-approved offer sheet',
+          '18-month deposit-based payment plan per current management-approved offer sheet',
+          '24-month zero-initial-deposit plan (subject to contractual obligations, signing payments where applicable, and management approval)',
+          'Formal offer documentation issued directly by ChapelHill Multicompany Limited upon inquiry',
+        ],
+      },
+      {
+        category: 'Security, Title & Due Diligence',
+        items: [
+          'Perimeter security, gated entry, and controlled vehicular access planning',
+          'Available land title and development documentation shared with prospective buyers for independent legal verification',
+          'Scheduled site visits at Ikate, Lekki Phase 1 and briefing sessions with ChapelHill project directors',
+        ],
+      },
+    ],
+    keyHighlights: [
+      'Key Development — IVY Heights, Ikate, Lekki Phase 1, Lagos',
+      'Status: Pre-Construction / Off-Plan with a proposed 24-month construction period (subject to offer terms)',
+      'Approved Unit Options: Two-bedroom and three-bedroom residential apartments',
+      'Payment Plans: 12-month deposit-based, 18-month deposit-based, and management-approved 24-month zero-initial-deposit option (subject to signing obligations & approval)',
+      'Illustrative Visuals: Renderings are architectural concepts and do not portray completed units',
+      'Direct Advisory: Request the latest approved pricing sheet or book an Ikate site inspection via +234 803 286 5488',
+    ],
+  },
+  {
     id: 'ivy-homes-abijo',
     slug: 'ivy-homes-abijo',
     name: 'Ivy Homes Abijo GRA',
@@ -96,15 +259,12 @@ export const PROPERTIES: Property[] = [
       },
     ],
     description: 'A prestigious residential development in Abijo GRA, Lekki. Featuring luxury finished 1, 2, and 3-bedroom flats with fitted kitchens, 24/7 power backed by a fully installed solar system, 24/7 security, fully interlocked roads, efficient drainage, and dedicated parking spaces.',
-    extendedOverview: 'Ivy homes is located in the prestigious Abijo GRA area of Lekki. It is the only GRA in the Lekki axis of Lagos. It has paved access roads and is less than 3 minutes away from the popular Lekki-Epe expressway. Located in one of the fastest growing areas of Lagos State, IVY homes is only a 30 minutes drive from Dangote refinery and 45 minutes away from Victoria Island.\n\nBuilt by Chapelhill Multicompany International, every apartment is designed with your peace and comfort in mind. Features include luxury finishes, fitted kitchens, 24/7 power supply with a fully installed solar system, 24/7 security, efficient drainage, and 12 dedicated parking spaces.',
+    extendedOverview: 'Ivy homes is located in the prestigious Abijo GRA area of Lekki. It is the only GRA in the Lekki axis of Lagos. It has paved access roads and is less than 3 minutes away from the popular Lekki-Epe expressway. Located in a fast developing corridor of Lagos State, IVY homes is a 30 minutes drive from Dangote refinery and 45 minutes away from Victoria Island.\n\nBuilt by ChapelHill Multicompany Limited, every apartment is designed with your peace and comfort in mind. Features include luxury finishes, fitted kitchens, 24/7 power supply with a fully installed solar system, 24/7 security, efficient drainage, and 12 dedicated parking spaces.',
     landSize: '861.88 sqm Site • 318.66 sqm Building Footprint',
     totalUnits: '3 Floors • 1, 2 & 3 Bedroom Flats (12 Parking Spaces)',
     financials: {
       startingPrice: '₦50,000,000',
       priceRange: '₦50,000,000 – ₦75,000,000 ($34,774 – $52,161)',
-      projectedRentalYield: 'High Rental Yield & Fast Capital Growth in Lekki Axis',
-      projectedShortLetAnnualGross: '₦50M (1-Bed) | ₦65M (2-Bed) | ₦75M (3-Bed)',
-      capitalAppreciationForecast: 'Fastest Growing Area of Lagos — 30 Mins to Dangote Refinery, 45 Mins to VI',
       paymentStructure: 'Outright Purchase or Flexible Installmental Payment Plans Available',
       milestones: [
         {
@@ -125,7 +285,7 @@ export const PROPERTIES: Property[] = [
       ],
       titleStatus: "Registered Unencumbered GRA Title with Approved Building Plans",
       estimatedServiceCharge: 'Includes 24/7 security, estate solar/power management, water, drainage & waste collection',
-      handoverTimeline: 'Ready for Immediate Handover (100% Completed)',
+      handoverTimeline: 'Ready for Immediate Handover (Completed)',
     },
     unitBreakdown: [
       {
@@ -187,7 +347,7 @@ export const PROPERTIES: Property[] = [
       {
         category: 'Property Features & Infrastructure',
         items: [
-          'Luxury finished apartments engineered with superior quality and efficiency by Chapelhill',
+          'Luxury finished apartments engineered with quality and efficiency by ChapelHill Multicompany Limited',
           'Fully interlocked paved internal roads and parking court',
           'Efficient covered drainage infrastructure across the compound',
           '12 dedicated on-site car parking spaces',
@@ -225,17 +385,17 @@ export const PROPERTIES: Property[] = [
       'Competitive Pricing: 1-Bed from ₦50M ($34,774), 2-Bed from ₦65M ($45,207), 3-Bed from ₦75M ($52,161) with installmental payment available',
       'Guaranteed 24/7 Power: Every apartment backed by an integrated, fully installed solar energy system',
       'Turnkey Amenities: Luxury finished, fitted kitchens, 12 parking spaces, interlocked roads, efficient drainage, and 24/7 security',
-      'Developed by Chapelhill: World-class property development and maintenance company committed to superior quality and efficiency',
+      'Developed by ChapelHill Multicompany Limited: Property development and maintenance company committed to quality and efficiency',
     ],
   },
   {
     id: 'ogudu-gra-project',
     slug: 'ogudu-gra-project',
     name: 'Ogudu GRA Project',
-    tagline: 'Architectural Trophy Penthouse Residence',
+    tagline: '5-Bedroom Penthouse Residence',
     location: 'Ogudu GRA, Mainland Prime, Lagos',
     status: 'sold-out',
-    statusLabel: 'Sold Out • 100% Allocated',
+    statusLabel: 'Sold Out • Fully Allocated',
     heroImage: '/images/5 bed Ogudu GRA Project/5 bed ogudu GRA 1.webp',
     gallery: [
       {
@@ -269,22 +429,19 @@ export const PROPERTIES: Property[] = [
         category: 'interior',
       },
     ],
-    description: 'An elite private penthouse residence crowned at the pinnacle of Ogudu GRA. Engineered for supreme privacy, lavish entertainment, and seamless indoor-outdoor living with panoramic skyline views of Lagos. This landmark development is now 100% sold out.',
-    extendedOverview: 'The Ogudu GRA Project is an uncompromising architectural achievement—a private, multi-level crown penthouse tailored for high-net-worth families, diaspora collectors, and institutional leaders. Positioned in the tranquil, established inner enclave of Ogudu GRA (just 12 minutes from Ikeja and 20 minutes from Victoria Island via the Third Mainland Bridge), this trophy residence fuses cantilevered concrete geometries with floor-to-ceiling thermal glazing, private elevator access, and multi-tier entertaining terraces.\n\nThis development has successfully reached 100% sell-out status. Inquiries are welcome for our secondary market waitlist and upcoming private penthouse collections.',
+    description: 'A private penthouse residence located in Ogudu GRA, Lagos. Designed for privacy, comfortable entertaining, and seamless indoor-outdoor living with skyline views. This development is now sold out.',
+    extendedOverview: 'The Ogudu GRA Project is a private multi-level penthouse residence tailored for families and discerning homeowners. Positioned in the tranquil inner enclave of Ogudu GRA (within easy reach of Ikeja and Victoria Island via the Third Mainland Bridge), this residence combines contemporary architectural lines with floor-to-ceiling glazing, private elevator access, and generous entertaining terraces.\n\nThis development is now sold out. Inquiries are welcome for our waitlist and upcoming private residential developments.',
     landSize: 'Exclusive Top-Floor Air Rights & 4 Dedicated Staged Bays',
-    totalUnits: 'Exclusive Single Penthouse Residence (100% Sold Out)',
+    totalUnits: 'Exclusive Single Penthouse Residence (Sold Out)',
     financials: {
-      startingPrice: 'Sold Out (Guide: ₦650M)',
-      priceRange: 'Sold Out • Fully Allocated (Guide was ₦380M – ₦650M)',
-      projectedRentalYield: '12.0% – 16.5% Net Annual Rental Yield',
-      projectedShortLetAnnualGross: '₦28,000,000 – ₦36,000,000 (Prime VIP / Diplomatic Short-Stay Rate)',
-      capitalAppreciationForecast: '28% Anticipated Capital Growth upon Structural Completion',
-      paymentStructure: 'Project 100% Sold Out — Secondary Market Waitlist Active',
+      startingPrice: 'Sold Out',
+      priceRange: 'Sold Out • Fully Allocated',
+      paymentStructure: 'Project Sold Out — Waitlist Active',
       milestones: [
         {
           stage: 'Initial Commitment',
           percentage: '30%',
-          description: 'Reservation, bespoke floorplan personalization review, and formal contract documentation (Completed)',
+          description: 'Reservation, floorplan review, and formal contract documentation (Completed)',
         },
         {
           stage: 'Superstructure & Roofing',
@@ -299,30 +456,30 @@ export const PROPERTIES: Property[] = [
         {
           stage: 'Final Finishes & Commissioning',
           percentage: '20%',
-          description: 'Bespoke Italian joinery, appliances, final snagging, and physical handover',
+          description: 'Bespoke joinery, appliances, final snagging, and physical handover',
         },
       ],
-      titleStatus: 'Certificate of Occupancy (C of O) & Approved Building Permit from LASPPPA',
-      estimatedServiceCharge: '₦60,000 / month (Includes dedicated elevator service maintenance, security, standby generator power)',
-      handoverTimeline: 'Sold Out — Final Commissioning & Handover in Progress',
+      titleStatus: 'Registered Title & Approved Building Plans',
+      estimatedServiceCharge: 'Estate security, elevator servicing, and shared utility maintenance',
+      handoverTimeline: 'Sold Out — Handover & Allocation Complete',
     },
     unitBreakdown: [
       {
         title: '5-Bedroom Master Penthouse Suite',
-        count: '1 Trophy Unit (Sold Out)',
+        count: '1 Unit (Sold Out)',
         price: 'Sold Out',
         bedrooms: 5,
         bathrooms: 6,
         sizeSqM: '440 sqm',
         sizeSqFt: '4,736 sqft',
-        description: 'A monument to modern scale: double-height great room, private sky lounge, formal dining room, wraparound sunset terrace, and custom private elevator arrival. Currently 100% allocated.',
+        description: 'Spacious multi-level residence featuring a double-height great room, private sky lounge, formal dining room, wraparound sunset terrace, and private elevator arrival. Currently fully allocated.',
         features: [
-          'Status: 100% Sold Out (Secondary Market Waitlist Available)',
-          'Direct keycard-controlled private elevator arrival straight into residence foyer',
-          'Panoramic wraparound terrace with outdoor barbecue kitchen and sunset views',
-          'Enormous 90 sqm Master Suite with dual walk-in dressing rooms and freestanding soaking tub',
-          'Private executive home office / library overlooking double-height salon',
-          'Custom Poggenpohl-style show kitchen with integrated Miele appliance suite',
+          'Status: Sold Out (Waitlist Available)',
+          'Direct keycard-controlled private elevator arrival into residence foyer',
+          'Panoramic wraparound terrace with outdoor barbecue area and sunset views',
+          'Generous Master Suite with dual walk-in dressing rooms and freestanding soaking tub',
+          'Private executive home office overlooking double-height salon',
+          'Custom show kitchen with integrated appliance suite',
         ],
       },
       {
@@ -335,7 +492,7 @@ export const PROPERTIES: Property[] = [
         sizeSqFt: '258 sqft',
         description: 'Dedicated auxiliary staff accommodation with independent access point and ensuite bathroom.',
         features: [
-          'Status: 100% Sold Out',
+          'Status: Sold Out',
           'Independent secondary service entrance off rear stairwell',
           'Private bathroom and ventilation shaft',
           'Direct connection to service pantry and utility zones',
@@ -346,232 +503,42 @@ export const PROPERTIES: Property[] = [
       {
         category: 'Elevator & Vertical Transport',
         items: [
-          'Dedicated German-engineered Thyssenkrupp / Otis private traction elevator',
+          'Dedicated private passenger traction elevator',
           'Biometric and RFID keycard access restricting arrival strictly to the penthouse floor',
-          'Automatic battery rescue device ensuring safe lowering during any power switchover',
+          'Automatic battery rescue device ensuring safe lowering during power switchover',
         ],
       },
       {
         category: 'Acoustic & Thermal Fenestration',
         items: [
-          'Double-glazed argon-filled low-E tempered safety glass assemblies',
+          'Double-glazed tempered safety glass assemblies',
           'Heavy-duty thermally broken powder-coated architectural aluminum profiles',
-          'Acoustic insulation between floor slabs exceeding 54dB sound attenuation',
+          'Acoustic insulation between floor slabs for enhanced quietness',
         ],
       },
       {
         category: 'Smart Home Automation & Solar Backup',
         items: [
-          'Control4 / Crestron central smart home ecosystem pre-wired to all suites',
-          'Automated motorized blind recesses and scene-based architectural mood lighting',
-          '15kVA pure sine wave solar inverter system with tier-1 lithium storage pack',
+          'Central smart home automation pre-wired to all suites',
+          'Automated motorized blind recesses and architectural lighting zones',
+          'Solar inverter system with battery energy storage backup',
         ],
       },
       {
         category: 'Bespoke Millwork & Luxury Finishes',
         items: [
-          'Imported Calacatta marble slab flooring in reception salons and formal foyer',
-          'Solid white oak engineered parquet in master and guest bedroom suites',
-          'Fully concealed ducted VRV inverter air conditioning systems by Daikin',
+          'Imported marble-look porcelain slab flooring in reception salons and formal foyer',
+          'Engineered wood flooring in master and guest bedroom suites',
+          'Concealed ducted inverter air conditioning systems',
         ],
       },
     ],
     keyHighlights: [
-      '100% Sold Out: Exclusive single penthouse trophy residence fully allocated to institutional-grade standards',
-      'The premier high-density penthouse offering developed on mainland Lagos',
-      'Unrivaled central connectivity: 12 minutes to Ikeja CBD, 20 minutes to Victoria Island',
-      'Unobstructed 270-degree horizon views spanning from mainland greenery to the lagoon',
-      'Secondary Market Waitlist: Inquire for potential resales or upcoming private collections',
-    ],
-  },
-  {
-    id: 'lekki-phase-1-project',
-    slug: 'lekki-phase-1-project',
-    name: 'Ivy Heights, Lekki Phase 1',
-    tagline: 'Exclusive Off-Plan Investment • 5-Storey Luxury Residential Building',
-    location: 'Lekki Phase 1, Lagos State, Nigeria',
-    status: 'ongoing',
-    statusLabel: 'Exclusive Off-Plan Investment • Currently Ongoing',
-    heroImage: '/images/lekki-phase-1/lekki 3d/Lekki phase 1(4).jpeg',
-    gallery: [
-      {
-        url: '/images/lekki-phase-1/site-1.webp',
-        caption: 'Active Development Site — Structural Framework & Construction Progress',
-        category: 'site',
-      },
-      {
-        url: '/images/lekki-phase-1/site-2.webp',
-        caption: 'Ongoing Site Engineering — Foundation Core & Column Reinforcement',
-        category: 'site',
-      },
-      {
-        url: '/images/lekki-phase-1/site-3.webp',
-        caption: 'Superstructure Works — Poured Slab Integrity & Site Overview',
-        category: 'site',
-      },
-      {
-        url: '/images/lekki-phase-1/lekki 3d/Lekki phase 1(1).jpeg',
-        caption: 'Street Level Perspective (Worm’s-Eye) — 5-Storey Afrocentric Architecture',
-        category: 'exterior',
-      },
-      {
-        url: '/images/lekki-phase-1/lekki 3d/Lekki phase 1(2).jpeg',
-        caption: 'Wider Angled Corner View — Terraced Balconies and Covered Ground Parking',
-        category: 'exterior',
-      },
-      {
-        url: '/images/lekki-phase-1/lekki 3d/Lekki phase 1(3).jpeg',
-        caption: 'Aerial Plan View — Mid-Rise Architectural Symmetry & Roofline',
-        category: 'exterior',
-      },
-      {
-        url: '/images/lekki-phase-1/lekki 3d/Lekki phase 1(4).jpeg',
-        caption: 'Ivy Heights Front Facade & Arrival Courtyard — 5-Storey Luxury Residences',
-        category: 'exterior',
-      },
-      {
-        url: '/images/lekki-phase-1/lekki 3d/Lekki phase 1(5).jpeg',
-        caption: 'Material & Landscape Detail — Fluted Cladding, Planters & Glass Balustrades',
-        category: 'exterior',
-      },
-      {
-        url: '/images/lekki-phase-1/lekki 3d/Lekki phase 1 floor plan.jpeg',
-        caption: 'Architectural Typical Floor Plan Layout — 2-Bed & 3-Bed Flats + BQ',
-        category: 'floorplan',
-      },
-      {
-        url: '/images/lekki-phase-1/lekki 3d/Lekki phase 1 ground floor plan.jpeg',
-        caption: 'Ground Level Access, Dedicated Parking & Concierge Master Plan',
-        category: 'floorplan',
-      },
-    ],
-    description: 'An exclusive off-plan development redefining luxury living in Lekki Phase One, Lagos. A sophisticated 5-storey residential building designed to meet the highest standards of modern architecture and comfort, offering expansive living spaces, premium finishes, and breathtaking views.',
-    extendedOverview: 'Strategically located on Lekki Phase One, the project comprises a sophisticated 5-storey residential building designed to meet the highest standards of modern architecture and comfort. Each unit is meticulously crafted to offer expansive living spaces, premium finishes, and breathtaking views, providing an unparalleled residential experience.\n\nOur vision for this development is to create a community that embodies prestige and offers exceptional investment opportunities. By investing before completion, buyers can capitalize on off-plan pricing, ensuring significant capital appreciation as the project reaches its full potential. ',
-    landSize: 'Prime Lekki Phase One Address (866 sqm Parcel)',
-    totalUnits: '5-Storey Building • Refined Residential Mix',
-    financials: {
-      startingPrice: '₦200,000,000',
-      priceRange: '₦200,000,000 – ₦250,000,000 (Penthouses on Request)',
-      projectedRentalYield: 'High Value Upside — Invest Before Completion at Off-Plan Pricing',
-      projectedShortLetAnnualGross: '₦200M (2-Bed) | ₦250M (3-Bed) Off-Plan Advantage',
-      capitalAppreciationForecast: 'Positioned for Long-Term Value Growth in a High-Value Lagos Corridor',
-      paymentStructure: '50% First Instalment, Remaining Balance Spread in Monthly Instalments Over 8 Months',
-      milestones: [
-        {
-          stage: 'First Instalment (50% of total price)',
-          percentage: '50%',
-          description: 'Initial off-plan commitment — ₦100,000,000 (2-Bed) / ₦125,000,000 (3-Bed)',
-        },
-        {
-          stage: 'Remaining Balance (Monthly Instalments over 8 months)',
-          percentage: '50%',
-          description: '₦12,500,000 per month (2-Bed) / ₦15,625,000 per month (3-Bed)',
-        },
-      ],
-      titleStatus: "Prime Lekki Phase One Title with Registered Governor's Consent & Approved Building Plans",
-      estimatedServiceCharge: 'Includes 24/7 concierge & security, backup power & water supply, residents lounge, gym & facility maintenance',
-      handoverTimeline: 'Active Phased Construction • Off-Plan Investment Opportunity',
-    },
-    unitBreakdown: [
-      {
-        title: '2-Bedroom Flat + BQ',
-        count: 'Available Units',
-        price: '₦200,000,000 (Off-Plan)',
-        bedrooms: 2,
-        bathrooms: 2,
-        sizeSqM: '200 sqm',
-        sizeSqFt: '2,153 sqft',
-        description: 'Thoughtfully designed 2-bedroom residence featuring a fully fitted Boys’ Quarters (BQ), spacious living room, dining area, private balcony, and fitted kitchen with pantry.',
-        features: [
-          "Fully fitted Boys' Quarters (BQ)",
-          "Off-Plan Price: ₦200,000,000",
-          "Payment Plan: ₦100M first instalment (50%) + ₦12.5M/month over 8 months",
-          "Expansive 200 m² living layout with private balconies",
-          "Fitted contemporary kitchen with pantry and utility connections",
-          "Dedicated parking space and convenient lift access",
-        ],
-      },
-      {
-        title: '3-Bedroom Flat + BQ',
-        count: 'Available Units',
-        price: '₦250,000,000 (Off-Plan)',
-        bedrooms: 3,
-        bathrooms: 3.5,
-        sizeSqM: '250 sqm',
-        sizeSqFt: '2,691 sqft',
-        description: 'Expansive 3-bedroom executive residence offering generous living spaces, dedicated home office/study room, fully fitted Boys’ Quarters (BQ), and master suite with walk-in closet.',
-        features: [
-          "Fully fitted Boys' Quarters (BQ)",
-          "Off-Plan Price: ₦250,000,000",
-          "Payment Plan: ₦125M first instalment (50%) + ₦15.625M/month over 8 months",
-          "Generous 250 m² floor layout featuring home office/study room",
-          "Master suite with walk-in closet, ensuite bath, and private balcony",
-          "Dedicated parking spaces and convenient lift access",
-        ],
-      },
-      {
-        title: 'Penthouse Units',
-        count: 'Exclusive Units',
-        price: 'Available on Request',
-        bedrooms: 3,
-        bathrooms: 3.5,
-        sizeSqM: '300+ sqm',
-        sizeSqFt: '3,200+ sqft',
-        description: 'Top-tier crown penthouses offering panoramic Lekki skyline views, vast private sky terraces, luxury smart home features, and supreme privacy.',
-        features: [
-          "Exclusive top-floor placement with panoramic Lekki Phase 1 vistas",
-          "Expansive private rooftop entertaining terraces",
-          "Off-plan pricing available on request for discerning private buyers",
-          "High-end bespoke finishes and smart home automation",
-          "Priority elevator access and dedicated covered parking",
-        ],
-      },
-    ],
-    architecturalSpecifications: [
-      {
-        category: 'Building Programme & Architecture',
-        items: [
-          '5-storey luxury mid-rise residential building with world-class Afrocentric architecture',
-          'Thoughtfully designed residential mix that maximizes comfort, functionality, and contemporary living',
-          'Private balconies and comfortable living spaces with generous daylight and ventilation',
-          'Developed and owned by Chapel Hill — contemporary African luxury rooted in Africa, designed for the world',
-        ],
-      },
-      {
-        category: 'Amenities & Facilities',
-        items: [
-          'Residents’ lounge for social gatherings and executive relaxation',
-          'Fully equipped fitness gym with modern cardiovascular and strength training systems',
-          'Dedicated children’s play area within a protected, secure environment',
-          'Artfully landscaped courtyard with tropical botanical aesthetics',
-          'Convenient low-rise elevator/lift access servicing all floors',
-        ],
-      },
-      {
-        category: 'Power, Water & Infrastructure',
-        items: [
-          'Guaranteed continuous backup power supply',
-          'Comprehensive backup water supply system with dedicated filtration',
-          'Ample dedicated parking bays for residents and visitors',
-          'Integrated high-speed connectivity and smart home features',
-        ],
-      },
-      {
-        category: 'Security & Access Protocols',
-        items: [
-          'Secure gated entry with 24/7 security personnel and concierge',
-          'Robust perimeter security systems and continuous surveillance',
-          'Controlled resident and guest vehicular access protocols',
-        ],
-      },
-    ],
-    keyHighlights: [
-      'Prime Location — Lekki Phase One: One of Lekki Phase One’s most desirable and fast-growing residential streets',
-      'Strong Value Upside: 2-Bedroom at ₦200M; 3-Bedroom at ₦250M; positioned for long-term value growth in a premium corridor',
-      'Limited Luxury Inventory: Scarce premium units in one of Lekki Phase One’s most sought-after addresses',
-      'International-Standard Development: 5-storey Afrocentric luxury tower with world-class amenities',
-      'Strong Resale and Rental Demand: Appeals to high-net-worth buyers and discerning tenants seeking exclusivity in Lekki Phase One',
-      'Asset-Backed Investment: Tangible real estate in a high-value Lagos neighborhood with enduring demand',
+      'Sold Out: Exclusive single penthouse residence in Ogudu GRA, Lagos',
+      'Prime mainland GRA residential setting with central connectivity',
+      'Accessible commute to Ikeja CBD and Victoria Island via Third Mainland Bridge',
+      'Wide horizon views spanning mainland greenery and the lagoon',
+      'Waitlist Open: Inquire for upcoming private residential developments',
     ],
   },
   {
@@ -636,15 +603,12 @@ export const PROPERTIES: Property[] = [
       },
     ],
     description: 'An exquisitely delivered 5-bedroom fully detached luxury duplex with self-contained Boys’ Quarters (BQ) in the prestigious Royal Gardens Estate, Lekki-Ajah. Boasting turnkey contemporary finishes, double-volume living lounges, fitted chef’s kitchen, ensuite bedroom retreats, and secure multicar parking.',
-    extendedOverview: 'Situated in the serene and prestigious Royal Gardens Estate in Lekki-Ajah, this 5-bedroom fully detached duplex represents refined contemporary architecture and enduring build quality. Delivered 100% completed by Chapelhill Multicompany International, the residence seamlessly unites generous family proportions with clean modern aesthetics.\n\nRoyal Gardens Estate offers unmatched master-planned living: wide paved boulevards, underground drainage, 24/7 security patrol, lush parks, and uninterrupted utilities. The home welcomes you into an airy double-height living salon, an open dining area, a fully equipped modern kitchen, and an upper family lounge. Each bedroom features an ensuite bath and custom-built wardrobes, while the master suite includes a private sunset balcony, walk-in dressing area, and a spa-style bathroom with a freestanding tub.',
+    extendedOverview: 'Situated in the serene and prestigious Royal Gardens Estate in Lekki-Ajah, this 5-bedroom fully detached duplex represents refined contemporary architecture and enduring build quality. Delivered ready for move-in by ChapelHill Multicompany Limited, the residence seamlessly unites generous family proportions with clean modern aesthetics.\n\nRoyal Gardens Estate offers master-planned living: wide paved boulevards, underground drainage, 24/7 security patrol, lush parks, and estate utilities. The home welcomes you into an airy double-height living salon, an open dining area, a fully equipped modern kitchen, and an upper family lounge. Each bedroom features an ensuite bath and custom-built wardrobes, while the master suite includes a private sunset balcony, walk-in dressing area, and a spa-style bathroom with a freestanding tub.',
     landSize: '600 sqm Plot • Royal Gardens Estate',
     totalUnits: 'Completed 5-Bed Detached Duplex + BQ',
     financials: {
       startingPrice: '₦320,000,000',
       priceRange: '₦320,000,000 – ₦350,000,000',
-      projectedRentalYield: '10% – 12% Annual Rental Yield in Prime Lekki-Ajah Corridor',
-      projectedShortLetAnnualGross: '₦35,000,000 – ₦45,000,000 Gross Annual Yield',
-      capitalAppreciationForecast: 'High Value Appreciation in Royal Gardens Master-Planned Enclave',
       paymentStructure: 'Outright Purchase or Structured Installments',
       milestones: [
         {
@@ -659,13 +623,13 @@ export const PROPERTIES: Property[] = [
         },
         {
           stage: 'Immediate Handover',
-          percentage: '100%',
+          percentage: 'Final',
           description: 'Deed of Assignment delivery and immediate physical move-in',
         },
       ],
       titleStatus: "Registered Deed of Assignment / Governor's Consent & Approved Building Plans",
       estimatedServiceCharge: 'Royal Gardens Estate Dues (24/7 security, estate lighting, sanitation & park management)',
-      handoverTimeline: 'Ready for Immediate Move-In (100% Completed)',
+      handoverTimeline: 'Ready for Immediate Move-In (Completed)',
     },
     unitBreakdown: [
       {
@@ -725,8 +689,8 @@ export const PROPERTIES: Property[] = [
       },
     ],
     keyHighlights: [
-      'Prestigious Royal Gardens Address: Master-planned gated community in Lekki-Ajah with world-class infrastructure',
-      '100% Completed & Ready: Immediate key handover with zero construction waiting period',
+      'Prestigious Royal Gardens Address: Master-planned gated community in Lekki-Ajah with quality infrastructure',
+      'Completed & Move-In Ready: Immediate key handover with no construction waiting period',
       '5 Ensuite Bedrooms + Staff BQ: Generous family layout offering privacy, space, and comfort',
       'Chef-Grade Fitted Kitchen: Quality cabinetry, durable stone counters, and separate pantry',
       'Spa-Like Master Retreat: Features freestanding soaking tub, glass walk-in shower, and private balcony',
@@ -790,15 +754,12 @@ export const PROPERTIES: Property[] = [
       },
     ],
     description: 'An impeccably crafted 5-bedroom fully detached contemporary duplex with self-contained BQ nestled within Royal Gardens Estate, Lekki-Ajah. Showcasing distinctive exterior architectural styling, expansive sunlit living spaces, chef’s custom kitchen, and private staff quarters.',
-    extendedOverview: 'Chapelhill Multicompany International presents this completed 5-bedroom luxury detached duplex with Boys’ Quarters in Royal Gardens Estate, Lekki-Ajah. Celebrated for its tranquility, expansive greenery, underground drainage, and top-tier security, Royal Gardens provides an elite environment for modern family living.\n\nThis completed home features a grand open-concept living salon, a designated dining zone, an upper private family lounge, and five generously proportioned ensuite bedrooms. Built with superior craftsmanship, durable tiling, and modern fixtures, this home offers the ideal combination of comfort, prestige, and strong capital appreciation.',
+    extendedOverview: 'ChapelHill Multicompany Limited presents this completed 5-bedroom luxury detached duplex with Boys’ Quarters in Royal Gardens Estate, Lekki-Ajah. Celebrated for its tranquility, greenery, underground drainage, and estate security, Royal Gardens provides a refined environment for modern family living.\n\nThis completed home features a grand open-concept living salon, a designated dining zone, an upper private family lounge, and five generously proportioned ensuite bedrooms. Built with quality craftsmanship, durable tiling, and modern fixtures, this home offers comfort and lasting quality.',
     landSize: '600 sqm Plot • Royal Gardens Estate',
     totalUnits: 'Completed 5-Bed Detached Duplex + BQ',
     financials: {
       startingPrice: '₦330,000,000',
       priceRange: '₦330,000,000 – ₦360,000,000',
-      projectedRentalYield: '10% – 12% Net Annual Rental Yield',
-      projectedShortLetAnnualGross: '₦36,000,000 – ₦48,000,000 Annual Yield Potential',
-      capitalAppreciationForecast: 'Consistent High Value Appreciation in Gated Royal Gardens',
       paymentStructure: 'Outright Purchase or Tailored Payment Plans',
       milestones: [
         {
@@ -813,13 +774,13 @@ export const PROPERTIES: Property[] = [
         },
         {
           stage: 'Immediate Handover',
-          percentage: '100%',
+          percentage: 'Final',
           description: 'Title transfer delivery and immediate physical move-in',
         },
       ],
       titleStatus: "Registered Deed of Assignment / Governor's Consent & Approved Building Plans",
       estimatedServiceCharge: 'Royal Gardens Estate Dues (24/7 security, estate lighting, sanitation & park maintenance)',
-      handoverTimeline: 'Ready for Immediate Move-In (100% Completed)',
+      handoverTimeline: 'Ready for Immediate Move-In (Completed)',
     },
     unitBreakdown: [
       {
@@ -880,7 +841,7 @@ export const PROPERTIES: Property[] = [
     ],
     keyHighlights: [
       'Master-Planned Enclave: Royal Gardens Estate, Lekki-Ajah — wide roads, serene ambiance, and green parks',
-      '100% Completed Residence: Brand new, move-in ready with immediate deed handover',
+      'Completed Residence: Brand new, move-in ready with immediate deed handover',
       '5 Ensuite Bedroom Suites: Spacious, airy bedrooms with bespoke built-in wardrobes',
       'Dual Living Lounges: Ground floor main living salon plus upper private family lounge',
       'Chef-Grade Fitted Kitchen: Custom cabinets, granite countertops, and extractor hood',
@@ -938,16 +899,13 @@ export const PROPERTIES: Property[] = [
         category: 'site',
       },
     ],
-    description: 'A bespoke Direct Client Development delivered by Chapelhill Multicompany International in Beachwood Estate, Ibeju-Lekki. This 5-bedroom semi-detached luxury duplex is designed with soaring contemporary lines, featuring a dedicated borehole potable water system, 24/7 power supply, ample multicar parking space, expansive cantilevered terraces, and a scenic rooftop lounge.',
-    extendedOverview: 'Beachwood Lagos represents an elite Direct Client Development custom-commissioned and currently under active civil construction by Chapelhill Multicompany International within the secure, serene Beachwood Estate along the prime Ibeju-Lekki corridor.\n\nFrom initial 3D architectural conceptualization to rigorous structural engineering and on-site concrete execution, Chapelhill manages every facet of the project lifecycle. The residence features 5 expansive ensuite bedrooms, a dual living room configuration with an upper private family lounge, a chef-grade contemporary kitchen, and an exclusive rooftop entertaining terrace.\n\nEngineered for enduring peace of mind and self-sufficiency, essential utility amenities include an independent high-yield borehole water treatment facility, 24/7 power supported by solar-inverter changeover infrastructure, and generous interlocked parking accommodating 4 to 6 vehicles with ease within a private gated compound.',
+    description: 'A bespoke Direct Client Development delivered by ChapelHill Multicompany Limited in Beachwood Estate, Ibeju-Lekki. This 5-bedroom semi-detached luxury duplex features contemporary architectural lines, a dedicated borehole water system, 24/7 power provision, ample multicar parking space, cantilevered terraces, and a scenic rooftop lounge.',
+    extendedOverview: 'Beachwood Lagos represents a Direct Client Development custom-commissioned and currently under active civil construction by ChapelHill Multicompany Limited within the secure, serene Beachwood Estate along the Ibeju-Lekki corridor.\n\nFrom initial 3D architectural conceptualization to structural engineering and on-site concrete execution, ChapelHill Multicompany Limited manages every facet of the project lifecycle. The residence features 5 expansive ensuite bedrooms, a dual living room configuration with an upper private family lounge, a contemporary kitchen, and a private rooftop entertaining terrace.\n\nEngineered for self-sufficiency and comfort, utility amenities include an independent borehole water treatment facility, 24/7 power supported by solar-inverter changeover infrastructure, and generous interlocked parking accommodating 4 to 6 vehicles within a private gated compound.',
     landSize: 'Dedicated Private Plot • Beachwood Estate',
     totalUnits: '5-Bedroom Semi-Detached Duplex + BQ',
     financials: {
       startingPrice: 'Direct Client Development',
       priceRange: 'Direct Client Commission • Custom Build Contract',
-      projectedRentalYield: '12% – 14% Annual Rental Yield in Prime Ibeju-Lekki Corridor',
-      projectedShortLetAnnualGross: '₦30,000,000 – ₦40,000,000 Projected Annual Gross',
-      capitalAppreciationForecast: 'High Capital Appreciation along the Lekki-Epe Infrastructure Corridor',
       paymentStructure: 'Stage-by-Stage Milestone Valuations (Direct Client Contract)',
       milestones: [
         {
@@ -1004,8 +962,8 @@ export const PROPERTIES: Property[] = [
       {
         category: 'Structural Engineering & Concrete Works',
         items: [
-          'High-tensile ribbed steel rebar reinforcement exceeding Nigerian and British structural codes',
-          'C25/30 ready-mix vibrated reinforced concrete suspended slabs and heavy-duty drop beams',
+          'High-tensile ribbed steel rebar reinforcement to standard building engineering codes',
+          'Ready-mix vibrated reinforced concrete suspended slabs and heavy-duty drop beams',
           'Monolithic reinforced concrete staircase flight with precision formwork and rebar cages',
           'Multi-layered damp-proof coursing and waterproofing membrane across foundation and wet areas',
         ],
@@ -1013,7 +971,7 @@ export const PROPERTIES: Property[] = [
       {
         category: 'Water, Plumbing & Drainage Utilities',
         items: [
-          'Independent high-yield industrial borehole drilled into deep potable water aquifer',
+          'Independent borehole drilled into deep potable water aquifer',
           'Automated submersible pump system with high-capacity overhead storage tanks',
           'Multi-stage filtration and water treatment system supplying clean pressurized water',
           'Engineered underground drainage layout with seamless connection to Beachwood central outfall',
@@ -1039,13 +997,13 @@ export const PROPERTIES: Property[] = [
       },
     ],
     keyHighlights: [
-      'Direct Client Development: Bespoke turnkey civil construction managed end-to-end by Chapelhill',
+      'Direct Client Development: Bespoke turnkey civil construction managed end-to-end by ChapelHill Multicompany Limited',
       '5 Ensuite Bedrooms: Lavish private quarters including master sanctuary with private balcony',
-      'Private Borehole Water System: Independent, high-yield treated water supply for complete self-reliance',
+      'Private Borehole Water System: Independent treated water supply for complete self-reliance',
       '24/7 Power Infrastructure: Integrated solar inverter changeover panels and dual-grid estate connectivity',
       'Ample Multicar Parking Space: Broad interlocked driveway comfortably parking 4 to 6 vehicles',
       'Rooftop Terrace & Cantilevers: Expansive outdoor entertaining deck overlooking Beachwood Estate',
-      'Turnkey Engineering Quality: Supervised by COREN-certified engineers and Prince2 project managers',
+      'Turnkey Engineering Quality: Supervised by experienced civil engineers and project managers',
     ],
   },
 ];

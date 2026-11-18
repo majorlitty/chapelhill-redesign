@@ -26,20 +26,20 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
-  title: 'Chapelhill Luxury Real Estate',
+  title: 'ChapelHill Multicompany Limited',
   description:
-    'Find your dream luxury home with Chapelhill. Curated architectural estates, premium locations, and bespoke property advisory.',
+    'ChapelHill Multicompany Limited — Property Development and Sales, Construction and Project Management, Property and Facility Management, and Joint Ventures and Investment Partnerships.',
   openGraph: {
-    title: 'Chapelhill Luxury Real Estate',
+    title: 'ChapelHill Multicompany Limited',
     description:
-      'Find your dream luxury home with Chapelhill. Curated architectural estates, premium locations, and bespoke property advisory.',
+      'Property Development and Sales, Construction and Project Management, Property and Facility Management, and Joint Ventures and Investment Partnerships.',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Chapelhill Luxury Real Estate',
+    title: 'ChapelHill Multicompany Limited',
     description:
-      'Find your dream luxury home with Chapelhill. Curated architectural estates, premium locations, and bespoke property advisory.',
+      'Property Development and Sales, Construction and Project Management, Property and Facility Management, and Joint Ventures and Investment Partnerships.',
   },
   icons: {
     icon: '/Chapelhill-Company-Logo.png',

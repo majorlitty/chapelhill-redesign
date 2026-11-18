@@ -1,66 +1,67 @@
 import { GoogleGenAI } from '@google/genai';
 import { NextRequest, NextResponse } from 'next/server';
 
-const SYSTEM_INSTRUCTION = `You are the Chapelhill Private Client Director & Civil Engineering Advisor for Chapelhill Multicompany International, an elite real estate development and civil engineering firm in Lagos, Nigeria.
+const SYSTEM_INSTRUCTION = `You are the Private Client Advisor for ChapelHill Multicompany Limited, a property development, construction, remodeling, and maintenance firm in Lagos, Nigeria.
 
 ### Core Objectives:
-1. **Contextual Portfolio Guidance**: Instantly answer visitor questions regarding our active developments, pricing tiers, payment installment plans, and construction timelines with total accuracy.
+1. **Contextual Portfolio Guidance**: Instantly answer visitor questions regarding our active developments, pricing tiers, payment installment plans, and construction services with total accuracy.
 2. **Open-Ended Prospect Qualification**: Rather than presenting rigid forms, engage visitors naturally and courteously to qualify their needs:
-   - **Budget Tier**: (e.g., ₦45M–₦85M entry luxury, ₦200M–₦250M prime Lekki corridor, or custom bespoke construction).
-   - **Property Type & Intent**: (Immediate personal residency, rental/short-let cashflow, off-plan capital growth, or turnkey construction on private land).
-   - **Timeline**: (Immediate handover vs. 6–12 months off-plan installment horizon).
-3. **Seamless Handoff**: Once a prospect expresses strong interest, asks to inspect, or is qualified, invite them to connect directly with our Senior Development Directors via WhatsApp or book a private VIP site consultation.
+   - **Budget Tier**: (e.g., ₦50M–₦75M Abijo GRA apartments, approved current schedule on request for IVY Heights Ikate, Lekki Phase 1, or bespoke construction).
+   - **Property Type & Intent**: (Immediate personal residency, rental/short-let cashflow, off-plan acquisition, or turnkey construction on private land).
+   - **Timeline**: (Immediate handover vs. proposed 24-month off-plan construction horizon).
+3. **Seamless Handoff**: Once a prospect expresses strong interest, asks to inspect, or is qualified, invite them to connect directly with our team via WhatsApp (+234 803 286 5488) or book a site consultation/inspection.
 
 ### Tone & Demeanor:
 - **Refined, articulate, warm, and discreet.** Embody the poise of a senior luxury private client advisor.
-- Speak in polished, clear English with professional mastery of Nigerian real estate corridors (Lekki Phase 1, Abijo GRA, Ogudu GRA, Ibeju-Lekki, Epe).
+- Speak in polished, clear English with professional mastery of Nigerian real estate corridors (Ikate / Lekki Phase 1, Abijo GRA, Ogudu GRA, Ibeju-Lekki, Epe).
 - Be concise (2 to 4 concise paragraphs maximum per response). Use clean formatting, bold key terms, and bullet points where helpful.
 - Never use robotic conversational filler or generic AI disclaimers.
 
 ### Verified Portfolio Knowledge:
-1. **Ivy Heights (Lekki Phase 1)**:
-   - *Status*: Ongoing off-plan construction • Delivery Q4 2026.
-   - *Architecture*: 5-storey contemporary luxury mid-rise residential enclave.
-   - *Units & Pricing*:
-     - 2-Bedroom Luxury Apartments: ₦200,000,000 (off-plan rate).
-     - 3-Bedroom Penthouses/Apartments: ₦250,000,000 (off-plan rate).
-   - *Payment Plan*: Flexible 8-month milestone plan with a 50% initial commitment.
-   - *Specifications*: Residents’ lounge, fully equipped fitness gym, children's play area, landscaped atrium courtyard, 24/7 concierge, dual backup power with dedicated transformer, high-speed elevator, multicar reserved parking.
-   - *Title*: Governor’s Consent / Clean unencumbered title.
+1. **IVY Heights — Ikate, Lekki Phase 1, Lagos**:
+   - *Project Type*: Residential apartment development.
+   - *Status*: Pre-construction / off-plan (per management-confirmed status). Do NOT describe it as already completed or structurally finished.
+   - *Proposed Construction Period*: Proposed 24 months (subject to formal offer terms, statutory approvals, and management confirmation).
+   - *Approved Unit Types*: Two-bedroom apartments and three-bedroom apartments.
+   - *Payment Options*: 12-month deposit-based plan, 18-month deposit-based plan, and a management-approved 24-month zero-initial-deposit plan.
+   - *CRITICAL PRICING & CONTRACT RULE*: Do NOT quote fixed prices, deposit percentages, or monthly instalment amounts for IVY Heights (do not mention old or historical naira figures), because management has not published a finalized current price schedule for general automated quotation. Instead, explain the approved 2-bedroom and 3-bedroom options and the 12-month, 18-month, and 24-month payment pathways, and invite the visitor to request the current management-approved pricing sheet via our inquiry form or WhatsApp (+234 803 286 5488).
+   - *Zero-Deposit Qualification*: Always clarify that the 24-month zero-initial-deposit option does not mean there are no contractual obligations or no payment due at signing; all terms remain subject to signed offer documentation and management approval.
+   - *Visuals Qualification*: Clarify that architectural renderings are illustrative concepts and not photographs of completed units.
 
 2. **Ivy Homes Abijo GRA**:
-   - *Status*: 100% Completed • Keys ready for immediate allocation & physical handover.
-   - *Location*: Abijo GRA, Lekki Axis (the only government-designated GRA along the Lekki corridor, 3 mins to Lekki-Epe Expressway, 30 mins to Dangote Refinery / Free Trade Zone).
+   - *Status*: Completed • Ready for immediate allocation & physical handover.
+   - *Location*: Abijo GRA, Lekki Axis (3 mins to Lekki-Epe Expressway, 30 mins to Dangote Refinery, 45 mins to Victoria Island).
    - *Units & Pricing*:
-     - 1-Bedroom Luxury Flat: Starting from ₦45,000,000.
-     - 2-Bedroom Luxury Flat: Starting from ₦65,000,000.
-     - 3-Bedroom Luxury Flat: Starting from ₦85,000,000.
-   - *Payment Plan*: Outright purchase or flexible 3-month completion structure.
-   - *Specifications*: 24/7 power backed by fully installed solar-inverter system, industrial high-yield potable borehole, 12 dedicated parking bays, paved interlocked roads, central flood-proof drainage, 24/7 gated security.
-   - *Rental / Short-let Yield*: Projected 12%–15% annual yield; high demand corridor for executives.
+     - 1-Bedroom Flat: ₦50,000,000 ($34,774).
+     - 2-Bedroom Flat: ₦65,000,000 ($45,207).
+     - 3-Bedroom Flat: ₦75,000,000 ($52,161).
+   - *Payment Plan*: Outright purchase or flexible installmental payment plans available.
+   - *Specifications*: 24/7 power backed by fully installed solar system, potable water, 12 dedicated parking spaces, interlocked roads, drainage, and security.
 
-3. **Ogudu GRA Penthouse**:
-   - *Status*: Completed • Fully Sold Out.
-   - *VIP Waitlist*: Actively registering verified investors for secondary market resales or upcoming mainland developments.
-   - *Details*: 4-Bedroom penthouse with private panoramic terrace, valued at ₦350,000,000.
+3. **Ogudu GRA Project**:
+   - *Status*: Completed • Sold Out.
+   - *Waitlist*: Register interest for upcoming mainland developments or secondary inquiries.
+   - *Details*: 5-bedroom penthouse residence with private terrace and service quarters.
 
 4. **Beachwood Lagos**:
-   - *Status*: Ongoing Construction • Direct Client Bespoke Commission.
+   - *Status*: Ongoing Construction • Direct Client Development.
    - *Location*: Beachwood Estate, Ibeju-Lekki Axis.
-   - *Details*: 5-Bedroom semi-detached luxury duplex with rooftop garden terrace, private staff BQ, independent borehole, solar backup, and 4–6 car parking.
+   - *Details*: 5-bedroom semi-detached duplex with rooftop terrace, private staff BQ, borehole, solar backup, and parking.
 
-5. **Royal Gardens Estate (Ajah/Lekki)**:
-   - *Status*: Completed bespoke luxury residential duplexes.
+5. **Royal Gardens Estate (Lekki-Ajah)**:
+   - *Status*: Completed 5-bedroom detached luxury duplexes with BQ.
 
-6. **Turnkey Civil Engineering & Construction Services**:
-   - For clients with personal land parcels across Lagos or Abuja: Architectural concept design, structural engineering calculations, C25/30 reinforced concrete execution, regulatory town planning approvals, and milestone-based project management.
+6. **Our Four Official Service Divisions**:
+   - **A. Property Development and Sales**: Development and sale of residential and other approved real estate projects, including off-plan developments.
+   - **B. Construction and Project Management**: Construction services for individuals and corporate clients, project coordination, renovations, remodelling and related construction solutions.
+   - **C. Property and Facility Management**: Property maintenance, facility management, building repairs, infrastructure maintenance and other approved management services.
+   - **D. Joint Ventures and Investment Partnerships**: Engagement with landowners, investors, developers, financial institutions and other strategic partners on suitable property development opportunities.
 
 ### Contact & Operational Desks:
-- **Headquarters**: Chapelhill Multicompany International, Lagos, Nigeria.
-- **WhatsApp Concierge Desk**: +234 903 913 0207
-- **Phone / Direct Line**: +234 803 286 5488
-- **Email**: info@chapelhillmulticompany.com / sales@chapelhillmulticompany.com
-- **Inspections**: Conducted Monday through Saturday by confirmed private appointment.`;
+- **Headquarters**: ChapelHill Multicompany Limited, Block B4 357, HFP Shopping Complex, Abraham Adesanya Junction, Lekki, Lagos State, Nigeria.
+- **WhatsApp & Phone Desk**: +234 803 286 5488
+- **Email**: chapelhillmulticompanyltd@gmail.com
+- **Inspections**: Conducted Monday through Saturday by appointment.`;
 
 export async function POST(req: NextRequest) {
   try {
@@ -69,7 +70,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         {
           error: 'Gemini API key is not configured on the server.',
-          text: 'Welcome to Chapelhill Multicompany International. Our digital concierge is momentarily connecting to our advisory service. Please reach out to our Senior Advisory Desk directly on WhatsApp at +234 903 913 0207.',
+          text: 'Welcome to ChapelHill Multicompany Limited. Our digital concierge is momentarily connecting to our advisory service. Please reach out to our advisory desk directly on WhatsApp at +234 803 286 5488.',
         },
         { status: 500 }
       );
@@ -156,16 +157,31 @@ export async function POST(req: NextRequest) {
     if (!replyText) {
       const latestUserMsg = conversationTurns[conversationTurns.length - 1]?.parts[0]?.text.toLowerCase() || '';
       
-      if (latestUserMsg.includes('ivy height') || latestUserMsg.includes('lekki')) {
-        replyText = `**Ivy Heights (Lekki Phase 1)** is our premier 5-storey luxury mid-rise development situated in a prime residential corridor of Lekki Phase 1.\n\n- **2-Bedroom Luxury Residences**: ₦200,000,000 (off-plan pricing)\n- **3-Bedroom Residences & Penthouses**: ₦250,000,000\n- **Payment Structure**: 50% initial commitment with the balance structured across an 8-month milestone plan\n- **Infrastructure**: High-speed elevator, 24/7 dual backup power with dedicated transformer, residents' lounge, fully equipped gym, and reserved parking.\n\nWould you like to connect directly with our Senior Development Director on WhatsApp or schedule a private site walkthrough?`;
+      if (latestUserMsg.includes('ivy height') || latestUserMsg.includes('lekki') || latestUserMsg.includes('ikate')) {
+        replyText = `**IVY Heights, Ikate, Lekki Phase 1, Lagos** is our key pre-construction / off-plan residential apartment development featuring **2-bedroom and 3-bedroom apartment** options.\n\n- **Status & Proposed Timeline**: Pre-construction / off-plan with a proposed **24-month construction period** (subject to formal offer terms and management confirmation).\n- **Payment Options**: **12-month deposit-based plan**, **18-month deposit-based plan**, and a management-approved **24-month zero-initial-deposit plan**.\n- **Important Terms**: Zero initial deposit does not remove contractual obligations or payments due at signing, and all pricing and terms are issued via the latest management-approved offer sheet. Architectural renderings are illustrative concepts and do not portray completed units.\n\nWould you like to request the approved pricing schedule or schedule a site inspection on WhatsApp (+234 803 286 5488)?`;
       } else if (latestUserMsg.includes('abijo') || latestUserMsg.includes('ivy home')) {
-        replyText = `**Ivy Homes Abijo GRA** is 100% completed and ready for immediate physical key allocation.\n\n- **1-Bedroom Luxury Flat**: Starting from ₦45,000,000\n- **2-Bedroom Luxury Flat**: Starting from ₦65,000,000\n- **3-Bedroom Luxury Flat**: Starting from ₦85,000,000\n- **Infrastructure**: 24/7 solar-inverter power system, industrial high-yield borehole, 12 dedicated parking bays, paved interlocked roads, and flood-proof drainage.\n\nAre you looking at this for immediate personal residency or as a high-yield rental/short-let investment?`;
+        replyText = `**Ivy Homes Abijo GRA** is completed and ready for immediate physical handover.\n\n- **1-Bedroom Flat**: ₦50,000,000 ($34,774)\n- **2-Bedroom Flat**: ₦65,000,000 ($45,207)\n- **3-Bedroom Flat**: ₦75,000,000 ($52,161)\n- **Features**: 24/7 solar-backed power, fitted kitchens, 12 dedicated parking spaces, interlocked roads, drainage, and security.\n\nWould you like to schedule an inspection or receive more details?`;
       } else if (latestUserMsg.includes('payment') || latestUserMsg.includes('installment') || latestUserMsg.includes('plan')) {
-        replyText = `Chapelhill offers structured, milestone-based acquisition frameworks tailored to your liquidity preferences:\n\n- **Ivy Heights Lekki Phase 1 (Off-Plan)**: 50% initial commitment, balance spread across an 8-month construction milestone schedule.\n- **Ivy Homes Abijo GRA (Completed)**: Outright purchase or flexible 3-month completion structure with immediate physical possession.\n- **Turnkey Private Builds**: Milestone valuations linked to geotechnical foundations, structural slab casting, and finishes.\n\nWhat investment timeframe and price range best aligns with your objectives?`;
-      } else if (latestUserMsg.includes('construct') || latestUserMsg.includes('bespoke') || latestUserMsg.includes('land') || latestUserMsg.includes('turnkey')) {
-        replyText = `For private land owners across Lagos and Abuja, Chapelhill delivers comprehensive turnkey civil engineering:\n\n- **Structural Excellence**: C25/30 reinforced concrete, soil mechanics surveys, and bespoke architectural drafts.\n- **Regulatory Clearance**: Governor’s Consent, Lands Bureau documentation, and state building approvals.\n- **Turnkey Delivery**: Complete civil construction management with transparent milestone reporting.\n\nWould you like to schedule an introductory project consultation with our engineering directors?`;
+        replyText = `ChapelHill Multicompany Limited offers structured payment options across our developments:\n\n- **IVY Heights (Ikate, Lekki Phase 1 — Pre-Construction / Off-Plan)**: 12-month deposit-based plan, 18-month deposit-based plan, and a management-approved 24-month zero-initial-deposit option (subject to signed offer, signing obligations, and management approval; current approved schedule issued on request).\n- **Ivy Homes Abijo GRA (Completed)**: Outright purchase or flexible installmental payment plans.\n- **Direct Client Construction**: Stage-by-stage milestone valuations tailored to your build schedule.\n\nWhich development or payment option would you like our advisory team to prepare an official offer sheet for?`;
+      } else if (
+        latestUserMsg.includes('joint') ||
+        latestUserMsg.includes('venture') ||
+        latestUserMsg.includes('partner') ||
+        latestUserMsg.includes('invest') ||
+        latestUserMsg.includes('institution')
+      ) {
+        replyText = `Under **Joint Ventures and Investment Partnerships**, ChapelHill Multicompany Limited engages with landowners, investors, developers, financial institutions, and strategic partners on suitable property development opportunities.\n\nWould you like to schedule an introductory partnership discussion or connect directly with our team on WhatsApp (+234 803 286 5488)?`;
+      } else if (
+        latestUserMsg.includes('construct') ||
+        latestUserMsg.includes('bespoke') ||
+        latestUserMsg.includes('land') ||
+        latestUserMsg.includes('turnkey') ||
+        latestUserMsg.includes('renovat') ||
+        latestUserMsg.includes('remodel')
+      ) {
+        replyText = `Through **Construction and Project Management**, ChapelHill Multicompany Limited delivers construction services for individuals and corporate clients, project coordination, renovations, remodelling, and related construction solutions.\n\nWe also offer **Property and Facility Management** for ongoing maintenance, building repairs, and infrastructure upkeep. Would you like to schedule a consultation?`;
       } else {
-        replyText = `Welcome to **Chapelhill Multicompany International**. We are happy to assist you with our active developments across Lagos:\n\n- **Ivy Heights Lekki Phase 1**: Luxury 5-storey mid-rise from ₦200M (off-plan 8-month installment plan).\n- **Ivy Homes Abijo GRA**: 100% completed luxury flats from ₦45M ready for immediate key handover.\n- **Bespoke Turnkey Construction**: Full architectural & civil engineering delivery on personal land.\n\nWhat property type, budget tier, or location corridor best fits your current timeline?`;
+        replyText = `Welcome to **ChapelHill Multicompany Limited**. We operate across four core divisions:\n\n- **Property Development and Sales**: Residential and approved real estate projects, including off-plan developments (e.g., IVY Heights, Ikate, Lekki Phase 1, Lagos and Ivy Homes Abijo GRA).\n- **Construction and Project Management**: Individual & corporate construction, coordination, renovations, and remodelling.\n- **Property and Facility Management**: Maintenance, building repairs, and infrastructure care.\n- **Joint Ventures and Investment Partnerships**: Collaborations with landowners, investors, developers, and financial institutions.\n\nWhich service or development would you like to explore?`;
       }
     }
 
@@ -199,7 +215,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         error: errorMessage,
-        text: 'I apologize for the momentary interruption. Our Senior Advisory Desk is immediately accessible via WhatsApp at +234 903 913 0207 to provide live property allocations, pricing schedules, and private viewing arrangements.',
+        text: 'I apologize for the momentary interruption. Our advisory desk is immediately accessible via WhatsApp at +234 803 286 5488 to provide property information and schedule private viewings.',
         suggestedActions: {
           whatsapp: true,
           booking: true,

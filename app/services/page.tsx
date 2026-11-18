@@ -2,28 +2,29 @@ import { Metadata } from 'next';
 import ServicesPageClient from '@/components/ServicesPageClient';
 
 export const metadata: Metadata = {
-  title: 'Our Services | Chapelhill Multicompany International — Property Development, Construction & Maintenance',
+  title:
+    'Our Services | ChapelHill Multicompany Limited — Development, Construction, Facility Management & Joint Ventures',
   description:
-    'Comprehensive real estate development, civil construction, carcass-to-turnkey remodeling, facility maintenance, and project management in Lagos, Nigeria.',
+    'Property Development and Sales, Construction and Project Management, Property and Facility Management, and Joint Ventures and Investment Partnerships by ChapelHill Multicompany Limited.',
   openGraph: {
-    title: 'Our Services | Chapelhill Multicompany International',
+    title: 'Our Services | ChapelHill Multicompany Limited',
     description:
-      'Empowering You to Make the Right Move. Property Development, Remodeling & Renovation, Property Maintenance, and Project Management.',
+      'Property Development and Sales, Construction and Project Management, Property and Facility Management, and Joint Ventures and Investment Partnerships.',
     type: 'website',
     images: [
       {
         url: '/Chapelhill-Company-Logo.png',
         width: 1200,
         height: 630,
-        alt: 'Chapelhill Multicompany International Services',
+        alt: 'ChapelHill Multicompany Limited Services',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Our Services | Chapelhill Multicompany International',
+    title: 'Our Services | ChapelHill Multicompany Limited',
     description:
-      'Empowering You to Make the Right Move. Property Development, Remodeling & Renovation, Property Maintenance, and Project Management.',
+      'Property Development and Sales, Construction and Project Management, Property and Facility Management, and Joint Ventures and Investment Partnerships.',
     images: ['/Chapelhill-Company-Logo.png'],
   },
 };

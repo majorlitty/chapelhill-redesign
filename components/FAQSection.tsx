@@ -29,19 +29,19 @@ export const FAQS: FAQItem[] = [
     id: 'buy-property-abroad',
     category: 'diaspora',
     question: 'How can I buy property in Nigeria while living abroad?',
-    answer: 'We have structured a frictionless, 100% remote acquisition process designed specifically for diaspora clients and international investors. From your initial digital consultation, our team provides virtual 3D walkthroughs, drone surveys, and verified legal documentation. You can execute contracts electronically with digital signatures, appoint an accredited local representative or legal counsel through a limited Power of Attorney (if desired), and make payments securely via direct international bank wire or designated escrow accounts with instant verifiable receipts at each milestone.',
+    answer: 'We have structured a remote acquisition process designed specifically for diaspora clients and international buyers. From your initial digital consultation, our team provides virtual walkthroughs, video site surveys, and clear legal documentation. You can execute contracts electronically with digital signatures, appoint a local representative or legal counsel through a limited Power of Attorney (if desired), and make payments securely via bank transfer with verifiable receipts at each milestone.',
     highlights: [
       'Encrypted digital contracts & e-signature onboarding',
-      'High-definition video walk-throughs & drone footage',
+      'High-definition video walk-throughs & site video footage',
       'Transparent milestone invoicing in USD, GBP, EUR, or NGN',
-      'Full representation coordination with accredited conveyancers',
+      'Full representation coordination with appointed legal counsel',
     ],
   },
   {
     id: 'verify-authenticity-documents',
     category: 'legal',
     question: 'How do I verify the authenticity of the property and documents?',
-    answer: 'Transparency and unencumbered title ownership form the cornerstone of Chapelhill. Every development in our portfolio undergoes exhaustive legal scrutiny. Before any commitment, we provide certified true copies (CTC) of all title documents—including Certificate of Occupancy (C of O), Governor’s Consent, Registered Survey plans, and approved building plans from state planning authorities. We actively encourage and coordinate independent verification with your personal attorney or estate surveyor at the Lagos State Lands Bureau and surveyor general’s registries.',
+    answer: 'Transparency and clear title ownership form the cornerstone of ChapelHill Multicompany Limited. Every development in our portfolio undergoes thorough legal review. Before any commitment, we provide copies of available title documents—including Certificate of Occupancy (C of O), Governor’s Consent, Registered Survey plans, and building plan approvals. We actively encourage and coordinate independent verification with your personal attorney or estate surveyor at the Lagos State Lands Bureau.',
     highlights: [
       'Clean, government-registered titles (C of O / Governor’s Consent)',
       'Pre-purchase search reports provided upfront',
@@ -53,7 +53,7 @@ export const FAQS: FAQItem[] = [
     id: 'finance-property-abroad',
     category: 'diaspora',
     question: 'Can I finance my property purchase from abroad?',
-    answer: 'Yes. We provide flexible off-plan developer payment structures as well as partnerships with reputable mortgage institutions and private asset financiers that service diaspora buyers. Typically, you can secure an off-plan property with a structured initial deposit (usually 20% to 30%), with the remaining balance spread across transparent construction milestones over 12 to 24 months. We also accept multi-currency remittances through regulated institutional channels, protecting you against volatile FX slippages.',
+    answer: 'Yes. We provide structured developer payment plans across our developments alongside third-party mortgage options where applicable. Depending on the project and current management-approved schedule, off-plan plans include 12-month and 18-month deposit-based options as well as our management-approved 24-month zero-initial-deposit plan on IVY Heights (subject to contractual obligations, signing requirements, and formal offer approval).',
     highlights: [
       'Phased milestone disbursement tied to verified civil progress',
       'Multi-currency institutional banking routes (USD, GBP, EUR, NGN)',
@@ -65,48 +65,48 @@ export const FAQS: FAQItem[] = [
     id: 'ensure-construction-quality',
     category: 'construction',
     question: 'How do you ensure the quality of construction in my absence?',
-    answer: 'Our engineering protocols follow rigorous COREN and international British Standard (BS) building codes. We deploy dedicated project directors, certified structural engineers, and independent Quality Assurance (QA/QC) inspectors for every concrete pour, steel reinforcement cage, and MEP installation. Diaspora clients receive access to a private investor dashboard with weekly photo/video progress logs, material test certificates (cube test results, soil mechanics), and scheduled live Zoom/WhatsApp video inspections with the site project manager.',
+    answer: 'Our engineering protocols follow rigorous Nigerian building and safety standards. We deploy dedicated project managers, experienced structural engineers, and site quality supervisors for every concrete pour, steel reinforcement cage, and MEP installation. Diaspora clients receive regular photo and video progress updates and can schedule live WhatsApp or video inspections directly with the site project manager.',
     highlights: [
-      'COREN-certified structural engineers and site supervisors',
-      'Weekly multimedia progress reports & independent test certificates',
+      'Experienced structural engineers and site supervisors',
+      'Regular multimedia progress reports & site quality updates',
       'Real-time live video site walk-throughs on your schedule',
-      'Full material traceability—from European MEP fittings to Grade-60 steel',
+      'Full material traceability and documented milestone sign-offs',
     ],
   },
   {
     id: 'property-management-service',
     category: 'general',
     question: 'Can you help with property management after purchase?',
-    answer: 'Absolutely. Chapelhill operates an integrated Facility & Estate Management division. Whether your goal is capital preservation, high-yield luxury short-let hosting, or long-term corporate tenancy (servicing multinational executives and expatriates), our management team oversees tenant vetting, lease agreements, 24/7 round-the-clock power and water utility servicing, scheduled preventative maintenance, and automated quarterly net rental yield remittances directly to your offshore or local bank account.',
+    answer: 'Absolutely. ChapelHill Multicompany Limited offers ongoing property maintenance and facility stewardship services. Our team handles plumbing, electrical works, air-conditioning repairs, tiling, general building works, roof leakages, and tenant coordination so you can enjoy complete peace of mind and focus on your core business.',
     highlights: [
-      'Comprehensive tenant screening & corporate lease management',
-      '24/7 dedicated facility care, grounds maintenance, and security',
-      'High-yield short-let & executive tenancy optimization',
-      'Quarterly net rental yield reporting & automated payouts',
+      'Preventive plumbing, electrical & HVAC maintenance',
+      'Roof leakage remediation, tiling & building repairs',
+      'Tenant coordination & routine property upkeep',
+      'Regular property condition reporting for diaspora owners',
     ],
   },
   {
     id: 'types-of-properties-developed',
     category: 'general',
     question: 'What types of properties do you develop?',
-    answer: 'We specialize in institutional-grade luxury residential architecture, bespoke private villas, and high-density prime urban apartments. Our active developments include multi-unit contemporary residential communities (e.g. Ivy Homes Abijo GRA), architectural trophy penthouses with private sky lounges (such as our Ogudu GRA Project), and prime multi-unit mid-rise developments in high-capital areas (like our 18-unit Lekki Phase 1 project). We also undertake bespoke turnkey private builds for discerning private land owners.',
+    answer: 'We specialize in residential apartment developments, gated communities, and private residences. Our portfolio features our key pre-construction development IVY Heights at Ikate, Lekki Phase 1, Lagos (offering 2-bedroom and 3-bedroom apartments), completed apartments at Ivy Homes Abijo GRA, and our sold-out Ogudu GRA Project, alongside custom turnkey builds for landowners.',
     highlights: [
       'Turnkey gated residential apartment communities',
-      'Private architectural trophy estates & sky penthouses',
-      'High-yield boutique urban mid-rise developments',
-      'Custom bespoke architectural design and client-owned developments',
+      'Private penthouses & contemporary family duplexes',
+      'Boutique urban mid-rise apartment developments',
+      'Custom architectural design and client-owned developments',
     ],
   },
   {
     id: 'construction-project-timeline',
     category: 'construction',
     question: 'How long does it take to complete a construction project?',
-    answer: 'Timelines vary by structural scope and architectural complexity. For private bespoke villas and penthouses, construction typically spans 9 to 14 months from foundation breaking to turnkey commissioning. For medium-scale multi-unit developments (such as 12 to 18 apartments), completion generally requires 14 to 20 months. Every project contract includes a detailed Master Gantt Schedule outlining clear phase completions, civil milestones, finishes, and contractual handover guarantees with penalty clauses for unexcused delays.',
+    answer: 'Timelines vary by structural scope and architectural complexity. For private bespoke villas and penthouses, construction typically spans 9 to 14 months from foundation breaking to completion. For medium-scale multi-unit developments, completion generally requires 14 to 20 months. Every project contract includes a detailed project schedule outlining clear phase completions, civil milestones, finishes, and expected handover timelines.',
     highlights: [
-      'Contractual Master Gantt Schedule provided at inception',
+      'Contractual project schedule provided at inception',
       'Bespoke luxury residences: typically 9 to 14 months',
       'Multi-unit apartment communities: typically 14 to 20 months',
-      'Transparent contingency planning and guaranteed handover covenants',
+      'Transparent contingency planning and clear handover milestones',
     ],
   },
   {
@@ -214,7 +214,7 @@ export default function FAQSection({ onContactClick }: FAQSectionProps) {
           Frequently Asked Questions
         </h2>
         <p className="mt-2.5 sm:mt-3.5 text-sm sm:text-base md:text-lg text-[#162521]/75 leading-relaxed max-w-2xl px-2">
-          Clear, transparent guidance on acquiring prime Nigerian property, verifying title security, managing construction remotely, and maximizing investment returns with Chapelhill.
+          Clear, transparent guidance on acquiring property in Lagos, verifying title documentation, managing construction remotely, and working with ChapelHill Multicompany Limited.
         </p>
 
         {/* Filter Categories with Left & Right Sliders */}
