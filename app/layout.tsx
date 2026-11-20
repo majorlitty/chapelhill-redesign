@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Outfit, Manrope } from 'next/font/google';
 import './globals.css';
 import DigitalConcierge from '@/components/DigitalConcierge';
+import SmoothScrollProvider from '@/components/SmoothScrollProvider';
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -49,10 +50,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={`${outfit.variable} ${manrope.variable} font-sans scroll-smooth`}>
+    <html lang="en" className={`${outfit.variable} ${manrope.variable} font-sans`}>
       <body className="font-sans antialiased bg-[#FEFCFD] text-[#162521] selection:bg-[#461313] selection:text-white min-h-full w-full" suppressHydrationWarning>
-        {children}
-        <DigitalConcierge />
+        <SmoothScrollProvider>
+          {children}
+          <DigitalConcierge />
+        </SmoothScrollProvider>
       </body>
     </html>
   );
