@@ -38,10 +38,10 @@ const SYSTEM_INSTRUCTION = `You are the Private Client Advisor for ChapelHill Mu
    - *Payment Plan*: Outright purchase or flexible installmental payment plans available.
    - *Specifications*: 24/7 power backed by fully installed solar system, potable water, 12 dedicated parking spaces, interlocked roads, drainage, and security.
 
-3. **Ogudu GRA Project**:
-   - *Status*: Completed • Sold Out.
-   - *Waitlist*: Register interest for upcoming mainland developments or secondary inquiries.
-   - *Details*: 5-bedroom penthouse residence with private terrace and service quarters.
+3. **IVY Homes, Ogudu GRA**:
+   - *Status*: **SOLD OUT** • Ongoing Construction. Do NOT describe this development as completed or ready for occupancy.
+   - *Future Developments*: All units at IVY Homes, Ogudu GRA are sold out; invite prospective buyers to submit an enquiry for upcoming and future ChapelHill developments.
+   - *Details*: 5-bedroom penthouse residence currently under construction.
 
 4. **Beachwood Lagos**:
    - *Status*: Ongoing Construction • Direct Client Development.
@@ -57,11 +57,17 @@ const SYSTEM_INSTRUCTION = `You are the Private Client Advisor for ChapelHill Mu
    - **C. Property and Facility Management**: Property maintenance, facility management, building repairs, infrastructure maintenance and other approved management services.
    - **D. Joint Ventures and Investment Partnerships**: Engagement with landowners, investors, developers, financial institutions and other strategic partners on suitable property development opportunities.
 
+### Policy & FAQ Compliance Rules:
+- **Mortgages**: ChapelHill is exploring mortgage-financing arrangements; availability, bank participation, interest rates, and eligibility must be confirmed by the lender and ChapelHill.
+- **Nigerians Abroad**: Welcome enquiries and discuss available remote consultations, documents, and inspection arrangements. Virtual tours, e-signatures, escrow, or foreign-currency payments are subject to confirmation, NOT guaranteed services.
+- **Title Documents**: Relevant documents can be made available through the authorised sales or legal team for due diligence; buyers should conduct independent legal checks before committing. NEVER share sensitive originals or make blanket title guarantees.
+- **Returns**: NO property investment return or capital appreciation can be guaranteed.
+
 ### Contact & Operational Desks:
-- **Headquarters**: ChapelHill Multicompany Limited, Block B4 357, HFP Shopping Complex, Abraham Adesanya Junction, Lekki, Lagos State, Nigeria.
-- **WhatsApp & Phone Desk**: +234 803 286 5488
+- **Headquarters**: Block B4 357, HFP Shopping Complex, Abraham Adesanya Junction, Lekki-Epe Expressway, Lagos State, Nigeria.
+- **Telephone Contacts**: +234 903 913 0207 and +234 803 286 5488 (WhatsApp & Phone Desk: +234 803 286 5488).
 - **Email**: chapelhillmulticompanyltd@gmail.com
-- **Inspections**: Conducted Monday through Saturday by appointment.`;
+- **Opening Hours**: Monday–Saturday, 8:00 a.m.–6:00 p.m. WAT.`;
 
 export async function POST(req: NextRequest) {
   try {
@@ -159,8 +165,10 @@ export async function POST(req: NextRequest) {
       
       if (latestUserMsg.includes('ivy height') || latestUserMsg.includes('lekki') || latestUserMsg.includes('ikate')) {
         replyText = `**IVY Heights, Ikate, Lekki Phase 1, Lagos** is our key pre-construction / off-plan residential apartment development featuring **2-bedroom and 3-bedroom apartment** options.\n\n- **Status & Proposed Timeline**: Pre-construction / off-plan with a proposed **24-month construction period** (subject to formal offer terms and management confirmation).\n- **Payment Options**: **12-month deposit-based plan**, **18-month deposit-based plan**, and a management-approved **24-month zero-initial-deposit plan**.\n- **Important Terms**: Zero initial deposit does not remove contractual obligations or payments due at signing, and all pricing and terms are issued via the latest management-approved offer sheet. Architectural renderings are illustrative concepts and do not portray completed units.\n\nWould you like to request the approved pricing schedule or schedule a site inspection on WhatsApp (+234 803 286 5488)?`;
-      } else if (latestUserMsg.includes('abijo') || latestUserMsg.includes('ivy home')) {
+      } else if (latestUserMsg.includes('abijo') || (latestUserMsg.includes('ivy home') && !latestUserMsg.includes('ogudu'))) {
         replyText = `**Ivy Homes Abijo GRA** is completed and ready for immediate physical handover.\n\n- **1-Bedroom Flat**: ₦50,000,000 ($34,774)\n- **2-Bedroom Flat**: ₦65,000,000 ($45,207)\n- **3-Bedroom Flat**: ₦75,000,000 ($52,161)\n- **Features**: 24/7 solar-backed power, fitted kitchens, 12 dedicated parking spaces, interlocked roads, drainage, and security.\n\nWould you like to schedule an inspection or receive more details?`;
+      } else if (latestUserMsg.includes('ogudu')) {
+        replyText = `**IVY Homes, Ogudu GRA** is currently **under construction** and **100% SOLD OUT**.\n\nWhile this development is no longer available for purchase, our team welcomes enquiries from prospective buyers interested in **upcoming and future ChapelHill developments**, including **IVY Heights (Ikate, Lekki Phase 1, Lagos)** and **Ivy Homes Abijo GRA**.\n\nWould you like to register your interest in future developments or connect directly on WhatsApp (+234 803 286 5488)?`;
       } else if (latestUserMsg.includes('payment') || latestUserMsg.includes('installment') || latestUserMsg.includes('plan')) {
         replyText = `ChapelHill Multicompany Limited offers structured payment options across our developments:\n\n- **IVY Heights (Ikate, Lekki Phase 1 — Pre-Construction / Off-Plan)**: 12-month deposit-based plan, 18-month deposit-based plan, and a management-approved 24-month zero-initial-deposit option (subject to signed offer, signing obligations, and management approval; current approved schedule issued on request).\n- **Ivy Homes Abijo GRA (Completed)**: Outright purchase or flexible installmental payment plans.\n- **Direct Client Construction**: Stage-by-stage milestone valuations tailored to your build schedule.\n\nWhich development or payment option would you like our advisory team to prepare an official offer sheet for?`;
       } else if (

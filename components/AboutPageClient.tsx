@@ -1,99 +1,69 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { 
-  Building2, 
-  Hammer, 
-  ShieldCheck, 
-  CheckCircle2, 
-  ArrowRight, 
-  ChevronRight, 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Compass, 
-  Layers, 
-  Clock, 
-  Users, 
-  FileCheck, 
-  X,
-  Target,
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import {
+  ArrowLeft,
+  ArrowRight,
+  Building2,
+  CheckCircle2,
+  ChevronRight,
   Eye,
-  HeartHandshake,
+  Hammer,
+  Handshake,
+  Mail,
+  MapPin,
   MessageCircle,
-  Handshake
+  Phone,
+  ShieldCheck,
+  Target,
 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
+import DeliveryMethodologySticky from '@/components/DeliveryMethodologySticky';
 import InfoDrawer from '@/components/InfoDrawer';
 import WhatsAppFAB from '@/components/WhatsAppFAB';
 
+type LeadershipTrack = 'board-legal' | 'executive-technical';
+type FilterOption = 'all' | LeadershipTrack;
+
 interface TeamMember {
+  id: string;
   name: string;
   role: string;
+  track: LeadershipTrack;
+  trackLabel: string;
   image: string;
   bio: string;
   phone?: string;
   email?: string;
-  qualifications?: string[];
+  qualifications: string[];
 }
 
 const TEAM_MEMBERS: TeamMember[] = [
   {
+    id: 'dr-christopher-inegbedion',
     name: 'Dr. Christopher Inegbedion',
     role: 'Chairman',
+    track: 'board-legal',
+    trackLabel: 'Board & Governance',
     image: '/images/team/dr-christopher-inegbedion.png',
     bio: 'Dr. Christopher Obhiokholen Inegbedion brings a wealth of leadership, governance, and strategic expertise to our board as Chairman. A respected Geriatric Psychiatrist by profession—holding an MB BS from Ahmadu Bello University alongside advanced certifications from the Royal College of Physicians and Surgeons of Canada and the CPSBC—Dr. Inegbedion is deeply committed to ethical, community-focused leadership. His extensive background in specialized care and organizational oversight guides our company’s strategic direction, ensuring steady growth, strong governance, and a steadfast commitment to excellence.',
     qualifications: [
       'Board Governance & Strategic Direction',
-  
+      'MB BS, Ahmadu Bello University',
+      'Royal College of Physicians & Surgeons of Canada / CPSBC Certifications',
     ],
   },
   {
-    name: 'Victoria Olubunmi Afolayan',
-    role: 'Board Member',
-    image: '/Victoria Olubunmi Afolayan.jpeg',
-    bio: 'Victoria Afolayan brings 20 years of extensive experience in administration, finance, and business management. Holding a Postgraduate Diploma in Accounting, a Postgraduate Certificate in Business Accounting, and a Certificate IV in Human Resources, she has built a strong background across both corporate and community services sectors, including finance management and quality assurance. Victoria combines her robust financial expertise with a dedicated, people-first leadership style for our board.',
-        qualifications: [
-      'Board Governance & Corporate Oversight',
-      'Strategic Real Estate Investment Direction',
-      'Fiduciary & Institutional Stewardship',
-      'Stakeholder & Partner Relations',
-    ],
-  },
-  {
-    name: 'Barr. Blessing Agada',
-    role: 'Director',
-    image: '/images/team/barr-blessing-agada.jpg',
-    bio: 'Barrister Blessing Agada oversees institutional governance, legal risk mitigation, land title verification, and corporate structuring for ChapelHill Multicompany Limited.',
-    
-    qualifications: [
-      'Legal & Corporate Regulatory Governance',
-      'Lands Bureau & Governor’s Consent Title Advisory',
-      'Commercial Property Contracts & Joint Ventures',
-      'Diaspora Investment Fiduciary Oversight',
-    ],
-  },
-  {
-    name: 'Stephen Agada',
-    role: 'Chief Operating Officer',
-    image: '/images/team/stephen-agada.jpg',
-    bio: 'Stephen Agada brings extensive expertise in facility management, project execution, procurement, and quantity surveying.',
-    phone: '+234 803 286 5488',
-    email: 'chapelhillmulticompanyltd@gmail.com',
-    qualifications: [
-      'Facility Management & Turnkey Operations',
-      'Procurement & Supply Chain Efficiency',
-      'Project Costing & Quantity Surveying',
-      'End-to-End Construction Oversight',
-    ],
-  },
-  {
+    id: 'nick-joel-okpanachi',
     name: 'Nick Joel Okpanachi',
     role: 'Chief Executive Officer',
+    track: 'executive-technical',
+    trackLabel: 'Executive & Technical',
     image: '/images/team/nick-joel-okpanachi.png',
     bio: 'Nick Joel Okpanachi leads the executive management, development pipeline, client relations, and overall vision of ChapelHill Multicompany Limited across Nigeria and the diaspora.',
     phone: '+234 703 836 8119',
@@ -106,24 +76,75 @@ const TEAM_MEMBERS: TeamMember[] = [
     ],
   },
   {
+    id: 'victoria-olubunmi-afolayan',
+    name: 'Victoria Olubunmi Afolayan',
+    role: 'Board Member',
+    track: 'board-legal',
+    trackLabel: 'Board & Governance',
+    image: '/Victoria Olubunmi Afolayan.jpeg',
+    bio: 'Victoria Afolayan brings 20 years of extensive experience in administration, finance, and business management. Holding a Postgraduate Diploma in Accounting, a Postgraduate Certificate in Business Accounting, and a Certificate IV in Human Resources, she has built a strong background across both corporate and community services sectors, including finance management and quality assurance. Victoria combines her robust financial expertise with a dedicated, people-first leadership style for our board.',
+    qualifications: [
+      'Board Governance & Corporate Oversight',
+      'Strategic Real Estate Investment Direction',
+      'Fiduciary & Institutional Stewardship',
+      'Stakeholder & Partner Relations',
+    ],
+  },
+  {
+    id: 'stephen-agada',
+    name: 'Stephen Agada',
+    role: 'Chief Operating Officer',
+    track: 'executive-technical',
+    trackLabel: 'Executive & Technical',
+    image: '/images/team/stephen-agada.jpg',
+    bio: 'Stephen Agada brings extensive expertise in facility management, project execution, procurement, and quantity surveying.',
+    phone: '+234 803 286 5488',
+    email: 'chapelhillmulticompanyltd@gmail.com',
+    qualifications: [
+      'Facility Management & Turnkey Operations',
+      'Procurement & Supply Chain Efficiency',
+      'Project Costing & Quantity Surveying',
+      'End-to-End Construction Oversight',
+    ],
+  },
+  {
+    id: 'barr-blessing-agada',
+    name: 'Barr. Blessing Agada',
+    role: 'Director',
+    track: 'board-legal',
+    trackLabel: 'Board & Legal',
+    image: '/images/team/barr-blessing-agada.jpg',
+    bio: 'Barrister Blessing Agada oversees institutional governance, legal risk mitigation, land title verification, and corporate structuring for ChapelHill Multicompany Limited.',
+    qualifications: [
+      'Legal & Corporate Regulatory Governance',
+      'Lands Bureau & Governor’s Consent Title Advisory',
+      'Commercial Property Contracts & Joint Ventures',
+      'Diaspora Investment Fiduciary Oversight',
+    ],
+  },
+  {
+    id: 'olueseun',
     name: 'Olueseun',
     role: 'Technical Director',
+    track: 'executive-technical',
+    trackLabel: 'Executive & Technical',
     image: '/images/team/olueseun.png',
     bio: 'Directs engineering precision, structural integrity, rapid wall technologies, architectural execution, and on-site building compliance across all ongoing and completed projects.',
-    
     qualifications: [
       'Civil Engineering & Structural Design',
-      'Automated Architectural Execution',
+      'Precision Architectural Execution',
       'Quality Control & Site Safety Compliance',
       'Carcass to Turnkey Finishing Mastery',
     ],
   },
   {
+    id: 'dennis-baba',
     name: 'Dennis Baba',
     role: 'Secretary & Legal Adviser',
+    track: 'board-legal',
+    trackLabel: 'Board & Legal',
     image: '/images/team/dennis-baba.jpg',
     bio: 'Dennis Baba spearheads legal compliance, statutory board secretarial documentation, contracts, and regulatory liaison with governmental authorities and institutional partners.',
-    
     qualifications: [
       'Corporate Secretarial Management',
       'Statutory & Contractual Compliance',
@@ -133,118 +154,117 @@ const TEAM_MEMBERS: TeamMember[] = [
   },
 ];
 
+const LEADERSHIP_FILTERS: { id: FilterOption; label: string; count: number }[] = [
+  { id: 'all', label: 'All Leadership', count: TEAM_MEMBERS.length },
+  {
+    id: 'board-legal',
+    label: 'Board & Legal',
+    count: TEAM_MEMBERS.filter((m) => m.track === 'board-legal').length,
+  },
+  {
+    id: 'executive-technical',
+    label: 'Executive & Technical',
+    count: TEAM_MEMBERS.filter((m) => m.track === 'executive-technical').length,
+  },
+];
+
 const CORE_SERVICES = [
   {
     id: 'development-sales',
-    code: 'A',
     number: '01',
     title: 'Property Development and Sales',
     description:
       'Development and sale of residential and other approved real estate projects, including off-plan developments.',
-    image: '/images/lekki-phase-1/lekki 3d/Lekki phase 1(4).jpeg',
-    imageAlt: 'ChapelHill Multicompany Limited Property Development and Sales',
     highlights: [
-      'Residential & approved real estate developments',
-      'Off-plan property sales with structured payment options',
-      'Completed homes ready for inspection and handover',
-      'Verified title documentation & buyer support',
+      'Residential & approved developments',
+      'Structured off-plan payment options',
+      'Verified documentation & buyer guidance',
     ],
     icon: Building2,
   },
   {
     id: 'construction-management',
-    code: 'B',
     number: '02',
     title: 'Construction and Project Management',
     description:
       'Construction services for individuals and corporate clients, project coordination, renovations, remodelling and related construction solutions.',
-    image:
-      '/images/Beachwood Lagos/ongoing Beachwood project lagos/Beach wood construction progress (1).jpeg',
-    imageAlt: 'ChapelHill Multicompany Limited Construction and Project Management',
     highlights: [
-      'Construction for private individuals & corporate clients',
-      'Pre- and post-contract project coordination & supervision',
-      'Renovations, remodelling & carcass-to-turnkey finishing',
-      'Transparent milestone reporting & budget discipline',
+      'Private & corporate builds',
+      'Pre- and post-contract supervision',
+      'Renovations & turnkey finishing',
     ],
     icon: Hammer,
   },
   {
     id: 'facility-management',
-    code: 'C',
     number: '03',
     title: 'Property and Facility Management',
     description:
       'Property maintenance, facility management, building repairs, infrastructure maintenance and other approved management services.',
-    image: '/maintenance.webp',
-    imageAlt: 'ChapelHill Multicompany Limited Property and Facility Management',
     highlights: [
-      'Ongoing property maintenance & facility management',
-      'Building repairs, plumbing, electrical & HVAC upkeep',
-      'Estate roads, drainage & infrastructure maintenance',
-      'Scheduled preventive asset care & technical support',
+      'Preventive asset & building repairs',
+      'Plumbing, electrical & HVAC upkeep',
+      'Estate infrastructure maintenance',
     ],
     icon: ShieldCheck,
   },
   {
     id: 'joint-ventures',
-    code: 'D',
     number: '04',
     title: 'Joint Ventures and Investment Partnerships',
     description:
       'Engagement with landowners, investors, developers, financial institutions and other strategic partners on suitable property development opportunities.',
-    image: '/images/joint-venture-partnerships.jpg',
-    imageAlt: 'ChapelHill Multicompany Limited Joint Ventures and Investment Partnerships',
     highlights: [
-      'Landowner & developer joint-venture collaborations',
-      'Investor & financial institution project partnerships',
-      'Feasibility review, planning & joint development structuring',
-      'Transparent governance from inception to project delivery',
+      'Landowner & developer collaborations',
+      'Feasibility & joint structuring',
+      'Transparent project governance',
     ],
     icon: Handshake,
   },
 ];
 
-const WORK_PROCESS_STEPS = [
-  {
-    step: '01',
-    title: 'Initial Consultation',
-    desc: 'We start with an in-depth conversation to understand your vision, goals, and budget. This helps us align our services with your exact specifications.',
-  },
-  {
-    step: '02',
-    title: 'Site Visit & Assessment',
-    desc: 'Our technical team visits your site to evaluate the geographic environment, assess soil and drainage conditions, and identify project opportunities or challenges.',
-  },
-  {
-    step: '03',
-    title: 'Proposal & Quotation',
-    desc: 'We prepare a detailed project proposal, including the full scope of work, automated architectural concepts, milestones, timelines, and a transparent cost breakdown.',
-  },
-  {
-    step: '04',
-    title: 'Agreement & Kickoff',
-    desc: 'Once approved, we formalize the statutory agreement and assign a dedicated project manager to lead your project with uncompromised precision from start to finish.',
-  },
-  {
-    step: '05',
-    title: 'Project Execution & Updates',
-    desc: 'We execute with precision craftsmanship and keep you fully informed through regular photo updates, video milestone reports, and transparent communication.',
-  },
-  {
-    step: '06',
-    title: 'Final Delivery & Ongoing Support',
-    desc: 'After rigorous multi-stage inspection and official handover, we remain available for ongoing property maintenance to ensure enduring peace of mind.',
-  },
-];
-
 export default function AboutPageClient() {
+  const shouldReduceMotion = useReducedMotion();
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const [selectedInquiryTopic, setSelectedInquiryTopic] = useState(
     'ChapelHill Multicompany Limited Consultation'
   );
-  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   const [infoModal, setInfoModal] = useState<'services' | 'about' | null>(null);
+  const [activeFilter, setActiveFilter] = useState<FilterOption>('all');
+  const [activeMemberId, setActiveMemberId] = useState<string>(TEAM_MEMBERS[0].id);
+
+  const filteredMembers = useMemo(() => {
+    if (activeFilter === 'all') return TEAM_MEMBERS;
+    return TEAM_MEMBERS.filter((member) => member.track === activeFilter);
+  }, [activeFilter]);
+
+  const activeMember = useMemo(() => {
+    return (
+      filteredMembers.find((member) => member.id === activeMemberId) ??
+      filteredMembers[0] ??
+      TEAM_MEMBERS[0]
+    );
+  }, [filteredMembers, activeMemberId]);
+
+  const activeIndex = useMemo(() => {
+    return filteredMembers.findIndex((member) => member.id === activeMember.id);
+  }, [filteredMembers, activeMember]);
+
+  const handleFilterChange = (filter: FilterOption) => {
+    setActiveFilter(filter);
+    const nextList =
+      filter === 'all' ? TEAM_MEMBERS : TEAM_MEMBERS.filter((m) => m.track === filter);
+    if (!nextList.some((m) => m.id === activeMemberId) && nextList[0]) {
+      setActiveMemberId(nextList[0].id);
+    }
+  };
+
+  const stepMember = (direction: -1 | 1) => {
+    if (filteredMembers.length <= 1) return;
+    const nextIdx =
+      (activeIndex + direction + filteredMembers.length) % filteredMembers.length;
+    setActiveMemberId(filteredMembers[nextIdx].id);
+  };
 
   const openBookingFor = (topic?: string) => {
     if (topic) {
@@ -254,8 +274,7 @@ export default function AboutPageClient() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#FEFCFD] via-[#FEFCFD] to-[#f7f3f5] text-[#162521] flex flex-col justify-between selection:bg-[#461313] selection:text-white">
-      {/* Top Navigation */}
+    <div className="min-h-screen bg-[#FEFCFD] text-[#162521] font-sans flex flex-col justify-between selection:bg-[#461313] selection:text-white">
       <Navbar
         activePage="about"
         onContactClick={() => openBookingFor('ChapelHill Multicompany Limited Consultation')}
@@ -269,387 +288,170 @@ export default function AboutPageClient() {
       />
 
       <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 pt-4 sm:pt-6 pb-20">
-        {/* Breadcrumb Navigation */}
-        <div className="flex items-center gap-2 text-xs text-stone-500 py-3 mb-6 border-b border-stone-200/60">
-          <Link href="/" className="hover:text-[#461313] transition-colors font-medium">
-            Home
-          </Link>
-          <span>/</span>
-          <span className="text-[#162521] font-semibold">About Us</span>
+        {/* Editorial Breadcrumb */}
+        <div className="flex items-center justify-between gap-4 text-xs text-stone-500 py-3 mb-8 sm:mb-12 border-b border-stone-200/70">
+          <div className="flex items-center gap-2">
+            <Link href="/" className="hover:text-[#461313] transition-colors font-medium">
+              Home
+            </Link>
+            <span>/</span>
+            <span className="text-[#162521] font-semibold">About Us</span>
+          </div>
+          <span className="hidden sm:inline font-medium tracking-wide text-stone-500">
+            ChapelHill Multicompany Limited · Lekki, Lagos
+          </span>
         </div>
 
-        {/* Hero Section: Brand Identity & Grand Quote */}
-        <section className="relative pt-6 sm:pt-12 pb-16 sm:pb-24 border-b border-stone-200/80">
-          {/* Ambient decorative glow */}
-          <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#C0E8F9]/30 rounded-full blur-3xl pointer-events-none -z-10"
-            aria-hidden="true"
-          />
-
-          <div className="max-w-4xl mx-auto text-center">
-            {/* Clean metadata badge */}
-            <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-md border border-stone-200/80 shadow-2xs rounded-full px-4 py-1.5 mb-6">
-              <span className="w-2 h-2 rounded-full bg-[#D64933]" />
-              <span className="text-xs font-semibold tracking-wider uppercase text-[#162521]">
-                ChapelHill Multicompany Limited
-              </span>
-            </div>
-
-            {/* Main Headline */}
-            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#162521] tracking-[-0.03em] leading-[1.2] sm:leading-[1.15]">
-              Excellence in Property Development, Construction &amp; Maintenance
-            </h1>
-
-            {/* Core Brand Quote */}
-            <div className="mt-8 p-6 sm:p-8 rounded-3xl bg-white/80 border border-stone-200/80 shadow-[0_8px_30px_rgba(22,37,33,0.04)] backdrop-blur-md">
-              <p className="text-base sm:text-xl md:text-2xl font-serif italic text-[#461313] leading-relaxed">
-                &ldquo;At ChapelHill Multicompany Limited, we epitomize excellence in property development, construction, and maintenance services.&rdquo;
+        {/* SECTION 1: WIDE EDITORIAL OPENING + COMPACT ANCHOR BLOCK */}
+        <section className="pb-14 sm:pb-20 border-b border-stone-200/80">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+            {/* Wide Editorial Text Column */}
+            <div className="lg:col-span-7">
+              <p className="text-xs font-semibold tracking-[0.18em] uppercase text-[#D64933]">
+                About ChapelHill Multicompany Limited
               </p>
-              <div className="mt-4 flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#D64933]">
-                <span>Where Home Meets Happiness</span>
+
+              <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#162521] tracking-[-0.03em] leading-[1.12] mt-4 text-balance">
+                Excellence in Property Development, Construction &amp; Maintenance
+              </h1>
+
+              <div className="mt-6 space-y-4 max-w-[65ch] text-base sm:text-[17px] text-[#162521]/80 leading-[1.7]">
+                <p>
+                  At{' '}
+                  <strong className="font-semibold text-[#162521]">
+                    ChapelHill Multicompany Limited
+                  </strong>
+                  , we deliver Property Development and Sales, Construction and Project Management,
+                  Property and Facility Management, and Joint Ventures and Investment Partnerships
+                  tailored to our clients’ goals.
+                </p>
+                <p className="text-[#162521]/75">
+                  Our leadership team brings multidisciplinary expertise across board governance,
+                  corporate law, civil engineering, quantity surveying, and asset stewardship—serving
+                  private homeowners, diaspora buyers, corporate organizations, landowners, and
+                  development partners across Lagos and Nigeria.
+                </p>
+              </div>
+
+              <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+                <button
+                  type="button"
+                  onClick={() => openBookingFor('ChapelHill Multicompany Limited Consultation')}
+                  className="bg-[#461313] hover:bg-[#D64933] text-white pl-6 pr-3.5 py-3 rounded-full font-semibold text-sm inline-flex items-center justify-center gap-3 transition-colors duration-200 shadow-sm cursor-pointer min-h-[48px] whitespace-nowrap shrink-0 group"
+                >
+                  <span>Book a Private Consultation</span>
+                  <span className="w-7 h-7 rounded-full bg-white text-[#461313] group-hover:text-[#D64933] flex items-center justify-center transition-transform group-hover:translate-x-0.5">
+                    <ArrowRight className="w-4 h-4 stroke-[2.25]" />
+                  </span>
+                </button>
+
+                <a
+                  href="https://wa.me/2348032865488?text=Hello%20ChapelHill%20Multicompany%20Limited%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20services%20and%20developments."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white hover:bg-[#25D366]/10 text-[#128C7E] border border-stone-200 hover:border-[#25D366]/40 px-6 py-3 rounded-full font-semibold text-sm inline-flex items-center justify-center gap-2.5 transition-colors min-h-[48px] whitespace-nowrap shrink-0"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  <span>Advisory on WhatsApp</span>
+                </a>
               </div>
             </div>
 
-            {/* Narrative Overview */}
-            <p className="mt-8 text-base sm:text-lg text-[#162521]/80 max-w-3xl mx-auto leading-relaxed">
-              At <strong className="font-semibold text-[#162521]">ChapelHill Multicompany Limited</strong>, we deliver Property Development and Sales, Construction and Project Management, Property and Facility Management, and Joint Ventures and Investment Partnerships tailored to our clients’ goals.
-            </p>
-            <p className="mt-4 text-sm sm:text-base text-[#162521]/75 max-w-3xl mx-auto leading-relaxed">
-              Our leadership team brings broad multidisciplinary expertise, serving private homeowners, diaspora buyers, corporate clients, landowners, and strategic development partners.
-            </p>
-
-            {/* Action CTAs */}
-            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <button
-                onClick={() => openBookingFor('ChapelHill Multicompany Limited Consultation')}
-                className="w-full sm:w-auto bg-[#461313] hover:bg-[#D64933] text-white pl-6 pr-3 py-3.5 rounded-full font-semibold text-sm inline-flex items-center justify-center gap-3 transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer min-h-[48px] group"
-              >
-                <span>Book a Private Consultation</span>
-                <span className="w-8 h-8 rounded-full bg-white text-[#461313] group-hover:text-[#D64933] flex items-center justify-center group-hover:translate-x-0.5 transition-all">
-                  <ArrowRight className="w-4 h-4 stroke-[2.5]" />
-                </span>
-              </button>
-
-              <a
-                href="https://wa.me/2348032865488?text=Hello%20ChapelHill%20Multicompany%20Limited%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20services%20and%20developments."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto bg-[#25D366]/10 hover:bg-[#25D366]/20 text-[#128C7E] border border-[#25D366]/30 px-6 py-3.5 rounded-full font-semibold text-sm inline-flex items-center justify-center gap-2.5 transition-colors min-h-[48px]"
-              >
-                <MessageCircle className="w-4 h-4 fill-[#128C7E]" />
-                <span>Chat with Advisory on WhatsApp</span>
-              </a>
-            </div>
-          </div>
-
-          {/* Clean Typographic Pillars Strip (Zero-Pill Discipline) */}
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 pt-10 border-t border-stone-200/60 max-w-5xl mx-auto text-center">
-            <div>
-              <p className="text-xl sm:text-2xl font-extrabold text-[#461313] font-serif">
-                Development &amp; Sales
+            {/* Compact Scannable Quote & Corporate Index Block */}
+            <aside className="lg:col-span-5 bg-[#F7F3F5] border border-stone-200/80 rounded-2xl p-6 sm:p-8">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#D64933]">
+                Brand Ethos
               </p>
-              <p className="mt-1 text-xs text-stone-500 font-medium">
-                Residential &amp; Off-Plan Projects
-              </p>
-            </div>
-            <div>
-              <p className="text-xl sm:text-2xl font-extrabold text-[#461313] font-serif">
-                Construction
-              </p>
-              <p className="mt-1 text-xs text-stone-500 font-medium">
-                Builds, Coordination &amp; Remodelling
-              </p>
-            </div>
-            <div>
-              <p className="text-xl sm:text-2xl font-extrabold text-[#461313] font-serif">
-                Facility Care
-              </p>
-              <p className="mt-1 text-xs text-stone-500 font-medium">
-                Maintenance, Repairs &amp; Infrastructure
-              </p>
-            </div>
-            <div>
-              <p className="text-xl sm:text-2xl font-extrabold text-[#461313] font-serif">
-                Joint Ventures
-              </p>
-              <p className="mt-1 text-xs text-stone-500 font-medium">
-                Landowners, Investors &amp; Partners
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Mission, Vision & Core Goals */}
-        <section className="py-16 sm:py-24 border-b border-stone-200/80">
-          <div className="max-w-3xl mb-12">
-            <span className="text-xs font-semibold tracking-wider uppercase text-[#D64933]">
-              Foundational Principles
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#162521] mt-2">
-              Our Mission, Vision &amp; Strategic Goals
-            </h2>
-            <p className="mt-3 text-stone-600 text-sm sm:text-base leading-relaxed">
-              Every foundation we pour and every project we manage is governed by uncompromising standards of craftsmanship, fiscal responsibility, and enduring architectural prestige.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            {/* Mission Card */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-200 shadow-sm relative overflow-hidden group hover:border-[#D64933]/50 transition-colors">
-              <div className="w-12 h-12 rounded-2xl bg-[#461313]/10 text-[#461313] flex items-center justify-center mb-6">
-                <Target className="w-6 h-6 stroke-[2]" />
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-[#162521]">Our Mission</h3>
-              <p className="mt-4 text-stone-600 text-base leading-relaxed">
-                &ldquo;Exceeding customers’ expectations through excellent delivery of construction services, property development, space design, and maintenance solutions.&rdquo;
-              </p>
-              <div className="mt-6 flex flex-col gap-2 pt-6 border-t border-stone-100 text-xs text-stone-500 font-medium">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#D64933]" />
-                  <span>Precision architectural execution tailored to client visions</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#D64933]" />
-                  <span>End-to-end quality assurance from sub-grade to finishing</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Vision Card */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-white border border-stone-200 shadow-sm relative overflow-hidden group hover:border-[#D64933]/50 transition-colors">
-              <div className="w-12 h-12 rounded-2xl bg-[#D64933]/10 text-[#D64933] flex items-center justify-center mb-6">
-                <Eye className="w-6 h-6 stroke-[2]" />
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-[#162521]">Our Vision</h3>
-              <p className="mt-4 text-stone-600 text-base leading-relaxed">
-                &ldquo;To be the leading brand reputed for quality in the property development, construction and maintenance industry.&rdquo;
-              </p>
-              <div className="mt-6 flex flex-col gap-2 pt-6 border-t border-stone-100 text-xs text-stone-500 font-medium">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#D64933]" />
-                  <span>Recognized across Nigeria and premier diaspora investment corridors</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#D64933]" />
-                  <span>Benchmark for structural resilience, aesthetic prestige & longevity</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Goals: Where Home Meets Happiness */}
-          <div className="p-8 sm:p-12 rounded-3xl bg-[#162521] text-white relative overflow-hidden">
-            <div className="max-w-2xl">
-              <span className="text-xs font-semibold tracking-wider uppercase text-[#E5C583]">
-                Our Goals &amp; Philosophy
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-bold mt-2 text-white">
+              <blockquote className="font-heading text-xl sm:text-2xl font-semibold text-[#461313] leading-snug mt-3">
+                &ldquo;At ChapelHill Multicompany Limited, we epitomize excellence in property
+                development, construction, and maintenance services.&rdquo;
+              </blockquote>
+              <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-[#162521]/70">
                 Where Home Meets Happiness
-              </h3>
-              <p className="mt-3 text-stone-300 text-sm sm:text-base leading-relaxed">
-                At ChapelHill Multicompany Limited, we understand that every client is unique. That’s why we tailor our services to match individual visions, turning ideas into reality with precision and excellence.
               </p>
-            </div>
 
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 border-t border-white/10">
-              <div className="space-y-2">
-                <div className="text-[#E5C583] font-bold text-lg flex items-center gap-2">
-                  <span className="w-6 h-6 rounded-full bg-[#E5C583]/20 flex items-center justify-center text-xs">1</span>
-                  <span>Expertise you can trust</span>
+              <dl className="mt-6 pt-6 border-t border-stone-200/80 divide-y divide-stone-200/70 text-xs sm:text-sm">
+                <div className="py-2.5 flex items-baseline justify-between gap-4">
+                  <dt className="text-stone-500 font-medium shrink-0">Headquarters</dt>
+                  <dd className="text-right font-semibold text-[#162521]">
+                    Abraham Adesanya, Lekki-Epe Expy
+                  </dd>
                 </div>
-                <p className="text-xs sm:text-sm text-stone-400 leading-relaxed">
-                  Seasoned experience in quantity surveying, civil engineering, and facility stewardship producing dependable results.
-                </p>
-              </div>
-
-              <div className="space-y-2">
-                <div className="text-[#E5C583] font-bold text-lg flex items-center gap-2">
-                  <span className="w-6 h-6 rounded-full bg-[#E5C583]/20 flex items-center justify-center text-xs">2</span>
-                  <span>Maximizing value</span>
+                <div className="py-2.5 flex items-baseline justify-between gap-4">
+                  <dt className="text-stone-500 font-medium shrink-0">Core Divisions</dt>
+                  <dd className="text-right font-semibold text-[#162521]">
+                    Development · Build · Facility · JV
+                  </dd>
                 </div>
-                <p className="text-xs sm:text-sm text-stone-400 leading-relaxed">
-                  Transparent budgeting, value engineering, and milestone tracking aligned with your project scope and budget.
-                </p>
-              </div>
-
-              <div className="space-y-2">
-                <div className="text-[#E5C583] font-bold text-lg flex items-center gap-2">
-                  <span className="w-6 h-6 rounded-full bg-[#E5C583]/20 flex items-center justify-center text-xs">3</span>
-                  <span>Your perfect match</span>
+                <div className="pt-2.5 flex items-baseline justify-between gap-4">
+                  <dt className="text-stone-500 font-medium shrink-0">Advisory Lines</dt>
+                  <dd className="text-right font-semibold text-[#461313]">
+                    +234 903 913 0207 / +234 803 286 5488
+                  </dd>
                 </div>
-                <p className="text-xs sm:text-sm text-stone-400 leading-relaxed">
-                  Finding your ideal acquisition in prime Lagos real estate, tailored from raw site curation to bespoke finishing.
-                </p>
-              </div>
-            </div>
+              </dl>
+            </aside>
           </div>
         </section>
 
-        {/* Executive Management Team Section ("Meet the Team") */}
-        <section id="leadership-team" className="py-16 sm:py-24 border-b border-stone-200/80">
-          <div className="max-w-3xl mb-12">
-            <span className="text-xs font-semibold tracking-wider uppercase text-[#D64933]">
-              Leadership &amp; Governance
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#162521] mt-2">
-              Meet the Team
-            </h2>
-            <p className="mt-3 text-stone-600 text-sm sm:text-base leading-relaxed">
-              At ChapelHill Multicompany Limited, our work is driven by the collective expertise and dedication of our management team. Together, we form a dynamic team committed to pushing boundaries and delivering reliable execution.
-            </p>
+        {/* SECTION 2: COMPACT SCANNABLE BAND — FOUR CORE SERVICE DIVISIONS */}
+        <section id="services-grid" className="py-12 sm:py-16 border-b border-stone-200/80">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+            <div>
+              <p className="text-xs font-semibold tracking-[0.16em] uppercase text-[#D64933]">
+                Four Operating Divisions
+              </p>
+              <h2 className="font-heading text-2xl sm:text-3xl font-bold text-[#162521] mt-1.5 tracking-[-0.02em]">
+                Integrated Real Estate Capabilities
+              </h2>
+            </div>
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#461313] hover:text-[#D64933] transition-colors whitespace-nowrap shrink-0"
+            >
+              <span>Explore All Services</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
 
-          {/* 6-Member Leadership Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {TEAM_MEMBERS.map((member) => (
-              <div
-                key={member.name}
-                className="bg-white rounded-3xl border border-stone-200 overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
-              >
-                <div>
-                  {/* Photo Header */}
-                  <div className="relative w-full aspect-square bg-stone-100 overflow-hidden">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      referrerPolicy="no-referrer"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                      <span className="text-xs font-semibold text-white bg-[#461313]/90 px-3 py-1 rounded-full backdrop-blur-xs">
-                        View Executive Profile
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Body Information */}
-                  <div className="p-6">
-                    <h3 className="text-lg sm:text-xl font-bold text-[#162521]">
-                      {member.name}
-                    </h3>
-                    <p className="text-xs font-semibold text-[#D64933] uppercase tracking-wider mt-1">
-                      {member.role}
-                    </p>
-                    <p className="mt-3 text-xs sm:text-sm text-stone-600 leading-relaxed line-clamp-3">
-                      {member.bio}
-                    </p>
-
-                    
-                  </div>
-                </div>
-
-                {/* Card Footer Action */}
-                <div className="p-6 pt-0">
-                  <button
-                    onClick={() => setSelectedMember(member)}
-                    className="w-full py-2.5 px-4 rounded-xl bg-stone-50 hover:bg-[#461313] text-[#162521] hover:text-white font-semibold text-xs transition-colors flex items-center justify-center gap-2 cursor-pointer border border-stone-200 hover:border-[#461313]"
-                  >
-                    <span>Read Full Profile</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Core Services & Capabilities Grid */}
-        <section id="services-grid" className="py-16 sm:py-24 border-b border-stone-200/80">
-          <div className="max-w-3xl mb-12">
-            <span className="text-xs font-semibold tracking-wider uppercase text-[#D64933]">
-              Our Four Service Categories
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#162521] mt-2">
-              Property Development, Construction, Facility Management &amp; Partnerships
-            </h2>
-            <p className="mt-3 text-stone-600 text-sm sm:text-base leading-relaxed">
-              Each division is structured to support homeowners, corporate clients, landowners, investors, and institutional partners across Nigeria.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border border-stone-200/90 rounded-2xl bg-white divide-y sm:divide-y-0 sm:divide-x divide-stone-200/80 overflow-hidden">
             {CORE_SERVICES.map((service) => {
               const IconComp = service.icon;
               return (
                 <div
-                  key={service.number}
-                  className="rounded-3xl bg-white border border-stone-200 shadow-xs hover:shadow-md transition-shadow flex flex-col justify-between overflow-hidden group"
+                  key={service.id}
+                  className="p-6 flex flex-col justify-between hover:bg-[#F7F3F5]/60 transition-colors"
                 >
                   <div>
-                    {/* Supporting Service Imagery */}
-                    <div className="relative w-full aspect-[16/10] bg-stone-100 overflow-hidden">
-                      <Image
-                        src={service.image}
-                        alt={service.imageAlt}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover group-hover:scale-105 transition-transform duration-700"
-                        referrerPolicy="no-referrer"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
-                      <div className="absolute top-4 left-4 w-10 h-10 rounded-xl bg-white/90 backdrop-blur-md flex items-center justify-center text-[#461313] shadow-sm">
-                        <IconComp className="w-5 h-5" />
-                      </div>
-                      <div className="absolute bottom-4 left-4 right-4 text-white">
-                        <span className="text-[11px] font-mono font-semibold tracking-wider uppercase text-[#C0E8F9]">
-                          Category {service.code} · {service.number}
-                        </span>
-                      </div>
+                    <div className="flex items-center justify-between gap-3 mb-4">
+                      <span className="font-heading text-xs font-bold tracking-widest text-[#D64933]">
+                        {service.number}
+                      </span>
+                      <IconComp className="w-4 h-4 text-[#461313]" />
                     </div>
-
-                    <div className="p-6 sm:p-8">
-                      <h3 className="text-xl sm:text-2xl font-bold text-[#162521]">
-                        {service.title}
-                      </h3>
-
-                      <p className="mt-3 text-sm text-stone-600 leading-relaxed">
-                        {service.description}
-                      </p>
-
-                      <div className="mt-6 pt-5 border-t border-stone-100 space-y-2.5">
-                        {service.highlights.map((item, idx) => (
-                          <div key={idx} className="flex items-start gap-2.5 text-xs text-stone-700">
-                            <CheckCircle2 className="w-4 h-4 text-[#D64933] shrink-0 mt-0.5" />
-                            <span>{item}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+                    <h3 className="font-heading text-lg font-bold text-[#162521] leading-snug">
+                      {service.title}
+                    </h3>
+                    <p className="mt-2.5 text-xs sm:text-sm text-stone-600 leading-relaxed">
+                      {service.description}
+                    </p>
                   </div>
 
-                  <div className="px-6 sm:px-8 pb-6 sm:pb-8 pt-4 border-t border-stone-100 flex flex-wrap items-center justify-between gap-3">
+                  <div className="mt-5 pt-4 border-t border-stone-100 flex items-center justify-between gap-2">
                     <button
                       type="button"
                       onClick={() => openBookingFor(service.title)}
-                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#461313] hover:bg-[#D64933] text-white text-xs font-semibold transition-colors cursor-pointer"
+                      className="text-xs font-semibold text-[#461313] hover:text-[#D64933] transition-colors cursor-pointer"
                     >
-                      <span>Enquire Now</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
+                      Enquire
                     </button>
-
-                    <div className="flex items-center gap-4">
-                      <a
-                        href={`https://wa.me/2348032865488?text=${encodeURIComponent(
-                          `Hello ChapelHill Multicompany Limited, I would like to inquire about your "${service.title}" services.`
-                        )}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs font-semibold text-[#128C7E] hover:text-[#461313] inline-flex items-center gap-1.5 transition-colors"
-                      >
-                        <MessageCircle className="w-3.5 h-3.5" />
-                        <span>WhatsApp</span>
-                      </a>
-
-                      <Link
-                        href={`/services#${service.id}`}
-                        className="text-xs font-semibold text-stone-600 hover:text-[#461313] inline-flex items-center gap-1 transition-colors"
-                      >
-                        <span>Full Details</span>
-                        <ChevronRight className="w-3.5 h-3.5" />
-                      </Link>
-                    </div>
+                    <Link
+                      href={`/services#${service.id}`}
+                      className="text-xs font-medium text-stone-500 hover:text-[#162521] inline-flex items-center gap-1 transition-colors"
+                    >
+                      <span>Scope</span>
+                      <ChevronRight className="w-3.5 h-3.5" />
+                    </Link>
                   </div>
                 </div>
               );
@@ -657,80 +459,374 @@ export default function AboutPageClient() {
           </div>
         </section>
 
-        {/* How We Work: 6-Step Delivery Framework */}
-        <section className="py-16 sm:py-24 border-b border-stone-200/80">
-          <div className="max-w-3xl mb-12">
-            <span className="text-xs font-semibold tracking-wider uppercase text-[#D64933]">
-              Disciplined Execution
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#162521] mt-2">
-              Paving the Way to Real Estate Glory
-            </h2>
-            <p className="mt-3 text-stone-600 text-sm sm:text-base leading-relaxed">
-              Our 6-step project delivery methodology ensures transparency, risk mitigation, and flawless handover from first handshake to post-occupation support.
-            </p>
+        {/* SECTION 3: INTERACTIVE EXECUTIVE DIRECTORY (7 LEADERS — TABBED & FILTERABLE) */}
+        <section id="leadership-team" className="py-14 sm:py-20 border-b border-stone-200/80">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+            <div className="max-w-2xl">
+              <p className="text-xs font-semibold tracking-[0.16em] uppercase text-[#D64933]">
+                Leadership &amp; Governance Directory
+              </p>
+              <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-[#162521] mt-2 tracking-[-0.02em]">
+                Meet the Executive Team &amp; Board
+              </h2>
+              <p className="mt-2.5 text-sm sm:text-base text-stone-600 leading-relaxed max-w-[62ch]">
+                Filter by governance or operational track and select any leader to review credentials,
+                board remit, and direct advisory channels.
+              </p>
+            </div>
+
+            {/* Filter Tabs */}
+            <div
+              role="tablist"
+              aria-label="Filter leadership directory"
+              className="flex flex-wrap items-center gap-2"
+            >
+              {LEADERSHIP_FILTERS.map((filter) => {
+                const isSelected = activeFilter === filter.id;
+                return (
+                  <button
+                    key={filter.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={isSelected}
+                    onClick={() => handleFilterChange(filter.id)}
+                    className={`px-4 py-2.5 rounded-full text-xs font-semibold transition-all duration-150 cursor-pointer min-h-[42px] whitespace-nowrap shrink-0 border ${
+                      isSelected
+                        ? 'bg-[#461313] text-white border-[#461313] shadow-xs'
+                        : 'bg-white text-[#162521] border-stone-200 hover:border-[#461313]/40 hover:bg-[#F7F3F5]'
+                    }`}
+                  >
+                    {filter.label} ({filter.count})
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {WORK_PROCESS_STEPS.map((step) => (
-              <div
-                key={step.step}
-                className="p-6 sm:p-7 rounded-2xl bg-white border border-stone-200 shadow-2xs relative"
-              >
-                <span className="text-2xl font-serif font-extrabold text-[#461313]/30 block mb-3">
-                  {step.step}.
-                </span>
-                <h3 className="text-base font-bold text-[#162521]">
-                  {step.title}
-                </h3>
-                <p className="mt-2 text-xs sm:text-sm text-stone-600 leading-relaxed">
-                  {step.desc}
-                </p>
-              </div>
-            ))}
+          {/* Master-Detail Executive Switcher */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+            {/* Compact Scannable Directory Selector */}
+            <div
+              role="tablist"
+              aria-label="Select executive profile"
+              aria-orientation="vertical"
+              className="lg:col-span-5 bg-white border border-stone-200/90 rounded-2xl divide-y divide-stone-200/70 overflow-hidden"
+            >
+              {filteredMembers.map((member, index) => {
+                const isActive = activeMember.id === member.id;
+                return (
+                  <button
+                    key={member.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={isActive}
+                    onClick={() => setActiveMemberId(member.id)}
+                    className={`w-full text-left px-4 sm:px-5 py-3.5 flex items-center justify-between gap-3.5 transition-colors cursor-pointer min-h-[68px] ${
+                      isActive
+                        ? 'bg-[#461313] text-white'
+                        : 'bg-white hover:bg-[#F7F3F5] text-[#162521]'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3.5 min-w-0">
+                      <span
+                        className={`font-heading text-[11px] font-bold w-5 shrink-0 ${
+                          isActive ? 'text-[#E5C583]' : 'text-stone-400'
+                        }`}
+                      >
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+
+                      <div className="relative w-11 h-11 rounded-full overflow-hidden bg-stone-100 shrink-0 ring-1 ring-black/10">
+                        <Image
+                          src={member.image}
+                          alt={member.name}
+                          fill
+                          sizes="44px"
+                          className="object-cover object-top"
+                          referrerPolicy="no-referrer"
+                        />
+                      </div>
+
+                      <div className="min-w-0">
+                        <p className="font-heading text-sm sm:text-[15px] font-bold truncate">
+                          {member.name}
+                        </p>
+                        <p
+                          className={`text-xs truncate mt-0.5 ${
+                            isActive ? 'text-stone-200' : 'text-stone-500'
+                          }`}
+                        >
+                          {member.role}
+                        </p>
+                      </div>
+                    </div>
+
+                    <ChevronRight
+                      className={`w-4 h-4 shrink-0 transition-transform ${
+                        isActive ? 'text-[#E5C583] translate-x-0.5' : 'text-stone-400'
+                      }`}
+                    />
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Active Executive Dossier Panel */}
+            <div className="lg:col-span-7 bg-white border border-stone-200/90 rounded-2xl overflow-hidden shadow-xs">
+              <AnimatePresence mode="wait">
+                <motion.article
+                  key={activeMember.id}
+                  initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: -6 }}
+                  transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+                  className="p-6 sm:p-8"
+                >
+                  {/* Profile Header */}
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-6 pb-6 border-b border-stone-200/70">
+                    <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden bg-stone-100 shrink-0 border border-stone-200/70">
+                      <Image
+                        src={activeMember.image}
+                        alt={activeMember.name}
+                        fill
+                        sizes="128px"
+                        className="object-cover object-top"
+                        referrerPolicy="no-referrer"
+                      />
+                    </div>
+
+                    <div className="flex-1 min-w-0">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#D64933]">
+                        {activeMember.trackLabel} · {activeMember.role}
+                      </p>
+                      <h3 className="font-heading text-2xl sm:text-3xl font-bold text-[#162521] mt-1.5 tracking-[-0.02em]">
+                        {activeMember.name}
+                      </h3>
+
+                      {(activeMember.phone || activeMember.email) && (
+                        <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-1.5 text-xs text-stone-600">
+                          {activeMember.phone && (
+                            <a
+                              href={`tel:${activeMember.phone.replace(/\s+/g, '')}`}
+                              className="inline-flex items-center gap-1.5 font-semibold text-[#461313] hover:text-[#D64933] transition-colors"
+                            >
+                              <Phone className="w-3.5 h-3.5" />
+                              <span>{activeMember.phone}</span>
+                            </a>
+                          )}
+                          {activeMember.email && (
+                            <a
+                              href={`mailto:${activeMember.email}`}
+                              className="inline-flex items-center gap-1.5 font-medium text-stone-600 hover:text-[#461313] transition-colors"
+                            >
+                              <Mail className="w-3.5 h-3.5" />
+                              <span>{activeMember.email}</span>
+                            </a>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Bio Prose (Manrope editorial measure) */}
+                  <div className="mt-6">
+                    <p className="text-[15px] sm:text-base text-[#162521]/80 leading-[1.72] max-w-[65ch]">
+                      {activeMember.bio}
+                    </p>
+                  </div>
+
+                  {/* Scannable Credentials */}
+                  <div className="mt-6 pt-5 border-t border-stone-100">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-stone-500 mb-3">
+                      Key Remit &amp; Credentials
+                    </p>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs sm:text-sm text-[#162521]/85">
+                      {activeMember.qualifications.map((item) => (
+                        <li key={item} className="flex items-start gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-[#D64933] shrink-0 mt-0.5" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Dossier Footer Navigation & Enquiry */}
+                  <div className="mt-7 pt-5 border-t border-stone-200/70 flex flex-wrap items-center justify-between gap-3">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        openBookingFor(
+                          `Consultation Request — ${activeMember.name} (${activeMember.role})`
+                        )
+                      }
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#461313] hover:bg-[#D64933] text-white text-xs font-semibold transition-colors cursor-pointer min-h-[42px] whitespace-nowrap shrink-0"
+                    >
+                      <span>Consult with Leadership</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-medium text-stone-500 mr-1">
+                        {activeIndex + 1} / {filteredMembers.length}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => stepMember(-1)}
+                        aria-label="Previous executive profile"
+                        className="w-10 h-10 rounded-full border border-stone-200 hover:border-[#461313] text-[#162521] hover:text-[#461313] flex items-center justify-center transition-colors cursor-pointer"
+                      >
+                        <ArrowLeft className="w-4 h-4" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => stepMember(1)}
+                        aria-label="Next executive profile"
+                        className="w-10 h-10 rounded-full border border-stone-200 hover:border-[#461313] text-[#162521] hover:text-[#461313] flex items-center justify-center transition-colors cursor-pointer"
+                      >
+                        <ArrowRight className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
+                </motion.article>
+              </AnimatePresence>
+            </div>
           </div>
         </section>
 
-        {/* Corporate Headquarters & Contact Detail Card */}
-        <section className="py-16 sm:py-24">
-          <div className="p-8 sm:p-12 rounded-3xl bg-[#461313] text-white relative overflow-hidden">
-            {/* Ambient subtle glow */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl pointer-events-none" />
+        {/* SECTION 4: ALTERNATING EDITORIAL NARRATIVE & FOUNDATIONAL PRINCIPLES */}
+        <section className="py-14 sm:py-20 border-b border-stone-200/80">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+            {/* Compact Scannable Mission & Vision Chapters */}
+            <div className="lg:col-span-5 divide-y divide-stone-200/80 border-y border-stone-200/80">
+              <div className="py-6">
+                <div className="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-[#461313]">
+                  <Target className="w-4 h-4 text-[#D64933]" />
+                  <span>Our Mission</span>
+                </div>
+                <p className="font-heading text-lg sm:text-xl font-semibold text-[#162521] mt-3 leading-snug">
+                  &ldquo;Exceeding customers’ expectations through excellent delivery of
+                  construction services, property development, space design, and maintenance
+                  solutions.&rdquo;
+                </p>
+                <p className="mt-2.5 text-xs sm:text-sm text-stone-600 leading-relaxed">
+                  Precision execution tailored to client briefs, backed by end-to-end quality
+                  assurance from foundation works through finishing.
+                </p>
+              </div>
 
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div className="py-6">
+                <div className="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-[#461313]">
+                  <Eye className="w-4 h-4 text-[#D64933]" />
+                  <span>Our Vision</span>
+                </div>
+                <p className="font-heading text-lg sm:text-xl font-semibold text-[#162521] mt-3 leading-snug">
+                  &ldquo;To be the leading brand reputed for quality in the property development,
+                  construction and maintenance industry.&rdquo;
+                </p>
+                <p className="mt-2.5 text-xs sm:text-sm text-stone-600 leading-relaxed">
+                  Setting a dependable benchmark for structural resilience, clear title processes,
+                  and long-term property care across Lagos and diaspora investment corridors.
+                </p>
+              </div>
+            </div>
+
+            {/* Wide Editorial Narrative & Deep Forest Anchor Strip */}
+            <div className="lg:col-span-7 bg-[#162521] text-white rounded-2xl p-7 sm:p-10">
+              <p className="text-xs font-semibold tracking-[0.16em] uppercase text-[#E5C583]">
+                Our Goals &amp; Philosophy
+              </p>
+              <h2 className="font-heading text-2xl sm:text-3xl font-bold text-white mt-2 tracking-[-0.02em]">
+                Where Home Meets Happiness
+              </h2>
+              <p className="mt-4 text-stone-300 text-sm sm:text-base leading-[1.7] max-w-[62ch]">
+                Every client arrives with distinct residential, commercial, or joint-venture
+                objectives. We align engineering discipline, commercial transparency, and structured
+                facility stewardship so every development endures well beyond handover.
+              </p>
+
+              <div className="mt-8 pt-6 border-t border-white/15 grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div>
+                  <p className="font-heading text-sm font-bold text-[#E5C583]">
+                    01 · Expertise You Can Trust
+                  </p>
+                  <p className="mt-1.5 text-xs text-stone-300 leading-relaxed">
+                    Multidisciplinary strength across quantity surveying, civil engineering, law, and
+                    facility operations.
+                  </p>
+                </div>
+                <div>
+                  <p className="font-heading text-sm font-bold text-[#E5C583]">
+                    02 · Maximizing Value
+                  </p>
+                  <p className="mt-1.5 text-xs text-stone-300 leading-relaxed">
+                    Clear budgeting, milestone tracking, and cost engineering aligned to agreed
+                    specifications.
+                  </p>
+                </div>
+                <div>
+                  <p className="font-heading text-sm font-bold text-[#E5C583]">
+                    03 · Tailored Alignment
+                  </p>
+                  <p className="mt-1.5 text-xs text-stone-300 leading-relaxed">
+                    Advisory shaped for end-users, diaspora purchasers, corporate clients, and
+                    landowners.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 5: STICKY SPLIT 6-STEP PROJECT DELIVERY METHODOLOGY */}
+        <DeliveryMethodologySticky
+          onConsultClick={() =>
+            openBookingFor('Stage 01 Initial Consultation — Project Delivery')
+          }
+        />
+
+        {/* SECTION 6: COMPACT HEADQUARTERS & DIRECT ENGAGEMENT BAND */}
+        <section className="pt-14 sm:pt-20">
+          <div className="p-7 sm:p-11 rounded-2xl bg-[#461313] text-white">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               <div className="lg:col-span-7">
-                <span className="text-xs font-semibold tracking-wider uppercase text-[#E5C583]">
+                <p className="text-xs font-semibold tracking-[0.16em] uppercase text-[#E5C583]">
                   Direct Engagement
-                </span>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-2 leading-tight">
+                </p>
+                <h2 className="font-heading text-2xl sm:text-3xl font-bold text-white mt-2 tracking-[-0.02em]">
                   Partner with ChapelHill Multicompany Limited
                 </h2>
-                <p className="mt-4 text-stone-200 text-sm sm:text-base leading-relaxed">
-                  Whether you are interested in property development and sales, construction and project management, property and facility management, or joint venture partnerships, our team is ready to assist.
+                <p className="mt-3 text-stone-200 text-sm sm:text-base leading-relaxed max-w-[60ch]">
+                  Whether you are exploring our developments, commissioning construction, arranging
+                  facility maintenance, or proposing a joint venture, our advisory desk is ready to
+                  assist.
                 </p>
 
-                <div className="mt-8 space-y-3 text-xs sm:text-sm text-stone-300">
-                  <div className="flex items-start gap-3">
+                <div className="mt-6 space-y-2.5 text-xs sm:text-sm text-stone-200">
+                  <div className="flex items-start gap-2.5">
                     <MapPin className="w-4 h-4 text-[#E5C583] shrink-0 mt-0.5" />
                     <span>
-                      Block B4 357, HFP Shopping Complex, Abraham Adesanya Junction, Lekki, Lagos State, Nigeria
+                      Block B4 357, HFP Shopping Complex, Abraham Adesanya Junction, Lekki-Epe
+                      Expressway, Lagos State, Nigeria
                     </span>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <Phone className="w-4 h-4 text-[#E5C583] shrink-0" />
-                    <span>+234 803 286 5488</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Mail className="w-4 h-4 text-[#E5C583] shrink-0" />
-                    <span>chapelhillmulticompanyltd@gmail.com</span>
+                  <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+                    <span className="inline-flex items-center gap-2">
+                      <Phone className="w-4 h-4 text-[#E5C583] shrink-0" />
+                      <span>+234 903 913 0207 · +234 803 286 5488</span>
+                    </span>
+                    <span className="inline-flex items-center gap-2">
+                      <Mail className="w-4 h-4 text-[#E5C583] shrink-0" />
+                      <span>chapelhillmulticompanyltd@gmail.com</span>
+                    </span>
                   </div>
                 </div>
               </div>
 
               <div className="lg:col-span-5 flex flex-col gap-3">
                 <button
+                  type="button"
                   onClick={() => openBookingFor('ChapelHill Multicompany Limited Consultation')}
-                  className="w-full bg-[#E5C583] hover:bg-white text-[#461313] py-4 px-6 rounded-2xl font-bold text-sm transition-all duration-200 flex items-center justify-center gap-2 shadow-lg cursor-pointer"
+                  className="w-full bg-[#E5C583] hover:bg-white text-[#461313] py-3.5 px-6 rounded-full font-bold text-sm transition-colors duration-200 flex items-center justify-center gap-2 cursor-pointer min-h-[48px]"
                 >
                   <span>Schedule Private Consultation</span>
                   <ArrowRight className="w-4 h-4" />
@@ -740,10 +836,10 @@ export default function AboutPageClient() {
                   href="https://wa.me/2348032865488?text=Hello%20ChapelHill%20Multicompany%20Limited%2C%20I%20am%20reaching%20out%20from%20the%20About%20Us%20page."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full bg-white/10 hover:bg-white/20 text-white border border-white/20 py-3.5 px-6 rounded-2xl font-semibold text-xs sm:text-sm transition-colors flex items-center justify-center gap-2"
+                  className="w-full bg-white/10 hover:bg-white/20 text-white border border-white/20 py-3.5 px-6 rounded-full font-semibold text-xs sm:text-sm transition-colors flex items-center justify-center gap-2 min-h-[48px]"
                 >
-                  <MessageCircle className="w-4 h-4 fill-white" />
-                  <span>Direct WhatsApp Line (+234 803 286 5488)</span>
+                  <MessageCircle className="w-4 h-4" />
+                  <span>Direct WhatsApp Desk (+234 803 286 5488)</span>
                 </a>
               </div>
             </div>
@@ -751,7 +847,6 @@ export default function AboutPageClient() {
         </section>
       </main>
 
-      {/* Footer */}
       <Footer
         onExploreClick={() => {
           window.location.href = '/#featured-properties';
@@ -766,96 +861,12 @@ export default function AboutPageClient() {
         onContactClick={() => setBookingModalOpen(true)}
       />
 
-      {/* Team Member Detail Modal */}
-      {selectedMember && (
-        <div 
-          className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 animate-in fade-in duration-200"
-          onClick={() => setSelectedMember(null)}
-        >
-          <div 
-            className="bg-white rounded-3xl max-w-lg w-full max-h-[calc(100dvh-2rem)] flex flex-col overflow-hidden shadow-2xl border border-stone-200 animate-in zoom-in-95 duration-200"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="relative aspect-video sm:aspect-[4/3] max-h-52 sm:max-h-64 bg-stone-100 shrink-0">
-              <Image
-                src={selectedMember.image}
-                alt={selectedMember.name}
-                fill
-                className="object-cover object-top"
-                sizes="(max-width: 640px) 100vw, 500px"
-                referrerPolicy="no-referrer"
-              />
-              <button
-                onClick={() => setSelectedMember(null)}
-                className="absolute top-3 right-3 sm:top-4 sm:right-4 w-9 h-9 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center transition-colors cursor-pointer"
-                aria-label="Close modal"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            <div className="p-5 sm:p-8 overflow-y-auto flex-1 overscroll-contain">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#D64933]">
-                {selectedMember.role}
-              </span>
-              <h3 className="text-xl sm:text-2xl font-bold text-[#162521] mt-1">
-                {selectedMember.name}
-              </h3>
-
-              <p className="mt-3 text-sm text-stone-600 leading-relaxed">
-                {selectedMember.bio}
-              </p>
-
-              {selectedMember.qualifications && (
-                <div className="mt-5 pt-4 border-t border-stone-100">
-                  <p className="text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">
-                    Key Areas of Focus &amp; Credentials
-                  </p>
-                  <ul className="space-y-1.5 text-xs text-stone-700">
-                    {selectedMember.qualifications.map((q, idx) => (
-                      <li key={idx} className="flex items-center gap-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#D64933] shrink-0" />
-                        <span>{q}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {selectedMember.phone && (
-                <div className="mt-5 pt-4 border-t border-stone-100 flex items-center justify-between gap-4">
-                  <div className="text-xs">
-                    <p className="text-stone-500 font-medium">Direct Phone</p>
-                    <a 
-                      href={`tel:${selectedMember.phone.replace(/\s+/g, '')}`}
-                      className="font-bold text-[#461313] hover:text-[#D64933] transition-colors"
-                    >
-                      {selectedMember.phone}
-                    </a>
-                  </div>
-
-                  <a
-                    href={`tel:${selectedMember.phone.replace(/\s+/g, '')}`}
-                    className="px-4 py-2 rounded-xl bg-[#461313] text-white text-xs font-semibold hover:bg-[#D64933] transition-colors flex items-center gap-1.5"
-                  >
-                    <Phone className="w-3.5 h-3.5" />
-                    <span>Call Desk</span>
-                  </a>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Booking Consultation Modal */}
       <BookingModal
         isOpen={bookingModalOpen}
         onClose={() => setBookingModalOpen(false)}
         defaultProperty={selectedInquiryTopic}
       />
 
-      {/* Info Drawer */}
       <InfoDrawer
         isOpen={infoModal !== null}
         type={infoModal}
@@ -865,7 +876,6 @@ export default function AboutPageClient() {
         }
       />
 
-      {/* Floating WhatsApp Action */}
       <WhatsAppFAB />
     </div>
   );

@@ -230,9 +230,9 @@ const SERVICES_DATA: ServiceDetail[] = [
       'Structured partner reporting across planning, build, and delivery',
     ],
     caseStudyRef: {
-      projectName: 'Ogudu GRA Project',
+      projectName: 'IVY Homes, Ogudu GRA (SOLD OUT)',
       location: 'Ogudu GRA, Mainland Prime',
-      type: 'Delivered Residential Showcase',
+      type: 'Ongoing Construction · Fully Sold Out',
       href: '/properties/ogudu-gra-project',
     },
   },

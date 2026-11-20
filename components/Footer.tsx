@@ -181,16 +181,16 @@ export default function Footer({
                     <div className="flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#E5C583]/50 group-hover:bg-[#E5C583] group-hover:scale-125 transition-all duration-300 shrink-0" />
                       <span className="text-stone-300 group-hover:text-white font-medium text-xs sm:text-[13px] transition-colors duration-200">
-                        Ogudu GRA Penthouses
+                        IVY Homes, Ogudu GRA
                       </span>
                     </div>
                     <span className="text-[10px] font-mono text-rose-400/90 bg-rose-950/60 border border-rose-500/30 px-1.5 py-0.5 rounded opacity-90 group-hover:opacity-100 transition-opacity shrink-0">
-                      Sold Out
+                      SOLD OUT
                     </span>
                   </div>
                   <div className="flex items-center justify-between mt-1 pl-3.5">
                     <p className="text-[11px] text-stone-500 group-hover:text-stone-400 transition-colors line-clamp-1">
-                      Completed luxury penthouse residence
+                      Under construction · Enquire for future releases
                     </p>
                     <ArrowRight className="w-3.5 h-3.5 text-[#E5C583] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0" />
                   </div>

@@ -21,14 +21,14 @@ const LUXURY_PROPERTIES: Property[] = [
   {
     id: 'lekki-phase-1-project',
     name: 'IVY Heights, Ikate, Lekki Phase 1, Lagos',
-    location: 'Ikate, Lekki Phase 1, Lagos State, Nigeria',
-    price: 'Approved Schedule on Request',
+    location: 'Ikate, Lekki Phase 1, Lagos',
+    price: 'Offer Sheet on Request',
     beds: 3,
     baths: 3,
-    sqft: '2-Bed & 3-Bed Apartments',
+    sqft: '2 & 3-Bed · 2–3 Baths',
     tag: 'Pre-Construction / Off-Plan • 24-Mo Build',
     imageUrl: '/images/lekki-phase-1/lekki 3d/Lekki phase 1(4).jpeg',
-    description: 'Pre-construction / off-plan residential development at Ikate, Lekki Phase 1 featuring 2-bedroom and 3-bedroom apartments with 12-month, 18-month, and 24-month payment plans. Renderings are illustrative concepts.',
+    description: 'Modern residential development in Ikate, Lekki Phase 1 tailored for end-users and investors, offering 2- & 3-bedroom apartments (2–3 baths), 12 / 18 / 24-month payment tracks, and illustrative architectural previews.',
   },
   {
     id: 'ivy-homes-abijo',
@@ -44,15 +44,15 @@ const LUXURY_PROPERTIES: Property[] = [
   },
   {
     id: 'ogudu-gra-project',
-    name: 'Ogudu GRA Project',
+    name: 'IVY Homes, Ogudu GRA',
     location: 'Ogudu GRA, Mainland Prime, Lagos',
-    price: 'Sold Out',
+    price: 'SOLD OUT',
     beds: 5,
     baths: 6,
-    sqft: 'Penthouse + Service Room',
-    tag: 'Sold Out • Fully Allocated',
+    sqft: 'Ongoing Construction',
+    tag: 'SOLD OUT • Ongoing Construction',
     imageUrl: '/images/5 bed Ogudu GRA Project/5 bed ogudu GRA 1.webp',
-    description: 'Exclusive 5-bedroom penthouse with dedicated ensuite service room, double-height living spaces, wraparound terraces, and private elevator access.',
+    description: 'IVY Homes, Ogudu GRA is currently under construction and fully SOLD OUT. Prospective buyers may enquire about upcoming and future developments.',
   },
 ];
 
@@ -161,11 +161,19 @@ export default function PropertyModal({ isOpen, onClose, onBookTour }: PropertyM
                   <button
                     onClick={() => {
                       onClose();
-                      onBookTour(property.name);
+                      onBookTour(
+                        property.price === 'SOLD OUT'
+                          ? `Future Developments (Enquiry from ${property.name})`
+                          : property.name
+                      );
                     }}
                     className="w-full bg-[#461313] hover:bg-[#D64933] text-white py-2.5 px-4 rounded-full font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-xs"
                   >
-                    <span>Schedule Private Viewing</span>
+                    <span>
+                      {property.price === 'SOLD OUT'
+                        ? 'Enquire About Future Developments'
+                        : 'Schedule Private Viewing'}
+                    </span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>

@@ -22,6 +22,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
 import InfoDrawer from '@/components/InfoDrawer';
+import PropertyShowcaseLayout from '@/components/PropertyShowcaseLayout';
 import WhatsAppFAB from '@/components/WhatsAppFAB';
 
 interface PropertyDetailsClientProps {
@@ -50,6 +51,14 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
     }
     setBookingModalOpen(true);
   };
+
+  if (
+    property.id === 'lekki-phase-1-project' ||
+    property.id === 'ivy-homes-abijo' ||
+    property.id === 'ogudu-gra-project'
+  ) {
+    return <PropertyShowcaseLayout property={property} routeContext="properties" />;
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#FEFCFD] via-[#FEFCFD] to-[#f7f3f5] text-[#162521] flex flex-col justify-between selection:bg-[#461313] selection:text-white">
@@ -123,12 +132,40 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
 
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div>
-              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#162521] tracking-tight font-serif leading-tight">
+              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#162521] tracking-tight font-heading leading-tight">
                 {property.name}
               </h1>
               <p className="mt-2.5 sm:mt-3 text-xs sm:text-base text-stone-600 max-w-3xl leading-relaxed whitespace-pre-line">
                 {property.extendedOverview}
               </p>
+              {property.id === 'lekki-phase-1-project' && (
+                <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-2.5 max-w-3xl text-xs">
+                  <div className="px-3.5 py-2.5 rounded-xl bg-white border border-stone-200/80">
+                    <span className="text-stone-400 font-semibold uppercase tracking-wider text-[10px] block">
+                      Location
+                    </span>
+                    <span className="font-semibold text-[#162521] mt-0.5 block">
+                      Ikate, Lekki Phase 1, Lagos
+                    </span>
+                  </div>
+                  <div className="px-3.5 py-2.5 rounded-xl bg-white border border-stone-200/80">
+                    <span className="text-stone-400 font-semibold uppercase tracking-wider text-[10px] block">
+                      Stage &amp; Timeline
+                    </span>
+                    <span className="font-semibold text-[#162521] mt-0.5 block">
+                      Pre-construction / off-plan · 24-mo build
+                    </span>
+                  </div>
+                  <div className="px-3.5 py-2.5 rounded-xl bg-white border border-stone-200/80">
+                    <span className="text-stone-400 font-semibold uppercase tracking-wider text-[10px] block">
+                      Target Profile
+                    </span>
+                    <span className="font-semibold text-[#162521] mt-0.5 block">
+                      End-users &amp; long-term investors
+                    </span>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Price & Primary CTA */}
@@ -147,13 +184,13 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
 
               <div className="flex flex-col sm:flex-row lg:flex-col gap-2 w-full sm:w-auto">
                 <button
-                  onClick={() => openBooking(property.status === 'sold-out' ? `${property.name} (Waitlist / Secondary Inquiry)` : property.id === 'lekki-phase-1-project' ? `${property.name} (Approved Schedule & Inspection Request)` : undefined)}
+                  onClick={() => openBooking(property.status === 'sold-out' ? `Future Developments (Enquiry from ${property.name})` : property.id === 'lekki-phase-1-project' ? `${property.name} (Approved Schedule & Inspection Request)` : undefined)}
                   id="hero-inquire-reserve-btn"
                   className="w-full sm:w-auto bg-[#461313] hover:bg-[#D64933] text-white px-7 py-3.5 rounded-full font-bold text-xs sm:text-sm inline-flex items-center justify-center gap-2.5 shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer min-h-[48px]"
                 >
                   <span>
                     {property.status === 'sold-out'
-                      ? 'Join Waitlist / Inquire for Resale'
+                      ? 'Enquire About Future Developments'
                       : property.id === 'lekki-phase-1-project'
                         ? 'Request Approved Schedule / Inspect'
                         : 'Inquire & Reserve This Property'}
@@ -199,7 +236,12 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
               </h2>
               {property.status === 'ongoing' && (
                 <p className="mt-1.5 text-xs text-amber-900 bg-amber-50 border border-amber-200/80 rounded-lg px-3 py-1.5 inline-block font-medium">
-                  Note: Architectural renderings and floor plans shown are illustrative concepts and do not represent photographs of completed units.
+                  Visuals &amp; Floor Plans: Exterior views, interior concepts, and floor plans are illustrative design previews; final finishes and layouts follow approved drawings.
+                </p>
+              )}
+              {property.status === 'sold-out' && (
+                <p className="mt-1.5 text-xs text-rose-900 bg-rose-50 border border-rose-200/80 rounded-lg px-3 py-1.5 inline-block font-medium">
+                  Status: SOLD OUT — Construction is ongoing. Visuals include approved architectural renders and project imagery.
                 </p>
               )}
             </div>
@@ -450,10 +492,10 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
 
                 {/* Unit CTA */}
                 <button
-                  onClick={() => openBooking(property.status === 'sold-out' ? `${property.name} - ${unit.title} (Waitlist)` : unit.title)}
+                  onClick={() => openBooking(property.status === 'sold-out' ? `Future Developments (Enquiry from ${property.name})` : unit.title)}
                   className="w-full bg-stone-50 hover:bg-[#461313] text-[#162521] hover:text-white border border-stone-200 hover:border-transparent py-3 px-4 rounded-full font-semibold text-xs flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer group min-h-[44px]"
                 >
-                  <span>{property.status === 'sold-out' ? 'Join Waitlist for this Layout' : 'Inquire on this Unit'}</span>
+                  <span>{property.status === 'sold-out' ? 'Enquire About Future Developments' : 'Inquire on this Unit'}</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                 </button>
               </div>
@@ -508,8 +550,18 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
             </div>
 
             {property.id === 'lekki-phase-1-project' && (
-              <div className="mt-4 p-4 rounded-2xl bg-stone-50 border border-stone-200/90 text-xs text-stone-700 leading-relaxed">
-                <strong className="text-[#162521]">Commercial Qualification:</strong> Current unit pricing, deposit percentages, and monthly instalment schedules are confirmed solely via management-approved offer sheets from ChapelHill Multicompany Limited. Zero initial deposit under the 24-month plan does not remove contractual obligations or payments due at signing, and all terms remain subject to signed offer and management approval.
+              <div className="mt-4 p-4 rounded-2xl bg-stone-50 border border-stone-200/90 text-xs text-stone-700 leading-relaxed flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <p>
+                  <strong className="text-[#162521]">Terms &amp; Verification:</strong> Final pricing, allocation rules, signing requirements, contractual obligations, and title/approval status are subject to formal offer terms and due diligence.
+                </p>
+                <a
+                  href="https://wa.me/2348032865488?text=Hello%20ChapelHill%20Multicompany%20Limited%2C%20please%20share%20current%20pricing%20sheets%2C%20floor%20plans%2C%20or%20site%20inspection%20availability%20for%20IVY%20Heights%2C%20Ikate%2C%20Lekki%20Phase%201."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shrink-0 font-bold text-[#461313] hover:text-[#D64933] transition-colors whitespace-nowrap"
+                >
+                  WhatsApp Desk: +234 803 286 5488 →
+                </a>
               </div>
             )}
           </section>
@@ -587,20 +639,28 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
             </div>
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight font-serif text-white">
-              Enquire &amp; Request Site Inspection
+              {property.status === 'sold-out'
+                ? 'Enquire About Future Developments'
+                : 'Enquire & Request Site Inspection'}
             </h2>
 
             <p className="mt-4 text-sm sm:text-base text-stone-300 leading-relaxed">
-              Connect directly with our team to request the current management-approved pricing schedule, review available title documentation, or schedule a private site inspection.
+              {property.status === 'sold-out'
+                ? `${property.name} is currently under construction and fully SOLD OUT. Connect with our team to register interest in upcoming and future ChapelHill residential developments.`
+                : 'Connect directly with our team to request the current management-approved pricing schedule, review available title documentation, or schedule a private site inspection.'}
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
               <button
-                onClick={() => openBooking()}
+                onClick={() => openBooking(property.status === 'sold-out' ? `Future Developments (Enquiry from ${property.name})` : undefined)}
                 id="main-inquire-reserve-cta-btn"
                 className="bg-white hover:bg-stone-100 text-[#162521] px-8 py-4 rounded-full font-bold text-sm sm:text-base inline-flex items-center justify-center gap-3 transition-all duration-200 shadow-xl hover:scale-[1.02] cursor-pointer"
               >
-                <span>Enquire &amp; Book Inspection</span>
+                <span>
+                  {property.status === 'sold-out'
+                    ? 'Enquire for Future Developments'
+                    : 'Enquire & Book Inspection'}
+                </span>
                 <ArrowRight className="w-4 h-4 text-[#461313]" />
               </button>
 
@@ -747,10 +807,10 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
           </a>
 
           <button
-            onClick={() => openBooking(property.status === 'sold-out' ? `${property.name} (Waitlist)` : undefined)}
+            onClick={() => openBooking(property.status === 'sold-out' ? `Future Developments (Enquiry from ${property.name})` : undefined)}
             className="bg-[#461313] hover:bg-[#D64933] active:scale-95 text-white px-4 py-2.5 rounded-full font-bold text-xs flex items-center gap-1.5 shadow-sm min-h-[40px] touch-manipulation"
           >
-            <span>{property.status === 'sold-out' ? 'Waitlist' : 'Inquire'}</span>
+            <span>{property.status === 'sold-out' ? 'Future Projects' : 'Inquire'}</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>

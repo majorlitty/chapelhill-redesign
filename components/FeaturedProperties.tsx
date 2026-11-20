@@ -46,54 +46,53 @@ export const FEATURED_PROPERTIES: FeaturedProperty[] = [
     shortTitle: 'IVY Heights',
     location: 'Ikate, Lekki Phase 1, Lagos',
     microLocation: 'Ikate, Lekki Phase 1, Lagos',
-    tagline: 'Key Development · Pre-Construction / Off-Plan',
+    tagline: 'Pre-Construction / Off-Plan · 24-Month Proposed Build',
     status: 'ongoing',
     statusBadge: 'Pre-Construction · Off-Plan',
     statusLabel: 'Pre-Construction / Off-Plan',
-    startingPrice: 'Approved Schedule on Request',
-    priceRange: '2-Bed & 3-Bed Apartments',
+    startingPrice: 'Offer Sheet on Request',
+    priceRange: '2 & 3-Bed · 2–3 Baths',
     essentialMetrics: [
-      { label: 'Residences', value: '2 & 3 Bedroom Apartments' },
-      { label: 'Proposed Build', value: '24 Months (Subject to Offer)' },
-      { label: 'Payment Plans', value: '12-Mo & 18-Mo · 24-Mo Zero Deposit' },
+      { label: 'Apartment Mix', value: '2 & 3 Bedroom (2–3 Baths)' },
+      { label: 'Stage & Build', value: 'Off-Plan · 24-Mo Schedule' },
+      { label: 'Payment Tracks', value: '12 / 18-Mo · 24-Mo Zero Deposit' },
     ],
     overlayNote:
-      'Pricing sheet on request. Zero initial deposit does not remove contractual or signing obligations; terms subject to signed offer & management approval. Illustrative render.',
+      'Pricing, signing terms, and due diligence subject to formal offer. Visuals are illustrative design previews. WhatsApp Desk: +234 803 286 5488.',
     isIllustrativeRender: true,
     paymentPlan:
-      '12-month & 18-month deposit-based plans, or management-approved 24-month zero-initial-deposit option',
-    landSize: 'Proposed 24-Month Construction Period',
-    totalUnits: '2-Bedroom & 3-Bedroom Apartments',
+      '12-month upfront-deposit, 18-month milestone, or 24-month zero-initial-deposit plan',
+    landSize: 'Proposed 24-Month Build Schedule',
+    totalUnits: '2 & 3-Bedroom Apartments',
     image: '/images/lekki-phase-1/lekki 3d/Lekki phase 1(4).jpeg',
     description:
-      'Flagship pre-construction residential apartment development at Ikate, Lekki Phase 1, Lagos.',
+      'Modern residential development in Ikate, Lekki Phase 1, Lagos, tailored for end-users and long-term real estate investors.',
     unitBreakdown: [
       {
-        title: '2-Bedroom Apartment',
+        title: '2-Bedroom Apartments',
         count: 'Pre-Construction / Off-Plan',
-        price: 'Approved Pricing on Request',
+        price: 'Pricing Sheet on Request',
         description:
-          'Well-proportioned 2-bedroom apartment at Ikate, Lekki Phase 1 with 12-month, 18-month, and 24-month payment options.',
+          'Designed for compact urban living and rental demand (2 to 3 bathrooms depending on configuration); layout details available per floor plan.',
       },
       {
-        title: '3-Bedroom Apartment',
+        title: '3-Bedroom Apartments',
         count: 'Pre-Construction / Off-Plan',
-        price: 'Approved Pricing on Request',
+        price: 'Pricing Sheet on Request',
         description:
-          'Spacious 3-bedroom residential apartment at Ikate, Lekki Phase 1 with 12-month, 18-month, and 24-month payment options.',
+          'Larger floorplates suited for families or executive rentals (2 to 3 bathrooms depending on configuration).',
       },
     ],
     specifications: [
-      'Location: Ikate, Lekki Phase 1, Lagos State, Nigeria',
-      'Status: Pre-Construction / Off-Plan residential apartment development',
-      'Timeline: Proposed 24-month construction period (subject to offer & approvals)',
-      'Options: 12-month deposit, 18-month deposit & 24-month zero-initial-deposit plan',
-      'Visuals: Architectural renderings are illustrative and not completed units',
+      'Location: Ikate, Lekki Phase 1, Lagos',
+      'Stage & Timeline: Pre-construction / off-plan with a proposed 24-month build schedule',
+      'Payment Tracks: 12-month, 18-month, and 24-month zero-initial-deposit plan',
+      'Visuals: Exterior views, interior concepts, and floor plans are illustrative design previews',
     ],
     investmentHighlights: [
-      'Key development at Ikate, Lekki Phase 1 offering 2-bed and 3-bed apartment options',
-      'Three payment pathways including management-approved 24-month zero-initial-deposit option (contractual obligations & signing terms apply)',
-      'Official pricing sheet and site inspection available directly upon enquiry',
+      'Built for buyers seeking central Lekki access, structured payments, and modern apartment layouts',
+      'Final pricing, signing requirements, and title status subject to formal offer terms and due diligence',
+      'Request pricing sheets, floor plans, or site inspection via WhatsApp Desk: +234 803 286 5488',
     ],
   },
   {
@@ -157,54 +156,56 @@ export const FEATURED_PROPERTIES: FeaturedProperty[] = [
   },
   {
     id: 'ogudu-gra-project',
-    name: 'Ogudu GRA Project',
-    shortTitle: 'Ogudu GRA Penthouse',
+    name: 'IVY Homes, Ogudu GRA',
+    shortTitle: 'IVY Homes, Ogudu GRA',
     location: 'Ogudu GRA, Mainland Prime, Lagos',
     microLocation: 'Ogudu GRA, Lagos',
-    tagline: 'Private Penthouse · Allocated',
+    tagline: 'SOLD OUT · Construction Ongoing',
     status: 'sold-out',
-    statusBadge: 'Sold Out',
-    statusLabel: 'Sold Out',
-    startingPrice: 'Fully Allocated',
-    priceRange: 'Sold Out',
+    statusBadge: 'SOLD OUT · Ongoing',
+    statusLabel: 'SOLD OUT · Construction Ongoing',
+    startingPrice: 'SOLD OUT',
+    priceRange: 'SOLD OUT',
     essentialMetrics: [
-      { label: 'Configuration', value: '5-Bedroom Penthouse' },
-      { label: 'Availability', value: 'Fully Allocated' },
-      { label: 'Inquiries', value: 'Future Release Waitlist' },
+      { label: 'Availability', value: 'SOLD OUT' },
+      { label: 'Construction', value: 'Ongoing' },
+      { label: 'Next Release', value: 'Future Developments' },
     ],
-    paymentPlan: 'Waitlist open for upcoming private mainland developments',
-    landSize: 'Handover & Allocation Complete',
-    totalUnits: '5-Bedroom Master Penthouse + Service Room',
+    overlayNote:
+      'Fully SOLD OUT while construction is ongoing. Enquire with us for upcoming and future residential developments.',
+    paymentPlan: 'Fully sold out — enquire for future developments',
+    landSize: 'Construction Ongoing',
+    totalUnits: 'SOLD OUT · Ongoing Construction',
     image: '/images/5 bed Ogudu GRA Project/5 bed ogudu GRA 1.webp',
     description:
-      'Completed private penthouse residence in Ogudu GRA, Lagos. Now fully allocated.',
+      'IVY Homes, Ogudu GRA is currently under construction and fully SOLD OUT. Prospective buyers may enquire about future developments.',
     unitBreakdown: [
       {
         title: '5-Bedroom Master Penthouse',
-        count: 'Sold Out',
-        price: 'Fully Allocated',
+        count: 'SOLD OUT',
+        price: 'SOLD OUT',
         description:
-          'Multi-level penthouse with double-height ceilings, wraparound terraces, and private elevator landing.',
+          'Multi-level penthouse residence currently under construction and fully sold out.',
       },
       {
         title: 'Ensuite Service Quarters',
-        count: 'Included',
-        price: 'Allocated',
+        count: 'SOLD OUT',
+        price: 'SOLD OUT',
         description:
           'Dedicated auxiliary accommodation with independent access point.',
       },
     ],
     specifications: [
-      'Dedicated Private Elevator & Sky Lounge',
-      'Full Ensuite Service Room / Quarter with Private Entrance',
-      'Floor-to-Ceiling Thermal Acoustic Glazing',
-      'Smart Home Automation Pre-Wiring & Solar Inverter Integration',
-      'Covered Multi-Vehicle Staged Parking',
+      'Status: SOLD OUT — All units allocated',
+      'Construction Status: Ongoing site works',
+      'Approved architectural renders and project updates',
+      'Solar inverter integration & smart home pre-wiring planned',
+      'Enquiry open for upcoming and future developments',
     ],
     investmentHighlights: [
-      'Sold Out: Single penthouse residence in Ogudu GRA, Lagos',
-      'Waitlist Open: Inquire for upcoming private residential developments',
-      'Wide horizon views spanning mainland Lagos and the lagoon',
+      'SOLD OUT: IVY Homes, Ogudu GRA is fully allocated',
+      'Ongoing Construction: Development works currently in progress',
+      'Future Releases: Enquire for upcoming residential developments',
     ],
   },
 ];
@@ -454,7 +455,11 @@ export default function FeaturedProperties({
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
-                      onInquireProperty(property.name);
+                      onInquireProperty(
+                        isSoldOut
+                          ? `Future Developments (Enquiry from ${property.name})`
+                          : property.name
+                      );
                     }}
                     id={`btn-inquire-${property.id}`}
                     className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-[#E5C583] hover:text-white transition-colors whitespace-nowrap shrink-0 cursor-pointer"
@@ -462,7 +467,7 @@ export default function FeaturedProperties({
                     <CalendarCheck className="w-3.5 h-3.5" />
                     <span>
                       {isSoldOut
-                        ? 'Join Waitlist'
+                        ? 'Enquire Future Projects'
                         : property.id === 'lekki-phase-1-project'
                           ? 'Request Schedule'
                           : 'Request Visit'}

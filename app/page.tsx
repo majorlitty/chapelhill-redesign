@@ -77,15 +77,11 @@ export default function HomePage() {
       />
 
       {/* Full-Viewport Video Hero Section */}
-      <Hero
-        onExploreHomes={scrollToFeatured}
-        onBookVisit={() => handleOpenBooking()}
-      />
+      <Hero onExploreHomes={scrollToFeatured} />
 
       {/* Brief About Us Section */}
       <ScrollReveal yOffset={36} duration={0.8} viewportAmount={0.12}>
         <AboutSection
-          onLearnMoreServices={() => setInfoModal('services')}
           onContactClick={(serviceTitle) => handleOpenBooking(serviceTitle)}
         />
       </ScrollReveal>

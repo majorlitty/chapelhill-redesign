@@ -30,6 +30,7 @@ import { Property, getAllProperties } from '@/lib/propertiesData';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
+import PropertyShowcaseLayout from '@/components/PropertyShowcaseLayout';
 import WhatsAppFAB from '@/components/WhatsAppFAB';
 
 interface ProjectOverviewClientProps {
@@ -115,7 +116,7 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
       ? `${project.unitBreakdown[0].bedrooms} Ensuite`
       : '5 Ensuite';
   const bathroomsLabel = isIvyHeights
-    ? '2 & 3 Baths'
+    ? '2 to 3 Baths'
     : project.unitBreakdown[0]?.bathrooms
       ? `${project.unitBreakdown[0].bathrooms} Baths`
       : '5.5 Baths';
@@ -135,7 +136,15 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
       ? 'Immediate'
       : project.status === 'ongoing'
         ? 'In Progress'
-        : 'Sold Out';
+        : 'Ongoing (SOLD OUT)';
+
+  if (
+    project.id === 'lekki-phase-1-project' ||
+    project.id === 'ivy-homes-abijo' ||
+    project.id === 'ogudu-gra-project'
+  ) {
+    return <PropertyShowcaseLayout property={project} routeContext="projects" />;
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#FEFCFD] via-[#FEFCFD] to-[#f7f3f5] text-[#162521] flex flex-col justify-between selection:bg-[#461313] selection:text-white">
@@ -193,8 +202,13 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
         <header className="mb-10 sm:mb-12">
           {/* Badge & Meta strip */}
           <div className="flex flex-wrap items-center gap-2.5 text-xs text-stone-600 mb-3">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-900/10 text-emerald-800 border border-emerald-600/20 font-bold uppercase tracking-wider text-[11px]">
-              <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
+            <span
+              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-bold uppercase tracking-wider text-[11px] border ${
+                project.status === 'sold-out'
+                  ? 'bg-rose-950/10 text-rose-800 border-rose-600/25'
+                  : 'bg-emerald-900/10 text-emerald-800 border-emerald-600/20'
+              }`}
+            >
               {project.statusLabel}
             </span>
 
@@ -251,7 +265,11 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
                 className="w-full sm:w-auto px-5 py-3 rounded-xl bg-[#461313] hover:bg-[#D64933] text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-lg cursor-pointer min-h-[44px]"
               >
                 <Calendar className="w-4 h-4" />
-                <span>Schedule Private Viewing</span>
+                <span>
+                  {project.status === 'sold-out'
+                    ? 'Enquire About Future Developments'
+                    : 'Schedule Private Viewing'}
+                </span>
               </button>
             </div>
           </div>
@@ -407,23 +425,29 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
                   <span className="text-xs font-bold uppercase tracking-wider text-stone-400 block mb-1">
                     {project.status === 'completed'
                       ? 'Turnkey Handover'
-                      : isIvyHeights
-                        ? 'Enquiry & Site Inspection'
-                        : 'Technical Site Inspection'}
+                      : project.status === 'sold-out'
+                        ? 'SOLD OUT · Ongoing Construction'
+                        : isIvyHeights
+                          ? 'Enquiry & Site Inspection'
+                          : 'Technical Site Inspection'}
                   </span>
                   <h4 className="text-base font-bold text-[#162521]">
                     {project.status === 'completed'
                       ? 'Ready for Immediate Physical Move-In'
-                      : isIvyHeights
-                        ? 'Request Approved Schedule & Site Visit'
-                        : 'Private Site Walkthrough & Technical Consultation'}
+                      : project.status === 'sold-out'
+                        ? 'Interested in Future Developments?'
+                        : isIvyHeights
+                          ? 'Request Approved Schedule & Site Visit'
+                          : 'Private Site Walkthrough & Technical Consultation'}
                   </h4>
                   <p className="text-xs text-stone-500 mt-1.5 leading-relaxed">
                     {project.status === 'completed'
                       ? 'Keys are ready for inspection and immediate allocation. Connect with our dedicated property advisory team to arrange a private walkthrough.'
-                      : isIvyHeights
-                        ? 'Connect with ChapelHill Multicompany Limited to receive the current management-approved pricing sheet, review 12/18/24-month payment options, or schedule an Ikate site inspection.'
-                        : 'Connect with our structural engineers and project directors to inspect ongoing civil progress, concrete casting, and technical milestones.'}
+                      : project.status === 'sold-out'
+                        ? `${project.name} is currently under construction and fully SOLD OUT. Register your interest with our advisory team to hear first about upcoming and future developments.`
+                    : isIvyHeights
+                      ? 'Modern apartment layouts in central Lekki. Request current pricing sheets, floor plan layouts, or site inspection scheduling via WhatsApp Desk: +234 803 286 5488.'
+                      : 'Connect with our structural engineers and project directors to inspect ongoing civil progress, concrete casting, and technical milestones.'}
                   </p>
                 </div>
 
@@ -432,7 +456,11 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
                     onClick={() => setBookingModalOpen(true)}
                     className="flex-1 py-3 px-4 rounded-xl bg-[#461313] hover:bg-[#D64933] text-white text-xs font-bold text-center transition-colors cursor-pointer"
                   >
-                    {isIvyHeights ? 'Request Schedule / Inspection' : 'Schedule Private Inspection'}
+                    {project.status === 'sold-out'
+                      ? 'Enquire for Future Developments'
+                      : isIvyHeights
+                        ? 'Request Schedule / Inspection'
+                        : 'Schedule Private Inspection'}
                   </button>
 
                   <a
@@ -556,7 +584,7 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
               </h2>
               <p className="text-xs sm:text-sm text-stone-500 mt-1">
                 {isIvyHeights
-                  ? 'Architectural renderings and floor plans are illustrative concepts and do not represent photographs of completed units.'
+                  ? 'Exterior views, interior concepts, and floor plans are presented as illustrative design previews; final finishes and layouts follow approved drawings.'
                   : 'Click any photograph to view high-resolution details in full-screen gallery mode.'}
               </p>
             </div>
@@ -710,7 +738,7 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
                     />
                     <div className="absolute top-3 left-3">
                       <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-black/60 text-white backdrop-blur-md">
-                        {item.status === 'completed' ? 'Completed' : item.status === 'ongoing' ? 'Ongoing' : 'Sold Out'}
+                        {item.status === 'completed' ? 'Completed' : item.status === 'ongoing' ? 'Ongoing' : 'SOLD OUT'}
                       </span>
                     </div>
                   </div>
@@ -876,7 +904,11 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
       <BookingModal
         isOpen={bookingModalOpen}
         onClose={() => setBookingModalOpen(false)}
-        defaultProperty={project.name}
+        defaultProperty={
+          project.status === 'sold-out'
+            ? `Future Developments (Enquiry from ${project.name})`
+            : project.name
+        }
       />
 
       {/* Floating WhatsApp Action Button */}

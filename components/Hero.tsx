@@ -2,15 +2,15 @@
 
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 
 interface HeroProps {
   onExploreHomes: () => void;
-  onBookVisit: () => void;
 }
 
-export default function Hero({ onExploreHomes, onBookVisit }: HeroProps) {
+export default function Hero({ onExploreHomes }: HeroProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     const videoEl = videoRef.current;
@@ -25,6 +25,13 @@ export default function Hero({ onExploreHomes, onBookVisit }: HeroProps) {
       });
     }
   }, []);
+
+  const tactileTransition = {
+    type: 'spring' as const,
+    stiffness: 460,
+    damping: 26,
+    mass: 0.6,
+  };
 
   return (
     <section
@@ -63,7 +70,7 @@ export default function Hero({ onExploreHomes, onBookVisit }: HeroProps) {
           {/* Heading */}
           <motion.h1
             id="hero-title"
-            initial={{ opacity: 0, y: 18 }}
+            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
             className="text-3xl sm:text-5xl md:text-6xl lg:text-[64px] font-extrabold text-white tracking-[-0.03em] leading-[1.08] text-balance"
@@ -74,7 +81,7 @@ export default function Hero({ onExploreHomes, onBookVisit }: HeroProps) {
 
           {/* Supporting Paragraph */}
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
+            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="mt-4 sm:mt-5 text-sm sm:text-base md:text-[17px] text-white/90 font-normal leading-relaxed max-w-2xl"
@@ -82,35 +89,28 @@ export default function Hero({ onExploreHomes, onBookVisit }: HeroProps) {
             ChapelHill Multicompany Limited is a Nigerian real estate company specialising in property development, construction, management, and strategic partnerships. We work with individuals, businesses, and investors to deliver quality projects and create lasting property value.
           </motion.p>
 
-          {/* Dual Action CTA Row (Primary on Left, Secondary on Right, Same Baseline) */}
+          {/* Primary CTA Row */}
           <motion.div
-            initial={{ opacity: 0, y: 14 }}
+            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-6 sm:mt-8 flex flex-row flex-wrap items-center gap-3 sm:gap-4"
+            className="mt-7 sm:mt-8 flex flex-row flex-wrap items-center gap-3 sm:gap-4 w-full sm:w-auto"
           >
-            {/* Primary Button (Left) */}
-            <button
+            <motion.button
               type="button"
               onClick={onExploreHomes}
               id="hero-cta-explore"
-              className="group bg-[#461313] hover:bg-[#D64933] active:scale-[0.98] text-white pl-5 sm:pl-6 pr-2.5 sm:pr-3 py-2.5 sm:py-3 rounded-full font-semibold text-xs sm:text-sm md:text-base inline-flex items-center justify-center gap-2.5 sm:gap-3 transition-all duration-200 shadow-[0_6px_24px_rgba(70,19,19,0.45)] hover:shadow-[0_8px_28px_rgba(214,73,51,0.45)] hover:-translate-y-0.5 cursor-pointer min-h-[46px] sm:min-h-[48px] whitespace-nowrap shrink-0 touch-manipulation"
+              whileHover={shouldReduceMotion ? undefined : { scale: 1.015 }}
+              whileTap={shouldReduceMotion ? undefined : { scale: 0.94 }}
+              transition={tactileTransition}
+              className="group min-h-[48px] sm:min-h-[52px] px-5 sm:px-7 py-3 sm:py-3.5 rounded-full bg-[#FEFCFD] hover:bg-[#E5C583] text-[#162521] border border-white/80 hover:border-[#E5C583] font-semibold text-sm sm:text-[15px] tracking-[-0.01em] inline-flex items-center justify-center gap-2.5 transition-colors duration-200 cursor-pointer whitespace-nowrap shrink-0 touch-manipulation select-none active:scale-[0.94] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/85 focus-visible:ring-offset-2 focus-visible:ring-offset-[#090e0d]"
             >
-              <span>Explore Homes</span>
-              <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white text-[#461313] group-hover:text-[#D64933] flex items-center justify-center group-hover:translate-x-0.5 transition-all duration-200 shrink-0">
-                <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
-              </span>
-            </button>
-
-            {/* Secondary Button (Right) */}
-            <button
-              type="button"
-              onClick={onBookVisit}
-              id="hero-cta-book-visit"
-              className="bg-white/15 hover:bg-white active:scale-[0.98] text-white hover:text-[#162521] border border-white/45 hover:border-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-semibold text-xs sm:text-sm md:text-base backdrop-blur-md transition-all duration-200 shadow-[0_4px_16px_rgba(0,0,0,0.2)] hover:-translate-y-0.5 cursor-pointer min-h-[46px] sm:min-h-[48px] inline-flex items-center justify-center whitespace-nowrap shrink-0 touch-manipulation"
-            >
-              Book a Visit
-            </button>
+              <span>Explore Properties</span>
+              <ArrowRight
+                aria-hidden="true"
+                className="w-4 h-4 stroke-[1.75] text-[#162521]/75 group-hover:text-[#162521] group-hover:translate-x-1 transition-transform duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] shrink-0"
+              />
+            </motion.button>
           </motion.div>
         </div>
       </div>

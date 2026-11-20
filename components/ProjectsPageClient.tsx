@@ -344,7 +344,7 @@ export default function ProjectsPageClient() {
                                 ? project.id === 'lekki-phase-1-project'
                                   ? 'Pre-Construction · Off-Plan'
                                   : 'Ongoing · Off-Plan'
-                                : 'Sold Out'}
+                                : 'SOLD OUT'}
                           </span>
 
                           <span className="text-[11px] font-mono font-medium text-white bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full">
@@ -409,12 +409,24 @@ export default function ProjectsPageClient() {
                       </Link>
 
                       <button
-                        onClick={() => handleOpenBooking(project.name)}
+                        onClick={() =>
+                          handleOpenBooking(
+                            isSoldOut
+                              ? `Future Developments (Enquiry from ${project.name})`
+                              : project.name
+                          )
+                        }
                         className="py-3 px-3.5 rounded-xl border border-stone-200 hover:border-[#461313] hover:bg-stone-50 text-[#162521] text-xs font-semibold transition-colors flex items-center justify-center cursor-pointer shrink-0"
-                        title={`Inquire or schedule viewing for ${project.name}`}
+                        title={
+                          isSoldOut
+                            ? 'Enquire about future developments'
+                            : `Inquire or schedule viewing for ${project.name}`
+                        }
                       >
                         <Calendar className="w-4 h-4 text-stone-600" />
-                        <span className="sr-only">Schedule Inspection</span>
+                        <span className="sr-only">
+                          {isSoldOut ? 'Enquire About Future Developments' : 'Schedule Inspection'}
+                        </span>
                       </button>
                     </div>
                   </article>
