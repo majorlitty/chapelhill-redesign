@@ -6,6 +6,9 @@ export const metadata: Metadata = {
     'About Us | ChapelHill Multicompany Limited — Property Development, Construction, Facility Management & Partnerships',
   description:
     'Property Development and Sales, Construction and Project Management, Property and Facility Management, and Joint Ventures and Investment Partnerships across Nigeria.',
+  alternates: {
+    canonical: 'https://chapelhill.com.ng/about',
+  },
   openGraph: {
     title: 'About Us | ChapelHill Multicompany Limited',
     description:

@@ -29,6 +29,9 @@ export async function generateMetadata({ params }: PropertyPageProps): Promise<M
   return {
     title: `${property.name} | ChapelHill Multicompany Limited`,
     description: `${property.tagline}. ${property.description} Located at ${property.location}. ${property.financials.startingPrice}.`,
+    alternates: {
+      canonical: `https://chapelhill.com.ng/projects/${property.slug}`,
+    },
     openGraph: {
       title: `${property.name} | ChapelHill Multicompany Limited`,
       description: property.description,

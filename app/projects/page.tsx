@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: 'Our Projects | ChapelHill Multicompany Limited — Completed & Ongoing Developments',
   description:
     'Explore our portfolio of completed and ongoing residential and commercial developments crafted with precision, enduring quality, and architectural excellence across prime Lagos corridors.',
+  alternates: {
+    canonical: 'https://chapelhill.com.ng/projects',
+  },
   openGraph: {
     title: 'Our Projects | ChapelHill Multicompany Limited',
     description:

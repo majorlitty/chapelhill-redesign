@@ -26,10 +26,13 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://chapelhill.com.ng'),
   title: 'ChapelHill Multicompany Limited',
   description:
     'ChapelHill Multicompany Limited — Property Development and Sales, Construction and Project Management, Property and Facility Management, and Joint Ventures and Investment Partnerships.',
+  alternates: {
+    canonical: 'https://chapelhill.com.ng/',
+  },
   openGraph: {
     title: 'ChapelHill Multicompany Limited',
     description:
