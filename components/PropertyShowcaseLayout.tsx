@@ -1238,11 +1238,7 @@ export default function PropertyShowcaseLayout({
               {otherProperties.slice(0, 2).map((other) => (
                 <Link
                   key={other.id}
-                  href={
-                    routeContext === 'projects'
-                      ? `/projects/${other.slug}`
-                      : `/properties/${other.id}`
-                  }
+                  href={`/projects/${other.slug}`}
                   className="group bg-white rounded-2xl border border-stone-200/90 overflow-hidden flex flex-col sm:flex-row hover:border-[#461313]/35 transition-colors"
                 >
                   <div className="relative sm:w-48 aspect-[16/10] sm:aspect-auto bg-stone-100 shrink-0">

@@ -750,7 +750,7 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
                         <span className="text-sm font-bold text-[#461313]">{other.financials.startingPrice}</span>
                       </div>
                       <Link
-                        href={`/properties/${other.id}`}
+                        href={`/projects/${other.slug}`}
                         className="bg-[#461313] hover:bg-[#D64933] text-white px-5 py-2 rounded-full font-semibold text-xs inline-flex items-center gap-1.5 transition-colors cursor-pointer"
                       >
                         <span>View Property</span>

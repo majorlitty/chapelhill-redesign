@@ -122,7 +122,7 @@ export default function Footer({
               {/* Project 1 */}
               <li>
                 <Link
-                  href="/properties/lekki-phase-1-project"
+                  href="/projects/lekki-phase-1-project"
                   className="group relative block p-2.5 -mx-2.5 rounded-xl border border-transparent hover:border-[#E5C583]/30 hover:bg-white/[0.04] transition-all duration-300"
                 >
                   <div className="flex items-center justify-between gap-2">
@@ -148,7 +148,7 @@ export default function Footer({
               {/* Project 2 */}
               <li>
                 <Link
-                  href="/properties/ivy-homes-abijo"
+                  href="/projects/ivy-homes-abijo"
                   className="group relative block p-2.5 -mx-2.5 rounded-xl border border-transparent hover:border-[#E5C583]/30 hover:bg-white/[0.04] transition-all duration-300"
                 >
                   <div className="flex items-center justify-between gap-2">
@@ -174,7 +174,7 @@ export default function Footer({
               {/* Project 3 */}
               <li>
                 <Link
-                  href="/properties/ogudu-gra-project"
+                  href="/projects/ogudu-gra-project"
                   className="group relative block p-2.5 -mx-2.5 rounded-xl border border-transparent hover:border-[#E5C583]/30 hover:bg-white/[0.04] transition-all duration-300"
                 >
                   <div className="flex items-center justify-between gap-2">

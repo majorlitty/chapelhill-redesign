@@ -315,7 +315,7 @@ export default function FeaturedProperties({
 
               {/* Full-Card Clickable Navigation Surface (Behind Overlay Action Buttons) */}
               <Link
-                href={`/properties/${property.id}`}
+                href={`/projects/${property.id}`}
                 aria-label={`View ${property.name}`}
                 className="absolute inset-0 z-10"
               />
@@ -411,7 +411,7 @@ export default function FeaturedProperties({
                   </div>
 
                   <Link
-                    href={`/properties/${property.id}`}
+                    href={`/projects/${property.id}`}
                     id={`btn-view-${property.id}`}
                     className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white hover:bg-[#E5C583] text-[#162521] text-[11px] sm:text-xs font-semibold transition-colors whitespace-nowrap shrink-0 cursor-pointer"
                   >

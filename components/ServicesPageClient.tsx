@@ -23,7 +23,6 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
 import WhatsAppFAB from '@/components/WhatsAppFAB';
-import { ServicesSkeletonList } from '@/components/Skeleton';
 
 interface ServiceDetail {
   id: string;
@@ -94,7 +93,7 @@ const SERVICES_DATA: ServiceDetail[] = [
       projectName: 'IVY Heights, Ikate, Lekki Phase 1, Lagos',
       location: 'Ikate, Lekki Phase 1, Lagos',
       type: 'Pre-Construction / Off-Plan 2 & 3 Bed Apartments',
-      href: '/properties/lekki-phase-1-project',
+      href: '/projects/lekki-phase-1-project',
     },
   },
   {
@@ -141,7 +140,7 @@ const SERVICES_DATA: ServiceDetail[] = [
       projectName: 'Beachwood Lagos Project',
       location: 'Ibeju-Lekki Axis, Lagos',
       type: 'Active Residential Construction Commission',
-      href: '/properties/beachwood-lagos',
+      href: '/projects/beachwood-lagos',
     },
   },
   {
@@ -187,7 +186,7 @@ const SERVICES_DATA: ServiceDetail[] = [
       projectName: 'Ivy Homes, Abijo GRA',
       location: 'Abijo GRA Corridor, Lekki-Epe',
       type: 'Managed Residential Apartment Community',
-      href: '/properties/ivy-homes-abijo',
+      href: '/projects/ivy-homes-abijo',
     },
   },
   {
@@ -233,7 +232,7 @@ const SERVICES_DATA: ServiceDetail[] = [
       projectName: 'IVY Homes, Ogudu GRA (SOLD OUT)',
       location: 'Ogudu GRA, Mainland Prime',
       type: 'Ongoing Construction · Fully Sold Out',
-      href: '/properties/ogudu-gra-project',
+      href: '/projects/ogudu-gra-project',
     },
   },
 ];
@@ -301,27 +300,20 @@ export default function ServicesPageClient() {
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState<string>('all');
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
-  const [isLoading, setIsLoading] = useState(true);
 
+  // Scroll smoothly to hash target (e.g. /services#joint-ventures) on initial mount
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 350);
-    return () => clearTimeout(timer);
-  }, []);
-
-  // Scroll smoothly to hash target (e.g. /services#joint-ventures) once skeleton finishes
-  useEffect(() => {
-    if (!isLoading && typeof window !== 'undefined' && window.location.hash) {
+    if (typeof window !== 'undefined' && window.location.hash) {
       const targetId = window.location.hash.replace('#', '');
       const el = document.getElementById(targetId);
       if (el) {
-        setTimeout(() => {
+        const timer = setTimeout(() => {
           el.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 80);
+        return () => clearTimeout(timer);
       }
     }
-  }, [isLoading]);
+  }, []);
 
   const openBookingFor = (serviceTitle: string) => {
     setSelectedServiceForModal(serviceTitle);
@@ -450,10 +442,7 @@ export default function ServicesPageClient() {
 
         {/* Detailed Services Breakdown Modules */}
         <section className="py-16 sm:py-24 space-y-16 sm:space-y-24 border-b border-stone-200/80">
-          {isLoading ? (
-            <ServicesSkeletonList count={4} />
-          ) : (
-            filteredServices.map((service, idx) => {
+          {filteredServices.map((service, idx) => {
               const isEven = idx % 2 === 1;
               const IconComponent = service.icon;
 
@@ -612,8 +601,7 @@ export default function ServicesPageClient() {
                   </div>
                 </div>
               );
-            })
-          )}
+            })}
         </section>
 
         {/* Why Choose Us */}
