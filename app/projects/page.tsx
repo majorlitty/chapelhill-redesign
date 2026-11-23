@@ -2,32 +2,34 @@ import { Metadata } from 'next';
 import ProjectsPageClient from '@/components/ProjectsPageClient';
 
 export const metadata: Metadata = {
-  title: 'Our Projects | ChapelHill Multicompany Limited — Completed & Ongoing Developments',
+  title: 'Property Development Projects in Nigeria | ChapelHill',
   description:
-    'Explore our portfolio of completed and ongoing residential and commercial developments crafted with precision, enduring quality, and architectural excellence across prime Lagos corridors.',
+    "Explore ChapelHill's property developments and construction projects across Nigeria, including residential developments in Lagos and other locations.",
   alternates: {
     canonical: 'https://chapelhill.com.ng/projects',
   },
   openGraph: {
-    title: 'Our Projects | ChapelHill Multicompany Limited',
+    title: 'Property Development Projects in Nigeria | ChapelHill',
     description:
-      'Completed and ongoing architectural developments in Lekki, Abijo GRA, and Ogudu GRA, Lagos.',
+      "Explore ChapelHill's property developments and construction projects across Nigeria, including residential developments in Lagos and other locations.",
+    url: 'https://chapelhill.com.ng/projects',
+    siteName: 'ChapelHill Multicompany Limited',
     type: 'website',
     images: [
       {
-        url: '/Chapelhill-Company-Logo.png',
-        width: 1200,
-        height: 630,
-        alt: 'ChapelHill Multicompany Limited Projects Portfolio',
+        url: '/images/lekki-phase-1/lekki 3d/Lekki phase 1(4).jpeg',
+        width: 1536,
+        height: 1024,
+        alt: 'ChapelHill Multicompany Limited — Property Development Projects in Nigeria',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Our Projects | ChapelHill Multicompany Limited',
+    title: 'Property Development Projects in Nigeria | ChapelHill',
     description:
-      'Completed and ongoing architectural developments across prime Lagos locations.',
-    images: ['/Chapelhill-Company-Logo.png'],
+      "Explore ChapelHill's property developments and construction projects across Nigeria, including residential developments in Lagos and other locations.",
+    images: ['/images/lekki-phase-1/lekki 3d/Lekki phase 1(4).jpeg'],
   },
 };
 

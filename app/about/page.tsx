@@ -2,33 +2,34 @@ import { Metadata } from 'next';
 import AboutPageClient from '@/components/AboutPageClient';
 
 export const metadata: Metadata = {
-  title:
-    'About Us | ChapelHill Multicompany Limited — Property Development, Construction, Facility Management & Partnerships',
+  title: 'About ChapelHill | Nigerian Property Development Company',
   description:
-    'Property Development and Sales, Construction and Project Management, Property and Facility Management, and Joint Ventures and Investment Partnerships across Nigeria.',
+    'Discover ChapelHill Multicompany Limited, a Nigerian property development and construction company delivering projects and property solutions nationwide.',
   alternates: {
     canonical: 'https://chapelhill.com.ng/about',
   },
   openGraph: {
-    title: 'About Us | ChapelHill Multicompany Limited',
+    title: 'About ChapelHill | Nigerian Property Development Company',
     description:
-      'Property Development and Sales, Construction and Project Management, Property and Facility Management, and Joint Ventures and Investment Partnerships.',
+      'Discover ChapelHill Multicompany Limited, a Nigerian property development and construction company delivering projects and property solutions nationwide.',
+    url: 'https://chapelhill.com.ng/about',
+    siteName: 'ChapelHill Multicompany Limited',
     type: 'website',
     images: [
       {
-        url: '/Chapelhill-Company-Logo.png',
+        url: '/images/joint-venture-partnerships.jpg',
         width: 1200,
-        height: 630,
-        alt: 'ChapelHill Multicompany Limited',
+        height: 896,
+        alt: 'ChapelHill Multicompany Limited — Architectural Planning & Corporate Advisory',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About Us | ChapelHill Multicompany Limited',
+    title: 'About ChapelHill | Nigerian Property Development Company',
     description:
-      'Property Development and Sales, Construction and Project Management, Property and Facility Management, and Joint Ventures and Investment Partnerships.',
-    images: ['/Chapelhill-Company-Logo.png'],
+      'Discover ChapelHill Multicompany Limited, a Nigerian property development and construction company delivering projects and property solutions nationwide.',
+    images: ['/images/joint-venture-partnerships.jpg'],
   },
 };
 

@@ -2,33 +2,36 @@ import { Metadata } from 'next';
 import ServicesPageClient from '@/components/ServicesPageClient';
 
 export const metadata: Metadata = {
-  title:
-    'Our Services | ChapelHill Multicompany Limited — Development, Construction, Facility Management & Joint Ventures',
+  title: 'Property Development & Construction Services | ChapelHill',
   description:
-    'Property Development and Sales, Construction and Project Management, Property and Facility Management, and Joint Ventures and Investment Partnerships by ChapelHill Multicompany Limited.',
+    "Explore ChapelHill's property development, construction, facility management and strategic development partnership services across Nigeria.",
   alternates: {
     canonical: 'https://chapelhill.com.ng/services',
   },
   openGraph: {
-    title: 'Our Services | ChapelHill Multicompany Limited',
+    title: 'Property Development & Construction Services | ChapelHill',
     description:
-      'Property Development and Sales, Construction and Project Management, Property and Facility Management, and Joint Ventures and Investment Partnerships.',
+      "Explore ChapelHill's property development, construction, facility management and strategic development partnership services across Nigeria.",
+    url: 'https://chapelhill.com.ng/services',
+    siteName: 'ChapelHill Multicompany Limited',
     type: 'website',
     images: [
       {
-        url: '/Chapelhill-Company-Logo.png',
-        width: 1200,
-        height: 630,
-        alt: 'ChapelHill Multicompany Limited Services',
+        url: '/images/Beachwood Lagos/ongoing Beachwood project lagos/Beach wood construction progress (1).jpeg',
+        width: 1020,
+        height: 765,
+        alt: 'ChapelHill Multicompany Limited — Property Development & Construction Services',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Our Services | ChapelHill Multicompany Limited',
+    title: 'Property Development & Construction Services | ChapelHill',
     description:
-      'Property Development and Sales, Construction and Project Management, Property and Facility Management, and Joint Ventures and Investment Partnerships.',
-    images: ['/Chapelhill-Company-Logo.png'],
+      "Explore ChapelHill's property development, construction, facility management and strategic development partnership services across Nigeria.",
+    images: [
+      '/images/Beachwood Lagos/ongoing Beachwood project lagos/Beach wood construction progress (1).jpeg',
+    ],
   },
 };
 

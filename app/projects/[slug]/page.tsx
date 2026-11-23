@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { getPropertyById, getAllProperties } from '@/lib/propertiesData';
+import { getProjectSeoMetadata } from '@/lib/projectSeoMetadata';
 import ProjectOverviewClient from '@/components/ProjectOverviewClient';
 
 interface ProjectPageProps {
@@ -22,32 +23,38 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 
   if (!project) {
     return {
-      title: 'Project Not Found | ChapelHill Multicompany Limited',
+      title: 'Project Not Found | ChapelHill',
     };
   }
 
+  const seo = getProjectSeoMetadata(project);
+  const canonicalUrl = `https://chapelhill.com.ng/projects/${project.slug}`;
+
   return {
-    title: `${project.name} | ChapelHill Multicompany Limited`,
-    description: `${project.tagline}. ${project.description} Located at ${project.location}.`,
+    title: seo.title,
+    description: seo.description,
     alternates: {
-      canonical: `https://chapelhill.com.ng/projects/${project.slug}`,
+      canonical: canonicalUrl,
     },
     openGraph: {
-      title: `${project.name} | ChapelHill Multicompany Limited`,
-      description: project.description,
+      title: seo.title,
+      description: seo.description,
+      url: canonicalUrl,
+      siteName: 'ChapelHill Multicompany Limited',
+      type: 'website',
       images: [
         {
           url: project.heroImage,
-          width: 1200,
-          height: 630,
+          width: seo.imageWidth,
+          height: seo.imageHeight,
           alt: project.name,
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${project.name} | ChapelHill Multicompany Limited`,
-      description: project.description,
+      title: seo.title,
+      description: seo.description,
       images: [project.heroImage],
     },
   };

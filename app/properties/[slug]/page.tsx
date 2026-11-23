@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { getPropertyById, getAllProperties } from '@/lib/propertiesData';
+import { getProjectSeoMetadata } from '@/lib/projectSeoMetadata';
 import PropertyDetailsClient from '@/components/PropertyDetailsClient';
 
 interface PropertyPageProps {
@@ -22,27 +23,39 @@ export async function generateMetadata({ params }: PropertyPageProps): Promise<M
 
   if (!property) {
     return {
-      title: 'Property Not Found | ChapelHill Multicompany Limited',
+      title: 'Property Not Found | ChapelHill',
     };
   }
 
+  const seo = getProjectSeoMetadata(property);
+  const canonicalUrl = `https://chapelhill.com.ng/projects/${property.slug}`;
+
   return {
-    title: `${property.name} | ChapelHill Multicompany Limited`,
-    description: `${property.tagline}. ${property.description} Located at ${property.location}. ${property.financials.startingPrice}.`,
+    title: seo.title,
+    description: seo.description,
     alternates: {
-      canonical: `https://chapelhill.com.ng/projects/${property.slug}`,
+      canonical: canonicalUrl,
     },
     openGraph: {
-      title: `${property.name} | ChapelHill Multicompany Limited`,
-      description: property.description,
+      title: seo.title,
+      description: seo.description,
+      url: canonicalUrl,
+      siteName: 'ChapelHill Multicompany Limited',
+      type: 'website',
       images: [
         {
           url: property.heroImage,
-          width: 1200,
-          height: 630,
+          width: seo.imageWidth,
+          height: seo.imageHeight,
           alt: property.name,
         },
       ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: seo.title,
+      description: seo.description,
+      images: [property.heroImage],
     },
   };
 }

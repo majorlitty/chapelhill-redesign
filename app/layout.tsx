@@ -27,23 +27,34 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://chapelhill.com.ng'),
-  title: 'ChapelHill Multicompany Limited',
+  title: 'Property Development & Construction in Nigeria | ChapelHill',
   description:
-    'ChapelHill Multicompany Limited — Property Development and Sales, Construction and Project Management, Property and Facility Management, and Joint Ventures and Investment Partnerships.',
+    'ChapelHill Multicompany Limited provides property development, construction, property management and development partnerships across Nigeria.',
   alternates: {
     canonical: 'https://chapelhill.com.ng/',
   },
   openGraph: {
-    title: 'ChapelHill Multicompany Limited',
+    title: 'Property Development & Construction in Nigeria | ChapelHill',
     description:
-      'Property Development and Sales, Construction and Project Management, Property and Facility Management, and Joint Ventures and Investment Partnerships.',
+      'ChapelHill Multicompany Limited provides property development, construction, property management and development partnerships across Nigeria.',
+    url: 'https://chapelhill.com.ng/',
+    siteName: 'ChapelHill Multicompany Limited',
     type: 'website',
+    images: [
+      {
+        url: '/videos/ivy-frame.jpg',
+        width: 1920,
+        height: 1080,
+        alt: 'ChapelHill Multicompany Limited — Property Development & Construction in Nigeria',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ChapelHill Multicompany Limited',
+    title: 'Property Development & Construction in Nigeria | ChapelHill',
     description:
-      'Property Development and Sales, Construction and Project Management, Property and Facility Management, and Joint Ventures and Investment Partnerships.',
+      'ChapelHill Multicompany Limited provides property development, construction, property management and development partnerships across Nigeria.',
+    images: ['/videos/ivy-frame.jpg'],
   },
   icons: {
     icon: '/Chapelhill-Company-Logo.png',
