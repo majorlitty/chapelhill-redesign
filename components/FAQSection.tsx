@@ -13,6 +13,7 @@ import {
   CreditCard,
   ArrowRight,
 } from 'lucide-react';
+import { BUSINESS_IDENTITY } from '@/lib/seo/businessIdentity';
 
 export interface FAQItem {
   id: string;
@@ -124,21 +125,19 @@ export const FAQS: FAQItem[] = [
     id: 'where-located',
     category: 'general',
     question: 'Where is ChapelHill located?',
-    answer:
-      'Our published office address is Block B4 357, HFP Shopping Complex, Abraham Adesanya Junction, Lekki-Epe Expressway, Lagos State, Nigeria.',
+    answer: `Our physical office is located at ${BUSINESS_IDENTITY.address.full}. We provide property development, construction, and facility management services nationwide across Nigeria.`,
   },
   {
     id: 'how-to-contact',
     category: 'general',
     question: 'How do I contact ChapelHill?',
-    answer:
-      'Our published telephone contacts are +234 903 913 0207 and +234 803 286 5488, and our published email is chapelhillmulticompanyltd@gmail.com.',
+    answer: `Our published telephone contacts are ${BUSINESS_IDENTITY.contact.primaryPhone.display} (also our WhatsApp desk) and ${BUSINESS_IDENTITY.contact.secondaryPhone.display}, and our published email is ${BUSINESS_IDENTITY.contact.email}.`,
   },
   {
     id: 'opening-hours',
     category: 'general',
     question: 'What are your opening hours?',
-    answer: 'Monday–Saturday, 8:00 a.m.–6:00 p.m. WAT.',
+    answer: `${BUSINESS_IDENTITY.operatingHours.displayWithClosed}.`,
   },
 ];
 

@@ -15,6 +15,7 @@ import {
   MessageCircle,
   Clock
 } from 'lucide-react';
+import { BUSINESS_IDENTITY, getWhatsAppUrl } from '@/lib/seo/businessIdentity';
 
 interface FooterProps {
   onExploreClick?: () => void;
@@ -61,8 +62,8 @@ export default function Footer({
               aria-label="ChapelHill Multicompany Limited Home"
             >
               <Image
-                src="/Chapelhill-Company-Logo.png"
-                alt="ChapelHill Multicompany Limited"
+                src={BUSINESS_IDENTITY.logo.path}
+                alt={BUSINESS_IDENTITY.logo.alt}
                 width={240}
                 height={110}
                 className="h-10 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.01]"
@@ -80,9 +81,9 @@ export default function Footer({
             <div className="space-y-2 text-[11px] text-stone-400 mb-6">
               <div className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#E5C583]" />
-                <span className="text-white font-semibold">ChapelHill Multicompany Limited</span>
+                <span className="text-white font-semibold">{BUSINESS_IDENTITY.companyName}</span>
                 <span className="text-stone-600">•</span>
-                <span className="text-stone-400">Lagos, Nigeria</span>
+                <span className="text-stone-400">{BUSINESS_IDENTITY.geographicCoverage.hqBadge}</span>
               </div>
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#E5C583] shrink-0" />
@@ -379,11 +380,11 @@ export default function Footer({
                 <div>
                   <p className="text-white font-bold text-xs leading-tight">Principal Corporate Office</p>
                   <p className="text-stone-400 text-xs mt-1 leading-relaxed">
-                    Block B4 357, HFP Shopping Complex, Abraham Adesanya Junction, Lekki, Lagos State, Nigeria
+                    {BUSINESS_IDENTITY.address.full}
                   </p>
                   <div className="mt-2 flex items-center gap-1.5 text-[10px] text-stone-400 font-medium">
                     <Clock className="w-3 h-3 text-[#E5C583]" />
-                    <span>Mon – Sat: 8:00 AM – 6:00 PM (WAT)</span>
+                    <span>{BUSINESS_IDENTITY.operatingHours.display}</span>
                   </div>
                 </div>
               </div>
@@ -391,7 +392,9 @@ export default function Footer({
 
             {/* Direct WhatsApp Advisory Button with Polished State */}
             <a
-              href="https://wa.me/2348032865488?text=Hello%20ChapelHill%2C%20I%20am%20inquiring%20about%20your%20developments%20and%20advisory%20services."
+              href={getWhatsAppUrl(
+                'Hello ChapelHill, I am inquiring about your developments and advisory services.'
+              )}
               target="_blank"
               rel="noopener noreferrer"
               id="footer-whatsapp-direct-btn"
@@ -412,7 +415,7 @@ export default function Footer({
                     </span>
                   </div>
                   <span className="text-[10px] text-stone-300 font-medium leading-tight">
-                    +234 803 286 5488 • Brochures &amp; viewings
+                    {BUSINESS_IDENTITY.contact.primaryPhone.display} • Brochures &amp; viewings
                   </span>
                 </div>
               </div>
@@ -422,7 +425,7 @@ export default function Footer({
             {/* Direct Phone & Email Advisory Lines with Polished States */}
             <div className="space-y-1.5 pt-0.5">
               <a
-                href="tel:+2348032865488"
+                href={BUSINESS_IDENTITY.contact.primaryPhone.telHref}
                 className="group flex items-center justify-between p-2 rounded-xl bg-white/[0.02] hover:bg-white/[0.05] border border-white/5 hover:border-[#E5C583]/40 transition-all duration-200"
               >
                 <div className="flex items-center gap-2.5">
@@ -430,9 +433,11 @@ export default function Footer({
                     <Phone className="w-3 h-3" />
                   </div>
                   <div className="text-left">
-                    <p className="text-[10px] text-stone-400 leading-none">Phone &amp; WhatsApp Desk</p>
+                    <p className="text-[10px] text-stone-400 leading-none">
+                      {BUSINESS_IDENTITY.contact.primaryPhone.label}
+                    </p>
                     <p className="text-white font-semibold text-xs mt-1 leading-none group-hover:text-[#E5C583] transition-colors">
-                      +234 803 286 5488
+                      {BUSINESS_IDENTITY.contact.primaryPhone.display}
                     </p>
                   </div>
                 </div>
@@ -440,7 +445,27 @@ export default function Footer({
               </a>
 
               <a
-                href="mailto:chapelhillmulticompanyltd@gmail.com"
+                href={BUSINESS_IDENTITY.contact.secondaryPhone.telHref}
+                className="group flex items-center justify-between p-2 rounded-xl bg-white/[0.02] hover:bg-white/[0.05] border border-white/5 hover:border-[#E5C583]/40 transition-all duration-200"
+              >
+                <div className="flex items-center gap-2.5">
+                  <div className="w-6 h-6 rounded-lg bg-[#E5C583]/10 flex items-center justify-center text-[#E5C583] group-hover:bg-[#E5C583]/20 transition-colors">
+                    <Phone className="w-3 h-3" />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-[10px] text-stone-400 leading-none">
+                      {BUSINESS_IDENTITY.contact.secondaryPhone.label}
+                    </p>
+                    <p className="text-white font-semibold text-xs mt-1 leading-none group-hover:text-[#E5C583] transition-colors">
+                      {BUSINESS_IDENTITY.contact.secondaryPhone.display}
+                    </p>
+                  </div>
+                </div>
+                <ArrowUpRight className="w-3 h-3 text-stone-500 group-hover:text-[#E5C583] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+              </a>
+
+              <a
+                href={BUSINESS_IDENTITY.contact.emailHref}
                 className="group flex items-center justify-between p-2 rounded-xl bg-white/[0.02] hover:bg-white/[0.05] border border-white/5 hover:border-[#E5C583]/40 transition-all duration-200"
               >
                 <div className="flex items-center gap-2.5 truncate max-w-[85%]">
@@ -450,7 +475,7 @@ export default function Footer({
                   <div className="text-left truncate">
                     <p className="text-[10px] text-stone-400 leading-none">Institutional Dispatch</p>
                     <p className="text-white font-semibold text-xs mt-1 leading-none group-hover:text-[#E5C583] transition-colors truncate">
-                      chapelhillmulticompanyltd@gmail.com
+                      {BUSINESS_IDENTITY.contact.email}
                     </p>
                   </div>
                 </div>
@@ -466,9 +491,11 @@ export default function Footer({
         {/* Bottom Attribution & Legal Bar */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-stone-400">
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 sm:gap-4 text-[11px] sm:text-xs">
-            <span className="font-semibold text-white tracking-wide">ChapelHill Multicompany Limited</span>
+            <span className="font-semibold text-white tracking-wide">
+              {BUSINESS_IDENTITY.companyName}
+            </span>
             <span className="text-[#E5C583]">•</span>
-            <span className="text-stone-400">Lagos, Nigeria</span>
+            <span className="text-stone-400">{BUSINESS_IDENTITY.geographicCoverage.hqBadge}</span>
           </div>
 
           <div className="flex flex-wrap items-center justify-center md:justify-end gap-3 sm:gap-4 text-[11px] sm:text-xs text-stone-400">

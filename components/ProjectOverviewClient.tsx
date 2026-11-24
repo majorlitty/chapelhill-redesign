@@ -32,6 +32,7 @@ import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
 import PropertyShowcaseLayout from '@/components/PropertyShowcaseLayout';
 import WhatsAppFAB from '@/components/WhatsAppFAB';
+import { BUSINESS_IDENTITY, getWhatsAppUrl } from '@/lib/seo/businessIdentity';
 
 interface ProjectOverviewClientProps {
   project: Property;
@@ -104,9 +105,9 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
     }
   };
 
-  const whatsappInquiryUrl = `https://wa.me/2348032865488?text=${encodeURIComponent(
-    `Hello ChapelHill Multicompany Limited, I am interested in viewing ${project.name} located at ${project.location}.`
-  )}`;
+  const whatsappInquiryUrl = getWhatsAppUrl(
+    `Hello ${BUSINESS_IDENTITY.companyName}, I am interested in viewing ${project.name} located at ${project.location}.`
+  );
 
   const isIvyHeights = project.id === 'lekki-phase-1-project';
   const communityName = isIvyHeights ? 'Ikate, Lekki Phase 1' : project.location.split(',')[0].replace('Axis', '').trim();
@@ -446,7 +447,7 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
                       : project.status === 'sold-out'
                         ? `${project.name} is currently under construction and fully SOLD OUT. Register your interest with our advisory team to hear first about upcoming and future developments.`
                     : isIvyHeights
-                      ? 'Modern apartment layouts in central Lekki. Request current pricing sheets, floor plan layouts, or site inspection scheduling via WhatsApp Desk: +234 803 286 5488.'
+                      ? `Modern apartment layouts in central Lekki. Request current pricing sheets, floor plan layouts, or site inspection scheduling via WhatsApp Desk: ${BUSINESS_IDENTITY.contact.primaryPhone.display}.`
                       : 'Connect with our structural engineers and project directors to inspect ongoing civil progress, concrete casting, and technical milestones.'}
                   </p>
                 </div>
@@ -464,7 +465,7 @@ export default function ProjectOverviewClient({ project }: ProjectOverviewClient
                   </button>
 
                   <a
-                    href="tel:+2348032865488"
+                    href={BUSINESS_IDENTITY.contact.primaryPhone.telHref}
                     className="py-3 px-4 rounded-xl border border-stone-200 hover:border-[#461313] text-[#162521] text-xs font-semibold text-center transition-colors flex items-center justify-center gap-1.5"
                   >
                     <Phone className="w-3.5 h-3.5 text-stone-600" />

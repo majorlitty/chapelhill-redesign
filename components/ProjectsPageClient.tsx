@@ -27,6 +27,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
 import WhatsAppFAB from '@/components/WhatsAppFAB';
+import { BUSINESS_IDENTITY, getWhatsAppUrl } from '@/lib/seo/businessIdentity';
 
 interface ProjectDisplayItem {
   id: string;
@@ -173,7 +174,7 @@ export default function ProjectsPageClient() {
 
             {/* Brief Subheading explaining completed & ongoing developments */}
             <p className="mt-5 text-base sm:text-lg md:text-xl text-[#162521]/80 max-w-2xl mx-auto font-normal leading-relaxed">
-              Explore our portfolio of completed and ongoing residential and commercial developments crafted with precision, enduring quality, and architectural excellence across prime Lagos corridors.
+              Explore our portfolio of completed and ongoing residential developments and construction projects—featuring properties in Lagos alongside bespoke nationwide project delivery across Nigeria.
             </p>
 
             {/* Filter and Search Bar Controls */}
@@ -263,8 +264,8 @@ export default function ProjectsPageClient() {
               <p className="mt-1 text-xs text-stone-500 font-medium">Integrated Estate Utility Systems</p>
             </div>
             <div>
-              <p className="text-2xl sm:text-3xl font-extrabold text-[#461313] font-serif">Lagos</p>
-              <p className="mt-1 text-xs text-stone-500 font-medium">Lekki &amp; Mainland Corridors</p>
+              <p className="text-2xl sm:text-3xl font-extrabold text-[#461313] font-serif">Nationwide</p>
+              <p className="mt-1 text-xs text-stone-500 font-medium">Lagos HQ &amp; Nigeria-Wide Delivery</p>
             </div>
           </div>
         </header>
@@ -439,7 +440,7 @@ export default function ProjectsPageClient() {
                   Looking for Upcoming Sites or Off-Market Acquisitions?
                 </h3>
                 <p className="mt-3 text-stone-300 text-sm sm:text-base leading-relaxed">
-                  In addition to our residential developments, ChapelHill Multicompany Limited advises private clients, diaspora buyers, and corporate groups on strategic land acquisitions and customized turnkey civil construction across Lagos.
+                  In addition to our residential developments, ChapelHill Multicompany Limited advises private clients, diaspora buyers, and corporate groups on strategic land acquisitions and customized turnkey civil construction across Nigeria.
                 </p>
 
                 <div className="mt-6 flex flex-wrap items-center gap-4 text-xs text-stone-300">
@@ -468,13 +469,15 @@ export default function ProjectsPageClient() {
                 </button>
 
                 <a
-                  href="https://wa.me/2348032865488?text=Hello%20ChapelHill%20Multicompany%20Limited%2C%20I%20am%20interested%20in%20inquiring%20about%20your%20completed%20and%20ongoing%20projects."
+                  href={getWhatsAppUrl(
+                    'Hello ChapelHill Multicompany Limited, I am interested in inquiring about your completed and ongoing projects.'
+                  )}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full bg-white/10 hover:bg-white/20 text-white border border-white/20 py-3 px-6 rounded-2xl font-semibold text-xs sm:text-sm transition-colors flex items-center justify-center gap-2"
                 >
                   <MessageCircle className="w-4 h-4 fill-white" />
-                  <span>WhatsApp Advisory (+234 803 286 5488)</span>
+                  <span>WhatsApp Advisory ({BUSINESS_IDENTITY.contact.primaryPhone.display})</span>
                 </a>
               </div>
             </div>

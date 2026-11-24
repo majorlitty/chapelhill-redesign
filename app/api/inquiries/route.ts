@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { BUSINESS_IDENTITY } from '@/lib/seo/businessIdentity';
 
 interface InquiryPayload {
   name?: string;
@@ -12,8 +13,8 @@ interface InquiryPayload {
   tourType?: string;
 }
 
-const DEFAULT_RECIPIENT_EMAIL = 'chapelhillmulticompanyltd@gmail.com';
-const DEFAULT_FROM_ADDRESS = 'ChapelHill Multicompany Limited <onboarding@resend.dev>';
+const DEFAULT_RECIPIENT_EMAIL = BUSINESS_IDENTITY.contact.email;
+const DEFAULT_FROM_ADDRESS = `${BUSINESS_IDENTITY.companyName} <onboarding@resend.dev>`;
 
 const TOUR_TYPE_LABELS: Record<string, string> = {
   'in-person': 'Private In-Person Tour',

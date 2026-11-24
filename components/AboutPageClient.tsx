@@ -26,6 +26,7 @@ import BookingModal from '@/components/BookingModal';
 import DeliveryMethodologySticky from '@/components/DeliveryMethodologySticky';
 import InfoDrawer from '@/components/InfoDrawer';
 import WhatsAppFAB from '@/components/WhatsAppFAB';
+import { BUSINESS_IDENTITY, getWhatsAppUrl } from '@/lib/seo/businessIdentity';
 
 type LeadershipTrack = 'board-legal' | 'executive-technical';
 type FilterOption = 'all' | LeadershipTrack;
@@ -67,7 +68,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     image: '/images/team/nick-joel-okpanachi.png',
     bio: 'Nick Joel Okpanachi leads the executive management, development pipeline, client relations, and overall vision of ChapelHill Multicompany Limited across Nigeria and the diaspora.',
     phone: '+234 703 836 8119',
-    email: 'chapelhillmulticompanyltd@gmail.com',
+    email: BUSINESS_IDENTITY.contact.email,
     qualifications: [
       'Executive Leadership & Corporate Vision',
       'Real Estate Investment Portfolio Architecture',
@@ -98,8 +99,8 @@ const TEAM_MEMBERS: TeamMember[] = [
     trackLabel: 'Executive & Technical',
     image: '/images/team/stephen-agada.jpg',
     bio: 'Stephen Agada brings extensive expertise in facility management, project execution, procurement, and quantity surveying.',
-    phone: '+234 803 286 5488',
-    email: 'chapelhillmulticompanyltd@gmail.com',
+    phone: BUSINESS_IDENTITY.contact.primaryPhone.display,
+    email: BUSINESS_IDENTITY.contact.email,
     qualifications: [
       'Facility Management & Turnkey Operations',
       'Procurement & Supply Chain Efficiency',
@@ -298,7 +299,7 @@ export default function AboutPageClient() {
             <span className="text-[#162521] font-semibold">About Us</span>
           </div>
           <span className="hidden sm:inline font-medium tracking-wide text-stone-500">
-            ChapelHill Multicompany Limited · Lekki, Lagos
+            {BUSINESS_IDENTITY.companyName} · {BUSINESS_IDENTITY.geographicCoverage.hqBadge}
           </span>
         </div>
 
@@ -329,7 +330,7 @@ export default function AboutPageClient() {
                   Our leadership team brings multidisciplinary expertise across board governance,
                   corporate law, civil engineering, quantity surveying, and asset stewardship—serving
                   private homeowners, diaspora buyers, corporate organizations, landowners, and
-                  development partners across Lagos and Nigeria.
+                  development partners across Nigeria.
                 </p>
               </div>
 
@@ -346,7 +347,9 @@ export default function AboutPageClient() {
                 </button>
 
                 <a
-                  href="https://wa.me/2348032865488?text=Hello%20ChapelHill%20Multicompany%20Limited%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20services%20and%20developments."
+                  href={getWhatsAppUrl(
+                    'Hello ChapelHill Multicompany Limited, I would like to learn more about your services and developments.'
+                  )}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-white hover:bg-[#25D366]/10 text-[#128C7E] border border-stone-200 hover:border-[#25D366]/40 px-6 py-3 rounded-full font-semibold text-sm inline-flex items-center justify-center gap-2.5 transition-colors min-h-[48px] whitespace-nowrap shrink-0"
@@ -367,14 +370,14 @@ export default function AboutPageClient() {
                 development, construction, and maintenance services.&rdquo;
               </blockquote>
               <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-[#162521]/70">
-                Where Home Meets Happiness
+                {BUSINESS_IDENTITY.slogan}
               </p>
 
               <dl className="mt-6 pt-6 border-t border-stone-200/80 divide-y divide-stone-200/70 text-xs sm:text-sm">
                 <div className="py-2.5 flex items-baseline justify-between gap-4">
                   <dt className="text-stone-500 font-medium shrink-0">Headquarters</dt>
                   <dd className="text-right font-semibold text-[#162521]">
-                    Abraham Adesanya, Lekki-Epe Expy
+                    {BUSINESS_IDENTITY.address.compact}
                   </dd>
                 </div>
                 <div className="py-2.5 flex items-baseline justify-between gap-4">
@@ -386,7 +389,19 @@ export default function AboutPageClient() {
                 <div className="pt-2.5 flex items-baseline justify-between gap-4">
                   <dt className="text-stone-500 font-medium shrink-0">Advisory Lines</dt>
                   <dd className="text-right font-semibold text-[#461313]">
-                    +234 903 913 0207 / +234 803 286 5488
+                    <a
+                      href={BUSINESS_IDENTITY.contact.primaryPhone.telHref}
+                      className="hover:text-[#D64933] transition-colors"
+                    >
+                      {BUSINESS_IDENTITY.contact.primaryPhone.display}
+                    </a>{' '}
+                    /{' '}
+                    <a
+                      href={BUSINESS_IDENTITY.contact.secondaryPhone.telHref}
+                      className="hover:text-[#D64933] transition-colors"
+                    >
+                      {BUSINESS_IDENTITY.contact.secondaryPhone.display}
+                    </a>
                   </dd>
                 </div>
               </dl>
@@ -725,7 +740,7 @@ export default function AboutPageClient() {
                 </p>
                 <p className="mt-2.5 text-xs sm:text-sm text-stone-600 leading-relaxed">
                   Setting a dependable benchmark for structural resilience, clear title processes,
-                  and long-term property care across Lagos and diaspora investment corridors.
+                  and long-term property care across Nigeria and diaspora investment corridors.
                 </p>
               </div>
             </div>
@@ -804,20 +819,34 @@ export default function AboutPageClient() {
                 <div className="mt-6 space-y-2.5 text-xs sm:text-sm text-stone-200">
                   <div className="flex items-start gap-2.5">
                     <MapPin className="w-4 h-4 text-[#E5C583] shrink-0 mt-0.5" />
-                    <span>
-                      Block B4 357, HFP Shopping Complex, Abraham Adesanya Junction, Lekki-Epe
-                      Expressway, Lagos State, Nigeria
-                    </span>
+                    <span>{BUSINESS_IDENTITY.address.full}</span>
                   </div>
                   <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
                     <span className="inline-flex items-center gap-2">
                       <Phone className="w-4 h-4 text-[#E5C583] shrink-0" />
-                      <span>+234 903 913 0207 · +234 803 286 5488</span>
+                      <span>
+                        <a
+                          href={BUSINESS_IDENTITY.contact.primaryPhone.telHref}
+                          className="hover:text-[#E5C583] transition-colors"
+                        >
+                          {BUSINESS_IDENTITY.contact.primaryPhone.display}
+                        </a>{' '}
+                        ·{' '}
+                        <a
+                          href={BUSINESS_IDENTITY.contact.secondaryPhone.telHref}
+                          className="hover:text-[#E5C583] transition-colors"
+                        >
+                          {BUSINESS_IDENTITY.contact.secondaryPhone.display}
+                        </a>
+                      </span>
                     </span>
-                    <span className="inline-flex items-center gap-2">
+                    <a
+                      href={BUSINESS_IDENTITY.contact.emailHref}
+                      className="inline-flex items-center gap-2 hover:text-[#E5C583] transition-colors"
+                    >
                       <Mail className="w-4 h-4 text-[#E5C583] shrink-0" />
-                      <span>chapelhillmulticompanyltd@gmail.com</span>
-                    </span>
+                      <span>{BUSINESS_IDENTITY.contact.email}</span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -833,13 +862,15 @@ export default function AboutPageClient() {
                 </button>
 
                 <a
-                  href="https://wa.me/2348032865488?text=Hello%20ChapelHill%20Multicompany%20Limited%2C%20I%20am%20reaching%20out%20from%20the%20About%20Us%20page."
+                  href={getWhatsAppUrl(
+                    'Hello ChapelHill Multicompany Limited, I am reaching out from the About Us page.'
+                  )}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full bg-white/10 hover:bg-white/20 text-white border border-white/20 py-3.5 px-6 rounded-full font-semibold text-xs sm:text-sm transition-colors flex items-center justify-center gap-2 min-h-[48px]"
                 >
                   <MessageCircle className="w-4 h-4" />
-                  <span>Direct WhatsApp Desk (+234 803 286 5488)</span>
+                  <span>Direct WhatsApp Desk ({BUSINESS_IDENTITY.contact.primaryPhone.display})</span>
                 </a>
               </div>
             </div>

@@ -15,6 +15,7 @@ import {
   Mail,
   ShieldCheck,
 } from 'lucide-react';
+import { BUSINESS_IDENTITY, getWhatsAppUrl } from '@/lib/seo/businessIdentity';
 
 interface NavbarProps {
   onContactClick: () => void;
@@ -182,10 +183,10 @@ export default function Navbar({
                 onClick={() => setMenuOpen(false)}
               >
                 <Image
-                  src="/Chapelhill-Company-Logo.png"
-                  alt="ChapelHill Multicompany Limited"
-                  width={238}
-                  height={107}
+                  src={BUSINESS_IDENTITY.logo.path}
+                  alt={BUSINESS_IDENTITY.logo.alt}
+                  width={BUSINESS_IDENTITY.logo.width}
+                  height={BUSINESS_IDENTITY.logo.height}
                   className="h-9 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                   priority
                   referrerPolicy="no-referrer"
@@ -197,7 +198,9 @@ export default function Navbar({
             <div className="hidden md:flex items-center gap-3 lg:gap-5 text-xs text-[#162521] font-medium">
               {/* WhatsApp Advisory Desk */}
               <a
-                href="https://wa.me/2348032865488?text=Hello%20ChapelHill%2C%20I%20am%20inquiring%20about%20your%20developments%20and%20advisory%20services."
+                href={getWhatsAppUrl(
+                  'Hello ChapelHill, I am inquiring about your developments and advisory services.'
+                )}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-stone-100/80 hover:bg-[#C0E8F9]/40 hover:text-[#461313] transition-all duration-300 ease-out hover:scale-105 active:scale-95 cursor-pointer group shadow-2xs hover:shadow-xs"
@@ -209,25 +212,27 @@ export default function Navbar({
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
                 </span>
                 <span className="font-semibold text-[#461313]">WhatsApp Desk:</span>
-                <span className="text-stone-700 group-hover:text-[#461313]">+234 803 286 5488</span>
+                <span className="text-stone-700 group-hover:text-[#461313]">
+                  {BUSINESS_IDENTITY.contact.primaryPhone.display}
+                </span>
               </a>
 
               {/* Direct Phone Line */}
               <a
-                href="tel:+2348032865488"
+                href={BUSINESS_IDENTITY.contact.primaryPhone.telHref}
                 className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full hover:bg-stone-100/90 transition-all duration-300 ease-out hover:scale-105 active:scale-95 cursor-pointer text-stone-700 hover:text-[#461313] shadow-2xs hover:shadow-xs"
                 id="nav-center-phone"
-                aria-label="Call ChapelHill Multicompany Limited"
+                aria-label={`Call ${BUSINESS_IDENTITY.companyName}`}
               >
                 <Phone className="w-3.5 h-3.5 text-[#D64933] transition-transform duration-300 group-hover:rotate-12" />
-                <span>+234 803 286 5488</span>
+                <span>{BUSINESS_IDENTITY.contact.primaryPhone.display}</span>
               </a>
             </div>
 
             {/* Mobile Compact Contact (Shown only on small screens) */}
             <div className="flex md:hidden items-center gap-2">
               <a
-                href="https://wa.me/2348032865488"
+                href={BUSINESS_IDENTITY.contact.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-stone-100 text-[#25D366] hover:bg-[#25D366] hover:text-white transition-all duration-300 ease-out hover:scale-110 active:scale-95 shadow-2xs"
@@ -320,8 +325,8 @@ export default function Navbar({
                 aria-label="Chapelhill Home"
               >
                 <Image
-                  src="/Chapelhill-Company-Logo.png"
-                  alt="Chapelhill"
+                  src={BUSINESS_IDENTITY.logo.path}
+                  alt={BUSINESS_IDENTITY.brandName}
                   width={200}
                   height={90}
                   className="h-9 sm:h-11 w-auto object-contain brightness-0 invert opacity-95 transition-transform duration-300 group-hover:scale-[1.02]"
@@ -442,13 +447,13 @@ export default function Navbar({
                   Private Client WhatsApp
                 </p>
                 <a
-                  href="https://wa.me/2348032865488"
+                  href={BUSINESS_IDENTITY.contact.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white hover:text-[#E5C583] transition-colors font-medium flex items-center gap-1.5"
                 >
                   <MessageCircle className="w-3.5 h-3.5 text-[#25D366]" />
-                  <span>+234 803 286 5488</span>
+                  <span>{BUSINESS_IDENTITY.contact.primaryPhone.display}</span>
                 </a>
               </div>
 
@@ -458,11 +463,11 @@ export default function Navbar({
                   Direct Executive Desk
                 </p>
                 <a
-                  href="tel:+2348032865488"
+                  href={BUSINESS_IDENTITY.contact.primaryPhone.telHref}
                   className="text-white hover:text-[#E5C583] transition-colors font-medium flex items-center gap-1.5"
                 >
                   <Phone className="w-3.5 h-3.5 text-[#D64933]" />
-                  <span>+234 803 286 5488</span>
+                  <span>{BUSINESS_IDENTITY.contact.primaryPhone.display}</span>
                 </a>
               </div>
 
@@ -472,11 +477,11 @@ export default function Navbar({
                   Official Email
                 </p>
                 <a
-                  href="mailto:chapelhillmulticompany@gmail.com"
+                  href={BUSINESS_IDENTITY.contact.emailHref}
                   className="text-white hover:text-[#E5C583] transition-colors font-medium flex items-center gap-1.5 truncate"
                 >
                   <Mail className="w-3.5 h-3.5 text-[#E5C583]" />
-                  <span>chapelhillmulticompany@gmail.com</span>
+                  <span>{BUSINESS_IDENTITY.contact.email}</span>
                 </a>
               </div>
 

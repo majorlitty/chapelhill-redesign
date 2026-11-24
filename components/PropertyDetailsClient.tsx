@@ -24,6 +24,7 @@ import BookingModal from '@/components/BookingModal';
 import InfoDrawer from '@/components/InfoDrawer';
 import PropertyShowcaseLayout from '@/components/PropertyShowcaseLayout';
 import WhatsAppFAB from '@/components/WhatsAppFAB';
+import { BUSINESS_IDENTITY, getWhatsAppUrl } from '@/lib/seo/businessIdentity';
 
 interface PropertyDetailsClientProps {
   property: Property;
@@ -555,12 +556,14 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
                   <strong className="text-[#162521]">Terms &amp; Verification:</strong> Final pricing, allocation rules, signing requirements, contractual obligations, and title/approval status are subject to formal offer terms and due diligence.
                 </p>
                 <a
-                  href="https://wa.me/2348032865488?text=Hello%20ChapelHill%20Multicompany%20Limited%2C%20please%20share%20current%20pricing%20sheets%2C%20floor%20plans%2C%20or%20site%20inspection%20availability%20for%20IVY%20Heights%2C%20Ikate%2C%20Lekki%20Phase%201."
+                  href={getWhatsAppUrl(
+                    'Hello ChapelHill Multicompany Limited, please share current pricing sheets, floor plans, or site inspection availability for IVY Heights, Ikate, Lekki Phase 1.'
+                  )}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="shrink-0 font-bold text-[#461313] hover:text-[#D64933] transition-colors whitespace-nowrap"
                 >
-                  WhatsApp Desk: +234 803 286 5488 →
+                  WhatsApp Desk: {BUSINESS_IDENTITY.contact.primaryPhone.display} →
                 </a>
               </div>
             )}
@@ -627,8 +630,8 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
           <div className="relative z-10 max-w-3xl">
             <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/10 text-stone-200 text-xs font-semibold mb-4 border border-white/10">
               <Image
-                src="/Chapelhill-Company-Logo.png"
-                alt="Chapelhill"
+                src={BUSINESS_IDENTITY.logo.path}
+                alt={BUSINESS_IDENTITY.brandName}
                 width={50}
                 height={23}
                 className="h-4 w-auto object-contain brightness-0 invert"
@@ -668,7 +671,7 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
                 onClick={() => {
                   const subject = encodeURIComponent(`Executive Inquiry: ${property.name}`);
                   const body = encodeURIComponent(`Hello ChapelHill Multicompany Limited,\n\nI am interested in exploring ${property.name}. Please provide the current management-approved pricing schedule, payment plan terms, and inspection availability.\n\nThank you.`);
-                  window.location.href = `mailto:chapelhillmulticompanyltd@gmail.com?subject=${subject}&body=${body}`;
+                  window.location.href = `${BUSINESS_IDENTITY.contact.emailHref}?subject=${subject}&body=${body}`;
                 }}
                 className="bg-white/10 hover:bg-white/15 text-white border border-white/20 px-6 py-4 rounded-full font-semibold text-sm inline-flex items-center justify-center gap-2 transition-colors cursor-pointer"
               >
@@ -795,7 +798,9 @@ export default function PropertyDetailsClient({ property }: PropertyDetailsClien
 
         <div className="flex items-center gap-2 shrink-0">
           <a
-            href={`https://wa.me/2348032865488?text=${encodeURIComponent(`Hello ChapelHill Multicompany Limited, I am inquiring about ${property.name} (${property.financials.startingPrice}).`)}`}
+            href={getWhatsAppUrl(
+              `Hello ${BUSINESS_IDENTITY.companyName}, I am inquiring about ${property.name} (${property.financials.startingPrice}).`
+            )}
             target="_blank"
             rel="noopener noreferrer"
             className="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xs active:scale-95 transition-transform"

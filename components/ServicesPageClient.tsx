@@ -23,6 +23,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
 import WhatsAppFAB from '@/components/WhatsAppFAB';
+import { BUSINESS_IDENTITY, getWhatsAppUrl } from '@/lib/seo/businessIdentity';
 
 interface ServiceDetail {
   id: string;
@@ -289,7 +290,7 @@ const FAQ_ITEMS = [
   },
   {
     q: 'How do I initiate an enquiry for any of your four service categories?',
-    a: 'Click any enquiry button on this page to submit a consultation request directly to our team, or reach our direct WhatsApp and phone desk on +234 803 286 5488.',
+    a: `Click any enquiry button on this page to submit a consultation request directly to our team, or reach our direct WhatsApp and phone desk on ${BUSINESS_IDENTITY.contact.primaryPhone.display}.`,
   },
 ];
 
@@ -533,9 +534,9 @@ export default function ServicesPageClient() {
                         </button>
 
                         <a
-                          href={`https://wa.me/2348032865488?text=${encodeURIComponent(
-                            `Hello ChapelHill Multicompany Limited, I am inquiring about your "${service.title}" services. Could you please share more details and arrange a consultation?`
-                          )}`}
+                          href={getWhatsAppUrl(
+                            `Hello ${BUSINESS_IDENTITY.companyName}, I am inquiring about your "${service.title}" services. Could you please share more details and arrange a consultation?`
+                          )}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="bg-stone-50 hover:bg-stone-100 text-stone-800 border border-stone-200 px-5 py-3 rounded-full font-semibold text-xs sm:text-sm transition-colors flex items-center justify-center gap-2 min-h-[44px]"
@@ -766,17 +767,34 @@ export default function ServicesPageClient() {
                 <div className="mt-8 space-y-3 text-xs sm:text-sm text-stone-300">
                   <div className="flex items-start gap-3">
                     <MapPin className="w-4 h-4 text-[#E5C583] shrink-0 mt-0.5" />
-                    <span>
-                      Block B4 357, HFP Shopping Complex, Abraham Adesanya Junction, Lekki, Lagos State, Nigeria
-                    </span>
+                    <span>{BUSINESS_IDENTITY.address.full}</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Phone className="w-4 h-4 text-[#E5C583] shrink-0" />
-                    <span>+234 803 286 5488</span>
+                    <span>
+                      <a
+                        href={BUSINESS_IDENTITY.contact.primaryPhone.telHref}
+                        className="hover:text-[#E5C583] transition-colors"
+                      >
+                        {BUSINESS_IDENTITY.contact.primaryPhone.display}
+                      </a>{' '}
+                      ·{' '}
+                      <a
+                        href={BUSINESS_IDENTITY.contact.secondaryPhone.telHref}
+                        className="hover:text-[#E5C583] transition-colors"
+                      >
+                        {BUSINESS_IDENTITY.contact.secondaryPhone.display}
+                      </a>
+                    </span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Mail className="w-4 h-4 text-[#E5C583] shrink-0" />
-                    <span>chapelhillmulticompanyltd@gmail.com</span>
+                    <a
+                      href={BUSINESS_IDENTITY.contact.emailHref}
+                      className="hover:text-[#E5C583] transition-colors"
+                    >
+                      {BUSINESS_IDENTITY.contact.email}
+                    </a>
                   </div>
                 </div>
               </div>
@@ -792,13 +810,15 @@ export default function ServicesPageClient() {
                 </button>
 
                 <a
-                  href="https://wa.me/2348032865488?text=Hello%20ChapelHill%20Multicompany%20Limited%2C%20I%20would%20like%20to%20discuss%20your%20services%20or%20a%20joint-venture%20opportunity."
+                  href={getWhatsAppUrl(
+                    'Hello ChapelHill Multicompany Limited, I would like to discuss your services or a joint-venture opportunity.'
+                  )}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full bg-white/10 hover:bg-white/20 text-white border border-white/20 py-3.5 px-6 rounded-2xl font-semibold text-xs sm:text-sm transition-colors flex items-center justify-center gap-2"
                 >
                   <MessageCircle className="w-4 h-4 fill-white" />
-                  <span>Direct WhatsApp Line (+234 803 286 5488)</span>
+                  <span>Direct WhatsApp Line ({BUSINESS_IDENTITY.contact.primaryPhone.display})</span>
                 </a>
               </div>
             </div>

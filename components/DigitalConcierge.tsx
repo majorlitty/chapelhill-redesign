@@ -15,6 +15,7 @@ import {
   Maximize2,
   ExternalLink,
 } from 'lucide-react';
+import { BUSINESS_IDENTITY, getWhatsAppUrl } from '@/lib/seo/businessIdentity';
 
 interface ChatMessage {
   id: string;
@@ -130,7 +131,9 @@ export default function DigitalConcierge() {
       const assistantMessage: ChatMessage = {
         id: generateMessageId('assistant'),
         role: 'assistant',
-        content: data.text || 'Thank you for your inquiry. Our Advisory Desk is available on WhatsApp (+234 803 286 5488) to assist you with property information and viewings.',
+        content:
+          data.text ||
+          `Thank you for your inquiry. Our Advisory Desk is available on WhatsApp (${BUSINESS_IDENTITY.contact.primaryPhone.display}) to assist you with property information and viewings.`,
         timestamp: getFormattedTimestamp(),
         suggestedActions: data.suggestedActions,
       };
@@ -145,8 +148,7 @@ export default function DigitalConcierge() {
       const fallbackMessage: ChatMessage = {
         id: generateMessageId('fallback'),
         role: 'assistant',
-        content:
-          'Thank you for your inquiry. Our Advisory Desk is immediately accessible via WhatsApp (+234 803 286 5488) or by booking a private viewing.',
+        content: `Thank you for your inquiry. Our Advisory Desk is immediately accessible via WhatsApp (${BUSINESS_IDENTITY.contact.primaryPhone.display}) or by booking a private viewing.`,
         timestamp: getFormattedTimestamp(),
         suggestedActions: { whatsapp: true, booking: true },
       };
@@ -162,12 +164,14 @@ export default function DigitalConcierge() {
   };
 
   const handleWhatsAppHandoff = (summaryText?: string) => {
-    const message = encodeURIComponent(
-      `Hello ChapelHill Multicompany Limited, I was consulting with your Digital Concierge regarding developments in Lagos. ${
-        summaryText ? `I am specifically inquiring about: ${summaryText.slice(0, 120)}...` : 'I would like to receive current brochure details and schedule an inspection.'
+    const whatsappHref = getWhatsAppUrl(
+      `Hello ${BUSINESS_IDENTITY.companyName}, I was consulting with your Digital Concierge regarding your developments and services. ${
+        summaryText
+          ? `I am specifically inquiring about: ${summaryText.slice(0, 120)}...`
+          : 'I would like to receive current brochure details and schedule an inspection.'
       }\n\nThank you.`
     );
-    window.open(`https://wa.me/2348032865488?text=${message}`, '_blank', 'noopener,noreferrer');
+    window.open(whatsappHref, '_blank', 'noopener,noreferrer');
   };
 
   const handleBookingHandoff = (propertyName = 'IVY Heights, Ikate, Lekki Phase 1, Lagos') => {
@@ -303,8 +307,8 @@ export default function DigitalConcierge() {
             <div className="flex items-center gap-2.5">
               <div className="relative w-7 h-7 rounded-full bg-white/10 border border-white/15 flex items-center justify-center overflow-hidden shrink-0">
                 <Image
-                  src="/Chapelhill-Company-Logo.png"
-                  alt="Chapelhill"
+                  src={BUSINESS_IDENTITY.logo.path}
+                  alt={BUSINESS_IDENTITY.brandName}
                   width={28}
                   height={28}
                   className="object-contain p-0.5"

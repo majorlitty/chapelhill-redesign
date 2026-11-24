@@ -15,6 +15,7 @@ import {
   Shield,
   X,
 } from 'lucide-react';
+import { BUSINESS_IDENTITY, getWhatsAppUrl } from '@/lib/seo/businessIdentity';
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -172,9 +173,9 @@ export default function BookingModal({
     onClose();
   };
 
-  const whatsappHref = `https://wa.me/2348032865488?text=${encodeURIComponent(
-    `Hello ChapelHill Multicompany Limited, I am inquiring about ${selectedProperty} and would like to schedule a consultation or viewing.`
-  )}`;
+  const whatsappHref = getWhatsAppUrl(
+    `Hello ${BUSINESS_IDENTITY.companyName}, I am inquiring about ${selectedProperty} and would like to schedule a consultation or viewing.`
+  );
 
   return (
     <div
@@ -199,8 +200,8 @@ export default function BookingModal({
             {/* Brand Header */}
             <div className="flex items-center justify-between gap-3">
               <Image
-                src="/Chapelhill-Company-Logo.png"
-                alt="ChapelHill Multicompany Limited"
+                src={BUSINESS_IDENTITY.logo.path}
+                alt={BUSINESS_IDENTITY.logo.alt}
                 width={120}
                 height={54}
                 className="h-7 w-auto object-contain brightness-0 invert"
@@ -247,7 +248,7 @@ export default function BookingModal({
                 <div>
                   <dt className="font-semibold text-white">Office Hours</dt>
                   <dd className="text-stone-300 mt-0.5 leading-relaxed">
-                    Monday – Saturday · 9:00 AM – 5:00 PM WAT
+                    {BUSINESS_IDENTITY.operatingHours.display}
                   </dd>
                 </div>
               </div>
@@ -255,10 +256,9 @@ export default function BookingModal({
               <div className="py-3 flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#E5C583] shrink-0 mt-0.5" />
                 <div>
-                  <dt className="font-semibold text-white">Lekki Advisory Office</dt>
+                  <dt className="font-semibold text-white">Headquarters (Lagos)</dt>
                   <dd className="text-stone-300 mt-0.5 leading-relaxed">
-                    Block B4 357, HFP Shopping Complex, Abraham Adesanya Junction, Lekki-Epe Expy,
-                    Lagos
+                    {BUSINESS_IDENTITY.address.full}
                   </dd>
                 </div>
               </div>
@@ -281,16 +281,31 @@ export default function BookingModal({
                     WhatsApp Desk
                   </p>
                   <p className="font-heading text-sm font-bold text-white mt-1 truncate">
-                    +234 803 286 5488
+                    {BUSINESS_IDENTITY.contact.primaryPhone.display}
                   </p>
                 </div>
               </div>
               <ArrowUpRight className="w-4 h-4 text-[#25D366] shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
 
-            <div className="flex items-center gap-2 text-[11px] text-stone-300 px-1">
+            <div className="flex items-center gap-2 text-[11px] text-stone-300 px-1 flex-wrap">
               <Phone className="w-3.5 h-3.5 text-[#E5C583] shrink-0" />
-              <span>Advisory Line: +234 903 913 0207 · +234 803 286 5488</span>
+              <span>
+                Advisory Line:{' '}
+                <a
+                  href={BUSINESS_IDENTITY.contact.primaryPhone.telHref}
+                  className="hover:text-white transition-colors"
+                >
+                  {BUSINESS_IDENTITY.contact.primaryPhone.display}
+                </a>{' '}
+                ·{' '}
+                <a
+                  href={BUSINESS_IDENTITY.contact.secondaryPhone.telHref}
+                  className="hover:text-white transition-colors"
+                >
+                  {BUSINESS_IDENTITY.contact.secondaryPhone.display}
+                </a>
+              </span>
             </div>
           </div>
         </aside>
@@ -379,7 +394,7 @@ export default function BookingModal({
                   </label>
                   <input
                     type="tel"
-                    placeholder="+234 803 286 5488"
+                    placeholder={BUSINESS_IDENTITY.contact.primaryPhone.display}
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     disabled={isSubmitting}

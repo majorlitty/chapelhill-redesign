@@ -30,6 +30,7 @@ import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
 import InfoDrawer from '@/components/InfoDrawer';
 import WhatsAppFAB from '@/components/WhatsAppFAB';
+import { BUSINESS_IDENTITY, getWhatsAppUrl } from '@/lib/seo/businessIdentity';
 
 interface PropertyShowcaseLayoutProps {
   property: Property;
@@ -259,7 +260,7 @@ function getShowcaseConfig(property: Property): PropertyPageConfig {
         },
         {
           label: 'Physical Site Walkthrough',
-          value: 'Arrange immediate inspection or installment terms via WhatsApp (+234 803 286 5488).',
+          value: `Arrange immediate inspection or installment terms via WhatsApp (${BUSINESS_IDENTITY.contact.primaryPhone.display}).`,
         },
       ],
       ctaEyebrow: 'Completed Turnkey Delivery · ChapelHill Multicompany Limited',
@@ -429,7 +430,7 @@ function getShowcaseConfig(property: Property): PropertyPageConfig {
         },
         {
           label: 'Upcoming Developments Desk',
-          value: 'Register priority interest for upcoming builds via WhatsApp (+234 803 286 5488).',
+          value: `Register priority interest for upcoming builds via WhatsApp (${BUSINESS_IDENTITY.contact.primaryPhone.display}).`,
         },
       ],
       ctaEyebrow: 'SOLD OUT · Construction Ongoing · ChapelHill Multicompany Limited',
@@ -593,7 +594,7 @@ function getShowcaseConfig(property: Property): PropertyPageConfig {
       },
       {
         label: 'Pricing Sheets & Inspections',
-        value: 'Available on request via WhatsApp Desk (+234 803 286 5488) or private consultation.',
+        value: `Available on request via WhatsApp Desk (${BUSINESS_IDENTITY.contact.primaryPhone.display}) or private consultation.`,
       },
     ],
     ctaEyebrow: 'Direct Inquiries · ChapelHill Multicompany Limited',
@@ -721,7 +722,7 @@ export default function PropertyShowcaseLayout({
 
   const backHref = routeContext === 'projects' ? '/projects' : '/#featured-properties';
   const backLabel = routeContext === 'projects' ? 'All Projects' : 'Properties';
-  const whatsappUrl = `https://wa.me/2348032865488?text=${encodeURIComponent(config.whatsappGreeting)}`;
+  const whatsappUrl = getWhatsAppUrl(config.whatsappGreeting);
 
   return (
     <div className="min-h-screen bg-[#FEFCFD] text-[#162521] font-sans flex flex-col justify-between selection:bg-[#461313] selection:text-white">
@@ -851,7 +852,7 @@ export default function PropertyShowcaseLayout({
                 className="bg-white hover:bg-[#25D366]/10 text-[#128C7E] border border-stone-200 hover:border-[#25D366]/40 px-5 py-3 rounded-full font-semibold text-xs sm:text-sm inline-flex items-center justify-center gap-2 transition-colors min-h-[46px] whitespace-nowrap shrink-0"
               >
                 <MessageCircle className="w-4 h-4" />
-                <span>+234 803 286 5488</span>
+                <span>{BUSINESS_IDENTITY.contact.primaryPhone.display}</span>
               </a>
             </div>
           </div>
@@ -946,7 +947,7 @@ export default function PropertyShowcaseLayout({
                       rel="noopener noreferrer"
                       className="font-sans text-sm font-semibold text-[#461313] hover:text-[#D64933] inline-flex items-center gap-1.5 transition-colors"
                     >
-                      <span>WhatsApp Desk: +234 803 286 5488</span>
+                      <span>WhatsApp Desk: {BUSINESS_IDENTITY.contact.primaryPhone.display}</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </a>
                   </dd>
@@ -1188,11 +1189,11 @@ export default function PropertyShowcaseLayout({
                 <ArrowRight className="w-4 h-4" />
               </button>
               <a
-                href="tel:+2348032865488"
+                href={BUSINESS_IDENTITY.contact.primaryPhone.telHref}
                 className="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-5 py-3 rounded-full font-semibold text-xs sm:text-sm inline-flex items-center justify-center gap-2 transition-colors min-h-[46px] whitespace-nowrap"
               >
                 <Phone className="w-4 h-4" />
-                <span>+234 803 286 5488</span>
+                <span>{BUSINESS_IDENTITY.contact.primaryPhone.display}</span>
               </a>
             </div>
           </div>

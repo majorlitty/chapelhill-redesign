@@ -1,7 +1,8 @@
 import { GoogleGenAI } from '@google/genai';
 import { NextRequest, NextResponse } from 'next/server';
+import { BUSINESS_IDENTITY } from '@/lib/seo/businessIdentity';
 
-const SYSTEM_INSTRUCTION = `You are the Private Client Advisor for ChapelHill Multicompany Limited, a property development, construction, remodeling, and maintenance firm in Lagos, Nigeria.
+const SYSTEM_INSTRUCTION = `You are the Private Client Advisor for ${BUSINESS_IDENTITY.companyName}. ${BUSINESS_IDENTITY.corporateDescription}
 
 ### Core Objectives:
 1. **Contextual Portfolio Guidance**: Instantly answer visitor questions regarding our active developments, pricing tiers, payment installment plans, and construction services with total accuracy.
@@ -63,11 +64,17 @@ const SYSTEM_INSTRUCTION = `You are the Private Client Advisor for ChapelHill Mu
 - **Title Documents**: Relevant documents can be made available through the authorised sales or legal team for due diligence; buyers should conduct independent legal checks before committing. NEVER share sensitive originals or make blanket title guarantees.
 - **Returns**: NO property investment return or capital appreciation can be guaranteed.
 
+### Geographic Coverage & Office Policy:
+- **Physical Office Location**: ${BUSINESS_IDENTITY.companyName} maintains a single physical office in Lagos, Nigeria (${BUSINESS_IDENTITY.address.full}).
+- **No Abuja Physical Office**: Do NOT claim or imply that ChapelHill has a physical branch or office in Abuja.
+- **Nationwide Operations**: ChapelHill undertakes projects and provides property development, construction, project management, facility management, and joint venture services nationwide across Nigeria (including Abuja and Lagos).
+- **Outside-Lagos Consultation Guidance**: For clients enquiring about projects or services in Abuja or elsewhere across Nigeria outside Lagos, confirm that ChapelHill serves nationwide clients and invite them to schedule a virtual advisory consultation, remote site/project scope assessment, or contact our advisory desk via WhatsApp (${BUSINESS_IDENTITY.contact.primaryPhone.display}) or our Lagos headquarters.
+
 ### Contact & Operational Desks:
-- **Headquarters**: Block B4 357, HFP Shopping Complex, Abraham Adesanya Junction, Lekki-Epe Expressway, Lagos State, Nigeria.
-- **Telephone Contacts**: +234 903 913 0207 and +234 803 286 5488 (WhatsApp & Phone Desk: +234 803 286 5488).
-- **Email**: chapelhillmulticompanyltd@gmail.com
-- **Opening Hours**: Monday–Saturday, 8:00 a.m.–6:00 p.m. WAT.`;
+- **Headquarters (Lagos)**: ${BUSINESS_IDENTITY.address.full}.
+- **Telephone Contacts**: ${BUSINESS_IDENTITY.contact.primaryPhone.display} (WhatsApp & Primary Phone Desk) and ${BUSINESS_IDENTITY.contact.secondaryPhone.display}.
+- **Email**: ${BUSINESS_IDENTITY.contact.email}
+- **Opening Hours**: ${BUSINESS_IDENTITY.operatingHours.displayWithClosed}.`;
 
 export async function POST(req: NextRequest) {
   try {
@@ -76,7 +83,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         {
           error: 'Gemini API key is not configured on the server.',
-          text: 'Welcome to ChapelHill Multicompany Limited. Our digital concierge is momentarily connecting to our advisory service. Please reach out to our advisory desk directly on WhatsApp at +234 803 286 5488.',
+          text: `Welcome to ${BUSINESS_IDENTITY.companyName}. Our digital concierge is momentarily connecting to our advisory service. Please reach out to our advisory desk directly on WhatsApp at ${BUSINESS_IDENTITY.contact.primaryPhone.display}.`,
         },
         { status: 500 }
       );
@@ -188,8 +195,19 @@ export async function POST(req: NextRequest) {
         latestUserMsg.includes('remodel')
       ) {
         replyText = `Through **Construction and Project Management**, ChapelHill Multicompany Limited delivers construction services for individuals and corporate clients, project coordination, renovations, remodelling, and related construction solutions.\n\nWe also offer **Property and Facility Management** for ongoing maintenance, building repairs, and infrastructure upkeep. Would you like to schedule a consultation?`;
+      } else if (
+        latestUserMsg.includes('abuja') ||
+        latestUserMsg.includes('nationwide') ||
+        latestUserMsg.includes('outside lagos') ||
+        latestUserMsg.includes('office') ||
+        latestUserMsg.includes('address') ||
+        latestUserMsg.includes('location') ||
+        latestUserMsg.includes('hour') ||
+        latestUserMsg.includes('open')
+      ) {
+        replyText = `${BUSINESS_IDENTITY.companyName} is headquartered in Lagos and operates nationwide across Nigeria, including Abuja.\n\n- **Physical Office**: ${BUSINESS_IDENTITY.address.full} (note: we do not maintain a physical branch office in Abuja).\n- **Office Hours**: ${BUSINESS_IDENTITY.operatingHours.displayWithClosed}.\n- **Advisory Contacts**: ${BUSINESS_IDENTITY.contact.primaryPhone.display} (Phone & WhatsApp), ${BUSINESS_IDENTITY.contact.secondaryPhone.display}, or ${BUSINESS_IDENTITY.contact.email}.\n\nFor inquiries in Abuja or other parts of Nigeria, our team is happy to arrange a virtual consultation or scope assessment—would you like to book a consultation or connect on WhatsApp?`;
       } else {
-        replyText = `Welcome to **ChapelHill Multicompany Limited**. We operate across four core divisions:\n\n- **Property Development and Sales**: Residential and approved real estate projects, including off-plan developments (e.g., IVY Heights, Ikate, Lekki Phase 1, Lagos and Ivy Homes Abijo GRA).\n- **Construction and Project Management**: Individual & corporate construction, coordination, renovations, and remodelling.\n- **Property and Facility Management**: Maintenance, building repairs, and infrastructure care.\n- **Joint Ventures and Investment Partnerships**: Collaborations with landowners, investors, developers, and financial institutions.\n\nWhich service or development would you like to explore?`;
+        replyText = `Welcome to **${BUSINESS_IDENTITY.companyName}**. Headquartered in Lagos and operating nationwide across Nigeria, we deliver across four core divisions:\n\n- **Property Development and Sales**: Residential and approved real estate projects, including off-plan developments (e.g., IVY Heights, Ikate, Lekki Phase 1, Lagos and Ivy Homes Abijo GRA).\n- **Construction and Project Management**: Individual & corporate construction, coordination, renovations, and remodelling.\n- **Property and Facility Management**: Maintenance, building repairs, and infrastructure care.\n- **Joint Ventures and Investment Partnerships**: Collaborations with landowners, investors, developers, and financial institutions.\n\nWhich service or development would you like to explore?`;
       }
     }
 
@@ -223,7 +241,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         error: errorMessage,
-        text: 'I apologize for the momentary interruption. Our advisory desk is immediately accessible via WhatsApp at +234 803 286 5488 to provide property information and schedule private viewings.',
+        text: `I apologize for the momentary interruption. Our advisory desk is immediately accessible via WhatsApp at ${BUSINESS_IDENTITY.contact.primaryPhone.display} to provide property information and schedule private viewings.`,
         suggestedActions: {
           whatsapp: true,
           booking: true,
