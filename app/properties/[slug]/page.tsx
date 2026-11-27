@@ -3,6 +3,8 @@ import { Metadata } from 'next';
 import { getPropertyById, getAllProperties } from '@/lib/propertiesData';
 import { getProjectSeoMetadata } from '@/lib/projectSeoMetadata';
 import PropertyDetailsClient from '@/components/PropertyDetailsClient';
+import JsonLd from '@/components/seo/JsonLd';
+import { buildProjectWebPageSchema } from '@/lib/seo/schema';
 
 interface PropertyPageProps {
   params: Promise<{
@@ -68,5 +70,13 @@ export default async function PropertyPage({ params }: PropertyPageProps) {
     notFound();
   }
 
-  return <PropertyDetailsClient property={property} />;
+  return (
+    <>
+      <JsonLd
+        id="chapelhill-page-jsonld"
+        data={buildProjectWebPageSchema(property)}
+      />
+      <PropertyDetailsClient property={property} />
+    </>
+  );
 }

@@ -112,6 +112,13 @@ export const BUSINESS_IDENTITY = {
     height: 107,
     alt: 'ChapelHill Multicompany Limited',
   },
+  schemaLogo: {
+    path: '/chapelhill-schema-logo.png',
+    url: `${CANONICAL_BASE_URL}/chapelhill-schema-logo.png`,
+    width: 512,
+    height: 512,
+    alt: 'ChapelHill Multicompany Limited',
+  },
   serviceDivisions: [
     {
       id: 'development-sales',
